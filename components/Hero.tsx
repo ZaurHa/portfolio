@@ -93,7 +93,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 p-8 pb-24 md:p-12 lg:pb-32">
+      <div className="relative z-10 p-4 pb-8 md:p-12 lg:pb-32">
         <motion.div
           // Relativer Container für H1 und Schmetterling
           className="relative inline-block"
@@ -102,7 +102,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight"
+            className="text-4xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight"
             style={{ textShadow: '0px 2px 15px rgba(0,0,0,0.5)' }}
           >
             ZAIRA BEAUTY
@@ -111,7 +111,7 @@ const Hero = () => {
         </motion.div>
         
         <motion.p 
-          className="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-neutral-200"
+          className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-neutral-200"
           style={{ textShadow: '0px 2px 10px rgba(0,0,0,0.7)' } as React.CSSProperties}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
