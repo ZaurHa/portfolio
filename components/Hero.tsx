@@ -82,6 +82,7 @@ const Hero = () => {
           fill
           style={{
             objectFit: 'cover',
+            objectPosition: 'center 20%',
           }}
           className="opacity-50"
           priority
