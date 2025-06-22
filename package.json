@@ -1,0 +1,46 @@
+{
+  "name": "zairabeauty-website",
+  "version": "1.0.0",
+  "description": "Moderne Website für Zaira Beauty - Professional Beauty Services",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.16",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.18.0",
+    "lucide-react": "^0.292.0",
+    "next": "14.1.0",
+    "postcss": "^8.4.31",
+    "react": "18.2.0",
+    "react-datepicker": "^4.21.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.47.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.5.2",
+    "tailwindcss": "3.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.1.0",
+    "typescript": "5.5.2"
+  },
+  "keywords": [
+    "beauty",
+    "makeup",
+    "lashes",
+    "website",
+    "nextjs"
+  ],
+  "author": "Zaira Beauty",
+  "license": "MIT"
+}
