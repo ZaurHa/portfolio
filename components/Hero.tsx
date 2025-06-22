@@ -72,7 +72,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-end justify-center text-center overflow-hidden"
+      className="relative min-h-screen flex items-end justify-center text-center overflow-hidden bg-[#050e11]"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -81,10 +81,11 @@ const Hero = () => {
           alt="Portrait von Zaira"
           fill
           style={{
-            objectFit: 'cover',
-            objectPosition: 'center 20%',
+            objectFit: 'contain',
+            opacity: 1,
+            transform: 'scale(1.2)',
           }}
-          className="opacity-50"
+          className="object-top [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]"
           priority
         />
         {/* Gradient Overlay */}
@@ -92,7 +93,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 p-8 md:p-12 lg:pb-32">
+      <div className="relative z-10 p-8 pb-24 md:p-12 lg:pb-32">
         <motion.div
           // Relativer Container für H1 und Schmetterling
           className="relative inline-block"

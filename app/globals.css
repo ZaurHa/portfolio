@@ -118,6 +118,21 @@
       transform: translateY(0);
     }
   }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4);
+  }
+
+  .hero-background-image {
+    object-position: center 95%; /* Standard für Mobile */
+  }
+
+  @media (min-width: 768px) { /* Tailwind's 'md' breakpoint */
+    .hero-background-image {
+      object-position: center 35%; /* Für Desktop und größere Bildschirme */
+    }
+  }
 }
 
 @layer utilities {
