@@ -1,109 +1,33 @@
-import { Inter } from 'next/font/google'
-import { Metadata } from 'next'
-import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import ScrollToTopButton from '@/components/ScrollToTopButton'
-import FlowerPetals from '../components/FlowerPetals'
+import Link from "next/link";
+import "./globals.css";
+import Head from "next/head";
+import LayoutClient from "../components/LayoutClient";
 
-const inter = Inter({ subsets: ['latin'] })
-
-const siteUrl = "https://zairabeauty.de";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: 'Zaira Beauty | Kosmetikstudio in Geretsried | Aquafacial, Lashlifting & Mehr',
-  description: 'Ihr professionelles Kosmetikstudio in Geretsried. Exklusive Gesichtsbehandlungen, Anti-Aging, dauerhafte Haarentfernung und mehr. Buchen Sie jetzt Ihren Termin bei Zaira Beauty!',
-  keywords: 'Kosmetikstudio Geretsried, Zaira Beauty, Aquafacial, Lashlifting, Browlifting, Microneedling, Anti-Aging, dauerhafte Haarentfernung, BB-Glow, Zahnbleaching, Gesichtsbehandlung',
-  authors: [{ name: 'Zaira Beauty' }],
-  openGraph: {
-    title: 'Zaira Beauty | Exklusives Kosmetikstudio in Geretsried',
-    description: 'Entdecken Sie professionelle Gesichtsbehandlungen, Anti-Aging, Haarentfernung und mehr bei Zaira Beauty.',
-    url: siteUrl,
-    siteName: 'Zaira Beauty',
-    locale: 'de_DE',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Zaira Beauty | Exklusives Kosmetikstudio in Geretsried',
-    description: 'Entdecken Sie professionelle Gesichtsbehandlungen, Anti-Aging, Haarentfernung und mehr bei Zaira Beauty.',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+export const metadata = {
+  title: "Zaur's Portfolio",
+  description: "Portfolio von Zaur – Webentwicklung, Projekte, Skills und Kontakt.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    "name": "Zaira Beauty",
-    "image": "https://zairabeauty.de/images/logo.webp",
-    "@id": "https://zairabeauty.de",
-    "url": "https://zairabeauty.de",
-    "telephone": "+4915159414259",
-    "email": "zaira.beauty.face@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Johannispl. 10",
-      "addressLocality": "Geretsried",
-      "postalCode": "82538",
-      "addressCountry": "DE"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "09:00",
-        "closes": "16:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "00:00",
-        "closes": "00:00"
-      }
-    ]
-  };
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
-      <body className={inter.className}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <Header />
-        <FlowerPetals />
-        <main>{children}</main>
-        <Footer />
-        <ScrollToTopButton />
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://deine-domain.de" />
+        <meta property="og:image" content="https://placehold.co/1200x630/06b6d4/fff?text=Zaur+Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <body className="bg-black text-white font-sans min-h-screen">
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );
-} 
+}

@@ -1,46 +1,42 @@
 {
-  "name": "zairabeauty-website",
+  "name": "zaira-portfolio",
   "version": "1.0.0",
-  "description": "Moderne Website für Zaira Beauty - Professional Beauty Services",
+  "description": "Zaira's Portfolio Website mit Live-Demos",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:kosmetik": "cd apps/kosmetik && npm run dev",
+    "build:kosmetik": "cd apps/kosmetik && npm run build"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@tailwindcss/typography": "^0.5.16",
-    "autoprefixer": "^10.4.16",
-    "date-fns": "^2.30.0",
-    "framer-motion": "^10.18.0",
-    "lucide-react": "^0.292.0",
-    "next": "14.1.0",
-    "postcss": "^8.4.31",
-    "react": "18.2.0",
-    "react-datepicker": "^4.21.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.47.0",
-    "react-icons": "^5.5.0",
-    "react-intersection-observer": "^9.5.2",
-    "tailwindcss": "3.4.4"
+    "autoprefixer": "^10.4.21",
+    "next": "15.3.4",
+    "postcss": "^8.5.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.9",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.1.0",
-    "typescript": "5.5.2"
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5"
   },
   "keywords": [
-    "beauty",
-    "makeup",
-    "lashes",
-    "website",
-    "nextjs"
+    "portfolio",
+    "web-development",
+    "nextjs",
+    "react",
+    "typescript",
+    "demo"
   ],
-  "author": "Zaira Beauty",
+  "author": "Zaira",
   "license": "MIT"
 }
