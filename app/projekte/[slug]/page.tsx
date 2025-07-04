@@ -3,22 +3,23 @@ import { notFound } from "next/navigation";
 const projects = [
   {
     slug: "beauty-praxis",
-    title: "Beauty Praxis Website",
-    description: "Eine moderne, responsive Website für eine Beauty-Praxis mit verschiedenen Behandlungsseiten und Online-Buchungssystem.",
-    tech: ["Next.js", "React", "TailwindCSS", "TypeScript"],
+    title: "Zaira Beauty Website",
+    description: "Die offizielle Website für das Kosmetikstudio Zaira Beauty – modern, minimalistisch, sehr dunkel und mit persönlicher Kontaktaufnahme.",
+    tech: ["Next.js", "React", "TailwindCSS", "TypeScript", "Neumorphism"],
     image: "/images/beauty-praxis-preview.svg",
-    details: "Diese Website wurde für eine Beauty-Praxis entwickelt und bietet eine moderne, benutzerfreundliche Oberfläche. Sie enthält verschiedene Behandlungsseiten wie Akne-Behandlung, Anti-Aging, BB-Glow und viele weitere. Die Website ist vollständig responsive und optimiert für alle Geräte. Features umfassen ein Online-Buchungssystem, eine Galerie mit Vorher-Nachher-Bildern, Preistabellen und eine Kontaktseite. Das Design ist elegant und professionell, passend für den Beauty-Bereich.",
+    details: "Diese Website wurde für das Kosmetikstudio Zaira Beauty entwickelt und bietet eine moderne, minimalistische und sehr dunkle Neumorphism-Oberfläche. Im Mittelpunkt stehen die Präsentation der Behandlungen, echte Kunden-Transformationen und die einfache Kontaktaufnahme. Die Seite ist vollständig responsiv, SEO-optimiert und lädt sehr schnell. Für Termin- und Beratungsanfragen stehen persönliche Kontaktmöglichkeiten via WhatsApp und Instagram zur Verfügung.",
     features: [
-      "Responsive Design für alle Geräte",
-      "Verschiedene Behandlungsseiten",
-      "Online-Buchungssystem",
-      "Galerie mit Vorher-Nachher-Bildern",
-      "Preistabellen",
+      "Minimalistisches, sehr dunkles Neumorphism-Design",
+      "Übersicht aller Behandlungen & Preise",
+      "Galerie mit echten Vorher-Nachher-Bildern",
+      "Persönliche Kontaktaufnahme via WhatsApp & Instagram",
+      "Responsive für alle Geräte",
       "SEO-optimiert",
       "Schnelle Ladezeiten"
     ],
-    liveUrl: "https://beauty-praxis.example.com",
-    githubUrl: "https://github.com/username/beauty-praxis"
+    liveUrl: "https://zairabeauty.de/",
+    whatsappUrl: "https://wa.me/4915159414259",
+    instagramUrl: "https://www.instagram.com/zaira.beauty.face/"
   },
   {
     slug: "ecommerce-shop",
@@ -85,46 +86,39 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
   return (
     <div className="max-w-4xl mx-auto">
-      <img src={project.image} alt={project.title} className="w-full rounded-xl mb-6 shadow-lg" />
-      <h1 className="text-3xl font-bold text-cyan-400 mb-2">{project.title}</h1>
-      <p className="mb-4 text-gray-300">{project.description}</p>
-      <div className="mb-6 flex flex-wrap gap-2">
-        {project.tech.map((t) => (
-          <span key={t} className="bg-cyan-400/10 text-cyan-400 px-2 py-1 rounded text-xs font-mono">{t}</span>
-        ))}
-      </div>
-      
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold text-white mb-3">Über das Projekt</h2>
-        <p className="text-white/90 leading-relaxed">{project.details}</p>
-      </div>
-
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold text-white mb-3">Features</h2>
-        <ul className="grid md:grid-cols-2 gap-2">
-          {project.features.map((feature) => (
-            <li key={feature} className="flex items-center text-gray-300">
-              <span className="text-cyan-400 mr-2">✓</span>
-              {feature}
-            </li>
+      <div className="neumorph-card p-8 mb-8">
+        <img src={project.image} alt={project.title} className="w-full rounded-xl mb-6 shadow-lg" />
+        <h1 className="text-3xl font-bold text-cyan-400 mb-2">{project.title}</h1>
+        <p className="mb-4 text-gray-300">{project.description}</p>
+        <div className="mb-6 flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span key={t} className="neumorph-badge text-cyan-400 px-2 py-1 rounded text-xs font-mono">{t}</span>
           ))}
-        </ul>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-white mb-3">Über das Projekt</h2>
+          <p className="text-white/90 leading-relaxed">{project.details}</p>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-white mb-3">Features</h2>
+          <ul className="grid md:grid-cols-2 gap-2">
+            {project.features.map((feature) => (
+              <li key={feature} className="flex items-center text-gray-300">
+                <span className="text-cyan-400 mr-2">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-wrap gap-4 mb-8">
+          {project.liveUrl && (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="neumorph-button-primary px-6 py-2 font-semibold">
+              Website besuchen
+            </a>
+          )}
+        </div>
+        <a href="/" className="neumorph-button px-4 py-2 text-sm font-semibold">← Zurück zur Übersicht</a>
       </div>
-
-      <div className="flex gap-4 mb-8">
-        {project.liveUrl && (
-          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-block bg-cyan-400 text-black px-6 py-2 rounded font-semibold hover:bg-cyan-300 transition">
-            Live Demo
-          </a>
-        )}
-        {project.githubUrl && (
-          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-cyan-400 border border-cyan-400 rounded px-6 py-2 font-semibold hover:bg-cyan-400 hover:text-black transition">
-            GitHub
-          </a>
-        )}
-      </div>
-
-      <a href="/" className="inline-block text-cyan-400 border border-cyan-400 rounded px-4 py-2 text-sm font-semibold hover:bg-cyan-400 hover:text-black transition">← Zurück zur Übersicht</a>
     </div>
   );
 } 

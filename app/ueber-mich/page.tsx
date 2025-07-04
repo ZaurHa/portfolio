@@ -36,7 +36,7 @@ export default function UeberMich() {
   return (
     <div className="max-w-4xl mx-auto mt-10">
       {/* Hero Section */}
-      <div className="bg-black p-8 rounded-xl shadow-lg border border-[#23232a] flex flex-col md:flex-row items-center gap-8 mb-8">
+      <div className="neumorph-card bg-black p-8 rounded-xl shadow-lg border border-[#23232a] flex flex-col md:flex-row items-center gap-8 mb-8">
         <img
           src="https://placehold.co/200x200/06b6d4/fff?text=Zaur"
           alt="Profilbild Zaur"
@@ -54,11 +54,11 @@ export default function UeberMich() {
       </div>
 
       {/* Skills Section */}
-      <div className="bg-black p-8 rounded-xl shadow-lg border border-[#23232a] mb-8">
+      <div className="neumorph-card bg-black p-8 rounded-xl shadow-lg border border-[#23232a] mb-8">
         <h2 className="text-2xl font-bold text-cyan-400 mb-6">Technische Fähigkeiten</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {skills.map((skill) => (
-            <span key={skill} className="bg-cyan-400/10 text-cyan-400 px-3 py-2 rounded text-sm font-mono text-center hover:bg-cyan-400/20 transition">
+            <span key={skill} className="neumorph-badge text-cyan-400 px-3 py-2 rounded text-sm font-mono text-center hover:bg-cyan-400/20 transition">
               {skill}
             </span>
           ))}
@@ -70,7 +70,7 @@ export default function UeberMich() {
         <h2 className="text-2xl font-bold text-cyan-400 mb-6">Expertise</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {experience.map((exp) => (
-            <div key={exp.title} className="border border-[#23232a] rounded-lg p-4 hover:border-cyan-400/50 transition">
+            <div key={exp.title} className="neumorph-card p-4">
               <h3 className="text-lg font-semibold text-white mb-2">{exp.title}</h3>
               <p className="text-gray-400">{exp.description}</p>
             </div>

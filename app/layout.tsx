@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import "./neumorphism-variants.css";
 import Head from "next/head";
 import LayoutClient from "../components/LayoutClient";
 

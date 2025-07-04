@@ -1,0 +1,95 @@
+/* ===== BLACK/GREY 3D NEUMORPHISM ===== */
+.neumorph-black {
+  --bg: #101014;
+  --card: #18191b;
+  --shadow-light: rgba(80,80,90,0.13);
+  --shadow-dark: rgba(0,0,0,0.92);
+  --text: #f5f6fa;
+  --accent: #b0b0b0;
+}
+
+.neumorph-black .card {
+  background: var(--card);
+  box-shadow: 10px 10px 24px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: box-shadow 0.2s, border-radius 0.2s;
+}
+
+.neumorph-black .neumorph-button {
+  background: var(--card);
+  color: var(--accent);
+  box-shadow: 4px 4px 12px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow 0.2s, border-radius 0.2s;
+}
+
+.neumorph-black .neumorph-button:active {
+  box-shadow: inset 2px 2px 8px var(--shadow-dark), inset -2px -2px 8px var(--shadow-light);
+}
+
+.neumorph-black .neumorph-badge {
+  background: #23242a;
+  color: var(--accent);
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.18em 1.1em;
+  font-size: 0.98em;
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+  box-shadow: none;
+  border: none;
+  transition: border-radius 0.2s;
+}
+
+.neumorph-black .neumorph-input {
+  background: var(--card);
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  color: var(--text);
+  padding: 0.7em 1.1em;
+  font-size: 1em;
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+  transition: box-shadow 0.2s, border-radius 0.2s;
+}
+
+.neumorph-black .neumorph-input:focus {
+  outline: none;
+  border: 1.5px solid var(--accent);
+}
+
+/* Utility: Überschriften und Links in Cards */
+.neumorph-black .card h1,
+.neumorph-black .card h2,
+.neumorph-black .card h3,
+.neumorph-black .card h4,
+.neumorph-black .card h5,
+.neumorph-black .card h6 {
+  color: var(--accent);
+}
+
+.neumorph-black .card a {
+  color: var(--accent);
+}
+
+/* Utility: Hover/Pulse */
+.neumorph-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px !important;
+}
+.neumorph-hover:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 16px 16px 32px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+}
+.neumorph-pulse {
+  animation: neumorph-pulse 2s ease-in-out infinite;
+}
+@keyframes neumorph-pulse {
+  0%, 100% {
+    box-shadow: 10px 10px 24px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  }
+  50% {
+    box-shadow: 16px 16px 32px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  }
+} 

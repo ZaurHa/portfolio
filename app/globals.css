@@ -1,35 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #fff;
-  --card: #18181b;
-  --border: #23232a;
-  --accent: #06b6d4;
+  /* Neumorphism Black/Gray + Neutral Accent */
+  --neumorph-bg: #18191b;
+  --neumorph-card: #23242a;
+  --neumorph-shadow-light: #23242a;
+  --neumorph-shadow-dark: #101012;
+  --neumorph-text: #f5f6fa;
+  --neumorph-text-secondary: #b0b0b0;
+  --neumorph-accent: #b0b0b0;
+  --neumorph-accent-hover: #d1d5db;
+  --neumorph-success: #4ade80;
+  --neumorph-warning: #fbbf24;
+  --neumorph-danger: #f87171;
+  --neumorph-border: #23242a;
+  --neumorph-gradient: linear-gradient(90deg, #444950, #b0b0b0);
 }
 
 :root.light {
-  --background: #f8fafc;
-  --foreground: #18181b;
-  --card: #fff;
-  --border: #e5e7eb;
-  --accent: #06b6d4;
+  /* Light mode - keeping for compatibility but focusing on dark */
+  --neumorph-bg: #f0f0f0;
+  --neumorph-card: #ffffff;
+  --neumorph-shadow-light: #e0e0e0;
+  --neumorph-shadow-dark: #d0d0d0;
+  --neumorph-text: #333333;
+  --neumorph-text-secondary: #666666;
+  --neumorph-accent: #b0b0b0;
+  --neumorph-accent-hover: #d1d5db;
+  --neumorph-success: #4ade80;
+  --neumorph-warning: #fbbf24;
+  --neumorph-danger: #f87171;
+  --neumorph-border: #e0e0e0;
+}
+
+/* Legacy variables for compatibility */
+:root {
+  --background: var(--neumorph-bg);
+  --foreground: var(--neumorph-text);
+  --card: var(--neumorph-card);
+  --border: var(--neumorph-border);
+  --accent: var(--neumorph-accent);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--neumorph-bg);
+    --foreground: var(--neumorph-text);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1em;
+  background: var(--neumorph-bg);
+  color: var(--neumorph-text);
   min-height: 100vh;
   transition: background 0.3s, color 0.3s;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(74, 158, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 158, 255, 0.05) 0%, transparent 50%);
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  color: var(--neumorph-text);
+}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.3em; }
 
 a {
   color: inherit;
@@ -39,70 +78,333 @@ a {
 
 ::-webkit-scrollbar {
   width: 8px;
-  background: #18181b;
+  background: var(--neumorph-card);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: var(--neumorph-accent);
   border-radius: 4px;
 }
 
-/* Utility classes */
-.text-white, .text-gray-300, .text-white\/90 {
-  color: var(--foreground) !important;
+/* Neumorphism Utility Classes */
+.neumorph-card, .neumorph-card-pro {
+  background: var(--neumorph-card);
+  border-radius: 32px;
+  border: 1px solid var(--neumorph-border);
+  padding: 2.5rem 2rem;
 }
-.border-[#23232a] {
-  border-color: var(--border) !important;
+
+.neumorph-button, .neumorph-button-pro {
+  background: var(--neumorph-card);
+  color: var(--neumorph-text);
+  border-radius: 18px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
 }
-.bg-[#18181b] {
-  background: var(--card) !important;
+
+.neumorph-badge, .neumorph-badge-pro {
+  background: #23242a;
+  color: var(--neumorph-accent);
+  border-radius: 999px;
+  font-weight: 500;
+  padding: 0.18em 1.1em;
+  font-size: 0.98em;
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+  box-shadow: none;
+  border: none;
 }
-.text-cyan-400 { color: var(--accent); }
-.border-cyan-400 { border-color: var(--accent); }
-.bg-cyan-400 { background: var(--accent); }
+
+.neumorph-input, .neumorph-input-pro {
+  background: var(--neumorph-card);
+  border-radius: 18px;
+  border: 1.5px solid var(--neumorph-border);
+  color: var(--neumorph-text);
+  padding: 0.7em 1.1em;
+  font-size: 1em;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.neumorph-input:focus, .neumorph-input-pro:focus {
+  outline: none;
+  border: 1.5px solid var(--neumorph-accent);
+}
+
+/* Entferne Glow- und Glassmorphism-Klassen */
+.neumorph-glass, .glow-pro, .shadow-neumorph-pro {
+  box-shadow: none !important;
+  background: var(--neumorph-card) !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--neumorph-border) !important;
+}
+
+.neumorph-sidebar {
+  background: var(--neumorph-card);
+  box-shadow: 
+    4px 0 8px var(--neumorph-shadow-dark),
+    -2px 0 4px var(--neumorph-shadow-light);
+  border-right: 1px solid var(--neumorph-border);
+}
+
+.neumorph-header {
+  background: var(--neumorph-card);
+  box-shadow: 
+    0 2px 8px var(--neumorph-shadow-dark),
+    0 -1px 4px var(--neumorph-shadow-light);
+  border-bottom: 1px solid var(--neumorph-border);
+}
+
+/* Status Colors */
+.neumorph-success {
+  background: linear-gradient(135deg, var(--neumorph-success), #22c55e);
+  color: white;
+}
+
+.neumorph-warning {
+  background: linear-gradient(135deg, var(--neumorph-warning), #f59e0b);
+  color: white;
+}
+
+.neumorph-danger {
+  background: linear-gradient(135deg, var(--neumorph-danger), #ef4444);
+  color: white;
+}
+
+/* Chart Container Neumorphism */
+.neumorph-chart {
+  background: var(--neumorph-card);
+  border-radius: 16px;
+  box-shadow: 
+    6px 6px 12px var(--neumorph-shadow-dark),
+    -6px -6px 12px var(--neumorph-shadow-light);
+  border: 1px solid var(--neumorph-border);
+  padding: 20px;
+}
+
+/* KPI Card Neumorphism */
+.neumorph-kpi {
+  background: var(--neumorph-card);
+  border-radius: 20px;
+  box-shadow: 
+    8px 8px 16px var(--neumorph-shadow-dark),
+    -8px -8px 16px var(--neumorph-shadow-light);
+  border: 1px solid var(--neumorph-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.neumorph-kpi:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    12px 12px 24px var(--neumorph-shadow-dark),
+    -12px -12px 24px var(--neumorph-shadow-light),
+    0 0 20px rgba(74, 158, 255, 0.2);
+}
+
+/* Filter Bar Neumorphism */
+.neumorph-filter {
+  background: var(--neumorph-card);
+  border-radius: 20px;
+  box-shadow: 
+    6px 6px 12px var(--neumorph-shadow-dark),
+    -6px -6px 12px var(--neumorph-shadow-light);
+  border: 1px solid var(--neumorph-border);
+}
+
+/* Table Neumorphism */
+.neumorph-table {
+  background: var(--neumorph-card);
+  border-radius: 16px;
+  box-shadow: 
+    4px 4px 8px var(--neumorph-shadow-dark),
+    -4px -4px 8px var(--neumorph-shadow-light);
+  border: 1px solid var(--neumorph-border);
+  overflow: hidden;
+}
+
+.neumorph-table-header {
+  background: var(--neumorph-card);
+  box-shadow: 
+    0 2px 4px var(--neumorph-shadow-dark),
+    0 -1px 2px var(--neumorph-shadow-light);
+}
+
+/* Modal Neumorphism */
+.neumorph-modal {
+  background: var(--neumorph-card);
+  border-radius: 24px;
+  box-shadow: 
+    16px 16px 32px var(--neumorph-shadow-dark),
+    -16px -16px 32px var(--neumorph-shadow-light);
+  border: 1px solid var(--neumorph-border);
+}
 
 /* Responsive padding for main */
 @media (max-width: 600px) {
   main { padding-left: 0.5rem; padding-right: 0.5rem; }
 }
 
-/* Card Hover Animation */
-.card-hover {
-  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s;
-}
-.card-hover:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px 0 rgba(6,182,212,0.15);
-  border-color: var(--accent);
-}
-
-/* Button Hover Shadow */
-.button-animated {
-  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
-}
-.button-animated:hover {
-  box-shadow: 0 4px 16px 0 rgba(6,182,212,0.18);
-}
-
-/* Social Link Underline Animation */
-.social-underline {
-  position: relative;
-  transition: color 0.2s;
-}
-.social-underline::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -2px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 1px;
-  transform: scaleX(0);
-  transition: transform 0.2s;
-}
-.social-underline:hover::after {
-  transform: scaleX(1);
-}
-
 /* Smooth transitions for interactive elements */
 input, textarea, button, a {
   transition: all 0.2s;
+}
+
+/* Custom scrollbar for neumorphism */
+.neumorph-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.neumorph-scrollbar::-webkit-scrollbar-track {
+  background: var(--neumorph-card);
+  border-radius: 3px;
+}
+
+.neumorph-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--neumorph-accent);
+  border-radius: 3px;
+  box-shadow: 
+    inset 1px 1px 2px var(--neumorph-shadow-dark),
+    inset -1px -1px 2px var(--neumorph-shadow-light);
+}
+
+.neumorph-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--neumorph-accent-hover);
+}
+
+/* === PRO-LEVEL NEUMORPHISM & GLASSMORPHISM === */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;700&display=swap');
+
+body {
+  font-family: 'Inter', 'Rubik', 'Segoe UI', Arial, sans-serif;
+}
+
+.neumorph-card-pro {
+  background: linear-gradient(135deg, rgba(51,51,51,0.98) 60%, rgba(74,158,255,0.07) 100%);
+  border-radius: 28px;
+  box-shadow:
+    0 4px 24px 0 rgba(20, 20, 20, 0.45),
+    0 1.5px 6px 0 rgba(74,158,255,0.08),
+    0 0.5px 1.5px 0 rgba(255,255,255,0.08) inset;
+  border: 1.5px solid rgba(74,158,255,0.10);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.neumorph-card-pro:hover {
+  box-shadow:
+    0 8px 32px 0 rgba(20, 20, 20, 0.55),
+    0 2.5px 12px 0 rgba(74,158,255,0.13),
+    0 1px 3px 0 rgba(255,255,255,0.10) inset;
+  transform: translateY(-2px) scale(1.015);
+}
+
+.neumorph-button-pro {
+  background: linear-gradient(90deg, var(--neumorph-accent) 60%, var(--neumorph-accent-hover) 100%);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 2px 8px 0 rgba(74,158,255,0.18),
+    0 1px 2px 0 rgba(20,20,20,0.18);
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.neumorph-button-pro:hover {
+  box-shadow:
+    0 4px 16px 0 rgba(74,158,255,0.28),
+    0 2px 4px 0 rgba(20,20,20,0.22);
+  transform: translateY(-1.5px) scale(1.03);
+}
+.neumorph-button-pro:active {
+  box-shadow:
+    0 1px 2px 0 rgba(74,158,255,0.10),
+    0 0.5px 1px 0 rgba(20,20,20,0.10);
+  transform: scale(0.98);
+}
+
+.neumorph-badge-pro {
+  background: linear-gradient(90deg, rgba(74,158,255,0.13) 60%, rgba(74,158,255,0.07) 100%);
+  color: var(--neumorph-accent);
+  border-radius: 999px;
+  box-shadow: 0 1px 4px 0 rgba(74,158,255,0.10);
+  font-weight: 500;
+  padding: 0.25em 1em;
+  font-size: 0.95em;
+}
+
+.neumorph-glass {
+  background: linear-gradient(120deg, rgba(51,51,51,0.85) 60%, rgba(74,158,255,0.10) 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(8px) saturate(1.2);
+  border: 1.5px solid rgba(74,158,255,0.13);
+}
+
+.shadow-neumorph-pro {
+  box-shadow:
+    0 4px 24px 0 rgba(20, 20, 20, 0.45),
+    0 1.5px 6px 0 rgba(74,158,255,0.08);
+}
+
+.glow-pro {
+  box-shadow:
+    0 0 16px 2px rgba(74,158,255,0.25),
+    0 0 48px 8px rgba(74,158,255,0.10);
+}
+
+/* Micro-Interaction: focus ring */
+.neumorph-input-pro:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(74,158,255,0.18),
+    0 1px 2px 0 rgba(20,20,20,0.10) inset;
+}
+
+/* Animate transitions for cards/buttons */
+.neumorph-card-pro, .neumorph-button-pro, .neumorph-glass {
+  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+}
+
+.neumorph-gradient-btn {
+  background: var(--neumorph-gradient);
+  color: #fff;
+  border-radius: 18px;
+  box-shadow:
+    6px 6px 12px var(--neumorph-shadow-dark),
+    -6px -6px 12px var(--neumorph-shadow-light);
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0.7em 2em;
+  font-size: 1.1em;
+  transition: box-shadow 0.15s, background 0.15s, transform 0.12s;
+}
+.neumorph-gradient-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 16px 0 rgba(16,16,18,0.22), 0 2px 4px 0 rgba(0,0,0,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+.neumorph-gradient-btn:active {
+  filter: brightness(0.98);
+  box-shadow: 0 1px 2px 0 rgba(16,16,18,0.08);
+  transform: scale(0.98);
+}
+
+.neumorph-avatar {
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+hr, .neumorph-divider {
+  border: none;
+  border-top: 1px solid #23242a;
+  margin: 1.5em 0;
+}
+
+.shadow-portfolio {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(255,153,0,0.08);
+}
+.shadow-portfolio:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 2px 8px rgba(255,153,0,0.10);
 }
