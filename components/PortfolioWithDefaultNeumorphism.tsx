@@ -5,34 +5,22 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Beauty Studio Demo",
-    description: "Eine vollständige Beauty-Studio Website mit allen Services, Online-Buchung und modernem Design. Live-Demo verfügbar!",
-    tech: ["Next.js", "React", "TailwindCSS", "TypeScript", "Framer Motion"],
-    image: "/images/beauty-praxis-preview.svg",
-    link: "/kosmetik",
+    title: "TEST-KARTE SICHTBAR?",
+    description: "Dies ist ein Test, um zu prüfen, ob die erste Karte im Grid angezeigt wird.",
+    tech: ["Test"],
+    image: "",
+    link: "#",
+    demo: false,
+    featured: false,
+  },
+  {
+    title: "Music Player Demo",
+    description: "Musik-Player Demo mit moderner Benutzeroberfläche und Playlist-Funktion.",
+    tech: ["React", "Next.js", "TailwindCSS"],
+    image: "/images/music-player-preview.svg",
+    link: "/music-player-demo",
     demo: true,
-    featured: true,
-  },
-  {
-    title: "E-Commerce Shop",
-    description: "Ein performanter Online-Shop mit Warenkorb, Authentifizierung und Admin-Panel.",
-    tech: ["Next.js", "TypeScript", "Stripe", "Prisma"],
-    image: "/images/ecommerce-preview.svg",
-    link: "/projekte/ecommerce-shop",
-  },
-  {
-    title: "Blog Plattform",
-    description: "Eine skalierbare Blogging-Plattform mit Markdown-Support und SEO-Optimierung.",
-    tech: ["Next.js", "MDX", "Vercel", "TailwindCSS"],
-    image: "/images/blog-preview.svg",
-    link: "/projekte/blog-plattform",
-  },
-  {
-    title: "Dashboard App",
-    description: "Ein interaktives Dashboard mit Datenvisualisierung und Echtzeit-Updates.",
-    tech: ["React", "D3.js", "Node.js", "Socket.io"],
-    image: "/images/dashboard-preview.svg",
-    link: "/projekte/dashboard-app",
+    featured: false,
   },
 ];
 
@@ -163,6 +151,16 @@ export default function PortfolioWithDefaultNeumorphism() {
           <div className="grid gap-x-10 gap-y-12 py-12 mb-20 grid-cols-[repeat(auto-fit,minmax(340px,1fr))]">
             {projects.map((project) => (
               <div key={project.title} className="card flex flex-col h-full min-h-[400px] w-full mx-auto p-8 md:p-10 gap-y-6 rounded-3xl neumorph-hover">
+                <div style={{ width: '100%', height: 160, marginBottom: '1rem', borderRadius: 16, overflow: 'hidden', background: '#18181b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Image
+                    src={project.image}
+                    alt={project.title + ' Preview'}
+                    width={320}
+                    height={160}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16 }}
+                    unoptimized
+                  />
+                </div>
                 <div className="flex-1 flex flex-col gap-2">
                   <div className="flex items-center gap-2 mb-2">
                     <svg width="28" height="28" fill="none" stroke="var(--accent)" strokeWidth="2" viewBox="0 0 24 24">

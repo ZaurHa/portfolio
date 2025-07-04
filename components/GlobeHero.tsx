@@ -2,11 +2,14 @@
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { ReactNode, useRef, useMemo, useEffect, useState } from 'react';
+import { ReactNode, useRef, useMemo, useEffect, useState, useLayoutEffect } from 'react';
 // @ts-ignore
 import * as SimplexNoise from 'simplex-noise';
 import { createNoise3D } from 'simplex-noise';
-import RealStarfield from './RealStarfield';
+import { Space_Grotesk, Sora, Montserrat } from 'next/font/google';
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: '700' });
+const sora = Sora({ subsets: ['latin'], weight: '700' });
+const montserrat = Montserrat({ subsets: ['latin'], weight: '700' });
 
 function GlobeColorLayer({ glow = false }: { glow?: boolean }) {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
@@ -95,33 +98,30 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
     fluchtDirections.current = new Float32Array(count * 3);
   }, [count]);
 
-  // Farben wie zuvor
+  // Farben: Nur lila und türkis
   const colors = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      let intensity = Math.random() * 0.5 + 0.5;
-      if (Math.random() < 0.15) intensity = Math.random() * 0.5 + 1.0;
-      if (Math.random() < 0.05) intensity = Math.random() * 1.0 + 1.5;
-      const hueShift = (Math.random() - 0.5) * 0.08;
-      const h = 0.5 + hueShift;
-      const s = 1.0;
-      const l = 0.5;
-      const c = (1 - Math.abs(2 * l - 1)) * s;
-      const x = c * (1 - Math.abs(((h * 6) % 2) - 1));
-      const m = l - c / 2;
-      let r = 0, g = 0, b = 0;
-      if (h < 1/6) { r = c; g = x; b = 0; }
-      else if (h < 2/6) { r = x; g = c; b = 0; }
-      else if (h < 3/6) { r = 0; g = c; b = x; }
-      else if (h < 4/6) { r = 0; g = x; b = c; }
-      else if (h < 5/6) { r = x; g = 0; b = c; }
-      else { r = c; g = 0; b = x; }
-      r = (r + m) * intensity;
-      g = (g + m) * intensity;
-      b = (b + m) * intensity;
-      arr[i * 3] = Math.min(r, 1);
-      arr[i * 3 + 1] = Math.min(g, 1);
-      arr[i * 3 + 2] = Math.min(b, 1);
+      // 50% lila, 50% türkis
+      if (Math.random() < 0.5) {
+        // Lila: Interpoliert zwischen #b36aff (179,106,255) und #7d26ff (125,38,255)
+        const t = Math.random();
+        const r = 179 * (1 - t) + 125 * t;
+        const g = 106 * (1 - t) + 38 * t;
+        const b = 255;
+        arr[i * 3] = r / 255;
+        arr[i * 3 + 1] = g / 255;
+        arr[i * 3 + 2] = b / 255;
+      } else {
+        // Türkis: Interpoliert zwischen #6ffcff (111,252,255) und #00ffe7 (0,255,231)
+        const t = Math.random();
+        const r = 111 * (1 - t) + 0 * t;
+        const g = 252 * (1 - t) + 255 * t;
+        const b = 255 * (1 - t) + 231 * t;
+        arr[i * 3] = r / 255;
+        arr[i * 3 + 1] = g / 255;
+        arr[i * 3 + 2] = b / 255;
+      }
     }
     return arr;
   }, [count]);
@@ -376,8 +376,8 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
           size={0.004}
           sizeAttenuation
           transparent
-          opacity={0.7}
-          blending={THREE.AdditiveBlending}
+          opacity={0.9}
+          blending={THREE.NormalBlending}
           depthWrite={false}
           depthTest={false}
         />
@@ -461,10 +461,10 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
       </bufferGeometry>
       <pointsMaterial
         color="#fff"
-        size={0.012}
+        size={0.025}
         sizeAttenuation
         transparent
-        opacity={0.38}
+        opacity={0.85}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -476,12 +476,24 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
   const [marker, setMarker] = useState<THREE.Vector3 | null>(null);
   // Responsive Werte
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
+  const textBlockRef = useRef<HTMLDivElement | null>(null);
+  const [textBlockHeight, setTextBlockHeight] = useState<number | null>(null);
+  const [lineY, setLineY] = useState<number | null>(null);
+  const [transmissionOpen, setTransmissionOpen] = useState(false);
+  useLayoutEffect(() => {
+    if (textBlockRef.current) {
+      setTextBlockHeight(textBlockRef.current.getBoundingClientRect().height);
+      const rect = textBlockRef.current.getBoundingClientRect();
+      setLineY(rect.top + rect.height / 2);
+    }
+  }, []);
+
   return (
     <div
       style={{
         position: 'relative',
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        minHeight: isMobile ? '90vh' : '90vh',
         overflow: 'hidden',
         background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
         display: 'flex',
@@ -492,95 +504,228 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       }}
     >
       {children && (
-        <div style={{
-          position: 'absolute',
-          top: isMobile ? '2.5vw' : 0,
-          left: 0,
-          width: '100vw',
-          height: 'auto',
-          zIndex: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          pointerEvents: 'none',
-          paddingTop: isMobile ? '1vw' : '1.2rem',
-        }}>
-          <div style={{
-            marginTop: isMobile ? '0.5rem' : '1.2rem',
+        <div
+          ref={textBlockRef}
+          style={{
+            position: 'absolute',
+            top: isMobile ? '5.5rem' : '5.5rem',
+            left: 0,
+            width: '100vw',
+            height: 'auto',
+            zIndex: 2,
             display: 'flex',
             flexDirection: 'column',
+            justifyContent: 'flex-start',
             alignItems: 'flex-start',
-            maxWidth: isMobile ? '98vw' : '60vw',
             pointerEvents: 'none',
-            fontFamily: 'Playfair Display, Inter, Segoe UI, Arial, sans-serif',
-            transition: 'all 0.3s',
-          }}>
-            <span style={{
-              fontSize: isMobile ? 'clamp(5rem, 20vw, 7rem)' : 'clamp(4.4rem, 16vw, 6.4rem)',
-              fontWeight: 700,
-              color: '#fff',
-              textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-              letterSpacing: '0.01em',
-              lineHeight: 1.08,
-            }}>DIGITAL</span>
-            <span style={{
-              fontSize: isMobile ? 'clamp(5rem, 20vw, 7rem)' : 'clamp(4.4rem, 16vw, 6.4rem)',
-              fontWeight: 700,
-              color: '#fff',
-              textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-              letterSpacing: '0.01em',
-              lineHeight: 1.08,
-              marginLeft: isMobile ? '4vw' : '7vw',
-            }}>BEGEISTERN</span>
-            <span style={{
-              fontSize: isMobile ? 'clamp(5rem, 20vw, 7rem)' : 'clamp(4.4rem, 16vw, 6.4rem)',
-              fontWeight: 700,
-              color: '#fff',
-              textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-              letterSpacing: '0.01em',
-              lineHeight: 1.08,
-              marginLeft: isMobile ? '12vw' : '22vw',
-            }}>BEWEGEN</span>
+            paddingTop: isMobile ? '0.5vw' : '0.5rem',
+          }}
+        >
+          <div
+            style={{
+              marginTop: isMobile ? '0.5rem' : '0.7rem',
+              display: 'block',
+              textAlign: 'left',
+              maxWidth: isMobile ? '98vw' : '80vw',
+              fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
+              transition: 'all 0.3s',
+            }}
+          >
+            <span
+              className={montserrat.className}
+              style={{
+                display: 'block',
+                fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                fontWeight: 700,
+                color: '#fff',
+                textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                letterSpacing: isMobile ? '0em' : '-0.01em',
+                lineHeight: isMobile ? 1.01 : 1.04,
+                marginLeft: 0,
+                margin: 0,
+                whiteSpace: isMobile ? 'normal' : 'nowrap',
+                transition: 'all 0.3s',
+              }}
+            >
+              DIGITALISIEREN
+            </span>
+            <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
+              <span
+                className={montserrat.className}
+                style={{
+                  display: 'block',
+                  fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: isMobile ? '0em' : '-0.01em',
+                  lineHeight: isMobile ? 1.01 : 1.04,
+                  margin: 0,
+                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                  transition: 'all 0.3s',
+                }}
+              >
+                BEGEISTERN
+              </span>
+            </div>
+            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
+              <span
+                className={montserrat.className}
+                style={{
+                  display: 'block',
+                  fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: isMobile ? '0em' : '-0.01em',
+                  lineHeight: isMobile ? 1.01 : 1.04,
+                  margin: 0,
+                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                  transition: 'all 0.3s',
+                }}
+              >
+                BEWEGEN
+              </span>
+            </div>
           </div>
         </div>
       )}
-      {/* Gleichmäßige durchgehende Linie hinter dem Globe */}
+      {/* Geteilte Linie exakt auf Höhe der mittleren Textzeile, Lücke zentriert (45vw) */}
+      {lineY !== null && (
+        <>
+          <div style={{
+            position: 'absolute',
+            left: 0,
+            width: '27.5vw',
+            height: '2px',
+            background: '#fff',
+            top: lineY,
+            zIndex: 100,
+            opacity: 1,
+            pointerEvents: 'none',
+          }} />
+          <div style={{
+            position: 'absolute',
+            right: 0,
+            width: '27.5vw',
+            height: '2px',
+            background: '#fff',
+            top: lineY,
+            zIndex: 100,
+            opacity: 1,
+            pointerEvents: 'none',
+          }} />
+        </>
+      )}
+      {/* Futuristischer Button (nur Mobile) und Info-Box oben rechts unter der Linie */}
       <div
         style={{
           position: 'absolute',
-          top: isMobile ? '22%' : '25%',
-          left: 0,
-          width: '100vw',
-          height: isMobile ? '0.4px' : '0.5px',
-          background: '#e0e6f0',
-          border: 'none',
-          opacity: 0.4,
-          zIndex: 1,
-          pointerEvents: 'none',
+          right: isMobile ? '1vw' : '1.2rem',
+          top: lineY !== null ? `calc(${lineY}px + ${isMobile ? '9rem' : '10rem'})` : (isMobile ? '12rem' : '16rem'),
+          zIndex: 1001,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
         }}
-      />
+      >
+        {isMobile && (
+          <button
+            onClick={() => setTransmissionOpen((v) => !v)}
+            style={{
+              background: 'none',
+              color: '#6ffcff',
+              border: '1.5px solid #6ffcff',
+              borderRadius: '50%',
+              width: 32,
+              height: 32,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.1rem',
+              cursor: 'pointer',
+              outline: 'none',
+              marginBottom: '0.3rem',
+              transition: 'box-shadow 0.2s',
+              pointerEvents: 'auto',
+              boxShadow: '0 0 6px 1px #6ffcff44',
+            }}
+            aria-label="Transmission Info anzeigen"
+          >
+            <span role="img" aria-label="Transmission">📡</span>
+          </button>
+        )}
+        {(transmissionOpen || !isMobile) && (
+          <div
+            style={{
+              background: 'rgba(10,12,18,0.72)',
+              border: '1.5px solid #e0e6f0',
+              borderRadius: 12,
+              padding: isMobile ? '0.6rem 0.7rem' : '0.8rem 1.1rem',
+              color: '#fff',
+              fontSize: isMobile ? '0.72rem' : '0.85rem',
+              fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
+              opacity: 0.96,
+              lineHeight: 1.5,
+              maxWidth: isMobile ? '70vw' : '18vw',
+              pointerEvents: 'auto',
+              letterSpacing: '0.01em',
+              textShadow: '0 2px 8px #0007',
+              boxShadow: '0 4px 24px #0004',
+              position: 'relative',
+            }}
+          >
+            <div style={{ fontWeight: 700, letterSpacing: '0.08em', fontSize: isMobile ? '0.78rem' : '0.93rem', color: '#6ffcff', marginBottom: '0.18em' }}>
+              TRANSMISSION ACTIVE
+            </div>
+            <div style={{ fontWeight: 400, opacity: 0.92 }}>
+              Empfange kreative Signale seit 2015.<br />
+              Identität: BrandWerkX / Orbital Unit 01
+            </div>
+            {isMobile && (
+              <button
+                onClick={() => setTransmissionOpen(false)}
+                style={{
+                  position: 'absolute',
+                  top: 6,
+                  right: 8,
+                  background: 'none',
+                  border: 'none',
+                  color: '#6ffcff',
+                  fontSize: '1.1rem',
+                  cursor: 'pointer',
+                  opacity: 0.7,
+                  pointerEvents: 'auto',
+                }}
+                aria-label="Schließen"
+              >
+                ×
+              </button>
+            )}
+          </div>
+        )}
+      </div>
       <Canvas 
         camera={{ 
           position: [0, 0, 3],
           fov: isMobile ? 60 : 50
         }} 
         style={{ 
-          position: 'absolute', 
-          inset: 0, 
-          zIndex: 10, 
-          pointerEvents: 'auto',
+          position: 'relative',
           width: '100vw',
-          height: '100vh',
+          height: '90vh',
+          zIndex: 10,
+          pointerEvents: 'auto',
           touchAction: 'none',
         }}
       >
-        <RealStarfield />
-        <BackgroundStars count={isMobile ? 600 : 1200} spread={16} />
+        <BackgroundStars count={isMobile ? 1000 : 2000} spread={16} />
         <ambientLight intensity={0.7} />
         <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
-        <GlobeGroup position={[0, isMobile ? -0.32 : -0.28, 0]} setMarker={setMarker} />
+        <GlobeGroup position={[0, isMobile ? -0.38 : -0.28, 0]} setMarker={setMarker} />
       </Canvas>
+      {/* Abstand unter dem Globe, responsive */}
+      <div style={{ width: '100%', height: isMobile ? '3.5rem' : '7vw' }} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
         {backgroundText && (
           <div style={{
@@ -599,17 +744,42 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             color: 'white',
             opacity: 0.13,
             textTransform: 'uppercase',
-              letterSpacing: isMobile ? '-0.01em' : '-0.04em',
+              letterSpacing: isMobile ? '0em' : '-0.04em',
               marginTop: isMobile ? '2vw' : '2.5rem',
             filter: 'blur(0.5px)',
             userSelect: 'none',
             whiteSpace: 'pre-line',
-            textAlign: 'center',
+            textAlign: isMobile ? 'center' : undefined,
             lineHeight: 1.05,
               maxWidth: isMobile ? '98vw' : 'none',
           }}>{backgroundText}</span>
         </div>
       )}
+      {/* Textblock unten links */}
+      <div
+        style={{
+          position: 'absolute',
+          left: isMobile ? '4vw' : '2.5rem',
+          bottom: isMobile ? '2rem' : '2.5rem',
+          zIndex: 110,
+          color: '#fff',
+          fontSize: isMobile ? '0.82rem' : '0.95rem',
+          fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
+          opacity: 0.88,
+          lineHeight: 1.4,
+          maxWidth: isMobile ? '80vw' : '28vw',
+          pointerEvents: 'none',
+          letterSpacing: '0.01em',
+          textShadow: '0 2px 8px #0007',
+        }}
+      >
+        <div style={{ fontWeight: 600 }}>
+          „Zaur Hatuev – Design mit Substanz und Wirkung.“
+        </div>
+        <div style={{ fontWeight: 400, fontSize: isMobile ? '0.76rem' : '0.89rem', opacity: 0.85 }}>
+          Freiberuflicher Webdesigner & Markenstratege
+        </div>
+      </div>
       </div>
     </div>
   );

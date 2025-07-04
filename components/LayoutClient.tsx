@@ -1,6 +1,5 @@
 'use client';
 import Link from "next/link";
-import { ThemeProvider, useTheme } from "./ThemeProvider";
 import { useEffect, useState } from "react";
 import Footer from './Footer';
 
@@ -29,11 +28,10 @@ const navLinks = [
 ];
 
 export default function LayoutClient({ children }: { children: React.ReactNode }) {
-  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark">
+    <>
       <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-12 h-20 neumorph-card z-50" style={{ borderRadius: 16, background: 'var(--neumorph-card)', boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}>
         <div className="flex items-center gap-4 md:gap-6">
           <img src="/images/brandwerkxweiß.webp" alt="Logo" style={{ width: 200, height: 200, objectFit: 'contain', display: 'block' }} />
@@ -41,11 +39,10 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-4 text-lg items-center">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="neumorph-button px-6 py-2 text-[#e0e6f0]">
+            <Link key={link.href} href={link.href} className="neumorph-button px-6 py-2 font-semibold">
               {link.label}
             </Link>
           ))}
-          <ThemeSwitcher />
         </div>
         {/* Hamburger Icon */}
         <button
@@ -65,13 +62,12 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="neumorph-button w-full text-center text-lg py-3 text-[#e0e6f0]"
+                  className="neumorph-button w-full text-center text-lg py-3 font-semibold"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <ThemeSwitcher />
               <button
                 className="neumorph-button w-full mt-4 text-[#e0e6f0]"
                 onClick={() => setMobileOpen(false)}
@@ -83,8 +79,8 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
           </div>
         )}
       </nav>
-      <main className="pt-28 px-4 w-full">{children}</main>
+      <main className="w-full">{children}</main>
       <Footer />
-    </ThemeProvider>
+    </>
   );
 } 
