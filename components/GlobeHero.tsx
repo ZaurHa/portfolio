@@ -481,24 +481,20 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
   useFrame(({ clock }) => {
     if (globeRef.current) {
       const t = clock.getElapsedTime();
-      
-      // Nur bei Drag die Mausposition verwenden, sonst sanft zur Ruhe
       let targetX, targetY, targetZ;
-      
+      // Sensitivität je nach Device
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
+      const xFactor = isMobile ? 0.25 : 0.09;
+      const yFactor = isMobile ? 0.35 : 0.13;
       if (isDragging.current) {
-        // Bei Drag: Mausposition verwenden
-        targetX = 0.18 + mouse.current.y * 0.09;
-        targetY = t * 0.045 + mouse.current.x * 0.13;
+        // Bei Drag: Maus-/Fingerposition verwenden
+        targetX = 0.18 + mouse.current.y * xFactor;
+        targetY = t * 0.045 + mouse.current.x * yFactor;
       } else {
-        // Ohne Drag: Sanft zur Ruhe kommen
         targetX = 0.18;
         targetY = t * 0.045;
       }
-      
-      // Größere, langsamere Kippung um Z-Achse (unabhängig von Drag)
       targetZ = Math.sin(t * 0.035) * 0.38;
-      
-      // Sanfte Interpolation
       globeRef.current.rotation.x += (targetX - globeRef.current.rotation.x) * 0.025;
       globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * 0.025;
       globeRef.current.rotation.z += (targetZ - globeRef.current.rotation.z) * 0.025;
