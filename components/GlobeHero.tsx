@@ -548,21 +548,29 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       style={{
         position: 'relative',
         width: '100vw',
-        background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        height: isMobile ? '80vh' : undefined,
-        minHeight: isMobile ? '520px' : undefined,
-        maxHeight: isMobile ? '100vh' : undefined,
+        height: isMobile ? '100dvh' : undefined,
+        minHeight: isMobile ? '100vw' : undefined,
+        maxHeight: isMobile ? 'none' : undefined,
         overflow: 'hidden',
+        background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
       }}
     >
       {isMobile ? (
         <>
-          {/* Headline ganz oben */}
-          <div style={{ width: '100vw', marginTop: '22vw', marginBottom: '6vw', paddingLeft: '4vw', paddingRight: '4vw' }}>
+          {/* Globe als Hintergrund */}
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100dvh', zIndex: 0, pointerEvents: 'none' }}>
+            <Canvas 
+              camera={{ position: [0, 0, 2.6], fov: 55 }}             
+              style={{ width: '100vw', height: '100dvh', background: 'none' }}
+            >
+              <BackgroundStars count={1000} spread={16} />
+              <ambientLight intensity={0.7} />
+              <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
+              <GlobeGroup position={[0, -0.38, 0]} setMarker={setMarker} />
+            </Canvas>
+          </div>
+          {/* Headline ganz oben (Overlay) */}
+          <div style={{ width: '100vw', marginTop: '22vw', marginBottom: '6vw', paddingLeft: '4vw', paddingRight: '4vw', position: 'relative', zIndex: 2 }}>
             <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
               <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', fontWeight: 700, color: '#fff', textShadow: '0 4px 32px #0008, 0 1px 8px #0006', letterSpacing: '0em', lineHeight: 1.08, margin: 0, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'anywhere', maxWidth: '98vw', textAlign: 'left', transition: 'all 0.3s' }}>DIGITALISIEREN</span>
             </div>
@@ -575,22 +583,76 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', fontWeight: 700, color: '#fff', textShadow: '0 4px 32px #0008, 0 1px 8px #0006', letterSpacing: '0em', lineHeight: 1.08, margin: 0, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'anywhere', maxWidth: '98vw', textAlign: 'right', transition: 'all 0.3s' }}>BEWEGEN</span>
             </div>
           </div>
-          {/* Globe mittig, feste Höhe */}
-          <div style={{ width: '100vw', height: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Canvas 
-              camera={{ position: [0, 0, 2.2], fov: 50 }} 
-              style={{ width: '100vw', height: '100vw', zIndex: 10, pointerEvents: 'auto', touchAction: 'pan-y', background: 'none' }}
-            >
-              <BackgroundStars count={1000} spread={16} />
-              <ambientLight intensity={0.7} />
-              <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
-              <GlobeGroup position={[0, -0.38, 0]} setMarker={setMarker} />
-            </Canvas>
-          </div>
           {/* Subline am unteren Rand von Hero (nur Mobile) */}
-          <div style={{ width: '100vw', position: 'absolute', left: 0, bottom: '2.5vw', textAlign: 'center', color: '#fff', fontSize: '0.95rem', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', opacity: 0.88, lineHeight: 1.4, letterSpacing: '0.01em', textShadow: '0 2px 8px #0007', zIndex: 10 }}>
+          <div style={{ width: '100vw', position: 'absolute', left: 0, bottom: '2.5vw', textAlign: 'center', color: '#fff', fontSize: '0.95rem', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', opacity: 0.88, lineHeight: 1.4, letterSpacing: '0.01em', textShadow: '0 2px 8px #0007', zIndex: 2 }}>
             <div style={{ fontWeight: 600 }}>„Zaur Hatuev – Design mit Substanz und Wirkung.“</div>
             <div style={{ fontWeight: 400, fontSize: '0.89rem', opacity: 0.85 }}>Freiberuflicher Webdesigner & Markenstratege</div>
+          </div>
+          {/* Futuristischer Transmission-Button (Mobile) */}
+          <div style={{ position: 'absolute', right: '4vw', top: 'calc(22vw + 6vw + 3.5rem + 7vw)', zIndex: 3, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <button
+              onClick={() => setTransmissionOpen(v => !v)}
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: '50%',
+                background: 'transparent',
+                border: '2px solid #fff',
+                boxShadow: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'background 0.2s, border 0.2s',
+                outline: 'none',
+                padding: 0,
+                position: 'relative',
+              }}
+              aria-label="Transmission öffnen"
+            >
+              {/* Satellitenschüssel-Icon als Bild */}
+              <img
+                src="/images/satellite_icon.webp"
+                alt=""
+                style={{ width: 28, height: 28, display: 'block' }}
+                draggable="false"
+              />
+            </button>
+            {/* Transmission Info-Rahmen (Glassmorphism, animiert, kompakt) */}
+            <div
+              style={{
+                marginTop: transmissionOpen ? 8 : 0,
+                opacity: transmissionOpen ? 1 : 0,
+                transform: transmissionOpen ? 'scale(1)' : 'scale(0.85)',
+                pointerEvents: transmissionOpen ? 'auto' : 'none',
+                transition: 'opacity 0.28s cubic-bezier(.4,1.4,.6,1), transform 0.28s cubic-bezier(.4,1.4,.6,1), margin-top 0.28s',
+                background: 'rgba(20,32,40,0.82)',
+                border: '1.5px solid #00ffe7',
+                borderRadius: 13,
+                boxShadow: '0 2px 16px #00ffe733',
+                color: '#fff',
+                fontFamily: '"Fira Mono", "Consolas", "Menlo", monospace',
+                fontSize: '0.93rem',
+                letterSpacing: '0.01em',
+                textAlign: 'left',
+                minWidth: '170px',
+                maxWidth: '70vw',
+                padding: transmissionOpen ? '0.7rem 1rem 0.7rem 1rem' : '0 1rem',
+                backdropFilter: 'blur(7px) saturate(1.15)',
+                WebkitBackdropFilter: 'blur(7px) saturate(1.15)',
+                position: 'relative',
+                zIndex: 101,
+                userSelect: 'text',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+              }}
+              aria-hidden={!transmissionOpen}
+            >
+              <div style={{ fontWeight: 700, fontSize: '1.01rem', marginBottom: 4, letterSpacing: '0.08em', color: '#00ffe7', lineHeight: 1.1 }}>TRANSMISSION ACTIVE</div>
+              <div style={{ marginBottom: 3, fontSize: '0.91rem', lineHeight: 1.18 }}>Empfange kreative Signale seit 2015.</div>
+              <div style={{ fontSize: '0.89rem', opacity: 0.85, lineHeight: 1.13 }}>Identität: BrandWerkX / Orbital Unit 01</div>
+            </div>
           </div>
         </>
       ) : (
@@ -714,6 +776,32 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               />
             </>
           )}
+          {/* Transmission-Box oben rechts (Desktop) */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '3.2vw',
+              right: '2.8vw',
+              zIndex: 30,
+              background: 'rgba(0,20,30,0.98)',
+              border: '2px solid #00ffe7',
+              borderRadius: 16,
+              padding: '1.2rem 1.5rem 1.1rem 1.5rem',
+              boxShadow: '0 4px 32px #00ffe733',
+              color: '#00ffe7',
+              fontFamily: '"Fira Mono", "Consolas", "Menlo", monospace',
+              fontSize: '1.08rem',
+              letterSpacing: '0.01em',
+              textAlign: 'left',
+              minWidth: '270px',
+              maxWidth: '340px',
+              userSelect: 'none',
+            }}
+          >
+            <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: 8, letterSpacing: '0.08em' }}>&gt;&gt; TRANSMISSION ACTIVE</div>
+            <div style={{ marginBottom: 10 }}>Empfange kreative Signale seit 2015.</div>
+            <div style={{ fontSize: '0.98rem', opacity: 0.85 }}>Identität: BrandWerkX / Orbital Unit 01</div>
+          </div>
           {/* Desktop-Globe wie gehabt */}
           <Canvas 
             camera={{ position: [0, 0, 3], fov: 50 }} 
@@ -727,7 +815,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
         </>
       )}
       {/* Abstand unter dem Globe, responsive */}
-      <div style={{ width: '100%', height: isMobile ? '3.5rem' : '7vw' }} />
+      <div style={{ width: '100%', height: isMobile ? '1.5rem' : '7vw' }} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
       {backgroundText && (
         <div style={{
