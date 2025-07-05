@@ -47,4 +47,13 @@ export async function GET() {
       height: 630,
     }
   );
+}
+
+export default function OpenGraphImage() {
+  return (
+    <div>
+      {/* Platzhalter für OpenGraph Image */}
+      <h1>OpenGraph Image</h1>
+    </div>
+  );
 } 
