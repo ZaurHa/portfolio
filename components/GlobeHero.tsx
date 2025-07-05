@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
 import * as THREE from 'three';
 import { ReactNode, useRef, useMemo, useEffect, useState, useLayoutEffect } from 'react';
 // @ts-ignore
@@ -359,6 +359,32 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
     };
   }, [camera, gl, count, maxR, setMarker, globeRef]);
 
+  // Trigger für Flucht an Touchpunkt
+  useEffect(() => {
+    (window as any).__triggerParticleEscapeAt = (point3D: THREE.Vector3) => {
+      for (let i = 0; i < count; i++) {
+        // Partikel-Position
+        const px = positions.current[i * 3];
+        const py = positions.current[i * 3 + 1];
+        const pz = positions.current[i * 3 + 2];
+        // Abstand zum Touchpunkt
+        const dist = Math.sqrt((px - point3D.x) ** 2 + (py - point3D.y) ** 2 + (pz - point3D.z) ** 2);
+        if (dist < 0.18) { // nur Partikel im Umkreis
+          // Fluchtrichtung: vom Punkt weg
+          const dx = px - point3D.x;
+          const dy = py - point3D.y;
+          const dz = pz - point3D.z;
+          const len = Math.sqrt(dx*dx + dy*dy + dz*dz) || 1;
+          fluchtDirections.current[i * 3] = dx / len;
+          fluchtDirections.current[i * 3 + 1] = dy / len;
+          fluchtDirections.current[i * 3 + 2] = dz / len;
+          fluchtTimers.current[i] = 0.7 + Math.random() * 0.5;
+        }
+      }
+    };
+    return () => { (window as any).__triggerParticleEscapeAt = undefined; };
+  }, [count]);
+
   return (
     <>
       <points ref={pointsRef}>
@@ -405,6 +431,7 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const lastPointerPos = useRef({ x: 0, y: 0 });
+  const { camera } = useThree();
   
   useEffect(() => {
     const handlePointerDown = (e: PointerEvent) => {
@@ -478,6 +505,12 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
     }
   });
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).__globeCamera = camera;
+    }
+  }, [camera]);
+
   return (
     <group ref={globeRef} position={position}>
       <DepthMaskGlobe />
@@ -527,6 +560,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
   const [textBlockHeight, setTextBlockHeight] = useState<number | null>(null);
   const [lineY, setLineY] = useState<number | null>(null);
   const [transmissionOpen, setTransmissionOpen] = useState(false);
+  const transmissionBoxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsMobile(typeof window !== 'undefined' && window.innerWidth < 700);
@@ -539,6 +573,21 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       setLineY(rect.top + rect.height / 2);
     }
   }, []);
+
+  useEffect(() => {
+    if (!transmissionOpen) return;
+    function handleClickOutside(e: MouseEvent | TouchEvent) {
+      if (transmissionBoxRef.current && !transmissionBoxRef.current.contains(e.target as Node)) {
+        setTransmissionOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [transmissionOpen]);
 
   // Verhindere SSR/Client-Mismatch: erst rendern, wenn isMobile gesetzt ist
   if (isMobile === null) return <></>;
@@ -558,10 +607,26 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       {isMobile ? (
         <>
           {/* Globe als Hintergrund */}
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100dvh', zIndex: 0, pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100vw', height: '100dvh', zIndex: 0 }}>
             <Canvas 
               camera={{ position: [0, 0, 2.6], fov: 55 }}             
               style={{ width: '100vw', height: '100dvh', background: 'none' }}
+              onPointerDown={e => {
+                if (isMobile && e.pointerType === 'touch') {
+                  const target = e.target as HTMLElement;
+                  const rect = target.getBoundingClientRect();
+                  const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                  const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                  // Kamera aus useThree holen
+                  const camera = (window as any).__globeCamera;
+                  if (!camera) return;
+                  const raycaster = new THREE.Raycaster();
+                  raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+                  const globeRadius = 0.56;
+                  const intersection = raycaster.ray.at(globeRadius, new THREE.Vector3());
+                  (window as any).__triggerParticleEscapeAt?.(intersection);
+                }
+              }}
             >
               <BackgroundStars count={1000} spread={16} />
               <ambientLight intensity={0.7} />
@@ -593,20 +658,21 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             <button
               onClick={() => setTransmissionOpen(v => !v)}
               style={{
-                width: 44,
-                height: 44,
+                position: 'absolute',
+                right: 24,
+                bottom: 56,
+                zIndex: 32,
+                width: 48,
+                height: 48,
                 borderRadius: '50%',
-                background: 'transparent',
-                border: '2px solid #fff',
-                boxShadow: 'none',
+                background: 'rgba(10,18,22,0.85)',
+                border: '1px solid #6cfaff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: 'none',
                 cursor: 'pointer',
-                transition: 'background 0.2s, border 0.2s',
-                outline: 'none',
-                padding: 0,
-                position: 'relative',
+                transition: 'background 0.18s',
               }}
               aria-label="Transmission öffnen"
             >
@@ -620,6 +686,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             </button>
             {/* Transmission Info-Rahmen (Glassmorphism, animiert, kompakt) */}
             <div
+              ref={transmissionBoxRef}
               style={{
                 marginTop: transmissionOpen ? 8 : 0,
                 opacity: transmissionOpen ? 1 : 0,
@@ -677,16 +744,46 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 paddingTop: '0.5rem',
               }}
             >
-              <div
+              <span
+                className={montserrat.className}
                 style={{
-                  marginTop: '0.7rem',
                   display: 'block',
-                  textAlign: 'left',
-                  maxWidth: '80vw',
-                  fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
+                  fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: '-0.01em',
+                  lineHeight: 1.04,
+                  margin: 0,
+                  whiteSpace: 'nowrap',
                   transition: 'all 0.3s',
                 }}
               >
+                DIGITALISIEREN
+              </span>
+              <div style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.2em 0 0.2em 0' }}>
+                <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: 32, borderRadius: 2 }} />
+                <span
+                  className={montserrat.className}
+                  style={{
+                    display: 'block',
+                    fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
+                    fontWeight: 700,
+                    color: '#fff',
+                    textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                    letterSpacing: '-0.01em',
+                    lineHeight: 1.04,
+                    margin: '0 0',
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.3s',
+                    padding: '0 12px',
+                  }}
+                >
+                  BEGEISTERN
+                </span>
+                <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: 32, borderRadius: 2 }} />
+              </div>
+              <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
                 <span
                   className={montserrat.className}
                   style={{
@@ -702,46 +799,8 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                     transition: 'all 0.3s',
                   }}
                 >
-                  DIGITALISIEREN
+                  BEWEGEN
                 </span>
-                <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
-                  <span
-                    className={montserrat.className}
-                    style={{
-                      display: 'block',
-                      fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
-                      fontWeight: 700,
-                      color: '#fff',
-                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                      letterSpacing: '-0.01em',
-                      lineHeight: 1.04,
-                      margin: 0,
-                      whiteSpace: 'nowrap',
-                      transition: 'all 0.3s',
-                    }}
-                  >
-                    BEGEISTERN
-                  </span>
-                </div>
-                <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
-                  <span
-                    className={montserrat.className}
-                    style={{
-                      display: 'block',
-                      fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
-                      fontWeight: 700,
-                      color: '#fff',
-                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                      letterSpacing: '-0.01em',
-                      lineHeight: 1.04,
-                      margin: 0,
-                      whiteSpace: 'nowrap',
-                      transition: 'all 0.3s',
-                    }}
-                  >
-                    BEWEGEN
-                  </span>
-                </div>
               </div>
             </div>
           )}
@@ -777,30 +836,68 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             </>
           )}
           {/* Transmission-Box oben rechts (Desktop) */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '3.2vw',
-              right: '2.8vw',
-              zIndex: 30,
-              background: 'rgba(0,20,30,0.98)',
-              border: '2px solid #00ffe7',
-              borderRadius: 16,
-              padding: '1.2rem 1.5rem 1.1rem 1.5rem',
-              boxShadow: '0 4px 32px #00ffe733',
-              color: '#00ffe7',
-              fontFamily: '"Fira Mono", "Consolas", "Menlo", monospace',
-              fontSize: '1.08rem',
-              letterSpacing: '0.01em',
-              textAlign: 'left',
-              minWidth: '270px',
-              maxWidth: '340px',
-              userSelect: 'none',
-            }}
-          >
-            <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: 8, letterSpacing: '0.08em' }}>&gt;&gt; TRANSMISSION ACTIVE</div>
-            <div style={{ marginBottom: 10 }}>Empfange kreative Signale seit 2015.</div>
-            <div style={{ fontSize: '0.98rem', opacity: 0.85 }}>Identität: BrandWerkX / Orbital Unit 01</div>
+          <div style={{ position: 'absolute', top: '23vw', right: '2.8vw', zIndex: 30, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <button
+              onClick={() => setTransmissionOpen(v => !v)}
+              style={{
+                position: 'absolute',
+                right: 24,
+                bottom: 56,
+                zIndex: 32,
+                width: 48,
+                height: 48,
+                borderRadius: '50%',
+                background: 'rgba(10,18,22,0.85)',
+                border: '1px solid #6cfaff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: 'none',
+                cursor: 'pointer',
+                transition: 'background 0.18s',
+              }}
+              aria-label="Transmission öffnen"
+            >
+              <img
+                src="/images/satellite_icon.webp"
+                alt=""
+                style={{ width: 28, height: 28, display: 'block' }}
+                draggable="false"
+              />
+            </button>
+            {/* Transmission Info-Rahmen (Desktop, animiert, kompakt) */}
+            <div
+              ref={transmissionBoxRef}
+              style={{
+                marginTop: transmissionOpen ? 8 : 0,
+                opacity: transmissionOpen ? 1 : 0,
+                transform: transmissionOpen ? 'scale(1)' : 'scale(0.85)',
+                pointerEvents: transmissionOpen ? 'auto' : 'none',
+                transition: 'opacity 0.28s cubic-bezier(.4,1.4,.6,1), transform 0.28s cubic-bezier(.4,1.4,.6,1), margin-top 0.28s',
+                background: 'rgba(10,18,22,0.93)',
+                border: '1.5px solid #6cfaff',
+                borderRadius: 14,
+                boxShadow: 'none',
+                color: '#fff',
+                fontFamily: '"Fira Mono", "Consolas", "Menlo", monospace',
+                fontSize: '1.04rem',
+                letterSpacing: '0.03em',
+                textAlign: 'left',
+                minWidth: '240px',
+                maxWidth: '320px',
+                userSelect: 'none',
+                textTransform: 'uppercase',
+                lineHeight: 1.32,
+                position: 'relative',
+                zIndex: 31,
+                padding: '1.1rem 1.2rem 1.1rem 1.2rem',
+              }}
+              aria-hidden={!transmissionOpen}
+            >
+              <div style={{ fontWeight: 700, fontSize: '1.08rem', marginBottom: 10, letterSpacing: '0.09em', color: '#ff4c2b', textTransform: 'uppercase' }}>&gt;&gt; TRANSMISSION ACTIVE</div>
+              <div style={{ marginBottom: 10, color: '#fff', fontWeight: 400, fontSize: '1.01rem', textTransform: 'uppercase' }}>Empfange kreative Signale seit 2015.</div>
+              <div style={{ fontSize: '0.98rem', opacity: 0.85, color: '#fff', fontWeight: 400, textTransform: 'uppercase' }}>Identität: BrandWerkX / Orbital Unit 01</div>
+            </div>
           </div>
           {/* Desktop-Globe wie gehabt */}
           <Canvas 

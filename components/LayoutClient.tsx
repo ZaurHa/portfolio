@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Footer from './Footer';
 
 const navLinks = [
@@ -12,6 +12,22 @@ const navLinks = [
 
 export default function LayoutClient({ children }: { children: React.ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    function handleClickOutside(e: MouseEvent | TouchEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMobileOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileOpen]);
 
   return (
     <>
@@ -40,7 +56,11 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
         {/* Mobile Overlay */}
         {mobileOpen && (
           <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center">
-            <div className="neumorph-card p-8 flex flex-col gap-6 items-center" style={{ borderRadius: 16, minWidth: 220, boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}>
+            <div
+              ref={menuRef}
+              className="neumorph-card p-8 flex flex-col gap-6 items-center"
+              style={{ borderRadius: 16, minWidth: 220, boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}
+            >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
