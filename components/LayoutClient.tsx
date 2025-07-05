@@ -34,7 +34,7 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
     <>
       <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-12 h-20 neumorph-card z-50" style={{ borderRadius: 16, background: 'var(--neumorph-card)', boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}>
         <div className="flex items-center gap-4 md:gap-6">
-          <img src="/images/brandwerkxweiß.webp" alt="Logo" style={{ width: 200, height: 200, objectFit: 'contain', display: 'block' }} />
+          <img src="/images/brandwerkxweiss.webp" alt="Logo" style={{ width: 200, height: 200, objectFit: 'contain', display: 'block' }} />
         </div>
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-4 text-lg items-center">

@@ -727,10 +727,10 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       {/* Abstand unter dem Globe, responsive */}
       <div style={{ width: '100%', height: isMobile ? '3.5rem' : '7vw' }} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
-        {backgroundText && (
-          <div style={{
-            position: 'absolute',
-            top: 0,
+      {backgroundText && (
+        <div style={{
+          position: 'absolute',
+          top: 0,
           left: 0,
           width: '100%',
           zIndex: 0,
