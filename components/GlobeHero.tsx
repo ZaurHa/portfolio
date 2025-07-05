@@ -795,10 +795,8 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
         }} 
         style={{ 
           position: 'relative',
-          width: isMobile ? '115vw' : '100vw',
-          height: isMobile ? '115vw' : '90vh',
-          maxWidth: isMobile ? '100vh' : undefined,
-          maxHeight: isMobile ? '100vw' : undefined,
+          width: isMobile ? '120vw' : '120vw',
+          height: isMobile ? '120vw' : '100vh',
           zIndex: 10,
           pointerEvents: 'auto',
           touchAction: 'pan-y',
