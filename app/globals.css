@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Sora:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -280,8 +283,6 @@ input, textarea, button, a {
 
 /* === PRO-LEVEL NEUMORPHISM & GLASSMORPHISM === */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;700&display=swap');
-
 body {
   font-family: 'Inter', 'Rubik', 'Segoe UI', Arial, sans-serif;
 }
@@ -414,6 +415,3 @@ hr, .neumorph-divider {
 .shadow-portfolio:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 2px 8px rgba(255,153,0,0.10);
 }
-
-/* Google Fonts einbinden */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Sora:wght@700&display=swap');

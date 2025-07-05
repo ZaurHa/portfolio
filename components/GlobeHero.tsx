@@ -152,7 +152,6 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
 
   const mouse3D = useMemo(() => new THREE.Vector3(), []);
   useFrame(({ clock }) => {
-    console.log('useFrame läuft', mouse.x, mouse.y);
     // Maus auf Globe projizieren (ungefähr)
     const x = (mouse.x * 0.5 + 0.5) * size.width;
     const y = (mouse.y * -0.5 + 0.5) * size.height;
@@ -314,23 +313,21 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
   });
 
   useEffect(() => {
-    function handlePointerDown(e: MouseEvent) {
+    function handlePointerDown(e: PointerEvent) {
+      // Nur bei Tap/Click, nicht bei Drag
+      if (e.button !== 0 && e.button !== undefined) return;
+      
       const rect = gl.domElement.getBoundingClientRect();
-      console.log('rect:', rect);
-      console.log('clientX:', e.clientX, 'clientY:', e.clientY);
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      console.log('NDC coordinates:', x, y);
       const ndc = new THREE.Vector2(x, y);
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(ndc, camera);
       const sphere = new THREE.Sphere(new THREE.Vector3(0,0,0), maxR);
       const intersection = raycaster.ray.intersectSphere(sphere, new THREE.Vector3());
       if (!intersection) {
-        console.log('No intersection with particle sphere!');
         return;
       }
-      console.log('Intersection point:', intersection.x, intersection.y, intersection.z);
       setMarker(intersection.clone());
       // Transformiere Intersection in das lokale Koordinatensystem der Globe
       let intersectionLocal = intersection.clone();
@@ -344,7 +341,6 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
         const pz = positions.current[i * 3 + 2];
         const dist = Math.sqrt((px - intersectionLocal.x) ** 2 + (py - intersectionLocal.y) ** 2 + (pz - intersectionLocal.z) ** 2);
         if (dist < 0.12) {
-          if (particlesHit < 10) console.log('Particle', i, 'dist', dist);
           particlesHit++;
           const dx = (px - intersectionLocal.x) / dist;
           const dy = (py - intersectionLocal.y) / dist;
@@ -355,7 +351,6 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
           fluchtTimers.current[i] = 1.0 + Math.random() * 0.5;
         }
       }
-      console.log('Particles hit:', particlesHit);
     }
     
     gl.domElement.addEventListener('pointerdown', handlePointerDown);
@@ -405,28 +400,81 @@ function DepthMaskGlobe() {
 
 function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, number, number], setMarker: (v: THREE.Vector3) => void }) {
   const globeRef = useRef<THREE.Group | null>(null);
-  // Maussteuerung
+  // Maussteuerung mit Drag-Erkennung
   const mouse = useRef({ x: 0, y: 0 });
+  const isDragging = useRef(false);
+  const dragStart = useRef({ x: 0, y: 0 });
+  const lastPointerPos = useRef({ x: 0, y: 0 });
+  
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    const handlePointerDown = (e: PointerEvent) => {
+      // Nur bei linker Maustaste oder Touch starten
+      if (e.button !== 0 && e.button !== undefined) return;
+      
+      isDragging.current = false;
+      dragStart.current = { x: e.clientX, y: e.clientY };
+      lastPointerPos.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    const handlePointerMove = (e: PointerEvent) => {
+      // Prüfe ob es ein Drag ist (horizontale Bewegung > 10px oder vertikale Bewegung < 20px)
+      const deltaX = Math.abs(e.clientX - dragStart.current.x);
+      const deltaY = Math.abs(e.clientY - dragStart.current.y);
+      
+      // Wenn horizontale Bewegung größer als vertikale und mindestens 10px, ist es ein Drag
+      if (deltaX > 10 && deltaX > deltaY * 1.5) {
+        isDragging.current = true;
+      }
+      
+      // Nur bei Drag die Mausposition für Globe-Rotation verwenden
+      if (isDragging.current) {
+        mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+      }
+      
+      lastPointerPos.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handlePointerUp = () => {
+      isDragging.current = false;
+    };
+
+    // Pointer Events für Touch und Maus
+    window.addEventListener('pointerdown', handlePointerDown);
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
+    
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
   }, []);
 
   useFrame(({ clock }) => {
     if (globeRef.current) {
       const t = clock.getElapsedTime();
-      // Noch langsamere, elegantere Animation
-      const baseX = 0.18 + mouse.current.y * 0.09;
-      const baseY = t * 0.045 + mouse.current.x * 0.13;
-      // Größere, langsamere Kippung um Z-Achse
-      const baseZ = Math.sin(t * 0.035) * 0.38;
-      globeRef.current.rotation.x += (baseX - globeRef.current.rotation.x) * 0.025;
-      globeRef.current.rotation.y += (baseY - globeRef.current.rotation.y) * 0.025;
-      globeRef.current.rotation.z += (baseZ - globeRef.current.rotation.z) * 0.025;
+      
+      // Nur bei Drag die Mausposition verwenden, sonst sanft zur Ruhe
+      let targetX, targetY, targetZ;
+      
+      if (isDragging.current) {
+        // Bei Drag: Mausposition verwenden
+        targetX = 0.18 + mouse.current.y * 0.09;
+        targetY = t * 0.045 + mouse.current.x * 0.13;
+      } else {
+        // Ohne Drag: Sanft zur Ruhe kommen
+        targetX = 0.18;
+        targetY = t * 0.045;
+      }
+      
+      // Größere, langsamere Kippung um Z-Achse (unabhängig von Drag)
+      targetZ = Math.sin(t * 0.035) * 0.38;
+      
+      // Sanfte Interpolation
+      globeRef.current.rotation.x += (targetX - globeRef.current.rotation.x) * 0.025;
+      globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * 0.025;
+      globeRef.current.rotation.z += (targetZ - globeRef.current.rotation.z) * 0.025;
     }
   });
 
@@ -716,7 +764,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
           height: '90vh',
           zIndex: 10,
           pointerEvents: 'auto',
-          touchAction: 'none',
+          touchAction: 'pan-y',
         }}
       >
         <BackgroundStars count={isMobile ? 1000 : 2000} spread={16} />
