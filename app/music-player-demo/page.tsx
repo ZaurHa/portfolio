@@ -31,6 +31,9 @@ export default function MusicPlayerDemo() {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [ac, setAc] = useState<AudioContext | null>(null);
+  const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
+  const animRef = useRef<number>();
 
   // Audio Controls
   useEffect(() => {
@@ -56,27 +59,27 @@ export default function MusicPlayerDemo() {
     };
   }, [current]);
 
-  // Visualizer
-  useEffect(() => {
-    const audio = audioRef.current;
+  // Visualizer: Initialisierung erst beim Play-Button
+  const startVisualizer = () => {
+    if (ac || !audioRef.current || !canvasRef.current) return;
+    const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const newAc = new AudioContextClass();
+    const src = newAc.createMediaElementSource(audioRef.current);
+    const newAnalyser = newAc.createAnalyser();
+    newAnalyser.fftSize = 64;
+    src.connect(newAnalyser);
+    newAnalyser.connect(newAc.destination);
+    setAc(newAc);
+    setAnalyser(newAnalyser);
+
     const canvas = canvasRef.current;
-    if (!audio || !canvas) return;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-    if (!AudioContext) return;
-    const ac = new AudioContext();
-    const src = ac.createMediaElementSource(audio);
-    const analyser = ac.createAnalyser();
-    analyser.fftSize = 64;
-    src.connect(analyser);
-    analyser.connect(ac.destination);
-    const bufferLength = analyser.frequencyBinCount;
+    const bufferLength = newAnalyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
-    let anim: number;
     function draw() {
       if (!canvas || !ctx) return;
-      analyser.getByteFrequencyData(dataArray);
+      newAnalyser.getByteFrequencyData(dataArray);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const barWidth = (canvas.width / bufferLength) * 1.5;
       for (let i = 0; i < bufferLength; i++) {
@@ -84,12 +87,18 @@ export default function MusicPlayerDemo() {
         ctx.fillStyle = `hsl(${180 + i * 3}, 80%, 60%)`;
         ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
       }
-      anim = requestAnimationFrame(draw);
+      animRef.current = requestAnimationFrame(draw);
     }
     draw();
+  };
+
+  // Stoppe Visualizer bei Trackwechsel oder unmount
+  useEffect(() => {
     return () => {
-      cancelAnimationFrame(anim);
-      ac.close();
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+      if (ac) ac.close();
+      setAc(null);
+      setAnalyser(null);
     };
   }, [current]);
 
@@ -140,10 +149,13 @@ export default function MusicPlayerDemo() {
         {/* Visualizer */}
         <canvas ref={canvasRef} width={320} height={60} className="w-full rounded-lg bg-[#18181b] mb-2" />
         {/* Controls */}
-        <div className="flex items-center gap-4 w-full justify-center mb-2">
+        <div className="flex items-center gap-6 mb-2">
           <button onClick={() => skip(-1)} className="hover:scale-110 transition"><span style={{fontSize:24}}>⏮️</span></button>
           <button
-            onClick={() => setPlaying((p) => !p)}
+            onClick={() => {
+              setPlaying((p) => !p);
+              if (!ac) startVisualizer();
+            }}
             className="bg-cyan-500 hover:bg-cyan-400 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all"
             style={{ fontSize: 32 }}
           >
@@ -179,7 +191,7 @@ export default function MusicPlayerDemo() {
           {tracks.map((t, i) => (
             <button
               key={t.title}
-              onClick={() => { setCurrent(i); setPlaying(true); }}
+              onClick={() => { setCurrent(i); setPlaying(true); if (!ac) startVisualizer(); }}
               className={`px-3 py-1 rounded-lg text-sm font-semibold transition ${i === current ? 'bg-cyan-500 text-white' : 'bg-[#23232a] text-cyan-200 hover:bg-cyan-700'}`}
             >
               {t.title}
