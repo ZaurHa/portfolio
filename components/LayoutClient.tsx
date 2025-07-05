@@ -3,23 +3,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Footer from './Footer';
 
-function ThemeSwitcher() {
-  const { theme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
-  return (
-    <button
-      onClick={toggleTheme}
-      aria-label="Theme wechseln"
-      className="neumorph-button ml-4 text-2xl px-4 py-2"
-      style={{ lineHeight: 1 }}
-    >
-      {theme === "dark" ? "🌞" : "🌙"}
-    </button>
-  );
-}
-
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projekte", label: "Projekte" },
