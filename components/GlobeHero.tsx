@@ -541,113 +541,186 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: isMobile ? '100vw' : '90vh',
-        height: isMobile ? '100vw' : undefined,
         background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'flex-start',
       }}
     >
-      {children && (
-        <div
-          ref={textBlockRef}
-          style={{
-            position: 'absolute',
-            top: isMobile ? '5.5rem' : '5.5rem',
-            left: 0,
-            width: '100vw',
-            height: 'auto',
-            zIndex: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
-            pointerEvents: 'none',
-            paddingTop: isMobile ? '0.5vw' : '0.5rem',
-          }}
-        >
-          <div
-            style={{
-              marginTop: isMobile ? '0.5rem' : '0.7rem',
-              display: 'block',
-              textAlign: 'left',
-              maxWidth: isMobile ? '98vw' : '80vw',
-              fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
-              transition: 'all 0.3s',
-            }}
-          >
-            {isMobile ? (
-              <div style={{ width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'stretch', margin: 0, padding: 0 }}>
-                {/* DIGITALISIEREN links */}
-                <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-start' }}>
+      {/* MOBILE: Headline-Block oben, Globe darunter */}
+      {isMobile ? (
+        <>
+          <div style={{ width: '100vw', paddingTop: '2.5rem', boxSizing: 'border-box' }}>
+            {/* DIGITALISIEREN links */}
+            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-start' }}>
+              <span
+                className={montserrat.className}
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: '0em',
+                  lineHeight: 1.08,
+                  margin: 0,
+                  whiteSpace: 'normal',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'anywhere',
+                  maxWidth: '98vw',
+                  textAlign: 'left',
+                  transition: 'all 0.3s',
+                }}
+              >
+                DIGITALISIEREN
+              </span>
+            </div>
+            {/* BEGEISTERN mit Linie links/rechts */}
+            <div style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: 0 }}>
+              <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: '5vw' }} />
+              <span
+                className={montserrat.className}
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: '0em',
+                  lineHeight: 1.08,
+                  margin: 0,
+                  whiteSpace: 'normal',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'anywhere',
+                  maxWidth: '98vw',
+                  textAlign: 'center',
+                  transition: 'all 0.3s',
+                }}
+              >
+                BEGEISTERN
+              </span>
+              <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: '5vw' }} />
+            </div>
+            {/* BEWEGEN rechts */}
+            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
+              <span
+                className={montserrat.className}
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                  fontWeight: 700,
+                  color: '#fff',
+                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                  letterSpacing: '0em',
+                  lineHeight: 1.08,
+                  margin: 0,
+                  whiteSpace: 'normal',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'anywhere',
+                  maxWidth: '98vw',
+                  textAlign: 'right',
+                  transition: 'all 0.3s',
+                }}
+              >
+                BEWEGEN
+              </span>
+            </div>
+          </div>
+          {/* Globe darunter, maximal groß */}
+          <div style={{ width: '100vw', height: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Canvas 
+              camera={{ position: [0, 0, 3], fov: 60 }} 
+              style={{ width: '100vw', height: '100vw', zIndex: 10, pointerEvents: 'auto', touchAction: 'pan-y' }}
+            >
+              <BackgroundStars count={1000} spread={16} />
+              <ambientLight intensity={0.7} />
+              <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
+              <GlobeGroup position={[0, -0.38, 0]} setMarker={setMarker} />
+            </Canvas>
+          </div>
+        </>
+      ) : (
+        // ... Desktop-Layout wie gehabt ...
+        <>
+          {/* Desktop Headline und Linien */}
+          {children && (
+            <div
+              ref={textBlockRef}
+              style={{
+                position: 'absolute',
+                top: '5.5rem',
+                left: 0,
+                width: '100vw',
+                height: 'auto',
+                zIndex: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                pointerEvents: 'none',
+                paddingTop: '0.5rem',
+              }}
+            >
+              <div
+                style={{
+                  marginTop: '0.7rem',
+                  display: 'block',
+                  textAlign: 'left',
+                  maxWidth: '80vw',
+                  fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
+                  transition: 'all 0.3s',
+                }}
+              >
+                <span
+                  className={montserrat.className}
+                  style={{
+                    display: 'block',
+                    fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
+                    fontWeight: 700,
+                    color: '#fff',
+                    textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                    letterSpacing: '-0.01em',
+                    lineHeight: 1.04,
+                    margin: 0,
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.3s',
+                  }}
+                >
+                  DIGITALISIEREN
+                </span>
+                <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
                   <span
                     className={montserrat.className}
                     style={{
                       display: 'block',
-                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                      fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
                       fontWeight: 700,
                       color: '#fff',
                       textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                      letterSpacing: '0em',
-                      lineHeight: 1.08,
+                      letterSpacing: '-0.01em',
+                      lineHeight: 1.04,
                       margin: 0,
-                      whiteSpace: 'normal',
-                      wordBreak: 'break-word',
-                      overflowWrap: 'anywhere',
-                      maxWidth: '98vw',
-                      textAlign: 'left',
-                      transition: 'all 0.3s',
-                    }}
-                  >
-                    DIGITALISIEREN
-                  </span>
-                </div>
-                {/* BEGEISTERN mit Linie links/rechts */}
-                <div style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: 0 }}>
-                  <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: '5vw' }} />
-                  <span
-                    className={montserrat.className}
-                    style={{
-                      display: 'block',
-                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
-                      fontWeight: 700,
-                      color: '#fff',
-                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                      letterSpacing: '0em',
-                      lineHeight: 1.08,
-                      margin: 0,
-                      whiteSpace: 'normal',
-                      wordBreak: 'break-word',
-                      overflowWrap: 'anywhere',
-                      maxWidth: '98vw',
-                      textAlign: 'center',
+                      whiteSpace: 'nowrap',
                       transition: 'all 0.3s',
                     }}
                   >
                     BEGEISTERN
                   </span>
-                  <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: '5vw' }} />
                 </div>
-                {/* BEWEGEN rechts */}
                 <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
                   <span
                     className={montserrat.className}
                     style={{
                       display: 'block',
-                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                      fontSize: 'clamp(3.2rem, 10vw, 5.2rem)',
                       fontWeight: 700,
                       color: '#fff',
                       textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                      letterSpacing: '0em',
-                      lineHeight: 1.08,
+                      letterSpacing: '-0.01em',
+                      lineHeight: 1.04,
                       margin: 0,
-                      whiteSpace: 'normal',
-                      wordBreak: 'break-word',
-                      overflowWrap: 'anywhere',
-                      maxWidth: '98vw',
-                      textAlign: 'right',
+                      whiteSpace: 'nowrap',
                       transition: 'all 0.3s',
                     }}
                   >
@@ -655,21 +728,26 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                   </span>
                 </div>
               </div>
-            ) : (
-              <>
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    width: '27.5vw',
-                    height: '2px',
-                    background: '#fff',
-                    top: lineY ?? 0,
-                    zIndex: 100,
-                    opacity: 1,
-                    pointerEvents: 'none',
-                  }} />
-                <div style={{
+            </div>
+          )}
+          {/* Desktop-Linien wie gehabt */}
+          {lineY !== null && (
+            <>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  width: '27.5vw',
+                  height: '2px',
+                  background: '#fff',
+                  top: lineY ?? 0,
+                  zIndex: 100,
+                  opacity: 1,
+                  pointerEvents: 'none',
+                }}
+              />
+              <div
+                style={{
                   position: 'absolute',
                   right: 0,
                   width: '27.5vw',
@@ -679,138 +757,22 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                   zIndex: 100,
                   opacity: 1,
                   pointerEvents: 'none',
-                }} />
-              </>
-            )}
-          </div>
-        </div>
-      )}
-      {/* Linie nur auf Mobile, mittig bei BEGEISTERN */}
-      {isMobile && lineY !== null && (
-        <div style={{
-          position: 'absolute',
-          left: 0,
-          width: '100vw',
-          top: lineY ?? 0,
-          zIndex: 100,
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          pointerEvents: 'none',
-        }}>
-          <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: '5vw' }} />
-          <div style={{ width: 'clamp(1.1rem, 7vw, 2.1rem)' }} />
-          <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: '5vw' }} />
-        </div>
-      )}
-      {/* Futuristischer Button (nur Mobile) und Info-Box oben rechts unter der Linie */}
-      <div
-        style={{
-          position: 'absolute',
-          right: isMobile ? '1vw' : '1.2rem',
-          top: lineY !== null ? `calc(${lineY}px + ${isMobile ? '9rem' : '10rem'})` : (isMobile ? '12rem' : '16rem'),
-          zIndex: 1001,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-        }}
-      >
-        {isMobile && (
-          <button
-            onClick={() => setTransmissionOpen((v) => !v)}
-            style={{
-              background: 'none',
-              color: '#6ffcff',
-              border: '1.5px solid #6ffcff',
-              borderRadius: '50%',
-              width: 32,
-              height: 32,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-              cursor: 'pointer',
-              outline: 'none',
-              marginBottom: '0.3rem',
-              transition: 'box-shadow 0.2s',
-              pointerEvents: 'auto',
-              boxShadow: '0 0 6px 1px #6ffcff44',
-            }}
-            aria-label="Transmission Info anzeigen"
-          >
-            <span role="img" aria-label="Transmission">📡</span>
-          </button>
-        )}
-        {(transmissionOpen || !isMobile) && (
-          <div
-            style={{
-              background: 'rgba(10,12,18,0.72)',
-              border: '1.5px solid #e0e6f0',
-              borderRadius: 12,
-              padding: isMobile ? '0.6rem 0.7rem' : '0.8rem 1.1rem',
-              color: '#fff',
-              fontSize: isMobile ? '0.72rem' : '0.85rem',
-              fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-              opacity: 0.96,
-              lineHeight: 1.5,
-              maxWidth: isMobile ? '70vw' : '18vw',
-              pointerEvents: 'auto',
-              letterSpacing: '0.01em',
-              textShadow: '0 2px 8px #0007',
-              boxShadow: '0 4px 24px #0004',
-              position: 'relative',
-            }}
-          >
-            <div style={{ fontWeight: 700, letterSpacing: '0.08em', fontSize: isMobile ? '0.78rem' : '0.93rem', color: '#6ffcff', marginBottom: '0.18em' }}>
-              TRANSMISSION ACTIVE
-            </div>
-            <div style={{ fontWeight: 400, opacity: 0.92 }}>
-              Empfange kreative Signale seit 2015.<br />
-              Identität: BrandWerkX / Orbital Unit 01
-            </div>
-            {isMobile && (
-              <button
-                onClick={() => setTransmissionOpen(false)}
-                style={{
-                  position: 'absolute',
-                  top: 6,
-                  right: 8,
-                  background: 'none',
-                  border: 'none',
-                  color: '#6ffcff',
-                  fontSize: '1.1rem',
-                  cursor: 'pointer',
-                  opacity: 0.7,
-                  pointerEvents: 'auto',
                 }}
-                aria-label="Schließen"
-              >
-                ×
-              </button>
-            )}
-          </div>
-        )}
-      </div>
-      <Canvas 
-        camera={{ 
-          position: [0, 0, 3],
-          fov: isMobile ? 60 : 50
-        }} 
-        style={{ 
-          position: 'relative',
-          width: isMobile ? '100vw' : '100vw',
-          height: isMobile ? '100vw' : '90vh',
-          zIndex: 10,
-          pointerEvents: 'auto',
-          touchAction: 'pan-y',
-        }}
-      >
-        <BackgroundStars count={isMobile ? 1000 : 2000} spread={16} />
-        <ambientLight intensity={0.7} />
-        <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
-        <GlobeGroup position={[0, isMobile ? -0.38 : -0.28, 0]} setMarker={setMarker} />
-      </Canvas>
+              />
+            </>
+          )}
+          {/* Desktop-Globe wie gehabt */}
+          <Canvas 
+            camera={{ position: [0, 0, 3], fov: 50 }} 
+            style={{ width: '100vw', height: '90vh', zIndex: 10, pointerEvents: 'auto', touchAction: 'pan-y' }}
+          >
+            <BackgroundStars count={2000} spread={16} />
+            <ambientLight intensity={0.7} />
+            <pointLight position={[5, 5, 5]} intensity={1.2} color="#00ffe7" />
+            <GlobeGroup position={[0, -0.28, 0]} setMarker={setMarker} />
+          </Canvas>
+        </>
+      )}
       {/* Abstand unter dem Globe, responsive */}
       <div style={{ width: '100%', height: isMobile ? '3.5rem' : '7vw' }} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
