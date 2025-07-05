@@ -425,51 +425,54 @@ function DepthMaskGlobe() {
 
 function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, number, number], setMarker: (v: THREE.Vector3) => void }) {
   const globeRef = useRef<THREE.Group | null>(null);
-  // Maussteuerung mit Drag-Erkennung
   const mouse = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const lastPointerPos = useRef({ x: 0, y: 0 });
   const { camera } = useThree();
-  
+  // Inertia-Variablen für Trägheit
+  const inertia = useRef({ x: 0, y: 0 });
+  const lastMove = useRef({ x: 0, y: 0, t: 0 });
+
   useEffect(() => {
     const handlePointerDown = (e: PointerEvent) => {
-      // Nur bei linker Maustaste oder Touch starten
       if (e.button !== 0 && e.button !== undefined) return;
-      
       isDragging.current = false;
       dragStart.current = { x: e.clientX, y: e.clientY };
       lastPointerPos.current = { x: e.clientX, y: e.clientY };
+      lastMove.current = { x: e.clientX, y: e.clientY, t: performance.now() };
+      inertia.current = { x: 0, y: 0 };
     };
 
     const handlePointerMove = (e: PointerEvent) => {
-      // Prüfe ob es ein Drag ist (horizontale Bewegung > 10px oder vertikale Bewegung < 20px)
       const deltaX = Math.abs(e.clientX - dragStart.current.x);
       const deltaY = Math.abs(e.clientY - dragStart.current.y);
-      
-      // Wenn horizontale Bewegung größer als vertikale und mindestens 10px, ist es ein Drag
       if (deltaX > 10 && deltaX > deltaY * 1.5) {
         isDragging.current = true;
       }
-      
-      // Nur bei Drag die Mausposition für Globe-Rotation verwenden
       if (isDragging.current) {
         mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
         mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+        // Trägheit: Speichere letzte Bewegung
+        const now = performance.now();
+        const dt = now - lastMove.current.t;
+        if (dt > 0) {
+          inertia.current.x = (e.clientX - lastMove.current.x) / dt;
+          inertia.current.y = (e.clientY - lastMove.current.y) / dt;
+        }
+        lastMove.current = { x: e.clientX, y: e.clientY, t: now };
       }
-      
       lastPointerPos.current = { x: e.clientX, y: e.clientY };
     };
 
     const handlePointerUp = () => {
       isDragging.current = false;
+      // Nach Loslassen bleibt inertia erhalten und wird im useFrame abgebremst
     };
 
-    // Pointer Events für Touch und Maus
     window.addEventListener('pointerdown', handlePointerDown);
     window.addEventListener('pointermove', handlePointerMove);
     window.addEventListener('pointerup', handlePointerUp);
-    
     return () => {
       window.removeEventListener('pointerdown', handlePointerDown);
       window.removeEventListener('pointermove', handlePointerMove);
@@ -487,13 +490,19 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       if (isDragging.current) {
         targetX = 0.18 + mouse.current.y * xFactor;
         targetY = t * 0.045 + mouse.current.x * yFactor;
+      } else if (isMobile && (Math.abs(inertia.current.x) > 0.0001 || Math.abs(inertia.current.y) > 0.0001)) {
+        // Trägheit auf Mobile: Globe dreht weiter
+        globeRef.current.rotation.x += inertia.current.y * xFactor * 12; // Skaliere für spürbare Wirkung
+        globeRef.current.rotation.y += inertia.current.x * yFactor * 12;
+        // Dämpfung
+        inertia.current.x *= 0.93;
+        inertia.current.y *= 0.93;
+        return;
       } else {
         if (isMobile) {
-          // Auf Mobile: Keine automatische Rotation, Globe bleibt stehen
           targetX = globeRef.current.rotation.x;
           targetY = globeRef.current.rotation.y;
         } else {
-          // Auf Desktop: Sanfte Idle-Animation
           targetX = 0.18;
           targetY = t * 0.045;
         }
