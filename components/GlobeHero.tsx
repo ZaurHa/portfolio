@@ -98,11 +98,10 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
     fluchtDirections.current = new Float32Array(count * 3);
   }, [count]);
 
-  // Farben: Nur lila und türkis
+  // Farben: Nur lila und türkis, besonders leuchtend
   const colors = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      // 50% lila, 50% türkis
       if (Math.random() < 0.5) {
         // Lila: Interpoliert zwischen #b36aff (179,106,255) und #7d26ff (125,38,255)
         const t = Math.random();
@@ -398,8 +397,8 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
           sizeAttenuation
           transparent
           opacity={0.9}
-          blending={THREE.NormalBlending}
           depthWrite={false}
+          blending={THREE.NormalBlending}
           depthTest={false}
         />
       </points>
@@ -485,7 +484,7 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       // Sensitivität je nach Device
       const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
       const xFactor = isMobile ? 0.25 : 0.09;
-      const yFactor = isMobile ? 0.35 : 0.13;
+      const yFactor = isMobile ? 1.0 : 0.13;
       if (isDragging.current) {
         // Bei Drag: Maus-/Fingerposition verwenden
         targetX = 0.18 + mouse.current.y * xFactor;
