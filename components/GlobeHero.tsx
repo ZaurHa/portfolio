@@ -522,12 +522,16 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
 
 export default function GlobeHero({ children, backgroundText }: { children?: ReactNode, backgroundText?: string }) {
   const [marker, setMarker] = useState<THREE.Vector3 | null>(null);
-  // Responsive Werte
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const textBlockRef = useRef<HTMLDivElement | null>(null);
   const [textBlockHeight, setTextBlockHeight] = useState<number | null>(null);
   const [lineY, setLineY] = useState<number | null>(null);
   const [transmissionOpen, setTransmissionOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(typeof window !== 'undefined' && window.innerWidth < 700);
+  }, []);
+
   useLayoutEffect(() => {
     if (textBlockRef.current) {
       setTextBlockHeight(textBlockRef.current.getBoundingClientRect().height);
@@ -536,102 +540,46 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
     }
   }, []);
 
+  // Verhindere SSR/Client-Mismatch: erst rendern, wenn isMobile gesetzt ist
+  if (isMobile === null) return <></>;
+
   return (
     <div
       style={{
         position: 'relative',
-        width: '100%',
+        width: '100vw',
         background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
+        height: isMobile ? '80vh' : undefined,
+        minHeight: isMobile ? '520px' : undefined,
+        maxHeight: isMobile ? '100vh' : undefined,
+        overflow: 'hidden',
       }}
     >
-      {/* MOBILE: Headline-Block oben, Globe darunter */}
       {isMobile ? (
         <>
-          <div style={{ width: '100vw', paddingTop: '2.5rem', boxSizing: 'border-box' }}>
-            {/* DIGITALISIEREN links */}
-            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-start' }}>
-              <span
-                className={montserrat.className}
-                style={{
-                  display: 'block',
-                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
-                  fontWeight: 700,
-                  color: '#fff',
-                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                  letterSpacing: '0em',
-                  lineHeight: 1.08,
-                  margin: 0,
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
-                  maxWidth: '98vw',
-                  textAlign: 'left',
-                  transition: 'all 0.3s',
-                }}
-              >
-                DIGITALISIEREN
-              </span>
+          {/* Headline ganz oben */}
+          <div style={{ width: '100vw', marginTop: '22vw', marginBottom: '6vw', paddingLeft: '4vw', paddingRight: '4vw' }}>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
+              <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', fontWeight: 700, color: '#fff', textShadow: '0 4px 32px #0008, 0 1px 8px #0006', letterSpacing: '0em', lineHeight: 1.08, margin: 0, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'anywhere', maxWidth: '98vw', textAlign: 'left', transition: 'all 0.3s' }}>DIGITALISIEREN</span>
             </div>
-            {/* BEGEISTERN mit Linie links/rechts */}
-            <div style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: 0 }}>
+            <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: 0 }}>
               <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: '5vw' }} />
-              <span
-                className={montserrat.className}
-                style={{
-                  display: 'block',
-                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
-                  fontWeight: 700,
-                  color: '#fff',
-                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                  letterSpacing: '0em',
-                  lineHeight: 1.08,
-                  margin: 0,
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
-                  maxWidth: '98vw',
-                  textAlign: 'center',
-                  transition: 'all 0.3s',
-                }}
-              >
-                BEGEISTERN
-              </span>
+              <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', fontWeight: 700, color: '#fff', textShadow: '0 4px 32px #0008, 0 1px 8px #0006', letterSpacing: '0em', lineHeight: 1.08, margin: 0, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'anywhere', maxWidth: '98vw', textAlign: 'center', transition: 'all 0.3s' }}>BEGEISTERN</span>
               <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: '5vw' }} />
             </div>
-            {/* BEWEGEN rechts */}
-            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
-              <span
-                className={montserrat.className}
-                style={{
-                  display: 'block',
-                  fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
-                  fontWeight: 700,
-                  color: '#fff',
-                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                  letterSpacing: '0em',
-                  lineHeight: 1.08,
-                  margin: 0,
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
-                  maxWidth: '98vw',
-                  textAlign: 'right',
-                  transition: 'all 0.3s',
-                }}
-              >
-                BEWEGEN
-              </span>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+              <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', fontWeight: 700, color: '#fff', textShadow: '0 4px 32px #0008, 0 1px 8px #0006', letterSpacing: '0em', lineHeight: 1.08, margin: 0, whiteSpace: 'normal', wordBreak: 'break-word', overflowWrap: 'anywhere', maxWidth: '98vw', textAlign: 'right', transition: 'all 0.3s' }}>BEWEGEN</span>
             </div>
           </div>
-          {/* Globe darunter, maximal groß */}
+          {/* Globe mittig, feste Höhe */}
           <div style={{ width: '100vw', height: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Canvas 
-              camera={{ position: [0, 0, 3], fov: 60 }} 
-              style={{ width: '100vw', height: '100vw', zIndex: 10, pointerEvents: 'auto', touchAction: 'pan-y' }}
+              camera={{ position: [0, 0, 2.2], fov: 50 }} 
+              style={{ width: '100vw', height: '100vw', zIndex: 10, pointerEvents: 'auto', touchAction: 'pan-y', background: 'none' }}
             >
               <BackgroundStars count={1000} spread={16} />
               <ambientLight intensity={0.7} />
@@ -639,9 +587,14 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               <GlobeGroup position={[0, -0.38, 0]} setMarker={setMarker} />
             </Canvas>
           </div>
+          {/* Subline am unteren Rand von Hero (nur Mobile) */}
+          <div style={{ width: '100vw', position: 'absolute', left: 0, bottom: '2.5vw', textAlign: 'center', color: '#fff', fontSize: '0.95rem', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', opacity: 0.88, lineHeight: 1.4, letterSpacing: '0.01em', textShadow: '0 2px 8px #0007', zIndex: 10 }}>
+            <div style={{ fontWeight: 600 }}>„Zaur Hatuev – Design mit Substanz und Wirkung.“</div>
+            <div style={{ fontWeight: 400, fontSize: '0.89rem', opacity: 0.85 }}>Freiberuflicher Webdesigner & Markenstratege</div>
+          </div>
         </>
       ) : (
-        // ... Desktop-Layout wie gehabt ...
+        // ... Desktop bleibt wie gehabt ...
         <>
           {/* Desktop Headline und Linien */}
           {children && (
@@ -804,31 +757,33 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
           }}>{backgroundText}</span>
         </div>
       )}
-      {/* Textblock unten links */}
-      <div
-        style={{
-          position: 'absolute',
-          left: isMobile ? '4vw' : '2.5rem',
-          bottom: isMobile ? '2rem' : '2.5rem',
-          zIndex: 110,
-          color: '#fff',
-          fontSize: isMobile ? '0.82rem' : '0.95rem',
-          fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-          opacity: 0.88,
-          lineHeight: 1.4,
-          maxWidth: isMobile ? '80vw' : '28vw',
-          pointerEvents: 'none',
-          letterSpacing: '0.01em',
-          textShadow: '0 2px 8px #0007',
-        }}
-      >
-        <div style={{ fontWeight: 600 }}>
-          „Zaur Hatuev – Design mit Substanz und Wirkung.“
+      {/* Textblock unten links (nur Desktop) */}
+      {!isMobile && (
+        <div
+          style={{
+            position: 'absolute',
+            left: '2.5rem',
+            bottom: '2.5rem',
+            zIndex: 110,
+            color: '#fff',
+            fontSize: '0.95rem',
+            fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
+            opacity: 0.88,
+            lineHeight: 1.4,
+            maxWidth: '28vw',
+            pointerEvents: 'none',
+            letterSpacing: '0.01em',
+            textShadow: '0 2px 8px #0007',
+          }}
+        >
+          <div style={{ fontWeight: 600 }}>
+            „Zaur Hatuev – Design mit Substanz und Wirkung.“
+          </div>
+          <div style={{ fontWeight: 400, fontSize: '0.89rem', opacity: 0.85 }}>
+            Freiberuflicher Webdesigner & Markenstratege
+          </div>
         </div>
-        <div style={{ fontWeight: 400, fontSize: isMobile ? '0.76rem' : '0.89rem', opacity: 0.85 }}>
-          Freiberuflicher Webdesigner & Markenstratege
-        </div>
-      </div>
+      )}
       </div>
     </div>
   );
