@@ -542,13 +542,11 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
         position: 'relative',
         width: '100%',
         minHeight: isMobile ? '90vh' : '90vh',
-        overflow: 'hidden',
         background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        touchAction: 'none',
       }}
     >
       {children && (
