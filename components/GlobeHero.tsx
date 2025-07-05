@@ -577,73 +577,110 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               transition: 'all 0.3s',
             }}
           >
-            <span
-              className={montserrat.className}
-              style={{
-                display: 'block',
-                fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
-                fontWeight: 700,
-                color: '#fff',
-                textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                letterSpacing: isMobile ? '0em' : '-0.01em',
-                lineHeight: isMobile ? 1.08 : 1.04,
-                margin: 0,
-                whiteSpace: 'normal',
-                wordBreak: 'break-word',
-                overflowWrap: 'anywhere',
-                maxWidth: '98vw',
-                textAlign: 'center',
-                transition: 'all 0.3s',
-              }}
-            >
-              DIGITALISIEREN
-            </span>
-            <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
-              <span
-                className={montserrat.className}
-                style={{
-                  display: 'block',
-                  fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
-                  fontWeight: 700,
-                  color: '#fff',
-                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                  letterSpacing: isMobile ? '0em' : '-0.01em',
-                  lineHeight: isMobile ? 1.08 : 1.04,
-                  margin: 0,
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
-                  maxWidth: '98vw',
-                  textAlign: 'center',
-                  transition: 'all 0.3s',
-                }}
-              >
-                BEGEISTERN
-              </span>
-            </div>
-            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
-              <span
-                className={montserrat.className}
-                style={{
-                  display: 'block',
-                  fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
-                  fontWeight: 700,
-                  color: '#fff',
-                  textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
-                  letterSpacing: isMobile ? '0em' : '-0.01em',
-                  lineHeight: isMobile ? 1.08 : 1.04,
-                  margin: 0,
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                  overflowWrap: 'anywhere',
-                  maxWidth: '98vw',
-                  textAlign: isMobile ? 'right' : 'end',
-                  transition: 'all 0.3s',
-                }}
-              >
-                {isMobile ? 'BEWEGEN'.split('').join('\u200B') : 'BEWEGEN'}
-              </span>
-            </div>
+            {isMobile ? (
+              <div style={{ width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'stretch', margin: 0, padding: 0 }}>
+                {/* DIGITALISIEREN links */}
+                <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-start' }}>
+                  <span
+                    className={montserrat.className}
+                    style={{
+                      display: 'block',
+                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                      fontWeight: 700,
+                      color: '#fff',
+                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                      letterSpacing: '0em',
+                      lineHeight: 1.08,
+                      margin: 0,
+                      whiteSpace: 'normal',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'anywhere',
+                      maxWidth: '98vw',
+                      textAlign: 'left',
+                      transition: 'all 0.3s',
+                    }}
+                  >
+                    DIGITALISIEREN
+                  </span>
+                </div>
+                {/* BEGEISTERN mit Linie links/rechts */}
+                <div style={{ width: '100vw', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, padding: 0 }}>
+                  <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginRight: '5vw' }} />
+                  <span
+                    className={montserrat.className}
+                    style={{
+                      display: 'block',
+                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                      fontWeight: 700,
+                      color: '#fff',
+                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                      letterSpacing: '0em',
+                      lineHeight: 1.08,
+                      margin: 0,
+                      whiteSpace: 'normal',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'anywhere',
+                      maxWidth: '98vw',
+                      textAlign: 'center',
+                      transition: 'all 0.3s',
+                    }}
+                  >
+                    BEGEISTERN
+                  </span>
+                  <div style={{ flex: 1, height: '2px', background: '#fff', opacity: 1, marginLeft: '5vw' }} />
+                </div>
+                {/* BEWEGEN rechts */}
+                <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
+                  <span
+                    className={montserrat.className}
+                    style={{
+                      display: 'block',
+                      fontSize: 'clamp(1.1rem, 7vw, 2.1rem)',
+                      fontWeight: 700,
+                      color: '#fff',
+                      textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
+                      letterSpacing: '0em',
+                      lineHeight: 1.08,
+                      margin: 0,
+                      whiteSpace: 'normal',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'anywhere',
+                      maxWidth: '98vw',
+                      textAlign: 'right',
+                      transition: 'all 0.3s',
+                    }}
+                  >
+                    BEWEGEN
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    width: '27.5vw',
+                    height: '2px',
+                    background: '#fff',
+                    top: lineY ?? 0,
+                    zIndex: 100,
+                    opacity: 1,
+                    pointerEvents: 'none',
+                  }} />
+                <div style={{
+                  position: 'absolute',
+                  right: 0,
+                  width: '27.5vw',
+                  height: '2px',
+                  background: '#fff',
+                  top: lineY ?? 0,
+                  zIndex: 100,
+                  opacity: 1,
+                  pointerEvents: 'none',
+                }} />
+              </>
+            )}
           </div>
         </div>
       )}
@@ -680,7 +717,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 width: '27.5vw',
                 height: '2px',
                 background: '#fff',
-                top: lineY,
+                top: lineY ?? 0,
                 zIndex: 100,
                 opacity: 1,
                 pointerEvents: 'none',
@@ -691,7 +728,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 width: '27.5vw',
                 height: '2px',
                 background: '#fff',
-                top: lineY,
+                top: lineY ?? 0,
                 zIndex: 100,
                 opacity: 1,
                 pointerEvents: 'none',
