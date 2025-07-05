@@ -481,12 +481,10 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
     if (globeRef.current) {
       const t = clock.getElapsedTime();
       let targetX, targetY, targetZ;
-      // Sensitivität je nach Device
       const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
       const xFactor = isMobile ? 0.25 : 0.09;
       const yFactor = isMobile ? 1.0 : 0.13;
       if (isDragging.current) {
-        // Bei Drag: Maus-/Fingerposition verwenden
         targetX = 0.18 + mouse.current.y * xFactor;
         targetY = t * 0.045 + mouse.current.x * yFactor;
       } else {
@@ -494,9 +492,10 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
         targetY = t * 0.045;
       }
       targetZ = Math.sin(t * 0.035) * 0.38;
-      globeRef.current.rotation.x += (targetX - globeRef.current.rotation.x) * 0.025;
-      globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * 0.025;
-      globeRef.current.rotation.z += (targetZ - globeRef.current.rotation.z) * 0.025;
+      const lerp = isDragging.current ? 0.15 : 0.025;
+      globeRef.current.rotation.x += (targetX - globeRef.current.rotation.x) * lerp;
+      globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * lerp;
+      globeRef.current.rotation.z += (targetZ - globeRef.current.rotation.z) * lerp;
     }
   });
 
