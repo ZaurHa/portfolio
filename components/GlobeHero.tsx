@@ -650,28 +650,54 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       {/* Geteilte Linie exakt auf Höhe der mittleren Textzeile, Lücke zentriert (45vw) */}
       {lineY !== null && (
         <>
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            width: '27.5vw',
-            height: '2px',
-            background: '#fff',
-            top: lineY,
-            zIndex: 100,
-            opacity: 1,
-            pointerEvents: 'none',
-          }} />
-          <div style={{
-            position: 'absolute',
-            right: 0,
-            width: '27.5vw',
-            height: '2px',
-            background: '#fff',
-            top: lineY,
-            zIndex: 100,
-            opacity: 1,
-            pointerEvents: 'none',
-          }} />
+          {/* Mobile: kürzere Linien und Abstand zu BEGEISTERN */}
+          {isMobile ? (
+            <div style={{
+              position: 'absolute',
+              left: 0,
+              width: '100vw',
+              top: lineY,
+              zIndex: 100,
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              pointerEvents: 'none',
+            }}>
+              <div style={{ width: '20vw', height: '2px', background: '#fff', opacity: 1 }} />
+              <div style={{ width: '7vw' }} />
+              {/* Platzhalter für Abstand vor BEGEISTERN */}
+              <div style={{ width: 'fit-content', fontWeight: 700, fontSize: 'clamp(1.1rem, 7vw, 2.1rem)', color: 'transparent', userSelect: 'none' }}>BEGEISTERN</div>
+              <div style={{ width: '7vw' }} />
+              {/* Platzhalter für Abstand nach BEGEISTERN */}
+              <div style={{ width: '20vw', height: '2px', background: '#fff', opacity: 1 }} />
+            </div>
+          ) : (
+            <>
+              <div style={{
+                position: 'absolute',
+                left: 0,
+                width: '27.5vw',
+                height: '2px',
+                background: '#fff',
+                top: lineY,
+                zIndex: 100,
+                opacity: 1,
+                pointerEvents: 'none',
+              }} />
+              <div style={{
+                position: 'absolute',
+                right: 0,
+                width: '27.5vw',
+                height: '2px',
+                background: '#fff',
+                top: lineY,
+                zIndex: 100,
+                opacity: 1,
+                pointerEvents: 'none',
+              }} />
+            </>
+          )}
         </>
       )}
       {/* Futuristischer Button (nur Mobile) und Info-Box oben rechts unter der Linie */}
@@ -769,8 +795,10 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
         }} 
         style={{ 
           position: 'relative',
-          width: '100vw',
-          height: '90vh',
+          width: isMobile ? '115vw' : '100vw',
+          height: isMobile ? '115vw' : '90vh',
+          maxWidth: isMobile ? '100vh' : undefined,
+          maxHeight: isMobile ? '100vw' : undefined,
           zIndex: 10,
           pointerEvents: 'auto',
           touchAction: 'pan-y',
