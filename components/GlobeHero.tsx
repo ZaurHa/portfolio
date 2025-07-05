@@ -488,8 +488,15 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
         targetX = 0.18 + mouse.current.y * xFactor;
         targetY = t * 0.045 + mouse.current.x * yFactor;
       } else {
-        targetX = 0.18;
-        targetY = t * 0.045;
+        if (isMobile) {
+          // Auf Mobile: Keine automatische Rotation, Globe bleibt stehen
+          targetX = globeRef.current.rotation.x;
+          targetY = globeRef.current.rotation.y;
+        } else {
+          // Auf Desktop: Sanfte Idle-Animation
+          targetX = 0.18;
+          targetY = t * 0.045;
+        }
       }
       targetZ = Math.sin(t * 0.035) * 0.38;
       const lerp = isDragging.current ? 0.15 : 0.025;
