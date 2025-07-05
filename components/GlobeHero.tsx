@@ -583,15 +583,18 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               className={montserrat.className}
               style={{
                 display: 'block',
-                fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
                 fontWeight: 700,
                 color: '#fff',
                 textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
                 letterSpacing: isMobile ? '0em' : '-0.01em',
-                lineHeight: isMobile ? 1.01 : 1.04,
-                marginLeft: 0,
+                lineHeight: isMobile ? 1.08 : 1.04,
                 margin: 0,
-                whiteSpace: isMobile ? 'normal' : 'nowrap',
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+                overflowWrap: 'anywhere',
+                maxWidth: '98vw',
+                textAlign: 'center',
                 transition: 'all 0.3s',
               }}
             >
@@ -602,14 +605,18 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 className={montserrat.className}
                 style={{
                   display: 'block',
-                  fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                  fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
                   fontWeight: 700,
                   color: '#fff',
                   textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
                   letterSpacing: isMobile ? '0em' : '-0.01em',
-                  lineHeight: isMobile ? 1.01 : 1.04,
+                  lineHeight: isMobile ? 1.08 : 1.04,
                   margin: 0,
-                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                  whiteSpace: 'normal',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'anywhere',
+                  maxWidth: '98vw',
+                  textAlign: 'center',
                   transition: 'all 0.3s',
                 }}
               >
@@ -621,18 +628,22 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 className={montserrat.className}
                 style={{
                   display: 'block',
-                  fontSize: isMobile ? 'clamp(1.7rem, 8vw, 2.5rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
+                  fontSize: isMobile ? 'clamp(1.1rem, 7vw, 2.1rem)' : 'clamp(3.2rem, 10vw, 5.2rem)',
                   fontWeight: 700,
                   color: '#fff',
                   textShadow: '0 4px 32px #0008, 0 1px 8px #0006',
                   letterSpacing: isMobile ? '0em' : '-0.01em',
-                  lineHeight: isMobile ? 1.01 : 1.04,
+                  lineHeight: isMobile ? 1.08 : 1.04,
                   margin: 0,
-                  whiteSpace: isMobile ? 'normal' : 'nowrap',
+                  whiteSpace: 'normal',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'anywhere',
+                  maxWidth: '98vw',
+                  textAlign: isMobile ? 'right' : 'end',
                   transition: 'all 0.3s',
                 }}
               >
-                BEWEGEN
+                {isMobile ? 'BEWEGEN'.split('').join('\u200B') : 'BEWEGEN'}
               </span>
             </div>
           </div>

@@ -46,10 +46,12 @@ export default function Home() {
       {/* HERO SECTION */}
       <section style={{ position: 'relative', width: '100%', minHeight: '70vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', zIndex: 2 }}>
         {/* Zaur Hatuev Text oben links */}
+        {/*
         <div style={{ position: 'absolute', left: '2.5rem', top: '2.5rem', zIndex: 110, color: '#fff', fontSize: '0.95rem', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', opacity: 0.88, lineHeight: 1.4, maxWidth: '28vw', pointerEvents: 'none', letterSpacing: '0.01em', textShadow: '0 2px 8px #0007' }}>
           <div style={{ fontWeight: 600 }}>„Zaur Hatuev – Design mit Substanz und Wirkung.“</div>
           <div style={{ fontWeight: 400, fontSize: '0.89rem', opacity: 0.85 }}>Freiberuflicher Webdesigner & Markenstratege</div>
         </div>
+        */}
         <GlobeHero>
           ICH GESTALTE DIGITALE ERLEBNISSE, DIE MARKEN SICHTBAR MACHEN
         </GlobeHero>
