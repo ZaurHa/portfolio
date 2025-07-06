@@ -570,8 +570,8 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
   useFrame(({ clock }) => {
     if (!isMobile && groupRef.current) {
       const t = clock.getElapsedTime();
-      (groupRef.current as THREE.Group).position.x = Math.sin(t * 0.03) * 0.5;
-      (groupRef.current as THREE.Group).position.y = Math.cos(t * 0.02) * 0.3;
+      (groupRef.current as THREE.Group).position.x = Math.sin(t * 0.06) * 0.7;
+      (groupRef.current as THREE.Group).position.y = Math.cos(t * 0.04) * 0.45;
     }
   });
   return (
@@ -602,6 +602,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
   const [lineY, setLineY] = useState<number | null>(null);
   const [transmissionOpen, setTransmissionOpen] = useState(false);
   const transmissionBoxRef = useRef<HTMLDivElement | null>(null);
+  const [showFolder, setShowFolder] = useState(false);
 
   useEffect(() => {
     setIsMobile(typeof window !== 'undefined' && window.innerWidth < 700);
@@ -987,33 +988,83 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
           }}>{backgroundText}</span>
         </div>
       )}
-      {/* Textblock unten links (nur Desktop) */}
-      {!isMobile && (
-        <div
+      {/* Disketten-Button + Ordner-Text (Desktop & Mobile) */}
+      <div style={{ position: 'absolute', left: '2vw', bottom: '2vw', zIndex: 10, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+        <button
+          onClick={() => setShowFolder(v => !v)}
+          aria-label="Info anzeigen"
           style={{
-            position: 'absolute',
-            left: '2.5rem',
-            bottom: '2.5rem',
-            zIndex: 110,
-            color: '#fff',
-            fontSize: '0.95rem',
-            fontFamily: 'Inter, Segoe UI, Arial, sans-serif',
-            opacity: 0.88,
-            lineHeight: 1.4,
-            maxWidth: '28vw',
-            pointerEvents: 'none',
-            letterSpacing: '0.01em',
-            textShadow: '0 2px 8px #0007',
+            width: 44,
+            height: 44,
+            borderRadius: 10,
+            background: 'linear-gradient(135deg, #23232a 70%, #6ffcff22 100%)',
+            border: '2px solid #6ffcff',
+            boxShadow: '0 2px 8px #0005',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'background 0.2s',
+            marginRight: 8,
           }}
         >
-          <div style={{ fontWeight: 600 }}>
+          <img src="/images/diskette.webp" alt="Diskette" style={{ width: 28, height: 28, display: 'block' }} />
+        </button>
+        <div
+          style={{
+            position: 'relative',
+            minWidth: 220,
+            maxWidth: 420,
+            transition: 'max-height 0.4s cubic-bezier(.4,1.4,.6,1), opacity 0.3s',
+            maxHeight: showFolder ? 200 : 0,
+            opacity: showFolder ? 1 : 0,
+            overflow: 'hidden',
+            pointerEvents: showFolder ? 'auto' : 'none',
+            marginTop: 0,
+          }}
+        >
+          {/* Ordner-Lasche */}
+          <div style={{
+            position: 'absolute',
+            top: -18,
+            left: 18,
+            width: 54,
+            height: 18,
+            background: '#f5e7c6',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+            border: '2px solid #e0cfa0',
+            borderBottom: 'none',
+            boxShadow: '0 2px 6px #0002',
+            zIndex: 2,
+          }} />
+          {/* Ordner-Umriss */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            border: '2px solid #e0cfa0',
+            borderRadius: 13,
+            background: 'linear-gradient(135deg, #23232a 80%, #f5e7c6 100%)',
+            boxShadow: '0 4px 24px #0002',
+            zIndex: 1,
+          }} />
+          <div style={{
+            position: 'relative',
+            padding: '1.2rem 1.5rem 1.1rem 1.5rem',
+            fontSize: '1.13rem',
+            fontWeight: 600,
+            color: '#fff',
+            zIndex: 3,
+            textShadow: '0 2px 8px #0007',
+            fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
+          }}>
             „Zaur Hatuev – Design mit Substanz und Wirkung.“
-          </div>
-          <div style={{ fontWeight: 400, fontSize: '0.89rem', opacity: 0.85 }}>
-            Freiberuflicher Webdesigner & Markenstratege
+            <div style={{ fontWeight: 400, fontSize: '1.01rem', opacity: 0.85, marginTop: 2 }}>
+              Freiberuflicher Webdesigner & Markenstratege
+            </div>
           </div>
         </div>
-      )}
+      </div>
       </div>
     </div>
   );
