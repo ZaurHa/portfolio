@@ -3,13 +3,93 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const logoUrl = 'https://brandwerkx.vercel.app/images/brandwerkxweiss.webp';
+const siteUrl = 'https://brandwerkx.vercel.app';
+const githubUrl = 'https://github.com/ZaurHa';
+const cyan = '#00f7e4';
+const dark = '#0b0c0f';
+
+type MailData = {
+  name: string;
+  email?: string;
+  company?: string;
+  project?: string;
+  budget?: string;
+  message: string;
+};
+
+function adminMailHtml({ name, email, company, project, budget, message }: MailData) {
+  return `
+  <body style="background:${dark};color:#fff;font-family:Inter,Arial,sans-serif;padding:0;margin:0;">
+    <div style="max-width:520px;margin:0 auto;background:${dark};border-radius:18px;overflow:hidden;box-shadow:0 4px 32px #000a;">
+      <div style="padding:32px 32px 16px 32px;text-align:center;">
+        <img src="${logoUrl}" style="width:120px;margin-bottom:18px;"/>
+        <h1 style="color:${cyan};font-size:1.5rem;margin:0 0 8px 0;letter-spacing:0.01em;">Neue Anfrage über dein Portfolio</h1>
+        <div style="color:#b0b0b0;font-size:1.05rem;margin-bottom:18px;">Du hast eine neue Kontaktanfrage erhalten.</div>
+      </div>
+      <div style="padding:0 32px 24px 32px;">
+        <div style="background:#181a1f;border-radius:12px;padding:18px 20px 12px 20px;margin-bottom:18px;">
+          <div style="font-size:1.08rem;color:${cyan};font-weight:600;margin-bottom:8px;">📧 Kontaktdaten</div>
+          <div style="margin-bottom:4px;"><b>Name:</b> ${name}</div>
+          <div style="margin-bottom:4px;"><b>E-Mail:</b> <a href="mailto:${email}" style="color:${cyan};text-decoration:none;">${email}</a></div>
+          ${company ? `<div style="margin-bottom:4px;"><b>Unternehmen:</b> ${company}</div>` : ''}
+        </div>
+        <div style="background:#181a1f;border-radius:12px;padding:18px 20px 12px 20px;margin-bottom:18px;">
+          <div style="font-size:1.08rem;color:${cyan};font-weight:600;margin-bottom:8px;">📝 Projektdetails</div>
+          ${project ? `<div style="margin-bottom:4px;"><b>Projekttyp:</b> ${project}</div>` : ''}
+          ${budget ? `<div style="margin-bottom:4px;"><b>Budget:</b> ${budget}</div>` : ''}
+          <div style="margin-bottom:4px;"><b>Nachricht:</b></div>
+          <div style="background:#101114;border-radius:8px;padding:12px 14px;color:#e0e0e0;white-space:pre-line;">${message}</div>
+        </div>
+        <div style="text-align:center;margin:32px 0 0 0;">
+          <a href="mailto:${email}" style="display:inline-block;background:${cyan};color:#181a1f;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1.08rem;">Direkt antworten</a>
+        </div>
+      </div>
+      <div style="background:#101114;padding:24px 32px 18px 32px;text-align:center;border-top:1px solid #23232a;margin-top:24px;">
+        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.vercel.app</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
+        <div style="color:#888;font-size:0.98rem;margin-top:10px;">Diese E-Mail wurde automatisch generiert.</div>
+      </div>
+    </div>
+  </body>
+  `;
+}
+
+function customerMailHtml({ name, project, budget, message }: MailData) {
+  return `
+  <body style="background:${dark};color:#fff;font-family:Inter,Arial,sans-serif;padding:0;margin:0;">
+    <div style="max-width:520px;margin:0 auto;background:${dark};border-radius:18px;overflow:hidden;box-shadow:0 4px 32px #000a;">
+      <div style="padding:32px 32px 16px 32px;text-align:center;">
+        <img src="${logoUrl}" style="width:120px;margin-bottom:18px;"/>
+        <h1 style="color:${cyan};font-size:1.5rem;margin:0 0 8px 0;letter-spacing:0.01em;">Danke für deine Nachricht</h1>
+        <div style="color:#b0b0b0;font-size:1.05rem;margin-bottom:18px;">Ich habe deine Anfrage erhalten und melde mich so schnell wie möglich bei dir!</div>
+      </div>
+      <div style="padding:0 32px 24px 32px;">
+        <div style="background:#181a1f;border-radius:12px;padding:18px 20px 12px 20px;margin-bottom:18px;">
+          <div style="font-size:1.08rem;color:${cyan};font-weight:600;margin-bottom:8px;">📝 Deine Anfrage</div>
+          ${project ? `<div style="margin-bottom:4px;"><b>Projekttyp:</b> ${project}</div>` : ''}
+          ${budget ? `<div style="margin-bottom:4px;"><b>Budget:</b> ${budget}</div>` : ''}
+          <div style="margin-bottom:4px;"><b>Nachricht:</b></div>
+          <div style="background:#101114;border-radius:8px;padding:12px 14px;color:#e0e0e0;white-space:pre-line;">${message}</div>
+        </div>
+        <div style="text-align:center;margin:32px 0 0 0;">
+          <a href="mailto:brandwerkx@gmail.com" style="display:inline-block;background:${cyan};color:#181a1f;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1.08rem;">Direkt antworten</a>
+        </div>
+      </div>
+      <div style="background:#101114;padding:24px 32px 18px 32px;text-align:center;border-top:1px solid #23232a;margin-top:24px;">
+        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.vercel.app</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
+        <div style="color:#888;font-size:0.98rem;margin-top:10px;">Diese E-Mail wurde automatisch generiert.</div>
+      </div>
+    </div>
+  </body>
+  `;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     console.log('DEBUG: /api/contact aufgerufen', body);
     const { name, email, company, project, budget, message } = body;
 
-    // Validierung
     if (!name || !email || !message) {
       console.log('DEBUG: Fehlende Felder', { name, email, message });
       return NextResponse.json(
@@ -18,89 +98,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // E-Mail an dich (als Webentwickler)
-    const adminEmail = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Resend Standard-Absender
+    // E-Mail an dich (Admin)
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: ['brandwerkx@gmail.com'],
       subject: `Neue Projektanfrage von ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #06b6d4;">Neue Projektanfrage - BrandWerkX</h2>
-          
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #333; margin-top: 0;">Kontaktdaten</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>E-Mail:</strong> ${email}</p>
-            ${company ? `<p><strong>Unternehmen:</strong> ${company}</p>` : ''}
-          </div>
-
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #333; margin-top: 0;">Projektdetails</h3>
-            ${project ? `<p><strong>Projekttyp:</strong> ${project}</p>` : ''}
-            ${budget ? `<p><strong>Budget:</strong> ${budget}</p>` : ''}
-          </div>
-
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #333; margin-top: 0;">Nachricht</h3>
-            <p style="white-space: pre-wrap;">${message}</p>
-          </div>
-
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-            <p style="color: #666; font-size: 14px;">
-              Diese E-Mail wurde über das Kontaktformular auf brandwerkx.de gesendet.
-            </p>
-          </div>
-        </div>
-      `,
+      html: adminMailHtml({ name, email, company, project, budget, message }),
     });
 
     // Bestätigungs-E-Mail an den Kunden
-    const customerEmail = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Resend Standard-Absender
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: [email],
-      subject: 'Vielen Dank für Ihre Anfrage - BrandWerkX',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #06b6d4;">Vielen Dank für Ihre Anfrage!</h2>
-          
-          <p>Hallo ${name},</p>
-          
-          <p>vielen Dank für Ihre Projektanfrage bei BrandWerkX. Ich habe Ihre Nachricht erhalten und werde mich innerhalb von 24 Stunden bei Ihnen melden.</p>
-          
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #333; margin-top: 0;">Ihre Anfrage im Überblick:</h3>
-            ${project ? `<p><strong>Projekttyp:</strong> ${project}</p>` : ''}
-            ${budget ? `<p><strong>Budget-Rahmen:</strong> ${budget}</p>` : ''}
-            <p><strong>Nachricht:</strong></p>
-            <p style="white-space: pre-wrap; background: white; padding: 10px; border-radius: 4px;">${message}</p>
-          </div>
-
-          <h3 style="color: #333;">Nächste Schritte:</h3>
-          <ol>
-            <li>Ich analysiere Ihre Anforderungen</li>
-            <li>Erstelle ein maßgeschneidertes Angebot</li>
-            <li>Melde mich innerhalb von 24 Stunden bei Ihnen</li>
-            <li>Besprechen wir Details und Zeitplan</li>
-          </ol>
-
-          <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #1976d2; margin-top: 0;">Während Sie warten...</h3>
-            <p>Schauen Sie sich gerne meine <a href="https://brandwerkx.de/projekte" style="color: #1976d2;">Projekte</a> an oder lesen Sie mehr über meine <a href="https://brandwerkx.de/leistungen" style="color: #1976d2;">Leistungen</a>.</p>
-          </div>
-
-          <p>Bis bald!</p>
-          <p><strong>Zaur Hatuev</strong><br>
-          BrandWerkX - Webentwicklung & Design</p>
-          
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-            <p style="color: #666; font-size: 14px;">
-              BrandWerkX | Zaur Hatuev<br>
-              Webentwicklung & UI/UX Design<br>
-              <a href="https://brandwerkx.de" style="color: #666;">brandwerkx.de</a>
-            </p>
-          </div>
-        </div>
-      `,
+      subject: 'Danke für deine Nachricht – BrandWerkX',
+      html: customerMailHtml({ name, project, budget, message }),
     });
 
     return NextResponse.json(
