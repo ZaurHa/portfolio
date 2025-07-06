@@ -603,6 +603,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
   const [transmissionOpen, setTransmissionOpen] = useState(false);
   const transmissionBoxRef = useRef<HTMLDivElement | null>(null);
   const [showFolder, setShowFolder] = useState(false);
+  const infoBoxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setIsMobile(typeof window !== 'undefined' && window.innerWidth < 700);
@@ -630,6 +631,21 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [transmissionOpen]);
+
+  useEffect(() => {
+    if (!showFolder) return;
+    function handleClickOutside(e: MouseEvent | TouchEvent) {
+      if (infoBoxRef.current && !infoBoxRef.current.contains(e.target as Node)) {
+        setShowFolder(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [showFolder]);
 
   // Verhindere SSR/Client-Mismatch: erst rendern, wenn isMobile gesetzt ist
   if (isMobile === null) return <></>;
@@ -1011,6 +1027,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
           <img src="/images/diskette.webp" alt="Diskette" style={{ width: 28, height: 28, display: 'block' }} />
         </button>
         <div
+          ref={infoBoxRef}
           style={{
             position: 'relative',
             minWidth: 220,
