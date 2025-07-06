@@ -88,8 +88,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "description": "Professionelle Webentwicklung und UI/UX Design für moderne Unternehmen",
               "url": "https://brandwerkx.de",
               "sameAs": [
-                "https://github.com/yourusername",
-                "https://linkedin.com/in/yourusername"
+                "https://github.com/ZaurHa",
+                "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
               ],
               "knowsAbout": [
                 "Webentwicklung",

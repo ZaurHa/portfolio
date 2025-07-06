@@ -83,7 +83,7 @@ export default function UeberMich() {
         <h2 className="text-2xl font-bold text-cyan-400 mb-6 text-center">Kontakt</h2>
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
           <a 
-            href="https://github.com/" 
+            href="https://github.com/ZaurHa" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition font-semibold"
@@ -94,7 +94,7 @@ export default function UeberMich() {
             GitHub
           </a>
           <a 
-            href="https://linkedin.com/" 
+            href="https://www.linkedin.com/in/zaur-hatuev-8559b91a1/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition font-semibold"

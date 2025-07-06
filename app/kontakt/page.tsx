@@ -202,8 +202,8 @@ export default function Kontakt() {
                 </div>
                 <div>
                   <div className="font-medium text-white">GitHub</div>
-                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300">
-                    github.com/yourusername
+                  <a href="https://github.com/ZaurHa" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300">
+                    github.com/ZaurHa
                   </a>
                 </div>
               </div>
