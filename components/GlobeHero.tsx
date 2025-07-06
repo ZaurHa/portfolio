@@ -1023,45 +1023,37 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             marginTop: 0,
           }}
         >
-          {/* Ordner-Lasche */}
-          <div style={{
-            position: 'absolute',
-            top: -18,
-            left: 18,
-            width: 54,
-            height: 18,
-            background: '#f5e7c6',
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            border: '2px solid #e0cfa0',
-            borderBottom: 'none',
-            boxShadow: '0 2px 6px #0002',
-            zIndex: 2,
-          }} />
-          {/* Ordner-Umriss */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            border: '2px solid #e0cfa0',
-            borderRadius: 13,
-            background: 'linear-gradient(135deg, #23232a 80%, #f5e7c6 100%)',
-            boxShadow: '0 4px 24px #0002',
-            zIndex: 1,
-          }} />
           <div style={{
             position: 'relative',
-            padding: '1.2rem 1.5rem 1.1rem 1.5rem',
-            fontSize: '1.13rem',
-            fontWeight: 600,
+            background: 'rgba(20,32,40,0.82)',
+            border: '1.5px solid #00ffe7',
+            borderRadius: 13,
+            boxShadow: '0 2px 16px #00ffe733',
             color: '#fff',
-            zIndex: 3,
-            textShadow: '0 2px 8px #0007',
-            fontFamily: 'Montserrat, Sora, Inter, system-ui, Arial, sans-serif',
+            fontFamily: 'Fira Mono, Consolas, Menlo, monospace',
+            fontSize: '1.01rem',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            textAlign: 'left',
+            minWidth: '170px',
+            maxWidth: '70vw',
+            padding: showFolder ? '1.1rem 1.3rem 1.1rem 1.3rem' : '0 1.3rem',
+            backdropFilter: 'blur(7px) saturate(1.15)',
+            WebkitBackdropFilter: 'blur(7px) saturate(1.15)',
+            zIndex: 101,
+            userSelect: 'text',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: 6,
           }}>
-            „Zaur Hatuev – Design mit Substanz und Wirkung.“
-            <div style={{ fontWeight: 400, fontSize: '1.01rem', opacity: 0.85, marginTop: 2 }}>
+            <div style={{ fontWeight: 700, fontSize: '1.01rem', marginBottom: 4, letterSpacing: '0.08em', color: '#ff5c2b', lineHeight: 1.1 }}>
+              Zaur Hatuev – Design mit Substanz und Wirkung.
+            </div>
+            <div style={{ marginBottom: 3, fontSize: '0.91rem', lineHeight: 1.18 }}>
               Freiberuflicher Webdesigner & Markenstratege
             </div>
+            <img src="/images/diskette.webp" alt="Diskette" style={{ width: 28, height: 28, display: 'block', position: 'absolute', right: 16, bottom: 16, opacity: 0.7 }} />
           </div>
         </div>
       </div>
