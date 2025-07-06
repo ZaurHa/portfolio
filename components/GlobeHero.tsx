@@ -280,22 +280,8 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
       arr[i * 3] = r * directions.current[i * 3];
       arr[i * 3 + 1] = r * directions.current[i * 3 + 1];
       arr[i * 3 + 2] = r * directions.current[i * 3 + 2];
-      // --- FARBE: sanfter Verlauf von Türkis zu Lila, abhängig von y-Position und Zeit ---
-      const yNorm = (arr[i * 3 + 1] / globeRadius + 1) / 2; // -globeRadius..+globeRadius → 0..1
-      // Türkis: #6ffcff (111,252,255), Lila: #b36fff (179,111,255)
-      const tColor = 0.5 + 0.5 * Math.sin(t * 0.18 + yNorm * Math.PI); // animierter Verlauf
-      const rColor = (111/255) * (1-tColor) + (179/255) * tColor;
-      const gColor = (252/255) * (1-tColor) + (111/255) * tColor;
-      const bColor = (255/255);
-      colors[i * 3] = rColor;
-      colors[i * 3 + 1] = gColor;
-      colors[i * 3 + 2] = bColor;
-      // --- Zufälliges Leuchten ---
-      if (Math.random() < 0.002) {
-        colors[i * 3] = 1.0;
-        colors[i * 3 + 1] = 1.0;
-        colors[i * 3 + 2] = 1.0;
-      }
+      // --- FARBE: Nur Lila oder Türkis, keine Animation, kein Weiß ---
+      // (Farben werden nicht mehr animiert verändert)
       // Flucht-Animation
       if (fluchtTimers.current[i] > 0) {
         fluchtTimers.current[i] -= 0.016;
@@ -570,8 +556,9 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
   useFrame(({ clock }) => {
     if (!isMobile && groupRef.current) {
       const t = clock.getElapsedTime();
-      (groupRef.current as THREE.Group).position.x = Math.sin(t * 0.06) * 0.7;
-      (groupRef.current as THREE.Group).position.y = Math.cos(t * 0.04) * 0.45;
+      // Sterne bewegen sich konstant nach rechts, Loopen nach einer Weile
+      groupRef.current.position.x = (t * 0.09) % 8 - 4; // von -4 bis +4, noch langsamer
+      groupRef.current.position.y = 0;
     }
   });
   return (
@@ -659,7 +646,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
         minHeight: isMobile ? '100vw' : undefined,
         maxHeight: isMobile ? 'none' : undefined,
         overflow: 'hidden',
-        background: 'radial-gradient(ellipse at center, #070708 0%, #0a0a0c 40%, #050506 80%, #000 100%)',
+        background: '#000',
       }}
     >
       {isMobile ? (
@@ -727,14 +714,15 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: 'rgba(10,18,22,0.85)',
-                border: '1px solid #6cfaff',
+                background: 'transparent',
+                border: '1px solid rgba(108,250,255,0.45)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: 'none',
                 cursor: 'pointer',
                 transition: 'background 0.18s',
+                opacity: 0.68,
               }}
               aria-label="Transmission öffnen"
             >
@@ -756,7 +744,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 pointerEvents: transmissionOpen ? 'auto' : 'none',
                 transition: 'opacity 0.28s cubic-bezier(.4,1.4,.6,1), transform 0.28s cubic-bezier(.4,1.4,.6,1), margin-top 0.28s',
                 background: 'rgba(20,32,40,0.82)',
-                border: '1.5px solid #00ffe7',
+                border: '1px solid rgba(0,255,231,0.18)',
                 borderRadius: 13,
                 boxShadow: '0 2px 16px #00ffe733',
                 color: '#fff',
@@ -793,7 +781,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
               ref={textBlockRef}
               style={{
                 position: 'absolute',
-                top: '5.5rem',
+                top: '2rem',
                 left: 0,
                 width: '100vw',
                 height: 'auto',
@@ -909,14 +897,15 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: 'rgba(10,18,22,0.85)',
-                border: '1px solid #6cfaff',
+                background: 'transparent',
+                border: '1px solid rgba(108,250,255,0.45)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: 'none',
                 cursor: 'pointer',
                 transition: 'background 0.18s',
+                opacity: 0.68,
               }}
               aria-label="Transmission öffnen"
             >
@@ -937,7 +926,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                 pointerEvents: transmissionOpen ? 'auto' : 'none',
                 transition: 'opacity 0.28s cubic-bezier(.4,1.4,.6,1), transform 0.28s cubic-bezier(.4,1.4,.6,1), margin-top 0.28s',
                 background: 'rgba(10,18,22,0.93)',
-                border: '1.5px solid #6cfaff',
+                border: '1px solid rgba(108,250,255,0.18)',
                 borderRadius: 14,
                 boxShadow: 'none',
                 color: '#fff',
@@ -1013,8 +1002,8 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             width: 44,
             height: 44,
             borderRadius: 10,
-            background: 'linear-gradient(135deg, #23232a 70%, #6ffcff22 100%)',
-            border: '2px solid #6ffcff',
+            background: 'transparent',
+            border: '1px solid rgba(111,252,255,0.45)',
             boxShadow: '0 2px 8px #0005',
             display: 'flex',
             alignItems: 'center',
@@ -1022,6 +1011,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             cursor: 'pointer',
             transition: 'background 0.2s',
             marginRight: 8,
+            opacity: 0.68,
           }}
         >
           <img src="/images/diskette.webp" alt="Diskette" style={{ width: 28, height: 28, display: 'block' }} />
@@ -1043,7 +1033,7 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
           <div style={{
             position: 'relative',
             background: 'rgba(20,32,40,0.82)',
-            border: '1.5px solid #00ffe7',
+            border: '1px solid rgba(0,255,231,0.18)',
             borderRadius: 13,
             boxShadow: '0 2px 16px #00ffe733',
             color: '#fff',

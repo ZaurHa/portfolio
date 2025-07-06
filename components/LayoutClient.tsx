@@ -47,7 +47,6 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
                 alt="BrandWerkX" 
                 className="h-8 w-auto"
               />
-              <span className="text-white font-bold text-lg hidden sm:block">BrandWerkX</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
