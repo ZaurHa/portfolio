@@ -63,7 +63,7 @@ function ElegantGlobeLines() {
 
 function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3) => void, globeRef: React.RefObject<THREE.Group | null> }) {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
-  const count = 35000;
+  const count = isMobile ? 35000 : 80000;
   const globeRadius = isMobile ? 0.56 : 0.92;
   const maxR = globeRadius + (isMobile ? 0.018 : 0.025);
   const { mouse, size, camera, gl } = useThree();
@@ -98,29 +98,19 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
     fluchtDirections.current = new Float32Array(count * 3);
   }, [count]);
 
-  // Farben: Nur lila und türkis, besonders leuchtend
+  // Farben: Türkis zu Lila Verlauf
   const colors = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      if (Math.random() < 0.5) {
-        // Lila: Interpoliert zwischen #b36aff (179,106,255) und #7d26ff (125,38,255)
-        const t = Math.random();
-        const r = 179 * (1 - t) + 125 * t;
-        const g = 106 * (1 - t) + 38 * t;
-        const b = 255;
-        arr[i * 3] = r / 255;
-        arr[i * 3 + 1] = g / 255;
-        arr[i * 3 + 2] = b / 255;
-      } else {
-        // Türkis: Interpoliert zwischen #6ffcff (111,252,255) und #00ffe7 (0,255,231)
-        const t = Math.random();
-        const r = 111 * (1 - t) + 0 * t;
-        const g = 252 * (1 - t) + 255 * t;
-        const b = 255 * (1 - t) + 231 * t;
-        arr[i * 3] = r / 255;
-        arr[i * 3 + 1] = g / 255;
-        arr[i * 3 + 2] = b / 255;
-      }
+      // Interpolationsfaktor: gleichmäßig über alle Partikel
+      const t = i / count;
+      // Türkis: #0d9488 (13,148,136), Lila: #b36aff (179,106,255)
+      const r = 13 * (1 - t) + 179 * t;
+      const g = 148 * (1 - t) + 106 * t;
+      const b = 136 * (1 - t) + 255 * t;
+      arr[i * 3] = r / 255;
+      arr[i * 3 + 1] = g / 255;
+      arr[i * 3 + 2] = b / 255;
     }
     return arr;
   }, [count]);
@@ -247,8 +237,8 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
         const px = arr[i * 3], py = arr[i * 3 + 1], pz = arr[i * 3 + 2];
         const dist = dist3(px, py, pz, mouse3D.x, mouse3D.y, mouse3D.z);
         if (dist < 0.35 && !rising.current[i]) {
-          // Attraction: Richtung zur Maus
-          const force = Math.min(0.18 / (dist * dist + 0.01), 0.25); // capped, stärker
+          // Attraction: Richtung zur Maus, Stärke nimmt mit Nähe zu
+          const force = Math.min(0.18 / (dist * dist + 0.01), 0.18) * (1 - dist / 0.35);
           const dirToMouse = [
             (mouse3D.x - px) / dist,
             (mouse3D.y - py) / dist,
@@ -564,19 +554,19 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
   return (
     <group ref={groupRef}>
       <points>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        </bufferGeometry>
-        <pointsMaterial
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial
           color="#fff"
           size={0.025}
-          sizeAttenuation
-          transparent
+        sizeAttenuation
+        transparent
           opacity={0.85}
           depthWrite={false}
-          blending={THREE.AdditiveBlending}
-        />
-      </points>
+        blending={THREE.AdditiveBlending}
+      />
+    </points>
     </group>
   );
 }

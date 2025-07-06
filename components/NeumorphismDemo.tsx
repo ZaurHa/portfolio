@@ -22,7 +22,7 @@ const neumorphismVariants: NeumorphismVariant[] = [
     shadowLight: "#ffffff",
     shadowDark: "#bebebe",
     textColor: "#333333",
-    accentColor: "#4a9eff"
+    accentColor: "#0d9488"
   },
   {
     name: "Soft Neumorphism",
@@ -62,7 +62,7 @@ const neumorphismVariants: NeumorphismVariant[] = [
     shadowLight: "#e0f2fe",
     shadowDark: "#bae6fd",
     textColor: "#0c4a6e",
-    accentColor: "#0ea5e9"
+    accentColor: "#0d9488"
   },
   {
     name: "Nature Green",

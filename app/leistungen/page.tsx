@@ -81,43 +81,43 @@ export default function Leistungen() {
     <div className="max-w-6xl mx-auto py-10 px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-6 text-cyan-400">Meine Leistungen</h1>
+        <h1 className="text-5xl font-bold mb-6 text-[#0d9488]">Meine Leistungen</h1>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
           Transparente Preise für professionelle Webentwicklung. 
           Wählen Sie das Paket, das zu Ihrem Projekt passt.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <span className="neumorph-badge bg-cyan-400/20 text-cyan-400">Transparente Preise</span>
-          <span className="neumorph-badge bg-cyan-400/20 text-cyan-400">Keine versteckten Kosten</span>
-          <span className="neumorph-badge bg-cyan-400/20 text-cyan-400">Flexible Anpassung</span>
+          <span className="neumorph-badge bg-[#0d9488]/20 text-[#0d9488]">Transparente Preise</span>
+          <span className="neumorph-badge bg-[#0d9488]/20 text-[#0d9488]">Keine versteckten Kosten</span>
+          <span className="neumorph-badge bg-[#0d9488]/20 text-[#0d9488]">Flexible Anpassung</span>
         </div>
       </div>
 
       {/* Service-Pakete */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-12 text-center text-cyan-400">Service-Pakete</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center text-[#0d9488]">Service-Pakete</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {servicePackages.map((pkg, index) => (
             <div 
               key={pkg.name} 
-              className={`neumorph-card p-8 relative ${pkg.popular ? 'ring-2 ring-cyan-400/50' : ''}`}
+              className={`neumorph-card p-8 relative ${pkg.popular ? 'ring-2 ring-[#0d9488]/50' : ''}`}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-cyan-400 text-black px-4 py-1 rounded-full text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#0d9488] text-black px-4 py-1 rounded-full text-sm font-bold">
                   EMPFOHLEN
                 </div>
               )}
               
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                <div className="text-4xl font-bold text-cyan-400 mb-2">{pkg.price}</div>
+                <div className="text-4xl font-bold text-[#0d9488] mb-2">{pkg.price}</div>
                 <p className="text-gray-400">{pkg.description}</p>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <span className="text-cyan-400 mt-1">✓</span>
+                    <span className="text-[#0d9488] mt-1">✓</span>
                     <span className="text-gray-300">{feature}</span>
                   </li>
                 ))}
@@ -136,13 +136,13 @@ export default function Leistungen() {
 
       {/* Zusätzliche Services */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-12 text-center text-cyan-400">Zusätzliche Services</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center text-[#0d9488]">Zusätzliche Services</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {additionalServices.map((service, index) => (
             <div key={service.name} className="neumorph-card p-6">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl font-bold text-white">{service.name}</h3>
-                <span className="text-cyan-400 font-bold">{service.price}</span>
+                <span className="text-[#0d9488] font-bold">{service.price}</span>
               </div>
               <p className="text-gray-300">{service.description}</p>
             </div>
@@ -152,32 +152,32 @@ export default function Leistungen() {
 
       {/* Arbeitsweise */}
       <div className="neumorph-card p-8 mb-20">
-        <h2 className="text-3xl font-bold mb-8 text-center text-cyan-400">Meine Arbeitsweise</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center text-[#0d9488]">Meine Arbeitsweise</h2>
         <div className="grid md:grid-cols-4 gap-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-cyan-400">1</span>
+            <div className="w-16 h-16 bg-[#0d9488]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl font-bold text-[#0d9488]">1</span>
             </div>
             <h3 className="font-bold text-white mb-2">Beratung</h3>
             <p className="text-sm text-gray-400">Kostenloses Erstgespräch, Anforderungsanalyse, Projektplanung</p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-cyan-400">2</span>
+            <div className="w-16 h-16 bg-[#0d9488]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl font-bold text-[#0d9488]">2</span>
             </div>
             <h3 className="font-bold text-white mb-2">Design</h3>
             <p className="text-sm text-gray-400">Wireframes, Design-Konzept, Kunden-Feedback, Finalisierung</p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-cyan-400">3</span>
+            <div className="w-16 h-16 bg-[#0d9488]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl font-bold text-[#0d9488]">3</span>
             </div>
             <h3 className="font-bold text-white mb-2">Entwicklung</h3>
             <p className="text-sm text-gray-400">Programmierung, Testing, Performance-Optimierung, Launch</p>
           </div>
           <div className="text-center">
-            <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-cyan-400">4</span>
+            <div className="w-16 h-16 bg-[#0d9488]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl font-bold text-[#0d9488]">4</span>
             </div>
             <h3 className="font-bold text-white mb-2">Support</h3>
             <p className="text-sm text-gray-400">Schulung, Wartung, Updates, kontinuierliche Betreuung</p>
@@ -187,7 +187,7 @@ export default function Leistungen() {
 
       {/* FAQ */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold mb-12 text-center text-cyan-400">Häufige Fragen</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center text-[#0d9488]">Häufige Fragen</h2>
         <div className="space-y-6">
           <div className="neumorph-card p-6">
             <h3 className="text-xl font-bold text-white mb-3">Wie lange dauert ein Projekt?</h3>
@@ -225,7 +225,7 @@ export default function Leistungen() {
 
       {/* CTA */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold mb-6 text-cyan-400">Bereit für Ihr Projekt?</h2>
+        <h2 className="text-3xl font-bold mb-6 text-[#0d9488]">Bereit für Ihr Projekt?</h2>
         <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
           Lassen Sie uns gemeinsam Ihr Projekt besprechen und das perfekte Paket für Sie finden.
         </p>

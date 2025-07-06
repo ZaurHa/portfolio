@@ -56,8 +56,8 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
                   href={item.href}
                   className={`text-sm font-medium transition-colors ${
                     pathname === item.href 
-                      ? 'text-cyan-400' 
-                      : 'text-gray-300 hover:text-cyan-400'
+                      ? 'text-[#0d9488]' 
+                      : 'text-gray-300 hover:text-[#0d9488]'
                   }`}
                 >
                   {item.label}
@@ -72,7 +72,7 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
             </div>
 
             <button
-              className="nav-toggle md:hidden p-2 text-gray-300 hover:text-cyan-400 transition-colors"
+              className="nav-toggle md:hidden p-2 text-gray-300 hover:text-[#0d9488] transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Menu öffnen"
             >
@@ -95,7 +95,7 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
                   className={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     pathname === item.href 
                       ? 'text-cyan-400 bg-cyan-400/10' 
-                      : 'text-gray-300 hover:text-cyan-400 hover:bg-gray-800'
+                      : 'text-gray-300 hover:text-[#0d9488] hover:bg-gray-800'
                   }`}
                 >
                   {item.label}
