@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "@type": "PostalAddress",
                 "addressCountry": "DE"
               },
-              "email": "kontakt@brandwerkx.de"
+              "email": "zaur@brandwerkx.de"
             })
           }}
         />
@@ -123,7 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "email": "brandwerkx@gmail.com"
+                "email": "zaur@brandwerkx.de"
               },
               "serviceArea": {
                 "@type": "Country",

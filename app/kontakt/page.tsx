@@ -188,8 +188,8 @@ export default function Kontakt() {
                 </div>
                 <div>
                   <div className="font-medium text-white">E-Mail</div>
-                              <a href="mailto:brandwerkx@gmail.com" className="text-cyan-400 hover:text-cyan-300">
-              brandwerkx@gmail.com
+                              <a href="mailto:zaur@brandwerkx.de" className="text-cyan-400 hover:text-cyan-300">
+              zaur@brandwerkx.de
             </a>
                 </div>
               </div>

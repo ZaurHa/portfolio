@@ -72,7 +72,7 @@ function customerMailHtml({ name, project, budget, message }: MailData) {
           <div style="background:#101114;border-radius:8px;padding:12px 14px;color:#e0e0e0;white-space:pre-line;">${message}</div>
         </div>
         <div style="text-align:center;margin:32px 0 0 0;">
-          <a href="mailto:brandwerkx@gmail.com" style="display:inline-block;background:${cyan};color:#181a1f;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1.08rem;">Direkt antworten</a>
+          <a href="mailto:zaur@brandwerkx.de" style="display:inline-block;background:${cyan};color:#181a1f;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1.08rem;">Direkt antworten</a>
         </div>
       </div>
       <div style="background:#101114;padding:24px 32px 18px 32px;text-align:center;border-top:1px solid #23232a;margin-top:24px;">
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     // E-Mail an dich (Admin)
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: ['brandwerkx@gmail.com'],
+      to: ['zaur@brandwerkx.de'],
       subject: `Neue Projektanfrage von ${name}`,
       html: adminMailHtml({ name, email, company, project, budget, message }),
     });

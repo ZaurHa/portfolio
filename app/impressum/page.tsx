@@ -13,7 +13,7 @@ export default function Impressum() {
       </p>
       <h2>Kontakt</h2>
       <p>
-        E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a><br />
+        E-Mail: <a href="mailto:zaur@brandwerkx.de">zaur@brandwerkx.de</a><br />
         Internet: <a href="https://brandwerkx.vercel.com" target="_blank" rel="noopener noreferrer">https://brandwerkx.vercel.com</a>
       </p>
       <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>

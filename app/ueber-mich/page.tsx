@@ -105,7 +105,7 @@ export default function UeberMich() {
             LinkedIn
           </a>
           <a 
-            href="mailto:brandwerkx@gmail.com" 
+            href="mailto:zaur@brandwerkx.de" 
             className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition font-semibold"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

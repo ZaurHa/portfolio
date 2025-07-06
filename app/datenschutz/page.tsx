@@ -12,7 +12,7 @@ export default function Datenschutz() {
         Zaur Hatuev<br />
         Steiner Ring 64<br />
         82538 Geretsried<br />
-        E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a>
+        E-Mail: <a href="mailto:zaur@brandwerkx.de">zaur@brandwerkx.de</a>
       </p>
       <h2>3. Zugriffsdaten und Hosting</h2>
       <p>Beim Besuch dieser Website werden automatisch Informationen in sogenannten Server-Logfiles gespeichert. Dies sind u. a.:<br />
