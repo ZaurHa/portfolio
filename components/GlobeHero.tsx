@@ -594,6 +594,13 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
 
   useEffect(() => {
     setIsMobile(typeof window !== 'undefined' && window.innerWidth < 700);
+    // Setze echte Viewport-Höhe für Mobile
+    function setRealVh() {
+      document.documentElement.style.setProperty('--real-vh', `${window.innerHeight * 0.01}px`);
+    }
+    setRealVh();
+    window.addEventListener('resize', setRealVh);
+    return () => window.removeEventListener('resize', setRealVh);
   }, []);
 
   useLayoutEffect(() => {
@@ -639,12 +646,13 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
 
   return (
     <div
+      className={isMobile ? 'real-vh-100' : ''}
       style={{
         position: 'relative',
         width: '100vw',
-        height: isMobile ? '100dvh' : undefined,
-        minHeight: isMobile ? '100vw' : undefined,
-        maxHeight: isMobile ? 'none' : undefined,
+        height: isMobile ? undefined : undefined,
+        minHeight: isMobile ? undefined : undefined,
+        maxHeight: isMobile ? undefined : undefined,
         overflow: 'hidden',
         background: '#000',
       }}

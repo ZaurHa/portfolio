@@ -20,6 +20,7 @@
   --neumorph-danger: #f87171;
   --neumorph-border: #23242a;
   --neumorph-gradient: linear-gradient(90deg, #444950, #b0b0b0);
+  --real-vh: 1vh;
 }
 
 /* Legacy variables for compatibility */
@@ -414,4 +415,8 @@ hr, .neumorph-divider {
 }
 .shadow-portfolio:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 2px 8px rgba(255,153,0,0.10);
+}
+
+.real-vh-100 {
+  height: calc(var(--real-vh, 1vh) * 100);
 }
