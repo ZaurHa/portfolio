@@ -656,6 +656,10 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
             <Canvas 
               camera={{ position: [0, 0, 2.6], fov: 55 }}             
               style={{ width: '100vw', height: '100dvh', background: 'none' }}
+              onWheel={e => e.preventDefault()}
+              onTouchMove={e => {
+                if (e.touches && e.touches.length > 1) e.preventDefault();
+              }}
               onPointerDown={e => {
                 if (isMobile && e.pointerType === 'touch') {
                   const target = e.target as HTMLElement;
