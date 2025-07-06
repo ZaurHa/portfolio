@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
 
     // E-Mail an dich (Admin)
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'Zaur Hatuev <zaur@brandwerkx.de>',
       to: ['zaur@brandwerkx.de'],
       subject: `Neue Projektanfrage von ${name}`,
       html: adminMailHtml({ name, email, company, project, budget, message }),
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
 
     // Bestätigungs-E-Mail an den Kunden
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'Zaur Hatuev <zaur@brandwerkx.de>',
       to: [email],
       subject: 'Danke für deine Nachricht – BrandWerkX',
       html: customerMailHtml({ name, project, budget, message }),
