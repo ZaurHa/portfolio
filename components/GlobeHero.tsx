@@ -491,22 +491,14 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       const yFactor = isMobile ? 1.0 : 0.13;
       if (isDragging.current) {
         targetX = 0.18 + mouse.current.y * xFactor;
-        targetY = t * 0.045 + mouse.current.x * yFactor;
-      } else if (isMobile && (Math.abs(inertia.current.x) > 0.0001 || Math.abs(inertia.current.y) > 0.0001)) {
-        // Trägheit auf Mobile: Globe dreht sehr langsam nach
-        globeRef.current.rotation.x += inertia.current.y * xFactor * 1;
-        globeRef.current.rotation.y += inertia.current.x * yFactor * 1;
-        // Starke Dämpfung
-        inertia.current.x *= 0.90;
-        inertia.current.y *= 0.90;
-        return;
+        targetY = t * 0.09 + mouse.current.x * yFactor;
       } else {
         if (isMobile) {
           targetX = globeRef.current.rotation.x;
           targetY = globeRef.current.rotation.y;
         } else {
           targetX = 0.18;
-          targetY = t * 0.045;
+          targetY = t * 0.09;
         }
       }
       targetZ = Math.sin(t * 0.035) * 0.38;
@@ -629,14 +621,15 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                   const rect = target.getBoundingClientRect();
                   const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
                   const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-                  // Kamera aus useThree holen
                   const camera = (window as any).__globeCamera;
                   if (!camera) return;
                   const raycaster = new THREE.Raycaster();
                   raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
                   const globeRadius = 0.56;
                   const intersection = raycaster.ray.at(globeRadius, new THREE.Vector3());
-                  (window as any).__triggerParticleEscapeAt?.(intersection);
+                  if (!(window as any).__dragActive) {
+                    (window as any).__triggerParticleEscapeAt?.(intersection);
+                  }
                 }
               }}
             >
