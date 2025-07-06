@@ -506,10 +506,21 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       if (isDragging.current) {
         targetX = 0.18 + mouse.current.y * xFactor;
         targetY = t * 0.09 + mouse.current.x * yFactor;
+      } else if (isMobile && (Math.abs(inertia.current.x) > 0.0001 || Math.abs(inertia.current.y) > 0.0001)) {
+        // Trägheit auf Mobile: Globe dreht weiter
+        globeRef.current.rotation.x += inertia.current.y * xFactor * 1;
+        globeRef.current.rotation.y += inertia.current.x * yFactor * 1;
+        inertia.current.x *= 0.90;
+        inertia.current.y *= 0.90;
+        // Kein Idle-Lerp während Trägheit
+        return;
       } else {
         if (isMobile) {
+          // Sanfter Übergang zur Idle-Rotation
           targetX = globeRef.current.rotation.x;
-          targetY = t * 0.09;
+          const idleY = t * 0.09;
+          globeRef.current.rotation.y += (idleY - globeRef.current.rotation.y) * 0.02;
+          targetY = globeRef.current.rotation.y;
         } else {
           targetX = 0.18;
           targetY = t * 0.09;
@@ -518,7 +529,9 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       targetZ = Math.sin(t * 0.035) * 0.38;
       const lerp = isDragging.current ? 0.15 : 0.025;
       globeRef.current.rotation.x += (targetX - globeRef.current.rotation.x) * lerp;
-      globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * lerp;
+      if (!isMobile || isDragging.current) {
+        globeRef.current.rotation.y += (targetY - globeRef.current.rotation.y) * lerp;
+      }
       globeRef.current.rotation.z += (targetZ - globeRef.current.rotation.z) * lerp;
     }
   });
