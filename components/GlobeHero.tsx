@@ -368,7 +368,7 @@ function ParticleSphere({ setMarker, globeRef }: { setMarker: (v: THREE.Vector3)
         const pz = positions.current[i * 3 + 2];
         // Abstand zum Touchpunkt
         const dist = Math.sqrt((px - point3D.x) ** 2 + (py - point3D.y) ** 2 + (pz - point3D.z) ** 2);
-        if (dist < 0.18) { // nur Partikel im Umkreis
+        if (dist < 0.3) { // Flucht-Radius erhöht
           // Fluchtrichtung: vom Punkt weg
           const dx = px - point3D.x;
           const dy = py - point3D.y;
@@ -433,6 +433,8 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
   // Inertia-Variablen für Trägheit
   const inertia = useRef({ x: 0, y: 0 });
   const lastMove = useRef({ x: 0, y: 0, t: 0 });
+  // Tap-Detection Variablen
+  const tapInfo = useRef({ downX: 0, downY: 0, downTime: 0 });
 
   useEffect(() => {
     const handlePointerDown = (e: PointerEvent) => {
@@ -442,6 +444,9 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       lastPointerPos.current = { x: e.clientX, y: e.clientY };
       lastMove.current = { x: e.clientX, y: e.clientY, t: performance.now() };
       inertia.current = { x: 0, y: 0 };
+      // Tap-Detection
+      tapInfo.current = { downX: e.clientX, downY: e.clientY, downTime: performance.now() };
+      (window as any).__dragActive = false;
     };
 
     const handlePointerMove = (e: PointerEvent) => {
@@ -449,11 +454,11 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       const deltaY = Math.abs(e.clientY - dragStart.current.y);
       if (deltaX > 10 && deltaX > deltaY * 1.5) {
         isDragging.current = true;
+        (window as any).__dragActive = true;
       }
       if (isDragging.current) {
         mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
         mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
-        // Trägheit: Speichere letzte Bewegung
         const now = performance.now();
         const dt = now - lastMove.current.t;
         if (dt > 0) {
@@ -465,11 +470,20 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       lastPointerPos.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handlePointerUp = () => {
+    const handlePointerUp = (e: PointerEvent) => {
       isDragging.current = false;
-      // Nach Loslassen: Sehr wenig Schwung
       inertia.current.x *= 0.15;
       inertia.current.y *= 0.15;
+      (window as any).__dragActive = false;
+      // Tap-Detection: Prüfe, ob Tap (kurz & wenig Bewegung)
+      const upTime = performance.now();
+      const dt = upTime - tapInfo.current.downTime;
+      const moveDist = Math.sqrt((e.clientX - tapInfo.current.downX) ** 2 + (e.clientY - tapInfo.current.downY) ** 2);
+      if (dt < 250 && moveDist < 12) {
+        (window as any).__lastTap = { x: e.clientX, y: e.clientY };
+      } else {
+        (window as any).__lastTap = null;
+      }
     };
 
     window.addEventListener('pointerdown', handlePointerDown);
@@ -495,7 +509,7 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
       } else {
         if (isMobile) {
           targetX = globeRef.current.rotation.x;
-          targetY = globeRef.current.rotation.y;
+          targetY = t * 0.09;
         } else {
           targetX = 0.18;
           targetY = t * 0.09;
@@ -627,8 +641,11 @@ export default function GlobeHero({ children, backgroundText }: { children?: Rea
                   raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
                   const globeRadius = 0.56;
                   const intersection = raycaster.ray.at(globeRadius, new THREE.Vector3());
-                  if (!(window as any).__dragActive) {
+                  // Prüfe, ob letzter Tap erkannt wurde
+                  if ((window as any).__lastTap) {
+                    console.log('Tap detected, triggering escape!');
                     (window as any).__triggerParticleEscapeAt?.(intersection);
+                    (window as any).__lastTap = null;
                   }
                 }
               }}
