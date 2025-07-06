@@ -467,7 +467,9 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
 
     const handlePointerUp = () => {
       isDragging.current = false;
-      // Nach Loslassen bleibt inertia erhalten und wird im useFrame abgebremst
+      // Nach Loslassen: Mehr Schwung geben
+      inertia.current.x *= 2.5;
+      inertia.current.y *= 2.5;
     };
 
     window.addEventListener('pointerdown', handlePointerDown);
@@ -492,11 +494,11 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
         targetY = t * 0.045 + mouse.current.x * yFactor;
       } else if (isMobile && (Math.abs(inertia.current.x) > 0.0001 || Math.abs(inertia.current.y) > 0.0001)) {
         // Trägheit auf Mobile: Globe dreht weiter
-        globeRef.current.rotation.x += inertia.current.y * xFactor * 12; // Skaliere für spürbare Wirkung
+        globeRef.current.rotation.x += inertia.current.y * xFactor * 12;
         globeRef.current.rotation.y += inertia.current.x * yFactor * 12;
-        // Dämpfung
-        inertia.current.x *= 0.93;
-        inertia.current.y *= 0.93;
+        // Dämpfung (langsamer auslaufen)
+        inertia.current.x *= 0.98;
+        inertia.current.y *= 0.98;
         return;
       } else {
         if (isMobile) {
