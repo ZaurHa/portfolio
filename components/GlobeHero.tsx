@@ -553,11 +553,11 @@ function GlobeGroup({ position = [0, 0, 0], setMarker }: { position?: [number, n
 }
 
 function BackgroundStars({ count = 1200, spread = 16 }) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      // Zufällige Position in einer großen Kugel
-      const r = Math.cbrt(Math.random()) * spread + 6; // immer weit weg
+      const r = Math.cbrt(Math.random()) * spread + 6;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
       arr[i * 3] = Math.sin(phi) * Math.cos(theta) * r;
@@ -566,21 +566,31 @@ function BackgroundStars({ count = 1200, spread = 16 }) {
     }
     return arr;
   }, [count, spread]);
+  const groupRef = useRef<THREE.Group>(null);
+  useFrame(({ clock }) => {
+    if (!isMobile && groupRef.current) {
+      const t = clock.getElapsedTime();
+      (groupRef.current as THREE.Group).position.x = Math.sin(t * 0.03) * 0.5;
+      (groupRef.current as THREE.Group).position.y = Math.cos(t * 0.02) * 0.3;
+    }
+  });
   return (
-    <points>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        color="#fff"
-        size={0.025}
-        sizeAttenuation
-        transparent
-        opacity={0.85}
-        depthWrite={false}
-        blending={THREE.AdditiveBlending}
-      />
-    </points>
+    <group ref={groupRef}>
+      <points>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        </bufferGeometry>
+        <pointsMaterial
+          color="#fff"
+          size={0.025}
+          sizeAttenuation
+          transparent
+          opacity={0.85}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </points>
+    </group>
   );
 }
 
