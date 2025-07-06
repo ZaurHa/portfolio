@@ -6,10 +6,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log('DEBUG: /api/contact aufgerufen', body);
     const { name, email, company, project, budget, message } = body;
 
     // Validierung
     if (!name || !email || !message) {
+      console.log('DEBUG: Fehlende Felder', { name, email, message });
       return NextResponse.json(
         { error: 'Name, E-Mail und Nachricht sind erforderlich' },
         { status: 400 }
