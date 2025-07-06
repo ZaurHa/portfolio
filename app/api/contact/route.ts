@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     // E-Mail an dich (als Webentwickler)
     const adminEmail = await resend.emails.send({
-      from: 'brandwerkx@gmail.com', // Gmail als Absender
+      from: 'onboarding@resend.dev', // Resend Standard-Absender
       to: ['brandwerkx@gmail.com'],
       subject: `Neue Projektanfrage von ${name}`,
       html: `
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 
     // Bestätigungs-E-Mail an den Kunden
     const customerEmail = await resend.emails.send({
-      from: 'brandwerkx@gmail.com', // Gmail als Absender
+      from: 'onboarding@resend.dev', // Resend Standard-Absender
       to: [email],
       subject: 'Vielen Dank für Ihre Anfrage - BrandWerkX',
       html: `
