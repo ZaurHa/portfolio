@@ -2,23 +2,26 @@
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import Footer from './Footer';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projekte", label: "Projekte" },
+  { href: "/leistungen", label: "Leistungen" },
   { href: "/ueber-mich", label: "Über mich" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
 export default function LayoutClient({ children }: { children: React.ReactNode }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!mobileOpen) return;
+    if (!isMenuOpen) return;
     function handleClickOutside(e: MouseEvent | TouchEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMobileOpen(false);
+        setIsMenuOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -27,63 +30,96 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [mobileOpen]);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <>
-      <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-12 h-20 neumorph-card z-50" style={{ borderRadius: 16, background: 'var(--neumorph-card)', boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}>
-        <div className="flex items-center gap-4 md:gap-6">
-          <img src="/images/brandwerkxweiss.webp" alt="Logo" style={{ width: 200, height: 200, objectFit: 'contain', display: 'block' }} />
-        </div>
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-4 text-lg items-center">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="neumorph-button px-6 py-2 font-semibold">
-              {link.label}
+    <div className="min-h-screen bg-black">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center space-x-2">
+              <img 
+                src="/images/brandwerkxweiss.webp" 
+                alt="BrandWerkX" 
+                className="h-8 w-auto"
+              />
+              <span className="text-white font-bold text-lg hidden sm:block">BrandWerkX</span>
             </Link>
-          ))}
-        </div>
-        {/* Hamburger Icon */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 neumorph-button"
-          aria-label="Menü öffnen"
-          onClick={() => setMobileOpen(true)}
-        >
-          <span className="block w-6 h-0.5 bg-[#b0b0b0] mb-1 rounded"></span>
-          <span className="block w-6 h-0.5 bg-[#b0b0b0] mb-1 rounded"></span>
-          <span className="block w-6 h-0.5 bg-[#b0b0b0] rounded"></span>
-        </button>
-        {/* Mobile Overlay */}
-        {mobileOpen && (
-          <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center">
-            <div
-              ref={menuRef}
-              className="neumorph-card p-8 flex flex-col gap-6 items-center"
-              style={{ borderRadius: 16, minWidth: 220, boxShadow: '8px 8px 24px var(--neumorph-shadow-dark), -8px -8px 24px var(--neumorph-shadow-light)' }}
-            >
-              {navLinks.map((link) => (
+
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((item) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className="neumorph-button w-full text-center text-lg py-3 font-semibold"
-                  onClick={() => setMobileOpen(false)}
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors ${
+                    pathname === item.href 
+                      ? 'text-cyan-400' 
+                      : 'text-gray-300 hover:text-cyan-400'
+                  }`}
                 >
-                  {link.label}
+                  {item.label}
                 </Link>
               ))}
-              <button
-                className="neumorph-button w-full mt-4 text-[#e0e6f0]"
-                onClick={() => setMobileOpen(false)}
-                aria-label="Menü schließen"
+              <Link 
+                href="/kontakt" 
+                className="neumorph-button-primary px-4 py-2 text-sm font-medium"
               >
-                Schließen
-              </button>
+                Projekt anfragen
+              </Link>
+            </div>
+
+            <button
+              className="nav-toggle md:hidden p-2 text-gray-300 hover:text-cyan-400 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu öffnen"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          <div className={`nav-menu md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+            <div className="py-4 space-y-2 border-t border-gray-800">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    pathname === item.href 
+                      ? 'text-cyan-400 bg-cyan-400/10' 
+                      : 'text-gray-300 hover:text-cyan-400 hover:bg-gray-800'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="px-4 pt-2">
+                <Link 
+                  href="/kontakt" 
+                  className="neumorph-button-primary w-full text-center px-4 py-2 text-sm font-medium block"
+                >
+                  Projekt anfragen
+                </Link>
+              </div>
             </div>
           </div>
-        )}
+        </div>
       </nav>
-      <main className="w-full">{children}</main>
+
+      <main className="pt-16">
+        {children}
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 } 

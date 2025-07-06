@@ -4,40 +4,32 @@ import GlobeHero from "../components/GlobeHero";
 
 const projects = [
   {
-    title: "Zaira Beauty",
-    description: "Minimalistisches, dunkles Kosmetikstudio-Design mit persönlicher Kontaktaufnahme.",
-    tech: ["Next.js", "TailwindCSS", "SEO"],
+    title: "Zaira Beauty Studio",
+    description: "Komplette Website + Branding für erfolgreiches Kosmetikstudio. 40% mehr Kundenkontakte in 3 Monaten.",
+    tech: ["Next.js", "TailwindCSS", "Figma", "SEO"],
     image: "/images/beauty-praxis-mockup.webp",
-    link: "/projekte/beauty-praxis",
+    link: "/projekte/zaira-beauty",
+    featured: true,
+    results: ["40% mehr Kundenkontakte", "Branding komplett erstellt", "SEO-Optimierung"]
   },
   {
-    title: "E-Commerce Shop",
-    description: "Performanter Online-Shop mit Warenkorb und Admin-Panel.",
-    tech: ["Next.js", "TypeScript", "Stripe"],
-    image: "/images/ecommerce-preview.svg",
-    link: "/projekte/ecommerce-shop",
-  },
-  {
-    title: "Blog Plattform",
-    description: "Skalierbare Blogging-Plattform mit Markdown und SEO.",
-    tech: ["Next.js", "MDX", "Vercel"],
-    image: "/images/blog-preview.svg",
-    link: "/projekte/blog-plattform",
-  },
-  {
-    title: "Dashboard App",
-    description: "Interaktives Dashboard mit Datenvisualisierung.",
-    tech: ["React", "D3.js", "Node.js"],
-    image: "/images/dashboard-preview.svg",
-    link: "/projekte/dashboard-app",
+    title: "Kleinanzeigen Plattform",
+    description: "Full-Stack Entwicklung einer Kleinanzeigen-Plattform (in Entwicklung). Backend mit Produktverwaltung.",
+    tech: ["Next.js", "TypeScript", "Database", "API"],
+    image: "/images/kleinanzeigen-preview.svg",
+    link: "/projekte/kleinanzeigen-platform",
+    featured: false,
+    status: "In Entwicklung"
   },
   {
     title: "Music Player Demo",
-    description: "Musik-Player Demo mit moderner Benutzeroberfläche und Playlist-Funktion.",
-    tech: ["React", "Next.js", "TailwindCSS"],
+    description: "Interaktiver Musik-Player mit 3D-Animationen und moderner UX. Technische Demo für Premium-Projekte.",
+    tech: ["React", "Three.js", "Web Audio API"],
     image: "/images/music-player-preview.svg",
     link: "/music-player-demo",
-  },
+    featured: false,
+    demo: true
+  }
 ];
 
 export default function Home() {
@@ -63,7 +55,7 @@ export default function Home() {
         <div className="w-full max-w-screen-xl mx-auto px-4 md:px-8">
           <div className="grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             {projects.map((project) => (
-              <div key={project.title} className="neumorph-card flex flex-col overflow-hidden min-h-[320px]" style={{ boxShadow: '0 25px 50px rgba(0,0,0,0.9), 0 12px 24px rgba(0,0,0,0.7), 0 6px 12px rgba(0,0,0,0.5)' }}>
+              <div key={project.title} className={`neumorph-card flex flex-col overflow-hidden min-h-[320px] ${project.featured ? 'ring-2 ring-cyan-400/50' : ''}`} style={{ boxShadow: '0 25px 50px rgba(0,0,0,0.9), 0 12px 24px rgba(0,0,0,0.7), 0 6px 12px rgba(0,0,0,0.5)' }}>
                 <div className="relative w-full h-56 overflow-hidden mb-4">
                   <img
                     src={project.image}
@@ -72,16 +64,40 @@ export default function Home() {
                     style={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
                   />
                   <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/60 to-transparent" />
+                  {project.featured && (
+                    <div className="absolute top-3 left-3 bg-cyan-400 text-black px-2 py-1 rounded text-xs font-bold">
+                      FEATURED
+                    </div>
+                  )}
+                  {project.status && (
+                    <div className="absolute top-3 right-3 bg-orange-400 text-black px-2 py-1 rounded text-xs font-bold">
+                      {project.status}
+                    </div>
+                  )}
+                  {project.demo && (
+                    <div className="absolute top-3 right-3 bg-purple-400 text-black px-2 py-1 rounded text-xs font-bold">
+                      DEMO
+                    </div>
+                  )}
                 </div>
                 <div className="flex-1 flex flex-col items-center text-center px-4 pb-6">
                   <h3 className="text-2xl font-bold mb-2 text-[#e0e6f0]">{project.title}</h3>
                   <p className="text-[#b0b0b0] mb-3">{project.description}</p>
+                  {project.results && (
+                    <div className="mb-3 text-xs text-cyan-300">
+                      {project.results.map((result, idx) => (
+                        <div key={idx} className="mb-1">✓ {result}</div>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex gap-2 mb-3 flex-wrap justify-center">
                     {project.tech.map((t) => (
                       <span key={t} className="neumorph-badge">{t}</span>
                     ))}
                   </div>
-                  <a href={project.link} className="neumorph-button px-6 py-2 w-full">Projekt ansehen</a>
+                  <a href={project.link} className="neumorph-button px-6 py-2 w-full">
+                    {project.demo ? 'Demo ansehen' : 'Projekt ansehen'}
+                  </a>
                 </div>
               </div>
             ))}
