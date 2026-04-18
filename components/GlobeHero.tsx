@@ -65,30 +65,58 @@ const CITIES = [
 
 // ── Globe sphere ─────────────────────────────────────────────────────────────
 function GlobeSphere({ r }: { r: number }) {
+  const matRef = useRef<THREE.MeshLambertMaterial>(null);
   return (
-    <mesh renderOrder={0}>
-      <sphereGeometry args={[r, 64, 64]} />
-      <meshBasicMaterial color="#030f0d" />
-    </mesh>
+    <>
+      {/* Key light — warm from upper-left */}
+      <pointLight position={[-r * 2.2, r * 2.0, r * 2.2]} intensity={1.8} color="#a0d4ff" />
+      {/* Fill light — soft cyan from right */}
+      <pointLight position={[r * 2.8, 0, r * 1.5]} intensity={0.9} color="#00ffe7" />
+      {/* Rim light — deep blue from behind */}
+      <pointLight position={[0, -r * 1.8, -r * 2.4]} intensity={0.6} color="#2255cc" />
+      <mesh renderOrder={0}>
+        <sphereGeometry args={[r, 64, 64]} />
+        <meshLambertMaterial ref={matRef} color="#061a15" />
+      </mesh>
+    </>
   );
 }
 
 // ── Atmosphere glow ──────────────────────────────────────────────────────────
 function Atmosphere({ r }: { r: number }) {
-  const matRef = useRef<THREE.MeshBasicMaterial>(null);
+  const mat1 = useRef<THREE.MeshBasicMaterial>(null);
+  const mat2 = useRef<THREE.MeshBasicMaterial>(null);
+  const mat3 = useRef<THREE.MeshBasicMaterial>(null);
   useFrame(({ clock }) => {
-    if (matRef.current) matRef.current.opacity = 0.17 + Math.sin(clock.getElapsedTime() * 0.55) * 0.05;
+    const t = clock.getElapsedTime();
+    if (mat1.current) mat1.current.opacity = 0.22 + Math.sin(t * 0.55) * 0.07;
+    if (mat2.current) mat2.current.opacity = 0.10 + Math.sin(t * 0.38 + 1.0) * 0.04;
+    if (mat3.current) mat3.current.opacity = 0.04 + Math.sin(t * 0.25 + 2.1) * 0.02;
   });
   return (
     <>
+      {/* Inner halo */}
       <mesh renderOrder={1}>
-        <sphereGeometry args={[r * 1.055, 64, 64]} />
-        <meshBasicMaterial ref={matRef} color="#00ffe7" transparent opacity={0.17}
+        <sphereGeometry args={[r * 1.045, 64, 64]} />
+        <meshBasicMaterial ref={mat1} color="#00ffe7" transparent opacity={0.22}
           blending={THREE.AdditiveBlending} side={THREE.BackSide} depthWrite={false} />
       </mesh>
+      {/* Mid blue layer */}
       <mesh renderOrder={1}>
-        <sphereGeometry args={[r * 1.13, 64, 64]} />
-        <meshBasicMaterial color="#1a44cc" transparent opacity={0.07}
+        <sphereGeometry args={[r * 1.10, 64, 64]} />
+        <meshBasicMaterial ref={mat2} color="#1a44cc" transparent opacity={0.10}
+          blending={THREE.AdditiveBlending} side={THREE.BackSide} depthWrite={false} />
+      </mesh>
+      {/* Outer corona */}
+      <mesh renderOrder={1}>
+        <sphereGeometry args={[r * 1.28, 64, 64]} />
+        <meshBasicMaterial ref={mat3} color="#00ffe7" transparent opacity={0.04}
+          blending={THREE.AdditiveBlending} side={THREE.BackSide} depthWrite={false} />
+      </mesh>
+      {/* Deep outer glow ring */}
+      <mesh renderOrder={1}>
+        <sphereGeometry args={[r * 1.55, 32, 32]} />
+        <meshBasicMaterial color="#0033aa" transparent opacity={0.025}
           blending={THREE.AdditiveBlending} side={THREE.BackSide} depthWrite={false} />
       </mesh>
     </>
@@ -125,12 +153,16 @@ function CityDots({ r }: { r: number }) {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     // Munich dot brightness pulse
-    if (dotMats.current[0]) dotMats.current[0].opacity = 0.75 + Math.sin(t * 2.8) * 0.25;
+    if (dotMats.current[0]) dotMats.current[0].opacity = 0.85 + Math.sin(t * 2.8) * 0.15;
+    // Other cities gentle pulse
+    for (let i = 1; i < CITIES.length; i++) {
+      if (dotMats.current[i]) dotMats.current[i]!.opacity = 0.55 + Math.sin(t * 1.4 + i * 0.9) * 0.25;
+    }
     // Expanding ring
     if (ringMesh.current && ringMat.current) {
       const phase = (t * 0.85) % 1;
-      ringMesh.current.scale.setScalar(1 + phase * 2.8);
-      ringMat.current.opacity = Math.max(0, 0.55 * (1 - phase));
+      ringMesh.current.scale.setScalar(1 + phase * 3.5);
+      ringMat.current.opacity = Math.max(0, 0.65 * (1 - phase));
     }
   });
 
@@ -138,24 +170,32 @@ function CityDots({ r }: { r: number }) {
     <>
       {CITIES.map((city, i) => {
         const pos  = ll2v(city.lat, city.lng, r + 0.006);
-        const size = city.home ? 0.018 : 0.011;
+        const size = city.home ? 0.020 : 0.013;
         return (
           <group key={city.name} position={pos} renderOrder={4}>
             {/* Core */}
             <mesh>
-              <sphereGeometry args={[size, 10, 10]} />
+              <sphereGeometry args={[size, 12, 12]} />
               <meshBasicMaterial
                 ref={m => { dotMats.current[i] = m; }}
                 color={city.home ? '#00ffe7' : '#aaeeff'}
-                transparent opacity={city.home ? 0.95 : 0.65}
+                transparent opacity={city.home ? 0.98 : 0.75}
                 blending={THREE.AdditiveBlending} depthWrite={false}
               />
             </mesh>
-            {/* Soft glow halo */}
+            {/* Inner glow halo */}
             <mesh>
-              <sphereGeometry args={[size * 2.8, 10, 10]} />
+              <sphereGeometry args={[size * 2.2, 10, 10]} />
               <meshBasicMaterial color={city.home ? '#00ffe7' : '#44bbff'}
-                transparent opacity={city.home ? 0.10 : 0.05}
+                transparent opacity={city.home ? 0.18 : 0.10}
+                blending={THREE.AdditiveBlending} depthWrite={false}
+              />
+            </mesh>
+            {/* Outer soft halo */}
+            <mesh>
+              <sphereGeometry args={[size * 4.5, 10, 10]} />
+              <meshBasicMaterial color={city.home ? '#00ffe7' : '#2299cc'}
+                transparent opacity={city.home ? 0.07 : 0.04}
                 blending={THREE.AdditiveBlending} depthWrite={false}
               />
             </mesh>
@@ -206,7 +246,7 @@ function ConnectionArcs({ r }: { r: number }) {
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    mats.forEach((mat, i) => { mat.opacity = 0.10 + Math.sin(t * 0.55 + i * 1.05) * 0.10; });
+    mats.forEach((mat, i) => { mat.opacity = 0.18 + Math.sin(t * 0.55 + i * 1.05) * 0.12; });
   });
 
   return <>{lines.map((l, i) => <primitive key={i} object={l} renderOrder={3} />)}</>;
@@ -279,8 +319,8 @@ function CityLabelUpdater({ globeRef, r }: { globeRef: React.MutableRefObject<TH
 // ── Background stars ──────────────────────────────────────────────────────────
 function Stars() {
   const pos = useMemo(() => {
-    const arr = new Float32Array(1600 * 3);
-    for (let i = 0; i < 1600; i++) {
+    const arr = new Float32Array(2800 * 3);
+    for (let i = 0; i < 2800; i++) {
       const r = 14 + Math.random() * 8;
       const phi   = Math.acos(2 * Math.random() - 1);
       const theta = Math.random() * Math.PI * 2;
@@ -298,7 +338,7 @@ function Stars() {
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[pos, 3]} />
         </bufferGeometry>
-        <pointsMaterial color="#cce8ff" size={0.020} sizeAttenuation transparent opacity={0.55}
+        <pointsMaterial color="#ddf0ff" size={0.026} sizeAttenuation transparent opacity={0.72}
           depthWrite={false} blending={THREE.AdditiveBlending} />
       </points>
     </group>
