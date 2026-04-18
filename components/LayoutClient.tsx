@@ -145,6 +145,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
           <div
             ref={menuRef}
             className={`md:hidden overflow-hidden overflow-y-auto transition-all duration-300 ${isMenuOpen ? 'max-h-[85vh]' : 'max-h-0'}`}
+            style={{ background: '#0a0a0a' }}
           >
             <div className="py-4 space-y-1 border-t border-[#1a1a1a]">
               {navLinks.map((item) => (
