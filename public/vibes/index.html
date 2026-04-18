@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibes – Social Video App</title>
+    <meta name="description" content="Vibes – Die Social Video App. Teile kurze Videos, folge Creators und entdecke neue Inhalte. Jetzt kostenlos herunterladen." />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --purple: #7C3AED;
+        --purple-light: #A855F7;
+        --purple-dim: rgba(124, 58, 237, 0.15);
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #07070d;
+        color: #e5e7eb;
+        overflow-x: hidden;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 40px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        position: sticky; top: 0;
+        background: rgba(7,7,13,0.9);
+        backdrop-filter: blur(12px);
+        z-index: 100;
+      }
+      .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .nav-icon {
+        width: 36px; height: 36px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        border-radius: 9px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px;
+      }
+      .nav-name { color: #fff; font-size: 1.15rem; font-weight: 700; }
+      .nav-links { display: flex; gap: 8px; }
+      .nav-link {
+        color: #9ca3af; text-decoration: none;
+        font-size: 0.9rem; padding: 6px 12px;
+        border-radius: 8px;
+        transition: color 0.2s, background 0.2s;
+      }
+      .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
+
+      /* HERO */
+      .hero {
+        text-align: center;
+        padding: 100px 20px 80px;
+        position: relative;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%; transform: translateX(-50%);
+        width: 600px; height: 400px;
+        background: radial-gradient(ellipse, rgba(124,58,237,0.25) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--purple-dim);
+        border: 1px solid rgba(124,58,237,0.35);
+        color: #c4b5fd;
+        border-radius: 99px;
+        padding: 6px 16px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        margin-bottom: 28px;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        font-weight: 800;
+        line-height: 1.12;
+        color: #fff;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--purple-light), #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero p {
+        font-size: 1.15rem;
+        color: #9ca3af;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        line-height: 1.65;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-light));
+        color: #fff;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: opacity 0.2s, transform 0.2s;
+        box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+      }
+      .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+      .btn-secondary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #e5e7eb;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+
+      /* FEATURES */
+      .features {
+        padding: 80px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .section-label {
+        text-align: center;
+        color: var(--purple-light);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        text-align: center;
+        color: #fff;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-weight: 700;
+        margin-bottom: 56px;
+        letter-spacing: -0.01em;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .feature-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 16px;
+        padding: 28px;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .feature-card:hover {
+        border-color: rgba(124,58,237,0.4);
+        background: rgba(124,58,237,0.05);
+      }
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      .feature-card h3 { color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+      .feature-card p { color: #6b7280; font-size: 0.9rem; line-height: 1.6; }
+
+      /* DOWNLOAD */
+      .download {
+        text-align: center;
+        padding: 80px 20px 100px;
+      }
+      .download h2 {
+        color: #fff;
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .download p { color: #9ca3af; margin-bottom: 36px; font-size: 1rem; }
+      .store-buttons {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .store-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: #fff;
+        text-decoration: none;
+        padding: 14px 24px;
+        border-radius: 14px;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+      }
+      .store-btn:hover { background: rgba(255,255,255,0.1); }
+      .store-btn .store-icon { font-size: 1.6rem; }
+      .store-btn .store-text { text-align: left; }
+      .store-btn .store-sub { display: block; font-size: 0.72rem; color: #9ca3af; }
+      .store-btn .store-name { display: block; font-weight: 600; font-size: 0.95rem; }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding: 24px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer p { color: #4b5563; font-size: 0.85rem; }
+      .footer-links { display: flex; gap: 20px; }
+      .footer-links a { color: #6b7280; text-decoration: none; font-size: 0.85rem; }
+      .footer-links a:hover { color: #A855F7; }
+
+      @media (max-width: 600px) {
+        nav { padding: 16px 20px; }
+        .nav-links { display: none; }
+        footer { padding: 20px; flex-direction: column; text-align: center; }
+        .footer-links { justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav>
+      <a class="nav-logo" href="#">
+        <div class="nav-icon">🎵</div>
+        <span class="nav-name">Vibes</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="privacy.html">Datenschutz</a>
+        <a class="nav-link" href="terms.html">AGB</a>
+        <a class="nav-link" href="https://brandwerkx.de">brandwerkx.de</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">🚀 Jetzt im App Store & Google Play</div>
+      <h1>Teile deine <span>Vibes</span> mit der Welt</h1>
+      <p>
+        Die Social Video App für kurze Videos, Live-Streams und echte Verbindungen.
+        Entdecke Creators, teile Momente und sei dabei.
+      </p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn-primary">
+          <span>📱</span> Jetzt herunterladen
+        </a>
+        <a href="privacy.html" class="btn-secondary">
+          <span>🔒</span> Datenschutz
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">Alles was du brauchst</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎥</div>
+          <h3>Videos & Fotos teilen</h3>
+          <p>Teile kurze Videos und Fotos mit deinen Followern. Mit Captions, Tags und mehr.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔴</div>
+          <h3>Live-Streaming</h3>
+          <p>Gehe live und interagiere in Echtzeit mit deiner Community. Kommentare und Reaktionen live.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>Personalisierter Feed</h3>
+          <p>Dein Feed zeigt dir Inhalte von Creators denen du folgst — keine Algorithmus-Manipulationen.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Kommentare & Reaktionen</h3>
+          <p>Kommentiere direkt unter Posts, antworte auf Kommentare und reagiere mit Likes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h3>Push-Benachrichtigungen</h3>
+          <p>Erfahre sofort wenn jemand dein Video liked, kommentiert oder dir folgt.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Datenschutz first</h3>
+          <p>Keine Werbung, kein Tracking. Deine Daten gehören dir. DSGVO-konform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="download" id="download">
+      <h2>Jetzt kostenlos herunterladen</h2>
+      <p>Verfügbar für iPhone und Android</p>
+      <div class="store-buttons">
+        <a href="#" class="store-btn">
+          <span class="store-icon">🍎</span>
+          <span class="store-text">
+            <span class="store-sub">Laden im</span>
+            <span class="store-name">App Store</span>
+          </span>
+        </a>
+        <a href="#" class="store-btn">
+          <span class="store-icon">▶️</span>
+          <span class="store-text">
+            <span class="store-sub">Jetzt bei</span>
+            <span class="store-name">Google Play</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Vibes · Zaur Hatuev · <a href="https://brandwerkx.de" style="color:#6b7280;">brandwerkx.de</a></p>
+      <div class="footer-links">
+        <a href="privacy.html">Datenschutzerklärung</a>
+        <a href="terms.html">Nutzungsbedingungen</a>
+        <a href="mailto:zaurhatu@gmail.com">Kontakt</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Design-Showcase-Links sind für Kunden, nicht für Suchmaschinen
+Disallow: /muster/
+
+Sitemap: https://brandwerkx.de/sitemap.xml

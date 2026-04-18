@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Klempner Berlin – Mustermann Klempner | Meisterbetrieb & 24h Notdienst</title>
+  <meta name="description" content="Klempner in Berlin gesucht? Mustermann Klempner – Meisterbetrieb seit 2009. Rohrbruch-Notdienst in unter 45 Min., Badsanierung, Heizung & Sanitär. Kostenloser Kostenvoranschlag. ☎ 030 / 123 456 789" />
+  <meta name="keywords" content="Klempner Berlin, Sanitär Notdienst Berlin, Rohrbruch Berlin, Klempner Notdienst Berlin, Badsanierung Berlin, Heizung Notdienst Berlin, Installateur Berlin, Wasserschaden Berlin, Klempner Berlin Meisterbetrieb, Klempner Berlin 24h"/>
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.mustermann-klempner.de/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Klempner Berlin – Mustermann Klempner | Meisterbetrieb & Notdienst" />
+  <meta property="og:description" content="Ihr zuverlässiger Klempner in Berlin. 24h Notdienst, Badsanierung, Heizung. Über 2.400 zufriedene Kunden. Jetzt anrufen!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.mustermann-klempner.de/" />
+  <meta property="og:locale" content="de_DE" />
+
+  <!-- Schema.org LocalBusiness -->
+  
+
+  <!-- FAQ Schema -->
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue:     #1455A4;
+      --blue-d:   #0D3E7A;
+      --blue-bg:  #EBF2FB;
+      --blue-mid: #1A6BC7;
+      --black:    #0F0F0F;
+      --g1:       #222222;
+      --g2:       #555555;
+      --g3:       #888888;
+      --g4:       #CCCCCC;
+      --g5:       #F4F6F8;
+      --white:    #FFFFFF;
+      --border:   #E2E6EA;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --r: 6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: var(--font); cursor: pointer; border: none; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── BUTTONS ── */
+    .btn-blue {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue); color: var(--white);
+      font-size: 14px; font-weight: 700;
+      padding: 13px 28px; border-radius: var(--r); border: none;
+      transition: background .15s, transform .12s, box-shadow .15s;
+    }
+    .btn-blue:hover { background: var(--blue-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(20,85,164,.28); }
+    .btn-border {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--black);
+      font-size: 14px; font-weight: 600;
+      padding: 12px 28px; border-radius: var(--r);
+      border: 1.5px solid var(--border);
+      transition: border-color .15s, color .15s;
+    }
+    .btn-border:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--blue);
+      font-size: 14px; font-weight: 700;
+      padding: 13px 28px; border-radius: var(--r); border: none;
+      transition: background .15s;
+    }
+    .btn-white:hover { background: var(--blue-bg); }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-mark { width: 30px; height: 30px; background: var(--blue); border-radius: 5px; display: grid; place-items: center; }
+    .nav-mark svg { width: 16px; height: 16px; fill: #fff; }
+    .nav-name { font-size: 15px; font-weight: 800; letter-spacing: -.02em; color: var(--black); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--g2); transition: color .15s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .nav-tel { font-size: 14px; font-weight: 800; color: var(--blue); letter-spacing: -.01em; }
+    .nav-tel:hover { color: var(--blue-d); }
+    .nav-btn { background: var(--blue); color: #fff; font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: var(--r); transition: background .15s; }
+    .nav-btn:hover { background: var(--blue-d); }
+
+    /* ── HERO ── */
+    #hero { padding-top: 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 64px); }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 72px 56px 72px 28px;
+      border-right: 1px solid var(--border);
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 20px;
+    }
+    .hero-kicker-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
+    .hero-left h1 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -.035em;
+      color: var(--black); margin-bottom: 18px;
+    }
+    .hero-left h1 strong { color: var(--blue); font-weight: 900; }
+    .hero-left p { font-size: 16px; color: var(--g2); line-height: 1.75; max-width: 44ch; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+    .hero-proof { display: flex; align-items: center; gap: 10px; }
+    .hero-stars { color: #F59E0B; font-size: 15px; letter-spacing: 1px; }
+    .hero-proof-text { font-size: 13px; color: var(--g3); }
+    .hero-proof-text strong { color: var(--black); font-weight: 700; }
+
+    .hero-right { background: var(--blue); display: flex; flex-direction: column; }
+    .hero-photo { position: relative; overflow: hidden;
+      flex: 1; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(145deg, var(--blue-mid) 0%, var(--blue) 60%, var(--blue-d) 100%);
+    }
+    .hero-photo-icon { display: none; }
+    .hero-photo-icon svg { width: 180px; height: 180px; fill: #fff; }
+    .hero-photo-caption {
+      position: absolute; bottom: 20px; left: 24px;
+      font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.1); }
+    .hero-stat { padding: 26px 22px; border-right: 1px solid rgba(255,255,255,.1); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-n { font-size: 1.9rem; font-weight: 900; letter-spacing: -.04em; color: #fff; line-height: 1; }
+    .hero-stat-l { font-size: 11px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: 5px; }
+
+    /* ── TRUST ── */
+    #trust { background: var(--g5); border-bottom: 1px solid var(--border); }
+    .trust-row { display: flex; overflow-x: auto; }
+    .trust-item { display: flex; align-items: center; gap: 9px; padding: 16px 28px; border-right: 1px solid var(--border); font-size: 12px; font-weight: 600; color: var(--g1); white-space: nowrap; flex-shrink: 0; }
+    .trust-item:first-child { padding-left: 0; }
+    .trust-item svg { width: 14px; height: 14px; fill: var(--blue); flex-shrink: 0; }
+
+    /* ── SECTION LABELS ── */
+    .s-tag { display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .s-h2 { font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 900; letter-spacing: -.03em; color: var(--black); line-height: 1.1; }
+    .s-lead { font-size: 15px; color: var(--g2); line-height: 1.75; max-width: 54ch; margin-top: 10px; }
+
+    /* ── SERVICES ── */
+    #services { padding: 88px 0; }
+    .svc-header { margin-bottom: 44px; }
+
+    .notdienst-bar {
+      background: var(--black); border-radius: var(--r);
+      padding: 26px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .nd-left { display: flex; align-items: center; gap: 14px; }
+    .nd-badge { background: var(--blue); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 3px; white-space: nowrap; }
+    .nd-left h3 { font-size: 15px; font-weight: 800; color: #fff; }
+    .nd-left p  { font-size: 13px; color: rgba(255,255,255,.45); margin-top: 2px; }
+    .nd-phone { font-size: 1.55rem; font-weight: 900; letter-spacing: -.03em; color: #fff; white-space: nowrap; transition: color .15s; }
+    .nd-phone:hover { color: rgba(255,255,255,.75); }
+
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-left: 1px solid var(--border); border-top: 1px solid var(--border);
+    }
+    .svc-card {
+      padding: 30px 26px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative; transition: background .15s;
+    }
+    .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
+    .svc-card:hover { background: var(--blue-bg); }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-n { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--g4); margin-bottom: 12px; }
+    .svc-card h3 { font-size: 15px; font-weight: 800; color: var(--black); margin-bottom: 8px; letter-spacing: -.01em; }
+    .svc-card p  { font-size: 13px; color: var(--g2); line-height: 1.65; }
+
+    /* ── AREAS ── */
+    #areas { padding: 64px 0; background: var(--g5); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .areas-inner { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: center; }
+    .areas-left h2 { margin-bottom: 10px; }
+    .areas-left p { font-size: 14px; color: var(--g2); line-height: 1.7; }
+    .areas-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-pill {
+      font-size: 13px; font-weight: 600;
+      padding: 7px 16px; border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--g1);
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .area-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
+
+    /* ── ABOUT ── */
+    #about { padding: 88px 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img {
+      background: var(--blue-bg); border-radius: var(--r);
+      aspect-ratio: 5/6; overflow: hidden; position: relative;
+      border: 1px solid rgba(20,85,164,.1);
+    }
+    .about-img-fill { position: absolute; inset: 0; background: none; }
+    .about-img-fill img { width:100%;height:100%;object-fit:cover;border-radius:inherit; }
+    .about-img svg { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 140px; height: 140px; fill: rgba(20,85,164,.1); }
+    .about-chip {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 16px 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.1);
+    }
+    .chip-n { font-size: 1.5rem; font-weight: 900; letter-spacing: -.04em; color: var(--black); line-height: 1; }
+    .chip-l { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--g3); margin-top: 4px; }
+    .about-content h2 { margin-bottom: 14px; }
+    .about-content > p { font-size: 15px; color: var(--g2); line-height: 1.75; margin-bottom: 32px; }
+    .fact-list { display: flex; flex-direction: column; margin-bottom: 40px; }
+    .fact-row { display: flex; align-items: flex-start; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+    .fact-row:first-child { border-top: 1px solid var(--border); }
+    .fact-check { width: 18px; height: 18px; background: var(--blue); border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; margin-top: 2px; }
+    .fact-check svg { width: 10px; height: 10px; fill: #fff; }
+    .fact-main { font-size: 14px; font-weight: 700; color: var(--black); }
+    .fact-sub  { font-size: 12px; color: var(--g3); margin-top: 2px; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { padding: 88px 0; background: var(--g5); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .testi-head { margin-bottom: 48px; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testi-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 30px 26px; }
+    .testi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .testi-stars { color: #F59E0B; font-size: 13px; letter-spacing: 2px; }
+    .testi-badge { font-size: 11px; font-weight: 600; color: var(--g3); }
+    .testi-text { font-size: 14px; font-weight: 600; color: var(--black); line-height: 1.65; margin-bottom: 18px; }
+    .testi-more { font-size: 13px; color: var(--g2); line-height: 1.6; margin-bottom: 20px; }
+    .testi-hr { border: none; border-top: 1px solid var(--border); margin-bottom: 16px; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-av { width: 34px; height: 34px; border-radius: 50%; background: var(--blue-bg); display: grid; place-items: center; font-size: 12px; font-weight: 800; color: var(--blue); flex-shrink: 0; }
+    .testi-name { font-size: 13px; font-weight: 700; color: var(--black); }
+    .testi-loc  { font-size: 12px; color: var(--g3); }
+
+    /* ── FAQ ── */
+    #faq { padding: 88px 0; }
+    .faq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 72px; align-items: start; }
+    .faq-left h2 { margin-bottom: 12px; }
+    .faq-left p { font-size: 14px; color: var(--g2); line-height: 1.7; margin-bottom: 28px; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0; font-size: 15px; font-weight: 700; color: var(--black);
+      font-family: var(--font); transition: color .15s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-icon { font-size: 20px; color: var(--blue); flex-shrink: 0; transition: transform .2s; font-weight: 400; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { display: none; font-size: 14px; color: var(--g2); line-height: 1.75; padding-bottom: 20px; max-width: 58ch; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── EMERGENCY ── */
+    #emergency { background: var(--blue); }
+    .emerg-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 60px 0; flex-wrap: wrap; }
+    .emerg-tag { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 10px; }
+    .emerg-inner h2 { font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 900; letter-spacing: -.03em; color: #fff; margin-bottom: 6px; }
+    .emerg-inner p  { font-size: 14px; color: rgba(255,255,255,.5); }
+    .emerg-right { text-align: right; }
+    .emerg-phone { display: block; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; letter-spacing: -.04em; color: #fff; border-bottom: 2px solid rgba(255,255,255,.18); padding-bottom: 4px; transition: border-color .15s; }
+    .emerg-phone:hover { border-color: rgba(255,255,255,.55); }
+    .emerg-sub { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 6px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 88px 0; background: var(--g5); border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; }
+    .contact-left h2 { margin-bottom: 10px; }
+    .contact-left > p { font-size: 14px; color: var(--g2); line-height: 1.7; margin-bottom: 36px; }
+    .c-list { display: flex; flex-direction: column; margin-bottom: 36px; }
+    .c-item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+    .c-item:first-child { border-top: 1px solid var(--border); }
+    .c-ico { width: 36px; height: 36px; border-radius: var(--r); background: var(--blue-bg); display: grid; place-items: center; flex-shrink: 0; }
+    .c-ico svg { width: 16px; height: 16px; fill: var(--blue); }
+    .c-lbl { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--g3); }
+    .c-val { font-size: 14px; font-weight: 700; color: var(--black); }
+    .hours-t { width: 100%; border-collapse: collapse; }
+    .hours-t td { padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .hours-t tr:last-child td { border-bottom: none; }
+    .hours-t td:first-child { color: var(--g2); }
+    .hours-t td:last-child { text-align: right; font-weight: 700; color: var(--black); }
+    .h-blue { color: var(--blue) !important; }
+
+    .c-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 40px; }
+    .c-form-hd { font-size: 16px; font-weight: 800; letter-spacing: -.01em; color: var(--black); padding-bottom: 20px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .f-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .f-g { margin-bottom: 14px; }
+    .f-l { display: block; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--g2); margin-bottom: 6px; }
+    .f-i { width: 100%; padding: 10px 12px; font-size: 14px; font-family: var(--font); color: var(--black); background: var(--white); border: 1px solid var(--border); border-radius: var(--r); outline: none; transition: border-color .15s, box-shadow .15s; }
+    .f-i:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(20,85,164,.1); }
+    .f-i::placeholder { color: var(--g4); }
+    textarea.f-i { resize: vertical; min-height: 100px; }
+    select.f-i { cursor: pointer; }
+    .f-submit { width: 100%; justify-content: center; margin-top: 6px; }
+    .f-note { font-size: 12px; color: var(--g3); text-align: center; margin-top: 10px; }
+    .f-ok { display: none; padding: 12px 16px; margin-top: 14px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--r); font-size: 13px; font-weight: 600; color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 56px 0 28px; }
+    .f-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 24px; }
+    .f-brand-n { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -.01em; }
+    .f-brand p { font-size: 13px; color: rgba(255,255,255,.35); line-height: 1.7; max-width: 270px; }
+    .f-col-t { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 14px; }
+    .f-col-l { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .f-col-l a { font-size: 13px; color: rgba(255,255,255,.45); transition: color .15s; }
+    .f-col-l a:hover { color: rgba(255,255,255,.8); }
+    .f-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .f-copy { font-size: 12px; color: rgba(255,255,255,.25); }
+    .f-leg { display: flex; gap: 18px; }
+    .f-leg a { font-size: 12px; color: rgba(255,255,255,.25); transition: color .15s; }
+    .f-leg a:hover { color: rgba(255,255,255,.55); }
+
+    /* ── BACK TOP ── */
+    #btt { position: fixed; bottom: 20px; right: 20px; width: 38px; height: 38px; background: var(--black); border-radius: var(--r); display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99; border: none; box-shadow: 0 2px 8px rgba(0,0,0,.2); cursor: pointer; }
+    #btt svg { width: 17px; height: 17px; fill: #fff; }
+    #btt.on { opacity: 1; pointer-events: all; }
+    #btt:hover { background: var(--blue); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-left { padding: 56px 28px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { height: 280px; }
+      .about-grid, .contact-grid, .faq-grid, .areas-inner { grid-template-columns: 1fr; gap: 48px; }
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .f-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .f-row2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .svc-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat:last-child { border-right: none; }
+      .emerg-inner { flex-direction: column; }
+      .emerg-right { text-align: left; }
+      .notdienst-bar { flex-direction: column; align-items: flex-start; }
+      .f-top { grid-template-columns: 1fr; }
+      .c-form { padding: 24px; }
+      .wrap { padding: 0 18px; }
+      .trust-item:first-child { padding-left: 20px; }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "Mustermann Klempner GmbH",
+  "description": "Meisterbetrieb für Sanitär, Heizung und Badsanierung in Berlin. 24h Notdienst für alle Berliner Bezirke. Rohrbruch, Wasserschaden, Verstopfung — sofortige Hilfe.",
+  "url": "https://www.mustermann-klempner.de",
+  "telephone": "+4930123456789",
+  "email": "info@mustermann-klempner.de",
+  "foundingDate": "2009",
+  "priceRange": "€€",
+  "image": "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Musterstraße 42",
+    "addressLocality": "Berlin",
+    "postalCode": "10115",
+    "addressCountry": "DE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 52.5200, "longitude": 13.4050 },
+  "areaServed": [
+    "Berlin Mitte", "Prenzlauer Berg", "Charlottenburg", "Kreuzberg",
+    "Friedrichshain", "Neukölln", "Schöneberg", "Pankow", "Spandau",
+    "Reinickendorf", "Lichtenberg", "Marzahn", "Köpenick", "Steglitz",
+    "Zehlendorf", "Tempelhof"
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
+  ],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "214", "bestRating": "5" },
+  "review": [
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Thomas K." }, "reviewBody": "Rohrbruch am Samstagabend — in 40 Minuten da, alles sauber repariert." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Sandra M." }, "reviewBody": "Badsanierung perfekt umgesetzt. Festpreis eingehalten." }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Klempnerleistungen Berlin",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rohrbruch Notdienst Berlin" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Badsanierung Berlin" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heizung Notdienst Berlin" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sanitär Notdienst Berlin 24h" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Verstopfung Abfluss Berlin" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wasserschaden Berlin" } }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Was kostet ein Klempner Notdienst in Berlin?", "acceptedAnswer": { "@type": "Answer", "text": "Mustermann Klempner arbeitet mit Festpreisen. Der Notdienst-Einsatz beginnt ab 89€. Keine versteckten Fahrtkosten, Rechnung sofort nach Abschluss." } },
+    { "@type": "Question", "name": "Wie schnell kommt der Klempner Notdienst in Berlin?", "acceptedAnswer": { "@type": "Answer", "text": "Unsere Reaktionszeit beträgt 45 Minuten für alle Berliner Bezirke — 24 Stunden am Tag, 7 Tage die Woche, auch an Feiertagen." } },
+    { "@type": "Question", "name": "Welche Berliner Bezirke bedienen Sie?", "acceptedAnswer": { "@type": "Answer", "text": "Wir sind in allen 16 Berliner Bezirken aktiv: Mitte, Prenzlauer Berg, Charlottenburg, Kreuzberg, Friedrichshain, Neukölln, Schöneberg, Pankow, Spandau, Reinickendorf, Lichtenberg, Marzahn, Köpenick, Steglitz, Zehlendorf und Tempelhof." } },
+    { "@type": "Question", "name": "Gibt es eine Garantie auf die Reparatur?", "acceptedAnswer": { "@type": "Answer", "text": "Ja — alle Reparaturen erhalten 2 Jahre Garantie. Als eingetragener Meisterbetrieb haften wir für unsere Arbeit." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav">
+  <div class="wrap">
+    <nav class="nav-row" aria-label="Hauptnavigation">
+      <a href="#hero" class="nav-logo" aria-label="Mustermann Klempner – Startseite">
+        <div class="nav-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+        <span class="nav-name">Mustermann Klempner</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#testimonials">Bewertungen</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+4930123456789" class="nav-tel" aria-label="Jetzt anrufen">030 / 123 456 789</a>
+        <a href="#contact" class="nav-btn">Anfragen</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" aria-label="Willkommen bei Mustermann Klempner">
+  <div class="hero-grid" style="max-width:1120px;margin:0 auto">
+    <div class="hero-left">
+      <div class="hero-kicker"><span class="hero-kicker-dot"></span> Meisterbetrieb Berlin · Seit 2009</div>
+      <h1>Ihr <strong>Klempner in Berlin</strong> –<br/>schnell, sauber, verlässlich.</h1>
+      <p>Rohrbruch, Heizungsausfall oder Badsanierung – wir erledigen jeden Sanitärauftrag in Berlin handwerklich einwandfrei. Über 2.400 zufriedene Kunden seit 2009.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-blue">Kostenloses Angebot anfragen</a>
+        <a href="tel:+4930123456789" class="btn-border">030 / 123 456 789</a>
+      </div>
+      <div class="hero-proof">
+        <span class="hero-stars">★★★★★</span>
+        <span class="hero-proof-text"><strong>4,9 / 5</strong> aus 214 Google-Bewertungen</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo">
+        <img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1" alt="Klempner bei der Arbeit" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85;" loading="eager"/>
+        <div class="hero-photo-icon" style="display:none;"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+        <span class="hero-photo-caption">Teamfoto</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-n">15+</div><div class="hero-stat-l">Jahre Erfahrung</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">2.400+</div><div class="hero-stat-l">Projekte</div></div>
+        <div class="hero-stat"><div class="hero-stat-n">&lt;45 Min</div><div class="hero-stat-l">Reaktionszeit</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div id="trust" aria-label="Unsere Qualitätsmerkmale">
+  <div class="wrap" style="padding:0 28px">
+    <div class="trust-row">
+      <div class="trust-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Eingetragener Meisterbetrieb</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Vollversichert & haftpflichtgesichert</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>24/7 Notdienst Berlin</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>Kostenloser Kostenvoranschlag</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>2 Jahre Gewährleistung</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="services-heading">
+  <div class="wrap">
+    <div class="svc-header">
+      <span class="s-tag">Klempnerleistungen Berlin</span>
+      <h2 class="s-h2" id="services-heading">Was wir für Sie erledigen</h2>
+      <p class="s-lead">Als Klempner-Meisterbetrieb in Berlin bieten wir das komplette Spektrum an Sanitär- und Heizungsleistungen – für Privathaushalte und Gewerbeobjekte.</p>
+    </div>
+    <div class="notdienst-bar">
+      <div class="nd-left">
+        <span class="nd-badge">24 / 7 Notdienst</span>
+        <div>
+          <h3>Rohrbruch in Berlin? Wir sind in unter 45 Minuten bei Ihnen.</h3>
+          <p>Kein Aufpreis an Wochenenden oder Feiertagen – transparent und fair.</p>
+        </div>
+      </div>
+      <a href="tel:+4930123456789" class="nd-phone" aria-label="Notdienst anrufen">030 / 123 456 789</a>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card">
+        <div class="svc-n">01</div>
+        <h3>Rohrleitungen & Wasserinstallation Berlin</h3>
+        <p>Reparatur und Neuinstallation von Wasserleitungen, Absperrventilen und Rohrführungen. Für Wohn- und Gewerbegebäude in ganz Berlin.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-n">02</div>
+        <h3>Heizungsinstallation & Wartung Berlin</h3>
+        <p>Installation, Reparatur und Wartung von Heizungsanlagen – Gas, Öl oder Wärmepumpe. Jährliche Inspektion auf Wunsch.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-n">03</div>
+        <h3>Badsanierung Berlin</h3>
+        <p>Komplette Badsanierung: Planung, Demontage, Neugestaltung und schlüsselfertige Übergabe. Termingerecht und ohne Überraschungen.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-n">04</div>
+        <h3>Kanalreinigung & Entstopfung Berlin</h3>
+        <p>Verstopfte Abflüsse, Rohre und Kanäle werden mit professionellem Hochdruckreiniger schnell und schonend befreit.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-n">05</div>
+        <h3>Sanitär-Wartungsverträge</h3>
+        <p>Regelmäßige Inspektion Ihrer Sanitär- und Heizungsanlagen. Wir erinnern Sie automatisch – damit nichts überraschend ausfällt.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-n">06</div>
+        <h3>Privat & Gewerbe in Berlin</h3>
+        <p>Erfahrung in Mehrfamilienhäusern, Bürogebäuden, Hotels und Gewerbeobjekten. Referenzen auf Anfrage verfügbar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas" aria-labelledby="areas-heading">
+  <div class="wrap">
+    <div class="areas-inner">
+      <div class="areas-left">
+        <span class="s-tag">Einsatzgebiet</span>
+        <h2 class="s-h2" id="areas-heading">Klempner in ganz Berlin</h2>
+        <p>Wir sind in allen Berliner Bezirken tätig – von Mitte bis Spandau. Schnelle Reaktionszeiten dank zentralem Standort.</p>
+      </div>
+      <div class="areas-pills">
+        <span class="area-pill">Berlin-Mitte</span>
+        <span class="area-pill">Prenzlauer Berg</span>
+        <span class="area-pill">Charlottenburg</span>
+        <span class="area-pill">Kreuzberg</span>
+        <span class="area-pill">Friedrichshain</span>
+        <span class="area-pill">Schöneberg</span>
+        <span class="area-pill">Neukölln</span>
+        <span class="area-pill">Tempelhof</span>
+        <span class="area-pill">Spandau</span>
+        <span class="area-pill">Pankow</span>
+        <span class="area-pill">Steglitz</span>
+        <span class="area-pill">Lichtenberg</span>
+        <span class="area-pill">Marzahn</span>
+        <span class="area-pill">Reinickendorf</span>
+        <span class="area-pill">Treptow</span>
+        <span class="area-pill">Köpenick</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img">
+          <div class="about-img-fill"><img src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&dpr=1" alt="Meisterbetrieb Mustermann" loading="lazy"/></div>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <div class="about-chip">
+          <div class="chip-n">2009</div>
+          <div class="chip-l">Gegründet in Berlin</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="s-tag">Über Mustermann Klempner</span>
+        <h2 class="s-h2" id="about-heading">Familiengeführt.<br/>Direkt. Verlässlich.</h2>
+        <p>Als Meisterbetrieb für Sanitär und Heizung in Berlin verbinden wir handwerkliche Präzision mit persönlichem Service. Was 2009 als Zwei-Mann-Betrieb begann, ist heute ein erfahrenes Team – mit einem unveränderlichen Anspruch: sauber arbeiten, klar kommunizieren, Termine einhalten.</p>
+        <div class="fact-list">
+          <div class="fact-row">
+            <div class="fact-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><div class="fact-main">Meisterbetrieb seit 2009</div><div class="fact-sub">Zertifiziert durch die Berliner Handwerkskammer</div></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><div class="fact-main">Transparente Festpreise</div><div class="fact-sub">Kostenloser Kostenvoranschlag – keine bösen Überraschungen</div></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><div class="fact-main">2 Jahre Gewährleistung</div><div class="fact-sub">Auf alle ausgeführten Arbeiten, vollversichert</div></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><div class="fact-main">Saubere Arbeitsweise</div><div class="fact-sub">Wir hinterlassen jede Baustelle so, wie wir sie angetroffen haben – oder besser</div></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-blue">Jetzt Beratung anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" aria-labelledby="testi-heading">
+  <div class="wrap">
+    <div class="testi-head">
+      <span class="s-tag">Kundenbewertungen</span>
+      <h2 class="s-h2" id="testi-heading">214 Berliner vertrauen uns – lesen Sie selbst</h2>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-top"><div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="testi-badge">Google · verifiziert</span></div>
+        <p class="testi-text">"Rohrbruch am Sonntagabend – in 38 Minuten war der Techniker da."</p>
+        <p class="testi-more">Sauber gearbeitet, fairer Preis, kein Aufwand. Genau das, was man in einer Notsituation braucht. Klare Weiterempfehlung für alle Berliner.</p>
+        <hr class="testi-hr" />
+        <div class="testi-author">
+          <div class="testi-av" aria-hidden="true">MK</div>
+          <div><div class="testi-name" itemprop="author">Maria K.</div><div class="testi-loc">Berlin-Mitte</div></div>
+        </div>
+      </article>
+      <article class="testi-card" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-top"><div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="testi-badge">Google · verifiziert</span></div>
+        <p class="testi-text">"Badsanierung termingerecht und in einwandfreier Qualität abgeliefert."</p>
+        <p class="testi-more">Alle Absprachen wurden eingehalten, das Team war professionell und ordentlich. Die Koordination aller Gewerke hat einwandfrei funktioniert.</p>
+        <hr class="testi-hr" />
+        <div class="testi-author">
+          <div class="testi-av" aria-hidden="true">TH</div>
+          <div><div class="testi-name" itemprop="author">Thomas H.</div><div class="testi-loc">Prenzlauer Berg</div></div>
+        </div>
+      </article>
+      <article class="testi-card" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-top"><div class="testi-stars" aria-label="5 von 5 Sternen">★★★★★</div><span class="testi-badge">Google · verifiziert</span></div>
+        <p class="testi-text">"Heizungsausfall im Januar – noch am selben Tag vollständig behoben."</p>
+        <p class="testi-more">Trotz vollem Terminkalender umgehend reagiert. Sehr professionell, klare Kommunikation von Anfang bis Ende. Ich rufe nie jemand anderen an.</p>
+        <hr class="testi-hr" />
+        <div class="testi-author">
+          <div class="testi-av" aria-hidden="true">SB</div>
+          <div><div class="testi-name" itemprop="author">Sandra B.</div><div class="testi-loc">Charlottenburg</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <span class="s-tag">FAQ</span>
+        <h2 class="s-h2" id="faq-heading">Häufige Fragen</h2>
+        <p>Alles Wichtige auf einen Blick – oder rufen Sie uns einfach an.</p>
+        <a href="tel:+4930123456789" class="btn-blue" style="margin-top:8px">030 / 123 456 789</a>
+      </div>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Wie schnell kommt ein Klempner im Notfall in Berlin?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Unser Notdienst ist 24 Stunden täglich, 7 Tage die Woche erreichbar. Die durchschnittliche Reaktionszeit beträgt unter 45 Minuten – in ganz Berlin, auch an Wochenenden und Feiertagen, ohne Aufpreis.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Was kostet ein Klempner in Berlin?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Wir arbeiten ausschließlich mit transparenten Festpreisen. Der Kostenvoranschlag ist kostenlos und unverbindlich. Sie wissen vor Arbeitsbeginn genau, was Sie zahlen – keine versteckten Kosten, keine Nachforderungen.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            In welchen Berliner Bezirken sind Sie tätig?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Wir sind in allen Berliner Bezirken tätig: Mitte, Prenzlauer Berg, Charlottenburg, Kreuzberg, Friedrichshain, Schöneberg, Neukölln, Tempelhof, Spandau, Pankow, Steglitz, Lichtenberg, Marzahn, Reinickendorf, Treptow und Köpenick.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Haben Sie einen 24-Stunden-Notdienst?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Ja. Unser Notdienst ist rund um die Uhr erreichbar – auch an Sonn- und Feiertagen. Einfach anrufen: 030 / 123 456 789. Wir sind innerhalb von 45 Minuten bei Ihnen.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Wie lange dauert eine Badsanierung in Berlin?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Eine typische Badsanierung dauert je nach Umfang zwischen 5 und 15 Werktagen. Wir planen gemeinsam mit Ihnen, koordinieren alle Gewerke und halten den vereinbarten Fertigstellungstermin zuverlässig ein.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Welche Garantie geben Sie auf Ihre Arbeiten?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a">Wir gewähren 2 Jahre Gewährleistung auf alle ausgeführten Arbeiten. Darüber hinaus sind wir vollständig haftpflichtversichert – für Ihre maximale Sicherheit.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency" aria-label="Notdienst">
+  <div class="wrap">
+    <div class="emerg-inner">
+      <div>
+        <div class="emerg-tag">Klempner Notdienst Berlin · 24h · 7 Tage</div>
+        <h2>Wassereinbruch? Rohrbruch?<br/>Wir kommen sofort.</h2>
+        <p>Auch an Wochenenden und Feiertagen – ohne Aufpreis. Reaktionszeit unter 45 Minuten.</p>
+      </div>
+      <div class="emerg-right">
+        <a href="tel:+4930123456789" class="emerg-phone" aria-label="Notdienst anrufen: 030 / 123 456 789">030 / 123 456 789</a>
+        <div class="emerg-sub">Ø Reaktionszeit &lt; 45 Minuten</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="s-tag">Kontakt</span>
+        <h2 class="s-h2" id="contact-heading">Sprechen wir.</h2>
+        <p>Anfragen beantworten wir werktags innerhalb von 24 Stunden. Bei Notfällen erreichen Sie uns rund um die Uhr.</p>
+        <div class="c-list">
+          <div class="c-item">
+            <div class="c-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+            <div><div class="c-lbl">Telefon</div><div class="c-val">030 / 123 456 789</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div><div class="c-lbl">E-Mail</div><div class="c-val">info@mustermann-klempner.de</div></div>
+          </div>
+          <div class="c-item">
+            <div class="c-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div><div class="c-lbl">Adresse</div><div class="c-val">Musterstraße 42, 10115 Berlin</div></div>
+          </div>
+        </div>
+        <table class="hours-t">
+          <tr><td>Montag – Freitag</td><td>07:00 – 19:00 Uhr</td></tr>
+          <tr><td>Samstag</td><td>08:00 – 16:00 Uhr</td></tr>
+          <tr><td>Sonntag & Feiertag</td><td class="h-blue">Notdienst</td></tr>
+        </table>
+      </div>
+      <div class="c-form">
+        <div class="c-form-hd">Kostenloses Angebot anfragen</div>
+        <form onsubmit="handleSubmit(event)" novalidate>
+          <div class="f-row2">
+            <div class="f-g"><label class="f-l" for="fname">Vorname</label><input class="f-i" id="fname" type="text" placeholder="Max" required /></div>
+            <div class="f-g"><label class="f-l" for="lname">Nachname</label><input class="f-i" id="lname" type="text" placeholder="Mustermann" required /></div>
+          </div>
+          <div class="f-g"><label class="f-l" for="email">E-Mail</label><input class="f-i" id="email" type="email" placeholder="max@beispiel.de" required /></div>
+          <div class="f-g"><label class="f-l" for="phone">Telefon</label><input class="f-i" id="phone" type="tel" placeholder="030 / ..." /></div>
+          <div class="f-g">
+            <label class="f-l" for="service">Art des Anliegens</label>
+            <select class="f-i" id="service">
+              <option value="">— bitte wählen —</option>
+              <option>Rohrbruch / Notfall (sofort)</option>
+              <option>Heizung & Warmwasser</option>
+              <option>Badsanierung</option>
+              <option>Rohrleitungen</option>
+              <option>Kanalreinigung</option>
+              <option>Wartungsvertrag</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="f-g"><label class="f-l" for="msg">Nachricht</label><textarea class="f-i" id="msg" placeholder="Beschreiben Sie Ihr Anliegen kurz – wir melden uns innerhalb von 24 Stunden …"></textarea></div>
+          <button type="submit" class="btn-blue f-submit">Anfrage kostenlos absenden →</button>
+          <p class="f-note">Kostenlos & unverbindlich · Antwort innerhalb von 24 Stunden</p>
+          <div class="f-ok" id="fOk" role="status">✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <div class="f-brand-n">Mustermann Klempner GmbH</div>
+        <p>Ihr Meisterbetrieb für Sanitär, Heizung und Badsanierung in Berlin. Seit 2009 der verlässliche Partner für Privat- und Gewerbekunden.</p>
+      </div>
+      <div>
+        <div class="f-col-t">Leistungen</div>
+        <ul class="f-col-l">
+          <li><a href="#services">Notdienst Berlin</a></li>
+          <li><a href="#services">Rohrleitungen Berlin</a></li>
+          <li><a href="#services">Heizung Berlin</a></li>
+          <li><a href="#services">Badsanierung Berlin</a></li>
+          <li><a href="#services">Kanalreinigung Berlin</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-t">Unternehmen</div>
+        <ul class="f-col-l">
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#testimonials">Bewertungen</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="#">Karriere</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span class="f-copy">© 2026 Mustermann Klempner GmbH · Musterstraße 42, 10115 Berlin · Meisterbetrieb für Sanitär & Heizung</span>
+      <div class="f-leg">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben scrollen">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
+<script>
+  // Scroll events
+  window.addEventListener('scroll', () => {
+    document.getElementById('btt').classList.toggle('on', window.scrollY > 400);
+  }, { passive: true });
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('fOk').style.display = 'block';
+    e.target.querySelectorAll('input,textarea,select,button').forEach(el => el.disabled = true);
+  }
+</script>
+</body>
+</html>
