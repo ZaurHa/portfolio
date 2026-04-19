@@ -515,8 +515,8 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
         <>
           {/* Hero headline */}
           <div style={{
-            position: 'absolute', top: '2rem', left: 0, width: '100vw', zIndex: 2,
-            pointerEvents: 'none', paddingTop: '0.5rem', padding: '0.5rem 4vw 0',
+            position: 'absolute', top: '22vh', left: 0, width: '100vw', zIndex: 2,
+            pointerEvents: 'none', padding: '0 5vw',
           }}>
             <div className={montserrat.className} style={{ fontSize: 'clamp(2.4rem,5.8vw,4.8rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.06 }}>
               Dein nächster Kunde
