@@ -18,8 +18,6 @@ interface MusterShowcaseProps {
   clientName?: string;
 }
 
-const DESKTOP_PREVIEW_WIDTH = 1280;
-
 export default function MusterShowcase({ kunde, versions, clientName }: MusterShowcaseProps) {
   const [active, setActive] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
@@ -27,18 +25,15 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [mobileScale, setMobileScale] = useState(0.35);
   const [showSelectedSheet, setShowSelectedSheet] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  // Detect mobile + compute scale
+  // Detect mobile
   useEffect(() => {
     function update() {
-      const w = window.innerWidth;
-      setIsMobile(w < 768);
-      setMobileScale(w / DESKTOP_PREVIEW_WIDTH);
+      setIsMobile(window.innerWidth < 768);
     }
     update();
     window.addEventListener("resize", update);
@@ -112,7 +107,6 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
     const previewH = typeof window !== "undefined"
       ? Math.max(window.innerHeight - TOPBAR_H - TABBAR_H - BOTTOMBAR_H, 300)
       : 500;
-    const iframeH = Math.ceil(previewH / mobileScale);
 
     return (
       <div style={{ background: "#050505", minHeight: "100vh", fontFamily: "'Inter', sans-serif", color: "#f5f6fa" }}>
@@ -227,14 +221,14 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
           ))}
         </div>
 
-        {/* ── Scaled iframe preview ── */}
+        {/* ── Mobile iframe — full native width so responsive CSS activates ── */}
         <div
           style={{
             width: "100%",
             height: previewH,
             overflow: "hidden",
             position: "relative",
-            background: "#000",
+            background: "#fff",
           }}
         >
           {/* Loading / Error overlay */}
@@ -294,86 +288,7 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
             </div>
           )}
 
-          {/* Left/right tap zones for swiping between versions */}
-          <button
-            onClick={() => setActive((p) => Math.max(p - 1, 0))}
-            disabled={active === 0}
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: 44,
-              background: "transparent",
-              border: "none",
-              cursor: active === 0 ? "default" : "pointer",
-              zIndex: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              paddingLeft: 6,
-              opacity: active === 0 ? 0 : 1,
-              transition: "opacity 0.2s",
-            }}
-            aria-label="Vorherige Version"
-          >
-            <div style={{
-              width: 32,
-              height: 32,
-              borderRadius: "50%",
-              background: "rgba(0,0,0,0.6)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid #222",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M10 3L5 8l5 5" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          </button>
-
-          <button
-            onClick={() => setActive((p) => Math.min(p + 1, versions.length - 1))}
-            disabled={active === versions.length - 1}
-            style={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: 44,
-              background: "transparent",
-              border: "none",
-              cursor: active === versions.length - 1 ? "default" : "pointer",
-              zIndex: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              paddingRight: 6,
-              opacity: active === versions.length - 1 ? 0 : 1,
-              transition: "opacity 0.2s",
-            }}
-            aria-label="Nächste Version"
-          >
-            <div style={{
-              width: 32,
-              height: 32,
-              borderRadius: "50%",
-              background: "rgba(0,0,0,0.6)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid #222",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M6 3l5 5-5 5" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          </button>
-
-          {/* Scaled iframe */}
+          {/* Native-width iframe — HTML's responsive CSS activates properly */}
           <iframe
             ref={iframeRef}
             onLoad={() => {
@@ -387,13 +302,11 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
               setLoadError(true);
             }}
             style={{
-              width: DESKTOP_PREVIEW_WIDTH,
-              height: iframeH,
+              width: "100%",
+              height: previewH,
               border: "none",
               display: "block",
-              transform: `scale(${mobileScale})`,
-              transformOrigin: "top left",
-              pointerEvents: "none", // prevent iframe interaction — tap zones handle nav
+              pointerEvents: "auto",
             }}
             title={current.label}
           />
