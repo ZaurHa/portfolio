@@ -89,7 +89,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     { value: 10, suffix: "+", label: t.statsProjects },
     { value: 8, suffix: "+", label: t.statsYears },
     { value: 100, suffix: "%", label: t.statsSatisfaction },
-    { value: 3, suffix: "×", label: t.statsResults },
+    { value: 5, suffix: "", label: t.statsResults },
   ];
 
   const projects = [
@@ -104,6 +104,22 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       labelColor: "#00ffe7",
       results: [tp.zairaResult1, tp.zairaResult2, tp.zairaResult3],
       year: "2024",
+    },
+    {
+      title: locale === "de" ? "Klempner München – Muster-Website" : "Plumber Munich – Template Website",
+      description: locale === "de"
+        ? "Fertige Website-Designs speziell für Klempner und Sanitärbetriebe — 5 verschiedene Versionen zur Auswahl, SEO-optimiert für München."
+        : "Ready-made website designs for plumbers and sanitation businesses — 5 versions to choose from, SEO-optimized for Munich.",
+      category: locale === "de" ? "Muster-Website · Handwerk" : "Template Website · Trades",
+      tech: ["HTML", "CSS", "SEO", "Mobile"],
+      image: "/images/kleinanzeigen-preview.webp",
+      link: "/muster/klempner",
+      label: locale === "de" ? "LIVE DEMO" : "LIVE DEMO",
+      labelColor: "#a78bfa",
+      results: locale === "de"
+        ? ["5 Designs zur Auswahl", "Fertig in 3–5 Tagen", "Ab 490€"]
+        : ["5 designs to choose from", "Ready in 3–5 days", "From €490"],
+      year: "2025",
     },
   ];
 
@@ -120,8 +136,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <ErrorBoundary label="Globe Hero">
         <GlobeHero>
           {locale === "de"
-            ? "ICH GESTALTE DIGITALE ERLEBNISSE, DIE MARKEN SICHTBAR MACHEN"
-            : "I CREATE DIGITAL EXPERIENCES THAT MAKE BRANDS VISIBLE"}
+            ? "PROFESSIONELLE WEBSITE IN 5 TAGEN. AB 490€."
+            : "PROFESSIONAL WEBSITE IN 5 DAYS. FROM €490."}
         </GlobeHero>
         </ErrorBoundary>
       </section>
@@ -211,6 +227,34 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 <span className="skill-icon" style={{ color: '#00ffe7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{skill.icon}</span>
                 <span className="skill-name">{skill.name}</span>
                 <span className="skill-desc">{skill.desc}</span>
+              </div>
+            </FadeInSection>
+          ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="testimonials-section">
+        <FadeInSection>
+          <div className="section-header">
+            <span className="section-eyebrow">{t.testimonialsEyebrow}</span>
+            <h2 className="section-title">{t.testimonialsTitle}</h2>
+          </div>
+        </FadeInSection>
+        <div className="testimonials-grid">
+          {[
+            { quote: t.t1quote, name: t.t1name, role: t.t1role },
+            { quote: t.t2quote, name: t.t2name, role: t.t2role },
+            { quote: t.t3quote, name: t.t3name, role: t.t3role },
+          ].map((t, i) => (
+            <FadeInSection key={t.name} delay={i * 100}>
+              <div className="testimonial-card">
+                <div className="testimonial-stars">★★★★★</div>
+                <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+                <div className="testimonial-author">
+                  <span className="testimonial-name">{t.name}</span>
+                  <span className="testimonial-role">{t.role}</span>
+                </div>
               </div>
             </FadeInSection>
           ))}

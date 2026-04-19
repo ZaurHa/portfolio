@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 const skills = [
   "Next.js", "React", "TypeScript", "TailwindCSS",
-  "Node.js", "PostgreSQL", "Figma", "SEO",
-  "REST APIs", "MongoDB", "Vercel", "Git",
+  "Figma", "SEO", "Vercel", "Git",
+  "Webdesign", "Performance", "AI Tools", "Responsive Design",
 ];
 
 const socials = [

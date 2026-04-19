@@ -7,13 +7,20 @@ const berufe = [
     slug: "klempner",
     title: "Klempner",
     emoji: "🔧",
-    description: "6 Designs · SEO-optimiert für Berlin",
+    description: "6 Designs · SEO-optimiert für München",
     versionen: 6,
     tag: "Demo verfügbar",
     tagColor: "#00ffe7",
   },
-  // Weitere Berufe können hier ergänzt werden:
-  // { slug: "elektriker", title: "Elektriker", emoji: "⚡", description: "Demnächst", versionen: 0 },
+  {
+    slug: "elektriker",
+    title: "Elektriker",
+    emoji: "⚡",
+    description: "3 Designs · E-Check, Notdienst, Smart Home",
+    versionen: 3,
+    tag: "Neu",
+    tagColor: "#FF6B00",
+  },
 ];
 
 export default function MusterIndex() {

@@ -462,7 +462,7 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
   if (isMobile === null) return null;
 
   const r           = isMobile ? R_MOB : R_DESK;
-  const canvasH     = isMobile ? '100dvh' : '96vh';
+  const canvasH     = isMobile ? '65dvh' : '96vh';
   const camZ        = isMobile ? 2.55 : 2.35;   // closer on desktop → globe fills more
   const fov         = isMobile ? 52 : 46;         // narrower FOV on desktop → larger globe
 

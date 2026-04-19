@@ -26,56 +26,59 @@ const svgIcons = {
 const servicePackages = [
   {
     nameKey: "starterName" as const,
-    price: "790€",
+    price: "ab 490€",
     icon: svgIcons.starter,
     descKey: "starterDesc" as const,
     features: [
-      "Responsive Landingpage",
-      "Modernes Custom Design",
+      "Fertiges Design — du wählst, ich passe an",
+      "Dein Logo, deine Texte, deine Farben",
       "Kontaktformular",
-      "SEO-Grundlagen",
+      "SEO-Grundlagen inklusive",
       "Mobile-optimiert",
-      "1 Monat Support",
-      "Hosting inklusive",
+      "Fertig in 3–5 Werktagen",
+      "30 Tage Support",
+      "Hosting im ersten Jahr inklusive",
     ],
     popular: false,
     ctaKey: "starterCta" as const,
+    ctaLink: "/muster",
   },
   {
     nameKey: "businessName" as const,
-    price: "1.500€",
+    price: "ab 990€",
     icon: svgIcons.business,
     descKey: "businessDesc" as const,
     features: [
-      "Multi-Page Website (bis 5 Seiten)",
-      "Custom Design & Branding",
-      "Kontaktformular + Terminbuchung",
+      "Individuelles Design nach deinen Wünschen",
+      "Bis zu 5 Seiten",
+      "Kontaktformular + optional Terminbuchung",
       "SEO-Optimierung",
-      "Google Analytics",
-      "3 Monate Support",
-      "Hosting + Domain",
-      "Content-Management",
+      "Mobile-first Entwicklung",
+      "Fertig in 7–14 Tagen",
+      "30 Tage Support",
+      "Hosting + Domain im ersten Jahr",
     ],
     popular: true,
     ctaKey: "businessCta" as const,
+    ctaLink: null,
   },
   {
     nameKey: "premiumName" as const,
-    price: "2.500€",
+    price: "ab 99€/Monat",
     icon: svgIcons.premium,
     descKey: "premiumDesc" as const,
     features: [
-      "Unbegrenzte Seiten",
-      "Custom Branding & Styleguide",
-      "3D-Animationen",
-      "Erweiterte SEO-Strategie",
-      "Performance-Optimierung",
-      "6 Monate Support",
-      "Premium Hosting",
-      "Schulung inklusive",
+      "Technische SEO-Analyse",
+      "Google-Ranking verbessern",
+      "Ladezeit & Core Web Vitals",
+      "Monatliche Updates & Änderungen",
+      "Sicherheits-Checks",
+      "Monatlicher Bericht",
+      "Direkter Ansprechpartner",
     ],
     popular: false,
     ctaKey: "premiumCta" as const,
+    ctaLink: null,
   },
 ];
 
@@ -83,26 +86,26 @@ const additionalServices = [
   {
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
-      </svg>
-    ),
-    name: "UI/UX Design", price: "ab 300€", description: "Professionelle Designs mit Figma – von Wireframes bis zum finalen Prototypen."
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
-    ),
-    name: "Branding & Logo", price: "ab 500€", description: "Komplettes Branding: Logo, Farben, Typografie und fertig nutzbarer Styleguide."
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     ),
-    name: "SEO-Optimierung", price: "ab 200€", description: "Technische SEO, Content-Optimierung und messbare Google-Ranking-Verbesserung."
+    name: "Google My Business", price: "einmalig 149€", description: "Profil einrichten, optimieren und verifizieren — damit du bei lokalen Suchen sichtbar wirst."
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    ),
+    name: "Speed-Optimierung", price: "einmalig 199€", description: "Ladezeit halbieren, Lighthouse-Score verbessern, Core Web Vitals ins Grüne bringen."
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    ),
+    name: "Zusatzseiten", price: "ab 99€ / Seite", description: "Weitere Unterseiten für bestehende Websites — z.B. Leistungsseite, Galerie, Über uns."
   },
   {
     icon: (
@@ -110,7 +113,7 @@ const additionalServices = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
-    name: "Wartung & Support", price: "ab 50€/Monat", description: "Regelmäßige Updates, Sicherheits-Checks und kleine Änderungen ohne Aufwand."
+    name: "Wartung & Updates", price: "ab 49€/Monat", description: "Texte ändern, Bilder aktualisieren, technische Wartung — ohne dass du dich darum kümmern musst."
   },
 ];
 
@@ -194,7 +197,7 @@ export default function LeistungenClient({ lang, dict }: { lang: string; dict: D
                   ))}
                 </ul>
                 <Link
-                  href={`/${lang}/kontakt?package=${t[pkg.nameKey].toLowerCase()}`}
+                  href={pkg.ctaLink ?? `/${lang}/kontakt?package=${t[pkg.nameKey].toLowerCase()}`}
                   className={pkg.popular ? "cta-btn-primary w-full text-center justify-center" : "cta-btn-secondary w-full text-center justify-center"}
                 >
                   {t[pkg.ctaKey]}

@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "@context": "https://schema.org",
                 "@type": "ProfessionalService",
                 "name": "BrandWerkX – Webentwicklung München",
-                "description": "Professionelle Webentwicklung und UI/UX Design in München. Websites, Landingpages und Webanwendungen für Unternehmen und Selbstständige.",
+                "description": "Professionelle Websites für Handwerker, Selbstständige und kleine Unternehmen — ab 490€, fertig in 5 Tagen, SEO-optimiert.",
                 "url": "https://brandwerkx.de",
                 "email": "zaurhatu@gmail.com",
                 "founder": "Zaur Hatuev",
@@ -152,27 +152,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ],
                 "hasOfferCatalog": {
                   "@type": "OfferCatalog",
-                  "name": "Webentwicklung Pakete München",
+                  "name": "Website-Pakete München",
                   "itemListElement": [
                     {
                       "@type": "Offer",
-                      "name": "Starter Website",
-                      "description": "Responsive Landingpage mit Custom Design, Kontaktformular und SEO-Grundoptimierung",
-                      "price": "790",
+                      "name": "Muster-Website",
+                      "description": "Fertiges Website-Design individuell angepasst — mit Logo, Texten, Kontaktformular und SEO. Fertig in 3–5 Werktagen.",
+                      "price": "490",
                       "priceCurrency": "EUR"
                     },
                     {
                       "@type": "Offer",
-                      "name": "Business Website",
-                      "description": "Multi-Page Website mit Branding, SEO-Optimierung, Google Analytics und 3 Monate Support",
-                      "price": "1500",
+                      "name": "Custom Website",
+                      "description": "Individuell gestaltete Website nach deinen Wünschen — bis zu 5 Seiten, SEO-optimiert, mobile-first.",
+                      "price": "990",
                       "priceCurrency": "EUR"
                     },
                     {
                       "@type": "Offer",
-                      "name": "Premium Website",
-                      "description": "Individuelle Lösung mit 3D-Animationen, erweiterter SEO-Strategie und Performance-Optimierung",
-                      "price": "2500",
+                      "name": "SEO & Wartung",
+                      "description": "Bestehende Website für Google optimieren, monatliche Updates und technische Betreuung.",
+                      "price": "99",
                       "priceCurrency": "EUR"
                     }
                   ]

@@ -37,11 +37,11 @@ export default function LayoutClient({ children, lang, dict }: Props) {
 
   const navLinks = [
     { href: `/${lang}`, label: dict.nav.home },
-    { href: `/${lang}/projekte`, label: dict.nav.projects },
     { href: `/${lang}/leistungen`, label: dict.nav.services },
+    { href: '/muster', label: '🎨 Designs', highlight: true },
+    { href: `/${lang}/projekte`, label: dict.nav.projects },
     { href: `/${lang}/ueber-mich`, label: dict.nav.about },
     { href: `/${lang}/kontakt`, label: dict.nav.contact },
-    { href: '/muster', label: 'Muster' },
   ];
 
   useEffect(() => {
@@ -99,17 +99,31 @@ export default function LayoutClient({ children, lang, dict }: Props) {
 
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors ${
-                    isActive(item.href)
-                      ? 'text-[#00ffe7]'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                item.highlight ? (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-sm font-semibold transition-colors px-3 py-1 rounded-full border ${
+                      isActive(item.href)
+                        ? 'border-[#00ffe7] text-[#00ffe7] bg-[#00ffe7]/10'
+                        : 'border-[#00ffe7]/40 text-[#00ffe7] hover:border-[#00ffe7] hover:bg-[#00ffe7]/10'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-sm font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'text-[#00ffe7]'
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
 
               {/* Lang Toggle */}
@@ -153,9 +167,13 @@ export default function LayoutClient({ children, lang, dict }: Props) {
                   key={item.href}
                   href={item.href}
                   className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    isActive(item.href)
-                      ? 'text-[#00ffe7] bg-[#00ffe7]/8'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    item.highlight
+                      ? isActive(item.href)
+                        ? 'text-[#00ffe7] bg-[#00ffe7]/10 font-semibold'
+                        : 'text-[#00ffe7] hover:bg-[#00ffe7]/10 font-semibold'
+                      : isActive(item.href)
+                        ? 'text-[#00ffe7] bg-[#00ffe7]/8'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
@@ -182,6 +200,41 @@ export default function LayoutClient({ children, lang, dict }: Props) {
       <main className="pt-16">
         {children}
       </main>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/4917612345678?text=Hallo%20Zaur%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp schreiben"
+        style={{
+          position: 'fixed',
+          bottom: '1.5rem',
+          right: '1.5rem',
+          zIndex: 999,
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: '#25D366',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 20px rgba(37,211,102,0.45)',
+          transition: 'transform 0.2s, box-shadow 0.2s',
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.1)';
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 28px rgba(37,211,102,0.6)';
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)';
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 20px rgba(37,211,102,0.45)';
+        }}
+      >
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="white">
+          <path d="M16 2C8.268 2 2 8.268 2 16c0 2.466.661 4.876 1.917 6.992L2 30l7.244-1.889A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.44 11.44 0 01-5.84-1.604l-.418-.25-4.3 1.12 1.15-4.18-.274-.43A11.46 11.46 0 014.5 16C4.5 9.596 9.596 4.5 16 4.5S27.5 9.596 27.5 16 22.404 27.5 16 27.5zm6.29-8.61c-.344-.172-2.035-1.003-2.35-1.118-.315-.115-.544-.172-.773.172-.229.344-.886 1.118-1.087 1.347-.2.229-.4.258-.744.086-.344-.172-1.452-.535-2.766-1.707-1.022-.912-1.713-2.037-1.913-2.381-.2-.344-.021-.53.15-.7.155-.154.344-.4.516-.6.172-.2.229-.344.344-.573.115-.229.057-.43-.029-.6-.086-.172-.773-1.864-1.059-2.552-.278-.668-.562-.578-.773-.588l-.658-.011c-.229 0-.6.086-.915.43-.315.344-1.2 1.175-1.2 2.867s1.228 3.326 1.4 3.555c.172.229 2.416 3.69 5.853 5.175.818.353 1.456.564 1.952.721.821.261 1.568.224 2.159.136.659-.099 2.035-.831 2.322-1.634.287-.803.287-1.491.2-1.634-.086-.143-.315-.229-.659-.4z"/>
+        </svg>
+      </a>
 
       <footer style={{
         width: '100%',

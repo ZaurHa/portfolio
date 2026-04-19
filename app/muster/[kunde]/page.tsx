@@ -47,6 +47,31 @@ const kundenConfig: Record<string, { clientName: string; versions: MusterVersion
       },
     ],
   },
+  elektriker: {
+    clientName: "Mustermann Elektro",
+    versions: [
+      {
+        id: "v1",
+        label: "Version 1 — Klassisch Blau",
+        description: "Hell, seriös, professionell. Blau & Weiß — Vertrauen auf den ersten Blick.",
+        src: "/muster/elektriker/v1.html",
+      },
+      {
+        id: "v2",
+        label: "Version 2 — Modern Dark",
+        description: "Dunkler Hintergrund mit gelben Akzenten. Auffällig und modern.",
+        src: "/muster/elektriker/v2.html",
+      },
+      {
+        id: "v3",
+        label: "Version 3 — Minimal Orange",
+        description: "Reduziertes Design mit Orange-Akzenten. Elegant und zeitlos.",
+        tag: "EMPFOHLEN",
+        tagColor: "#FF6B00",
+        src: "/muster/elektriker/v3.html",
+      },
+    ],
+  },
 };
 
 export async function generateStaticParams() {
