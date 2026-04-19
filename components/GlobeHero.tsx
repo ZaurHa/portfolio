@@ -425,11 +425,7 @@ function GlobeGroup({ r, geoLines, globeRef }: {
 export default function GlobeHero({ children }: { children?: ReactNode }) {
   const [isMobile,        setIsMobile]        = useState<boolean | null>(null);
   const [geoLines,        setGeoLines]        = useState<Float32Array | null>(null);
-  const [transmissionOpen,setTransmissionOpen]= useState(false);
-  const [showFolder,      setShowFolder]      = useState(false);
   const globeRef         = useRef<THREE.Group | null>(null);
-  const transmissionRef  = useRef<HTMLDivElement>(null);
-  const folderRef        = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 700);
@@ -443,21 +439,6 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
       .catch(() => {/* Globe still works without borders */});
   }, []);
 
-  // Close overlays on outside click
-  useEffect(() => {
-    const fn = (e: MouseEvent | TouchEvent) => {
-      if (transmissionRef.current && !transmissionRef.current.contains(e.target as Node)) setTransmissionOpen(false);
-    };
-    document.addEventListener('mousedown', fn); document.addEventListener('touchstart', fn);
-    return () => { document.removeEventListener('mousedown', fn); document.removeEventListener('touchstart', fn); };
-  }, []);
-  useEffect(() => {
-    const fn = (e: MouseEvent | TouchEvent) => {
-      if (folderRef.current && !folderRef.current.contains(e.target as Node)) setShowFolder(false);
-    };
-    document.addEventListener('mousedown', fn); document.addEventListener('touchstart', fn);
-    return () => { document.removeEventListener('mousedown', fn); document.removeEventListener('touchstart', fn); };
-  }, []);
 
   if (isMobile === null) return null;
 
@@ -466,14 +447,6 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
   const camZ        = isMobile ? 2.55 : 2.35;   // closer on desktop → globe fills more
   const fov         = isMobile ? 52 : 46;         // narrower FOV on desktop → larger globe
 
-  const glass: React.CSSProperties = {
-    background: 'rgba(4,14,18,0.92)',
-    border: '1px solid rgba(0,255,231,0.18)',
-    borderRadius: 14,
-    backdropFilter: 'blur(14px)',
-    WebkitBackdropFilter: 'blur(14px)',
-    boxShadow: '0 0 28px rgba(0,255,231,0.06), inset 0 1px 0 rgba(255,255,255,0.04)',
-  };
 
   return (
     <div style={{ position: 'relative', width: '100vw', overflow: 'hidden', background: '#000' }}>
@@ -543,115 +516,37 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
           {/* Hero headline */}
           <div style={{
             position: 'absolute', top: '2rem', left: 0, width: '100vw', zIndex: 2,
-            pointerEvents: 'none', paddingTop: '0.5rem',
+            pointerEvents: 'none', paddingTop: '0.5rem', padding: '0.5rem 4vw 0',
           }}>
-            <span className={montserrat.className} style={{ fontSize: 'clamp(3.2rem,10vw,5.2rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.04, whiteSpace: 'nowrap' }}>
-              DIGITALISIEREN
-            </span>
-            <div style={{ width: '100vw', display: 'flex', alignItems: 'center', margin: '0.18em 0' }}>
-              <div style={{ flex: 1, height: 2, background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.55))', marginRight: 28, borderRadius: 2 }} />
-              <span className={montserrat.className} style={{ fontSize: 'clamp(3.2rem,10vw,5.2rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.04, padding: '0 12px', whiteSpace: 'nowrap' }}>
-                BEGEISTERN
-              </span>
-              <div style={{ flex: 1, height: 2, background: 'linear-gradient(90deg,rgba(255,255,255,0.55),transparent)', marginLeft: 28, borderRadius: 2 }} />
+            <div className={montserrat.className} style={{ fontSize: 'clamp(2.4rem,5.8vw,4.8rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.06 }}>
+              Dein nächster Kunde
             </div>
-            <div style={{ width: '100vw', display: 'flex', justifyContent: 'flex-end' }}>
-              <span className={montserrat.className} style={{ fontSize: 'clamp(3.2rem,10vw,5.2rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.04, whiteSpace: 'nowrap' }}>
-                BEWEGEN
-              </span>
+            <div className={montserrat.className} style={{ fontSize: 'clamp(2.4rem,5.8vw,4.8rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.06 }}>
+              sucht dich{' '}
+              <span style={{ color: '#6cfcff' }}>gerade online.</span>
+            </div>
+            <div style={{ marginTop: '1.1rem', height: 2, width: 'clamp(60px,8vw,120px)', background: 'rgba(108,252,255,0.5)', borderRadius: 2 }} />
+            <div style={{ marginTop: '1rem', fontSize: 'clamp(0.95rem,1.5vw,1.2rem)', color: 'rgba(255,255,255,0.72)', fontFamily: 'inherit', letterSpacing: '0.01em', lineHeight: 1.5 }}>
+              Website in 7 Tagen — professionell, fertig, gefunden.
             </div>
           </div>
 
-          {/* Transmission button */}
-          <div style={{ position: 'absolute', top: '22vw', right: '2.5vw', zIndex: 30 }}>
-            <button
-              onClick={() => setTransmissionOpen(v => !v)}
-              aria-label="Transmission"
-              style={{ width: 48, height: 48, borderRadius: '50%', background: 'transparent', border: '1px solid rgba(108,250,255,0.40)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', opacity: 0.72 }}
-            >
-              <Image src="/images/satellite_icon.webp" alt="" width={28} height={28} draggable="false" />
-            </button>
-            <div ref={transmissionRef} style={{
-              ...glass,
-              marginTop: transmissionOpen ? 10 : 0,
-              opacity: transmissionOpen ? 1 : 0,
-              transform: transmissionOpen ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(-6px)',
-              pointerEvents: transmissionOpen ? 'auto' : 'none',
-              transition: 'opacity 0.22s, transform 0.22s, margin-top 0.22s',
-              color: '#fff', fontFamily: '"Fira Mono",monospace', fontSize: '0.98rem',
-              minWidth: 240, maxWidth: 320, padding: '1.1rem 1.3rem',
-              letterSpacing: '0.03em', lineHeight: 1.38,
-            }}>
-              <div style={{ color: '#ff4c2b', fontWeight: 700, marginBottom: 8, letterSpacing: '0.07em' }}>&gt;&gt; TRANSMISSION ACTIVE</div>
-              <div style={{ marginBottom: 6, opacity: 0.9 }}>Empfange kreative Signale seit 2015.</div>
-              <div style={{ opacity: 0.72, fontSize: '0.9rem' }}>Identität: BrandWerkX / München</div>
-            </div>
-          </div>
-
-          {/* Info / diskette button */}
-          <div style={{ position: 'absolute', left: '2vw', bottom: '8vw', zIndex: 10, display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-            <button
-              onClick={() => setShowFolder(v => !v)}
-              aria-label="Info"
-              style={{ width: 44, height: 44, borderRadius: 10, background: 'transparent', border: '1px solid rgba(111,252,255,0.40)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', opacity: 0.70, flexShrink: 0 }}
-            >
-              <Image src="/images/diskette.webp" alt="Info" width={26} height={26} />
-            </button>
-            <div ref={folderRef} style={{
-              ...glass,
-              maxHeight: showFolder ? 180 : 0,
-              opacity: showFolder ? 1 : 0,
-              overflow: 'hidden',
-              pointerEvents: showFolder ? 'auto' : 'none',
-              transition: 'max-height 0.32s, opacity 0.22s',
-              color: '#fff', fontFamily: '"Fira Mono",monospace',
-              minWidth: 220, padding: showFolder ? '1rem 1.3rem' : '0 1.3rem',
-              lineHeight: 1.4,
-            }}>
-              <div style={{ color: '#ff5c2b', fontWeight: 700, marginBottom: 5, fontSize: '0.95rem' }}>Zaur Hatuev – Design mit Substanz.</div>
-              <div style={{ fontSize: '0.87rem', opacity: 0.80 }}>Freelance Webentwickler & UI/UX Designer aus München</div>
-            </div>
-          </div>
         </>
       )}
 
       {/* ── Mobile overlay ─────────────────────────────────────────────── */}
       {isMobile && (
         <>
-          <div style={{ position: 'absolute', top: '18vw', left: 0, width: '100vw', padding: '0 4vw', zIndex: 2, pointerEvents: 'none' }}>
-            <div><span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem,7vw,2.1rem)', fontWeight: 700, color: '#fff', lineHeight: 1.08 }}>DIGITALISIEREN</span></div>
-            <div style={{ display: 'flex', alignItems: 'center', margin: '0.25em 0' }}>
-              <div style={{ flex: 1, height: 2, background: 'linear-gradient(90deg,transparent,#fff)', marginRight: '5vw' }} />
-              <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem,7vw,2.1rem)', fontWeight: 700, color: '#fff', lineHeight: 1.08 }}>BEGEISTERN</span>
-              <div style={{ flex: 1, height: 2, background: 'linear-gradient(90deg,#fff,transparent)', marginLeft: '5vw' }} />
+          <div style={{ position: 'absolute', top: '18vw', left: 0, width: '100vw', padding: '0 5vw', zIndex: 2, pointerEvents: 'none' }}>
+            <div className={montserrat.className} style={{ fontSize: 'clamp(1.5rem,6.5vw,2.4rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
+              Dein nächster Kunde
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <span className={montserrat.className} style={{ fontSize: 'clamp(1.1rem,7vw,2.1rem)', fontWeight: 700, color: '#fff', lineHeight: 1.08 }}>BEWEGEN</span>
+            <div className={montserrat.className} style={{ fontSize: 'clamp(1.5rem,6.5vw,2.4rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
+              sucht dich <span style={{ color: '#6cfcff' }}>gerade online.</span>
             </div>
-          </div>
-          <div style={{ position: 'absolute', left: 0, bottom: '3vw', width: '100vw', textAlign: 'center', color: '#fff', fontSize: '0.93rem', opacity: 0.85, zIndex: 2 }}>
-            <div style={{ fontWeight: 600 }}>{`„Zaur Hatuev – Design mit Substanz und Wirkung."`}</div>
-            <div style={{ fontWeight: 400, fontSize: '0.85rem', opacity: 0.78 }}>Freelance Webentwickler & UI/UX Designer aus München</div>
-          </div>
-          {/* Mobile transmission */}
-          <div style={{ position: 'absolute', right: '4vw', top: 'calc(18vw + 9rem)', zIndex: 30 }}>
-            <button onClick={() => setTransmissionOpen(v => !v)} aria-label="Transmission"
-              style={{ width: 46, height: 46, borderRadius: '50%', background: 'transparent', border: '1px solid rgba(108,250,255,0.40)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', opacity: 0.70 }}>
-              <Image src="/images/satellite_icon.webp" alt="" width={26} height={26} draggable="false" />
-            </button>
-            <div ref={transmissionRef} style={{
-              ...glass,
-              marginTop: transmissionOpen ? 8 : 0,
-              opacity: transmissionOpen ? 1 : 0,
-              transform: transmissionOpen ? 'scale(1)' : 'scale(0.90)',
-              pointerEvents: transmissionOpen ? 'auto' : 'none',
-              transition: 'opacity 0.22s, transform 0.22s, margin-top 0.22s',
-              color: '#fff', fontFamily: '"Fira Mono",monospace', fontSize: '0.90rem',
-              minWidth: 170, maxWidth: '70vw', padding: transmissionOpen ? '0.7rem 1rem' : '0 1rem',
-            }}>
-              <div style={{ color: '#00ffe7', fontWeight: 700, marginBottom: 4, letterSpacing: '0.06em' }}>TRANSMISSION ACTIVE</div>
-              <div style={{ marginBottom: 3, fontSize: '0.86rem' }}>Empfange Signale seit 2015.</div>
-              <div style={{ fontSize: '0.83rem', opacity: 0.75 }}>BrandWerkX / München</div>
+            <div style={{ marginTop: '0.7rem', height: 2, width: 60, background: 'rgba(108,252,255,0.5)', borderRadius: 2 }} />
+            <div style={{ marginTop: '0.6rem', fontSize: 'clamp(0.8rem,3.5vw,1rem)', color: 'rgba(255,255,255,0.70)', lineHeight: 1.45 }}>
+              Website in 7 Tagen —{'\u00A0'}fertig, gefunden.
             </div>
           </div>
         </>
