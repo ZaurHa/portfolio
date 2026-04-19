@@ -203,7 +203,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/4917612345678?text=Hallo%20Zaur%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website."
+        href="https://wa.me/491728471641?text=Hallo%20Zaur%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp schreiben"
