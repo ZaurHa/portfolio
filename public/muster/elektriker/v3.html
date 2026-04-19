@@ -3,225 +3,225 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Elektriker München – Mustermann Elektro | Minimal Clean</title>
-<meta name="description" content="Elektriker München ✓ Mustermann Elektro – Meisterbetrieb. E-Check, Notdienst 24h, Smart Home. Festpreis. ☎ 089 / 123 456 789"/>
+<title>Elektriker München – Mustermann Elektro | Notdienst & Meisterbetrieb</title>
+<meta name="description" content="Elektriker München ✓ Meisterbetrieb. E-Check, Notdienst 24h, Smart Home. Festpreis. ☎ 089 / 123 456 789"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --black:#0D0D0D;--white:#FAFAFA;--gray:#F4F4F4;--mid:#6B7280;--border:#E5E7EB;
-  --accent:#FF6B00;--accent-d:#E05500;--accent-l:#FFF3EC;
-  --r:6px;--font:'DM Sans',system-ui,sans-serif;--display:'DM Serif Display',Georgia,serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:#F5F5F0;color:#111;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--display);font-size:20px;color:var(--black);display:flex;align-items:center;gap:10px}
-.logo-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
-.nav-links{display:flex;gap:32px}
-.nav-links a{font-size:14px;color:var(--mid);transition:color .15s}
-.nav-links a:hover{color:var(--black)}
-.nav-cta{background:var(--black);color:white;font-size:14px;font-weight:600;padding:10px 20px;border-radius:99px;transition:background .15s}
-.nav-cta:hover{background:#1a1a1a}
-#hero{max-width:1100px;margin:0 auto;padding:80px 40px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:80vh}
-.hero-left{}
-.overline{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.overline::before{content:'';display:block;width:24px;height:2px;background:var(--accent)}
-h1{font-family:var(--display);font-size:clamp(2.6rem,4vw,4rem);font-weight:400;line-height:1.1;color:var(--black);margin-bottom:24px}
-h1 em{font-style:italic;color:var(--accent)}
-.hero-p{font-size:16px;color:var(--mid);line-height:1.9;max-width:42ch;margin-bottom:36px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
-.btn-primary{background:var(--accent);color:white;font-weight:600;font-size:15px;padding:13px 28px;border-radius:99px;display:inline-flex;align-items:center;gap:8px;transition:all .15s}
-.btn-primary:hover{background:var(--accent-d);transform:translateY(-1px)}
-.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--black);font-weight:600;font-size:15px;padding:13px 28px;border-radius:99px;transition:all .15s}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-.ratings{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid)}
-.rating-stars{color:#F59E0B;font-size:15px}
-.rating-sep{width:4px;height:4px;border-radius:50%;background:var(--border)}
-.hero-right{position:relative}
-.hero-card{background:var(--black);color:white;border-radius:20px;padding:40px;height:480px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-.hero-card::before{content:'⚡';font-size:180px;position:absolute;top:-20px;right:-20px;opacity:.05;line-height:1}
-.hero-card-tag{background:var(--accent);color:white;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:99px;display:inline-block;margin-bottom:16px}
-.hero-card h2{font-family:var(--display);font-size:1.8rem;color:white;margin-bottom:12px;line-height:1.2}
-.hero-card p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px}
-.hero-card-stats{display:flex;gap:24px}
-.hcs-item{text-align:center}
-.hcs-num{font-family:var(--display);font-size:1.8rem;color:var(--accent)}
-.hcs-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
-.floating-badge{position:absolute;top:32px;left:-20px;background:white;border-radius:12px;padding:12px 16px;box-shadow:0 8px 40px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--black)}
-.badge-dot{width:8px;height:8px;background:#22C55E;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-#services{padding:80px 0;background:var(--gray)}
-.section-inner{max-width:1100px;margin:0 auto;padding:0 40px}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
-.overline-sm{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.overline-sm::before{content:'';display:block;width:16px;height:1.5px;background:var(--accent)}
-.sec-title{font-family:var(--display);font-size:clamp(1.8rem,2.5vw,2.4rem);color:var(--black);line-height:1.15}
-.sec-desc{font-size:14px;color:var(--mid);max-width:36ch;text-align:right;line-height:1.8}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.svc{background:white;padding:32px 28px;transition:background .15s;cursor:default}
-.svc:hover{background:var(--accent-l)}
-.svc-num{font-size:11px;font-weight:600;color:var(--mid);margin-bottom:20px}
-.svc-title{font-family:var(--display);font-size:1.2rem;color:var(--black);margin-bottom:10px}
-.svc-desc{font-size:13px;color:var(--mid);line-height:1.7}
-#numbers{padding:64px 0;background:var(--black)}
-.numbers-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px}
-.num-item{}
-.num-val{font-family:var(--display);font-size:3rem;color:white;letter-spacing:-.02em;line-height:1}
-.num-val em{font-style:italic;color:var(--accent)}
-.num-label{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px}
-#pricing{padding:80px 0}
-.pricing-intro{max-width:520px;margin-bottom:48px}
-.pricing-table{border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.pt-row{display:grid;grid-template-columns:1fr 120px 120px 120px;padding:18px 28px;border-bottom:1px solid var(--border);align-items:center}
-.pt-row:last-child{border-bottom:none}
-.pt-header{background:var(--gray);font-size:12px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:.08em}
-.pt-service{font-size:15px;font-weight:500;color:var(--black)}
-.pt-price{font-size:15px;font-weight:700;color:var(--black);text-align:center}
-.pt-badge{font-size:11px;color:var(--mid);text-align:center}
-.pt-row.highlight{background:var(--accent-l)}
-#cta{padding:80px 0}
-.cta-box{background:var(--black);border-radius:20px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.cta-left h2{font-family:var(--display);font-size:clamp(1.8rem,2.5vw,2.8rem);color:white;margin-bottom:16px;line-height:1.15}
-.cta-left p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8}
-form{display:flex;flex-direction:column;gap:12px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fi{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:var(--r);padding:11px 14px;font-family:var(--font);font-size:14px;color:white;outline:none;transition:border .15s;width:100%}
-.fi:focus{border-color:var(--accent)}
-.fi::placeholder{color:#444}
-.fi option{background:#1a1a1a}
-textarea.fi{height:88px;resize:vertical}
-.submit-btn{background:var(--accent);color:white;font-weight:700;font-size:15px;padding:14px;border-radius:var(--r);border:none;cursor:pointer;transition:all .15s}
-.submit-btn:hover{background:var(--accent-d)}
-footer{padding:28px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--mid)}
-footer a{color:var(--mid);transition:color .15s}
-footer a:hover{color:var(--black)}
+
+nav{position:sticky;top:0;z-index:100;background:#111;padding:0 48px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.logo em{color:#FF4500;font-style:normal}
+.nav-r{display:flex;align-items:center;gap:28px}
+.nav-r a{font-size:12px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.06em;text-transform:uppercase;transition:color .15s}
+.nav-r a:hover{color:#fff}
+.nav-r .cta{background:#FF4500;color:#fff;padding:8px 18px}
+.nav-r .cta:hover{background:#E03D00;color:#fff}
+
+/* HERO — centered, massive type */
+#hero{background:#111;min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+#hero::after{content:'⚡';font-size:500px;position:absolute;opacity:.025;color:#FF4500;line-height:1;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:#FF4500;color:#fff;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;margin-bottom:32px}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(4rem,12vw,11rem);font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:-.01em;color:#fff;margin-bottom:28px}
+h1 em{font-style:normal;-webkit-text-stroke:2px #fff;color:transparent}
+h1 .red{color:#FF4500}
+.hero-p{font-size:16px;color:rgba(255,255,255,.5);max-width:48ch;margin:0 auto 44px;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hb-main{background:#FF4500;color:#fff;font-size:14px;font-weight:600;padding:16px 36px;letter-spacing:.04em;transition:background .15s}
+.hb-main:hover{background:#E03D00}
+.hb-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:14px;font-weight:400;padding:16px 36px;letter-spacing:.04em;transition:all .15s}
+.hb-ghost:hover{border-color:#fff}
+
+/* STRIP */
+.strip{background:#FF4500;display:flex;overflow:hidden;padding:16px 0}
+.strip-inner{display:flex;gap:48px;animation:scroll 20s linear infinite;white-space:nowrap}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip-item{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:16px}
+.strip-item::after{content:'⚡';font-size:.9rem}
+
+/* ABOUT — horizontal 3 panel */
+#about{display:grid;grid-template-columns:1fr 1fr 1fr;min-height:320px}
+.about-panel{padding:52px 40px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #E0E0D8}
+.about-panel:last-child{border-right:none}
+.ap-num{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:800;color:#FF4500;line-height:1;margin-bottom:12px}
+.ap-title{font-size:15px;font-weight:600;color:#111;margin-bottom:8px}
+.ap-desc{font-size:13px;color:#777;line-height:1.7;font-weight:300}
+
+/* LEISTUNGEN */
+#leistungen{background:#fff;padding:80px 0}
+.l-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.sec-top{display:flex;gap:80px;align-items:flex-start;margin-bottom:56px}
+.st-label{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FF4500;min-width:120px;padding-top:8px}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;text-transform:uppercase;color:#111;line-height:1.05;letter-spacing:-.01em}
+.leistung-rows{display:flex;flex-direction:column;gap:0;border-top:1px solid #E0E0D8}
+.lr{display:grid;grid-template-columns:3fr 1fr 160px;align-items:center;padding:24px 0;border-bottom:1px solid #E0E0D8;gap:24px;transition:all .15s;cursor:default}
+.lr:hover{padding-left:12px;background:rgba(255,69,0,.02)}
+.lr-name{font-size:16px;font-weight:600;color:#111}
+.lr-desc{font-size:13px;color:#999;margin-top:4px;font-weight:300}
+.lr-tag{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#FF4500}
+.lr-price{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:#111;text-align:right;letter-spacing:.02em}
+
+/* PREISE */
+#preise{background:#111;padding:80px 0}
+.p-inner{max-width:1200px;margin:0 auto;padding:0 48px}
+.preise-table{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;border:1px solid #222;margin-top:48px}
+.pt-head{background:#1a1a1a;padding:14px 20px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#555;border-right:1px solid #222}
+.pt-head:last-child{border-right:none}
+.pt-row{display:contents}
+.pt-cell{padding:18px 20px;border-top:1px solid #222;border-right:1px solid #222;font-size:14px;color:#ccc;font-weight:300;background:#111;transition:background .15s}
+.pt-cell:last-child{border-right:none}
+.pt-row:hover .pt-cell{background:#141414}
+.pt-cell.name{color:#fff;font-weight:500}
+.pt-cell.price{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:#FF4500;letter-spacing:.02em}
+
+/* KONTAKT */
+#kontakt{background:#F5F5F0;padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.kl h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:16px}
+.kl h2 em{font-style:normal;color:#FF4500}
+.kl p{font-size:14px;color:#777;line-height:1.8;font-weight:300;margin-bottom:32px}
+.ki{display:flex;flex-direction:column;gap:0;border-top:1px solid #E0E0D8}
+.ki-row{display:flex;justify-content:space-between;font-size:13px;padding:14px 0;border-bottom:1px solid #E0E0D8;font-weight:300}
+.ki-row strong{color:#111;font-weight:600}
+form{background:#fff;padding:36px;border:1px solid #E0E0D8}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:16px}
+.fg label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#999}
+.fg input,.fg select,.fg textarea{background:#F5F5F0;border:1.5px solid #E0E0D8;padding:11px 14px;font-family:'Inter',sans-serif;font-size:13px;color:#111;outline:none;transition:border .15s;font-weight:300;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#FF4500}
+.fg textarea{height:90px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fsub{background:#FF4500;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:14px;border:none;cursor:pointer;width:100%;transition:background .15s}
+.fsub:hover{background:#E03D00}
+
+footer{background:#111;padding:24px 48px;display:flex;justify-content:space-between;font-size:12px;color:#555;flex-wrap:wrap;gap:12px}
+footer a{color:#555;transition:color .15s}
+footer a:hover{color:#FF4500}
+
 @media(max-width:900px){
-  #hero{grid-template-columns:1fr;gap:32px;padding:48px 24px}.hero-right{display:none}
-  .services-grid{grid-template-columns:1fr}.section-head{flex-direction:column}.sec-desc{text-align:left}
-  .cta-box{grid-template-columns:1fr;padding:32px 24px}.form-row{grid-template-columns:1fr}
-  .numbers-inner{gap:24px}.nav-links{display:none}.pt-row{grid-template-columns:1fr auto}
-  .pt-price:not(:first-of-type),.pt-badge:not(:first-of-type){display:none}
+  nav{padding:0 20px}.nav-r a:not(.cta){display:none}
+  #hero{padding:60px 20px}h1{font-size:clamp(3.5rem,14vw,7rem)}
+  #about{grid-template-columns:1fr;border:none}.about-panel{border-right:none;border-bottom:1px solid #E0E0D8;padding:32px 24px}
+  #leistungen{padding:48px 0}.l-inner{padding:0 24px}.sec-top{flex-direction:column;gap:16px}
+  .lr{grid-template-columns:1fr auto}.lr-tag{display:none}.lr-price{font-size:1.2rem}
+  .preise-table{grid-template-columns:1fr auto}.pt-head:not(:first-child):not(:last-child){display:none}
+  .pt-cell:not(.name):not(.price){display:none}
+  #kontakt{grid-template-columns:1fr;padding:48px 24px}.frow{grid-template-columns:1fr}
+  #preise .p-inner{padding:0 24px}footer{padding:24px}
 }
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <div class="nav-logo"><div class="logo-dot"></div>Mustermann Elektro</div>
-    <div class="nav-links">
-      <a href="#services">Leistungen</a>
-      <a href="#pricing">Preise</a>
-      <a href="#cta">Kontakt</a>
-    </div>
-    <a href="tel:089123456789" class="nav-cta">089 / 123 456 789</a>
+  <div class="logo">Mustermann <em>Elektro</em></div>
+  <div class="nav-r">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#preise">Preise</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="tel:089123456789" class="cta">☎ 089 / 123 456 789</a>
   </div>
 </nav>
 
 <section id="hero">
-  <div class="hero-left">
-    <div class="overline">Elektriker München · Meisterbetrieb</div>
-    <h1>Ihr Elektriker.<br/><em>Schnell.</em> Sicher.<br/>Zum Festpreis.</h1>
-    <p class="hero-p">Von der E-Check-Prüfung bis zur kompletten Neuinstallation — zuverlässig, transparent und immer mit Festpreisgarantie.</p>
+  <div class="hero-inner">
+    <div class="hero-pill">⚡ Elektriker · München · Meisterbetrieb seit 2010</div>
+    <h1>STROM<br/><em>MEISTER</em><br/><span class="red">MÜNCHEN</span></h1>
+    <p class="hero-p">E-Check, Notdienst 24 / 7, Smart Home, Wallbox — alles aus einer Hand. Festpreisgarantie. VDE-zertifiziert.</p>
     <div class="hero-btns">
-      <a href="tel:089123456789" class="btn-primary">Jetzt anrufen →</a>
-      <a href="#cta" class="btn-outline">Angebot anfragen</a>
-    </div>
-    <div class="ratings">
-      <span class="rating-stars">★★★★★</span>
-      <span class="rating-sep"></span>
-      <span>4,9 · 180 Bewertungen auf Google</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="floating-badge"><span class="badge-dot"></span> Jetzt verfügbar</div>
-    <div class="hero-card">
-      <div class="hero-card-tag">24h Notdienst</div>
-      <h2>Stromausfall in München?<br/>Wir helfen sofort.</h2>
-      <p>Innerhalb von 60 Minuten bei Ihnen — rund um die Uhr, 365 Tage im Jahr.</p>
-      <div class="hero-card-stats">
-        <div class="hcs-item"><div class="hcs-num">60'</div><div class="hcs-label">Reaktionszeit</div></div>
-        <div class="hcs-item"><div class="hcs-num">24/7</div><div class="hcs-label">Erreichbar</div></div>
-        <div class="hcs-item"><div class="hcs-num">15+</div><div class="hcs-label">Jahre Erfahrung</div></div>
-      </div>
+      <a href="tel:089123456789" class="hb-main">Jetzt anrufen — 089 / 123 456 789</a>
+      <a href="#kontakt" class="hb-ghost">Angebot anfragen</a>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="section-inner">
-    <div class="section-head">
-      <div>
-        <div class="overline-sm">Leistungen</div>
-        <div class="sec-title">Alles aus einer Hand.</div>
-      </div>
-      <div class="sec-desc">Sauber ausgeführt, termingerecht, mit offiziellem VDE-Protokoll.</div>
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">E-Check</span><span class="strip-item">Notdienst 24/7</span><span class="strip-item">Wallbox</span><span class="strip-item">Smart Home</span><span class="strip-item">Zählerkasten</span><span class="strip-item">Festpreisgarantie</span><span class="strip-item">Meisterbetrieb</span>
+    <span class="strip-item">E-Check</span><span class="strip-item">Notdienst 24/7</span><span class="strip-item">Wallbox</span><span class="strip-item">Smart Home</span><span class="strip-item">Zählerkasten</span><span class="strip-item">Festpreisgarantie</span><span class="strip-item">Meisterbetrieb</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-panel">
+    <div class="ap-num">24h</div>
+    <div><div class="ap-title">Notdienst rund um die Uhr</div><p class="ap-desc">Stromausfall oder Kurzschluss? Wir sind in 60 Minuten bei Ihnen — an 365 Tagen im Jahr.</p></div>
+  </div>
+  <div class="about-panel">
+    <div class="ap-num">15+</div>
+    <div><div class="ap-title">Jahre Erfahrung in München</div><p class="ap-desc">Eingetragener Elektrotechnikermeister mit eigenem Betrieb. Alle Arbeiten VDE-konform und dokumentiert.</p></div>
+  </div>
+  <div class="about-panel">
+    <div class="ap-num">4,9★</div>
+    <div><div class="ap-title">Google-Bewertung</div><p class="ap-desc">180+ Bewertungen von zufriedenen Kunden in München und Umgebung. Festpreisgarantie inklusive.</p></div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="l-inner">
+    <div class="sec-top">
+      <div class="st-label">Leistungen</div>
+      <h2>Was wir<br/>für Sie tun.</h2>
     </div>
-    <div class="services-grid">
-      <div class="svc"><div class="svc-num">01</div><div class="svc-title">E-Check & Prüfung</div><p class="svc-desc">VDE-konforme Überprüfung mit schriftlichem Protokoll. Pflicht für Vermieter.</p></div>
-      <div class="svc"><div class="svc-num">02</div><div class="svc-title">Notdienst 24/7</div><p class="svc-desc">Stromausfall, Kurzschluss, defekte Sicherung — wir sind in 60 Min da.</p></div>
-      <div class="svc"><div class="svc-num">03</div><div class="svc-title">Smart Home</div><p class="svc-desc">KNX, Zigbee und HomeMatic für Licht, Heizung und Sicherheit.</p></div>
-      <div class="svc"><div class="svc-num">04</div><div class="svc-title">Zählerkasten</div><p class="svc-desc">Sicherungskasten erneuern, RCD nachrüsten nach aktueller Norm.</p></div>
-      <div class="svc"><div class="svc-num">05</div><div class="svc-title">Wallbox & PV</div><p class="svc-desc">E-Ladestation und Photovoltaik — zertifiziert und förderfähig.</p></div>
-      <div class="svc"><div class="svc-num">06</div><div class="svc-title">Neuinstallation</div><p class="svc-desc">Planung und Ausführung für Neubau, Sanierung und Umbau.</p></div>
+    <div class="leistung-rows">
+      <div class="lr"><div><div class="lr-name">E-Check & Prüfung</div><div class="lr-desc">VDE-Prüfung mit offiziellem Protokoll — Pflicht für Vermieter</div></div><span class="lr-tag">Sofort buchbar</span><span class="lr-price">ab 129 €</span></div>
+      <div class="lr"><div><div class="lr-name">Notdienst 24 / 7</div><div class="lr-desc">Stromausfall, Kurzschluss — 60 Min Reaktionszeit in München</div></div><span class="lr-tag">Immer erreichbar</span><span class="lr-price">ab 89 €</span></div>
+      <div class="lr"><div><div class="lr-name">Zählerkasten erneuern</div><div class="lr-desc">Sicherungskasten, RCD nachrüsten, Zählertausch</div></div><span class="lr-tag">Festpreis</span><span class="lr-price">ab 490 €</span></div>
+      <div class="lr"><div><div class="lr-name">Wallbox & Photovoltaik</div><div class="lr-desc">Zertifiziert, förderfähig, mit Netzbetreiber-Anmeldung</div></div><span class="lr-tag">KfW-förderfähig</span><span class="lr-price">ab 350 €</span></div>
+      <div class="lr"><div><div class="lr-name">Smart Home Installation</div><div class="lr-desc">KNX, Zigbee, HomeMatic — Licht, Heizung, Sicherheit</div></div><span class="lr-tag">Auf Anfrage</span><span class="lr-price">Anfrage</span></div>
+      <div class="lr"><div><div class="lr-name">Neuinstallation & Umbau</div><div class="lr-desc">Neubau, Sanierung, Umbau — von Planung bis Abnahme</div></div><span class="lr-tag">Auf Anfrage</span><span class="lr-price">Anfrage</span></div>
     </div>
   </div>
 </section>
 
-<section id="numbers">
-  <div class="numbers-inner">
-    <div class="num-item"><div class="num-val">15<em>+</em></div><div class="num-label">Jahre in München</div></div>
-    <div class="num-item"><div class="num-val">500<em>+</em></div><div class="num-label">Aufträge pro Jahr</div></div>
-    <div class="num-item"><div class="num-val">4,9<em>★</em></div><div class="num-label">Google Bewertung</div></div>
-    <div class="num-item"><div class="num-val">24<em>h</em></div><div class="num-label">Notdienst</div></div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="section-inner">
-    <div class="pricing-intro">
-      <div class="overline-sm">Preise</div>
-      <div class="sec-title">Festpreise.<br/>Keine versteckten Kosten.</div>
-    </div>
-    <div class="pricing-table">
-      <div class="pt-row pt-header"><div>Leistung</div><div style="text-align:center">Preis ab</div><div style="text-align:center">Material</div><div style="text-align:center">Protokoll</div></div>
-      <div class="pt-row"><div class="pt-service">E-Check (bis 100 m²)</div><div class="pt-price">129 €</div><div class="pt-badge">enthalten</div><div class="pt-badge">✓</div></div>
-      <div class="pt-row highlight"><div class="pt-service">Zählerkasten erneuern</div><div class="pt-price">490 €</div><div class="pt-badge">enthalten</div><div class="pt-badge">✓</div></div>
-      <div class="pt-row"><div class="pt-service">Wallbox Installation</div><div class="pt-price">350 €</div><div class="pt-badge">+ Wallbox</div><div class="pt-badge">✓</div></div>
-      <div class="pt-row"><div class="pt-service">Steckdose / Schalter</div><div class="pt-price">59 €</div><div class="pt-badge">enthalten</div><div class="pt-badge">—</div></div>
-      <div class="pt-row"><div class="pt-service">Notdienst-Zuschlag</div><div class="pt-price">89 €</div><div class="pt-badge">zzgl. Std.</div><div class="pt-badge">—</div></div>
+<section id="preise">
+  <div class="p-inner">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#FF4500;margin-bottom:20px">Preistabelle</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:-.01em">Festpreise.<br/>Keine Überraschungen.</h2>
+    <div class="preise-table">
+      <div class="pt-head">Leistung</div><div class="pt-head">Preis ab</div><div class="pt-head">Material</div><div class="pt-head">Protokoll</div>
+      <div class="pt-row"><div class="pt-cell name">E-Check bis 100 m²</div><div class="pt-cell price">129 €</div><div class="pt-cell">enthalten</div><div class="pt-cell">✓ inkl.</div></div>
+      <div class="pt-row"><div class="pt-cell name">E-Check bis 200 m²</div><div class="pt-cell price">179 €</div><div class="pt-cell">enthalten</div><div class="pt-cell">✓ inkl.</div></div>
+      <div class="pt-row"><div class="pt-cell name">Zählerkasten (25 Sich.)</div><div class="pt-cell price">490 €</div><div class="pt-cell">enthalten</div><div class="pt-cell">✓ inkl.</div></div>
+      <div class="pt-row"><div class="pt-cell name">Wallbox 11 kW</div><div class="pt-cell price">350 €</div><div class="pt-cell">+ Wallbox</div><div class="pt-cell">✓ inkl.</div></div>
+      <div class="pt-row"><div class="pt-cell name">Steckdose / Schalter</div><div class="pt-cell price">59 €</div><div class="pt-cell">enthalten</div><div class="pt-cell">—</div></div>
+      <div class="pt-row"><div class="pt-cell name">Notdienst-Anfahrt</div><div class="pt-cell price">89 €</div><div class="pt-cell">zzgl. Stunden</div><div class="pt-cell">—</div></div>
     </div>
   </div>
 </section>
 
-<section id="cta">
-  <div class="section-inner">
-    <div class="cta-box">
-      <div class="cta-left">
-        <h2>Projekt anfragen<br/>oder Notfall melden.</h2>
-        <p>Wir rufen Sie innerhalb von 30 Minuten zurück — oder Sie rufen uns direkt an unter 089 / 123 456 789.</p>
-      </div>
-      <form onsubmit="return false">
-        <div class="form-row">
-          <input class="fi" type="text" placeholder="Ihr Name"/>
-          <input class="fi" type="tel" placeholder="Telefon"/>
-        </div>
-        <select class="fi"><option>E-Check / Prüfung</option><option>Notdienst</option><option>Zählerkasten</option><option>Wallbox / PV</option><option>Smart Home</option><option>Sonstiges</option></select>
-        <textarea class="fi" placeholder="Kurze Beschreibung..."></textarea>
-        <button type="submit" class="submit-btn">Anfrage senden →</button>
-      </form>
+<div style="background:#F5F5F0">
+<section id="kontakt">
+  <div class="kl">
+    <h2>Anfrage<br/>oder <em>Notfall?</em></h2>
+    <p>Rufen Sie direkt an oder schreiben Sie uns — wir antworten innerhalb von 2 Stunden.</p>
+    <div class="ki">
+      <div class="ki-row"><span>Telefon</span><strong>089 / 123 456 789</strong></div>
+      <div class="ki-row"><span>E-Mail</span><strong>info@mustermann-elektro.de</strong></div>
+      <div class="ki-row"><span>Öffnungszeiten</span><strong>Mo–Sa, 7–20 Uhr</strong></div>
+      <div class="ki-row"><span>Einsatzgebiet</span><strong>München + Umland</strong></div>
     </div>
   </div>
+  <form onsubmit="return false">
+    <div class="frow">
+      <div class="fg"><label>Name</label><input type="text" placeholder="Max Mustermann"/></div>
+      <div class="fg"><label>Telefon</label><input type="tel" placeholder="089 / ..."/></div>
+    </div>
+    <div class="fg"><label>Leistung</label>
+      <select><option>E-Check / Prüfung</option><option>Notdienst</option><option>Zählerkasten</option><option>Wallbox / PV</option><option>Smart Home</option><option>Neuinstallation</option></select>
+    </div>
+    <div class="fg"><label>Nachricht</label><textarea placeholder="Kurze Beschreibung..."></textarea></div>
+    <button type="submit" class="fsub">Anfrage senden →</button>
+  </form>
 </section>
+</div>
 
 <footer>
   <span>© 2025 Mustermann Elektro München</span>
-  <span>Website von <a href="https://brandwerkx.de">BrandWerkX</a></span>
-  <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
+  <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Website von <a href="https://brandwerkx.de">BrandWerkX</a></span>
 </footer>
 </body>
 </html>
