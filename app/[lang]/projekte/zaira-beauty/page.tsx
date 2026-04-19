@@ -8,23 +8,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   const isDE = lang !== "en";
   return isDE ? {
-    title: "Zaira Beauty Studio – Webdesign Case Study München | BrandWerkX",
+    title: "Zaira Beauty Face – Webdesign Case Study München | BrandWerkX",
     description: "Case Study: Kosmetikstudio-Website in München mit Next.js und TailwindCSS. Ergebnis: 40% mehr Kundenkontakte, Top-3 Google-Ranking, Lighthouse 97/100 in 3 Monaten.",
-    keywords: ["Webdesign Kosmetikstudio", "Case Study Webentwicklung München", "Zaira Beauty Studio", "Website Kosmetik München", "Next.js Case Study", "SEO Ergebnisse München"],
+    keywords: ["Webdesign Kosmetikstudio", "Case Study Webentwicklung München", "Zaira Beauty Face", "Website Kosmetik München", "Next.js Case Study", "SEO Ergebnisse München"],
     alternates: { canonical: "https://brandwerkx.de/de/projekte/zaira-beauty" },
     openGraph: {
-      title: "Zaira Beauty Studio – Webdesign Case Study | BrandWerkX",
+      title: "Zaira Beauty Face – Webdesign Case Study | BrandWerkX",
       description: "40% mehr Kundenkontakte nach Website-Relaunch. Case Study: Webdesign & SEO für Kosmetikstudio München.",
       url: "https://brandwerkx.de/de/projekte/zaira-beauty",
       images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
     },
   } : {
-    title: "Zaira Beauty Studio – Web Design Case Study Munich | BrandWerkX",
+    title: "Zaira Beauty Face – Web Design Case Study Munich | BrandWerkX",
     description: "Case Study: Beauty studio website in Munich with Next.js and TailwindCSS. Result: 40% more client contacts, top-3 Google ranking, Lighthouse 97/100 within 3 months.",
-    keywords: ["web design beauty studio", "case study web development Munich", "Zaira Beauty Studio", "Next.js case study"],
+    keywords: ["web design beauty studio", "case study web development Munich", "Zaira Beauty Face", "Next.js case study"],
     alternates: { canonical: "https://brandwerkx.de/en/projekte/zaira-beauty" },
     openGraph: {
-      title: "Zaira Beauty Studio – Web Design Case Study | BrandWerkX",
+      title: "Zaira Beauty Face – Web Design Case Study | BrandWerkX",
       description: "40% more client contacts after website relaunch. Case study: web design & SEO for beauty studio Munich.",
       url: "https://brandwerkx.de/en/projekte/zaira-beauty",
       images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
@@ -120,7 +120,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
           <div className="case-image-wrap">
             <Image
               src="/images/beauty-praxis-mockup.webp"
-              alt="Zaira Beauty Studio Website Mockup"
+              alt="Zaira Beauty Face Website Mockup"
               width={1200}
               height={800}
               className="case-main-image"

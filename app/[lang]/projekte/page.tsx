@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return isDE ? {
     title: "Portfolio – Webdesign Projekte München | BrandWerkX",
     description: "Webdesign-Projekte von Zaur Hatuev: Kosmetikstudio-Website mit 40% mehr Kundenkontakten. Moderne Websites, Landingpages und Webanwendungen aus München.",
-    keywords: ["Webdesign Portfolio München", "Website Case Study", "Webentwickler Referenzen", "Next.js Projekte", "Zaira Beauty Studio"],
+    keywords: ["Webdesign Portfolio München", "Website Case Study", "Webentwickler Referenzen", "Next.js Projekte", "Zaira Beauty Face"],
     alternates: { canonical: "https://brandwerkx.de/de/projekte" },
     openGraph: { title: "Portfolio – Webdesign Projekte München | BrandWerkX", description: "Webdesign-Projekte mit messbaren Ergebnissen aus München.", url: "https://brandwerkx.de/de/projekte" },
   } : {
