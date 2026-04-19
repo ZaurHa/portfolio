@@ -30,14 +30,14 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
   const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  // Detect mobile
+  // Detect mobile — window.matchMedia is reliable on Android Chrome;
+  // window.innerWidth can fire before the viewport meta tag is applied.
   useEffect(() => {
-    function update() {
-      setIsMobile(window.innerWidth < 768);
-    }
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
     update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
   // Auto-scroll active tab into view
