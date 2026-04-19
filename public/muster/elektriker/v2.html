@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -23,7 +24,7 @@ nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #1
 .nav-cta:hover{background:#2563EB}
 
 /* HERO — split with big blue panel */
-#hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
+#hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);min-height:calc(100svh - 64px)}
 .hero-left{padding:72px 56px;display:flex;flex-direction:column;justify-content:space-between;border-right:2px solid #111}
 .hero-top{}
 .hl-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2563EB;margin-bottom:20px}
@@ -108,6 +109,24 @@ footer a:hover{color:#2563EB}
   .f-row{grid-template-columns:1fr}#leistungen{padding:48px 24px}#ablauf{padding:48px 24px}
   .section-header{flex-direction:column;align-items:flex-start;gap:12px}.sh-right{text-align:left}
   nav{padding:0 24px}.nav-right .nav-link{display:none}
+}
+@media(max-width:480px){
+  body{overflow-x:hidden}
+  nav{padding:0 14px}
+  .hero-left{padding:32px 16px}
+  h1{font-size:clamp(2rem,10vw,3.2rem)}
+  .trust-bar{grid-template-columns:1fr 1fr}
+  .tb-item{padding:14px 12px;gap:8px}
+  #leistungen{padding:40px 0}#leistungen .section-header{padding:0 16px 20px}
+  .leistungen-grid{border-left:none;border-right:none}
+  .lg-item{padding:24px 16px}
+  #ablauf{padding:40px 0}
+  #ablauf>div{padding:0 16px}
+  .ablauf-grid{grid-template-columns:1fr}
+  .ablauf-step{padding:24px 16px}
+  #kontakt{padding:40px 16px;gap:32px}
+  form{padding:20px 16px}
+  footer{padding:16px}
 }
 </style>
 </head>

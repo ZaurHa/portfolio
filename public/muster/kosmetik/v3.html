@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch}
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#1A1018;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -121,6 +122,27 @@ footer a:hover{color:#C4688E}
   .reviews-grid{grid-template-columns:1fr}
   .bk-inner{grid-template-columns:1fr;padding:0 24px}#booking{padding:48px 0}
   .frow{grid-template-columns:1fr}.r-inner{padding:0 24px}footer{padding:24px}
+}
+@media(max-width:480px){
+  body{overflow-x:hidden}
+  nav{padding:0 14px}
+  .hero-left{padding:36px 16px}
+  h1{font-size:clamp(2.5rem,11vw,4rem)}
+  .hero-p{font-size:14px}
+  .hero-btns{flex-direction:column}
+  .btn-main,.btn-sec{width:100%;text-align:center;justify-content:center}
+  .hero-trust{flex-direction:column;gap:8px}
+  .sp-inner{gap:16px;padding:0 16px}
+  .beh-strip{grid-template-columns:1fr}
+  .beh-panel{min-height:120px}
+  .beh-content{padding:32px 16px}
+  .bc-title{font-size:1.4rem}
+  .r-inner{padding:0 16px}
+  .bk-inner{padding:0 16px;gap:40px}
+  #booking{padding:40px 0}
+  form{padding:24px 16px}
+  .frow{grid-template-columns:1fr}
+  footer{padding:16px}
 }
 </style>
 </head>

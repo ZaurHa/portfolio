@@ -42,7 +42,7 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 
 /* NAV */
-nav { position: sticky; top: 0; z-index: 100; background: rgba(248,244,238,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(248,244,238,.95); -webkit-backdrop-filter: blur(12px);backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
 .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -.5px; color: var(--charcoal); display: flex; align-items: center; gap: 10px; }
 .nav-logo-mark { width: 34px; height: 34px; background: var(--copper); border-radius: 8px; display: grid; place-items: center; }
@@ -54,7 +54,7 @@ nav { position: sticky; top: 0; z-index: 100; background: rgba(248,244,238,.95);
 .nav-cta:hover { background: var(--copper-d); }
 
 /* HERO */
-#hero { min-height: calc(100vh - 68px); display: grid; grid-template-columns: 1fr 1fr; }
+#hero { min-height:calc(100vh - 68px);min-height:calc(100svh - 68px); display: grid; grid-template-columns: 1fr 1fr; }
 .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 80px; max-width: 680px; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--copper); margin-bottom: 28px; }
 .hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--copper); }
@@ -163,6 +163,13 @@ footer { background: #1A1410; padding: 32px 0; }
   .hero-left { padding: 60px 24px; }
   .services-grid, .testi-grid { grid-template-columns: 1fr; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:480px){
+  body{overflow-x:hidden}
+  nav{padding:0 14px}
+  .hero-left{padding:36px 16px}
+  .services-grid,.testi-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  footer{padding:16px}
 }
 </style>
 <script type="application/ld+json">
