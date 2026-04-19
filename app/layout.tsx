@@ -1,5 +1,11 @@
 import "./globals.css";
 import { Inter, Space_Grotesk } from "next/font/google";
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 // Load fonts via next/font — eliminates render-blocking @import in CSS
 const inter = Inter({
