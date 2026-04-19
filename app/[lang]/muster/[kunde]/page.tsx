@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-const kunden = ["klempner", "elektriker"];
+const kunden = ["klempner", "elektriker", "kosmetik"];
 const langs = ["de", "en"];
 
 export async function generateStaticParams() {

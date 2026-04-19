@@ -72,6 +72,31 @@ const kundenConfig: Record<string, { clientName: string; versions: MusterVersion
       },
     ],
   },
+  kosmetik: {
+    clientName: "Bella Beauté Studio",
+    versions: [
+      {
+        id: "v1",
+        label: "Version 1 — Rose & Cream",
+        description: "Warm, feminin, einladend. Rosa Akzente auf cremefarbenem Hintergrund.",
+        src: "/muster/kosmetik/v1.html",
+      },
+      {
+        id: "v2",
+        label: "Version 2 — Luxury Dark",
+        description: "Schwarz mit Goldakzenten — premium und exklusiv.",
+        src: "/muster/kosmetik/v2.html",
+      },
+      {
+        id: "v3",
+        label: "Version 3 — Modern Minimal",
+        description: "Sauber, hell, modern. Mit Bewertungen und vollständiger Preisliste.",
+        tag: "EMPFOHLEN",
+        tagColor: "#D4877A",
+        src: "/muster/kosmetik/v3.html",
+      },
+    ],
+  },
 };
 
 export async function generateStaticParams() {

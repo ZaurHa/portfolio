@@ -21,6 +21,15 @@ const berufe = [
     tag: "Neu",
     tagColor: "#FF6B00",
   },
+  {
+    slug: "kosmetik",
+    title: "Kosmetikstudio",
+    emoji: "✨",
+    description: "3 Designs · Wimpern, Pflege, Permanent Make-up",
+    versionen: 3,
+    tag: "Neu",
+    tagColor: "#D4877A",
+  },
 ];
 
 export default function MusterIndex() {
