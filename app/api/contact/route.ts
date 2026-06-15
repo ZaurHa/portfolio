@@ -144,7 +144,8 @@ export async function POST(request: NextRequest) {
     // E-Mail an dich (Admin)
     await resend.emails.send({
       from: 'Zaur Hatuev <zaur@brandwerkx.de>',
-      to: ['zaur@brandwerkx.de'],
+      to: ['brandwerkx@gmail.com'],
+      replyTo: email,
       subject: `Neue Projektanfrage von ${name}`,
       html: adminMailHtml({ name, email, company, project, budget, message }),
     });

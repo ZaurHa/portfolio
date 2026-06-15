@@ -42,10 +42,44 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
       results: [t.zairaResult1, t.zairaResult2, t.zairaResult3],
       status: "live",
     },
+    {
+      title: locale === "de" ? "Mobilwerk – Transport & Umzug München" : "Mobilwerk – Moving & Transport Munich",
+      category: locale === "de" ? "Firmen-Website · Transport" : "Company Website · Transport",
+      year: "2026",
+      description: locale === "de"
+        ? "Moderne dunkle Firmen-Website für meinen eigenen Transport- & Umzugsbetrieb — Branding, Leistungen, Ablauf, Kontakt. Next.js, schnell und mobil-optimiert."
+        : "Modern dark company website for my own moving & transport business — branding, services, process, contact. Next.js, fast and mobile-optimized.",
+      tech: ["Next.js", "TypeScript", "TailwindCSS", "SEO"],
+      image: "/images/mobilwerk-preview.png",
+      link: "https://mobilwerk.vercel.app",
+      label: "LIVE",
+      labelColor: "#84cc16",
+      results: locale === "de"
+        ? ["Eigenes Branding & Logo", "Mobil-optimiert", "Live auf Vercel"]
+        : ["Custom branding & logo", "Mobile-optimized", "Live on Vercel"],
+      status: "live",
+    },
+    {
+      title: locale === "de" ? "MRG-T Logistik – Werkvertrag & Lager" : "MRG-T Logistik – Contract Logistics",
+      category: locale === "de" ? "Firmen-Website · Logistik B2B" : "Company Website · Logistics B2B",
+      year: "2026",
+      description: locale === "de"
+        ? "Professionelle B2B-Website für einen Logistik-Dienstleister (Lager, Kommissionierung, Werkvertrag) — dunkles Design, 3D-Illustration, klare Leistungsstruktur. Gebaut auf Cloudflare Workers."
+        : "Professional B2B website for a logistics provider (warehousing, picking, contract work) — dark design, 3D illustration, clear service structure. Built on Cloudflare Workers.",
+      tech: ["Cloudflare Workers", "TypeScript", "TailwindCSS", "SEO"],
+      image: "/images/mrg-tlogistik-preview.png",
+      link: "https://mrg-tlogistik.mrg-tlogistik-tech.workers.dev",
+      label: "LIVE",
+      labelColor: "#f59e0b",
+      results: locale === "de"
+        ? ["B2B-Logistik-Branding", "3D-Illustration", "Live auf Cloudflare"]
+        : ["B2B logistics branding", "3D illustration", "Live on Cloudflare"],
+      status: "live",
+    },
   ];
 
   const stats = [
-    { value: "1", label: t.statsProjects },
+    { value: "3", label: t.statsProjects },
     { value: "2024–", label: t.statsSince },
     { value: "100%", label: t.statsSatisfaction },
   ];

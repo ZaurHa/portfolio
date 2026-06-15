@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const isDE = lang !== "en";
   return isDE ? {
     title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-    description: "Zaur Hatuev – Freelance Webentwickler & UI/UX Designer aus München. Moderne Websites, Landingpages und Webanwendungen mit Next.js ab 790€. Schnell, fair, messbar.",
+    description: "Zaur Hatuev – Freelance Webentwickler & UI/UX Designer aus München. Moderne Websites, Landingpages und Webanwendungen mit Next.js ab 490€. Schnell, fair, messbar.",
     keywords: [
       "Webentwickler München", "Webdesign München", "Website erstellen lassen München",
       "Freelancer Webentwicklung München", "Landingpage München", "Next.js Entwickler München",
@@ -28,12 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     openGraph: {
       title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-      description: "Freelance Webentwickler aus München. Moderne Websites mit Next.js ab 790€.",
+      description: "Freelance Webentwickler aus München. Moderne Websites mit Next.js ab 490€.",
       url: "https://brandwerkx.de/de",
     },
   } : {
     title: "Web Developer Munich – Get a Website Built | BrandWerkX",
-    description: "Zaur Hatuev – Freelance web developer & UI/UX designer from Munich. Modern websites, landing pages and web apps with Next.js from €790.",
+    description: "Zaur Hatuev – Freelance web developer & UI/UX designer from Munich. Modern websites, landing pages and web apps with Next.js from €490.",
     keywords: ["web developer Munich", "web design Munich", "freelancer Munich", "website Munich", "Next.js developer"],
     alternates: {
       canonical: "https://brandwerkx.de/en",
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     openGraph: {
       title: "Web Developer Munich – Get a Website Built | BrandWerkX",
-      description: "Freelance web developer from Munich. Modern websites with Next.js from €790.",
+      description: "Freelance web developer from Munich. Modern websites with Next.js from €490.",
       url: "https://brandwerkx.de/en",
     },
   };
@@ -86,9 +86,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const tp = d.projects;
 
   const stats = [
-    { value: 10, suffix: "+", label: t.statsProjects },
-    { value: 8, suffix: "+", label: t.statsYears },
-    { value: 100, suffix: "%", label: t.statsSatisfaction },
+    { value: 3, suffix: "", label: t.statsProjects },
+    { value: 490, suffix: "€", label: t.statsYears },
+    { value: 0, suffix: "", label: t.statsSatisfaction },
     { value: 5, suffix: "", label: t.statsResults },
   ];
 
@@ -104,6 +104,38 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       labelColor: "#00ffe7",
       results: [tp.zairaResult1, tp.zairaResult2, tp.zairaResult3],
       year: "2024",
+    },
+    {
+      title: locale === "de" ? "Mobilwerk – Transport & Umzug München" : "Mobilwerk – Moving & Transport Munich",
+      description: locale === "de"
+        ? "Moderne dunkle Firmen-Website für meinen eigenen Transport- & Umzugsbetrieb — klares Branding, Leistungsübersicht, Ablauf, Kontakt. Mit Next.js gebaut, schnell und mobil-optimiert."
+        : "Modern dark company website for my own moving & transport business — clear branding, services, process, contact. Built with Next.js, fast and mobile-optimized.",
+      category: locale === "de" ? "Firmen-Website · Transport" : "Company Website · Transport",
+      tech: ["Next.js", "TypeScript", "TailwindCSS", "SEO"],
+      image: "/images/mobilwerk-preview.png",
+      link: "https://mobilwerk.vercel.app",
+      label: "LIVE",
+      labelColor: "#84cc16",
+      results: locale === "de"
+        ? ["Eigenes Branding & Logo", "Mobil-optimiert", "Live auf Vercel"]
+        : ["Custom branding & logo", "Mobile-optimized", "Live on Vercel"],
+      year: "2026",
+    },
+    {
+      title: locale === "de" ? "MRG-T Logistik – Werkvertrag & Lager" : "MRG-T Logistik – Contract Logistics",
+      description: locale === "de"
+        ? "Professionelle B2B-Website für einen Logistik-Dienstleister (Lager, Kommissionierung, Werkvertrag) — dunkles Design, 3D-Illustration, klare Leistungsstruktur. Gebaut auf Cloudflare Workers."
+        : "Professional B2B website for a logistics provider (warehousing, picking, contract work) — dark design, 3D illustration, clear service structure. Built on Cloudflare Workers.",
+      category: locale === "de" ? "Firmen-Website · Logistik B2B" : "Company Website · Logistics B2B",
+      tech: ["Cloudflare Workers", "TypeScript", "TailwindCSS", "SEO"],
+      image: "/images/mrg-tlogistik-preview.png",
+      link: "https://mrg-tlogistik.mrg-tlogistik-tech.workers.dev",
+      label: "LIVE",
+      labelColor: "#f59e0b",
+      results: locale === "de"
+        ? ["B2B-Logistik-Branding", "3D-Illustration", "Live auf Cloudflare"]
+        : ["B2B logistics branding", "3D illustration", "Live on Cloudflare"],
+      year: "2026",
     },
     {
       title: locale === "de" ? "Klempner München – Muster-Website" : "Plumber Munich – Template Website",
@@ -134,11 +166,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* HERO */}
       <section style={{ position: "relative", width: "100%", minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", zIndex: 2 }}>
         <ErrorBoundary label="Globe Hero">
-        <GlobeHero>
-          {locale === "de"
-            ? "PROFESSIONELLE WEBSITE IN 5 TAGEN. AB 490€."
-            : "PROFESSIONAL WEBSITE IN 5 DAYS. FROM €490."}
-        </GlobeHero>
+        <GlobeHero
+          line1={t.heroLine1}
+          line2={t.heroLine2}
+          line2Highlight={t.heroLine2Highlight}
+          subline={t.heroSubline}
+          ctaPrimary={t.heroCtaPrimary}
+          ctaPrimaryHref={`/${lang}/kontakt`}
+          ctaSecondary={t.heroCtaSecondary}
+          ctaSecondaryHref={`/${lang}/projekte`}
+        />
         </ErrorBoundary>
       </section>
 
@@ -244,8 +281,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <div className="testimonials-grid">
           {[
             { quote: t.t1quote, name: t.t1name, role: t.t1role },
-            { quote: t.t2quote, name: t.t2name, role: t.t2role },
-            { quote: t.t3quote, name: t.t3name, role: t.t3role },
           ].map((t, i) => (
             <FadeInSection key={t.name} delay={i * 100}>
               <div className="testimonial-card">

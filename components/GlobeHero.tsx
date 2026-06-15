@@ -2,8 +2,9 @@
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { ReactNode, useRef, useMemo, useEffect, useState } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: '700' });
@@ -422,7 +423,21 @@ function GlobeGroup({ r, geoLines, globeRef }: {
 }
 
 // ── Main export ───────────────────────────────────────────────────────────────
-export default function GlobeHero({ children }: { children?: ReactNode }) {
+type GlobeHeroProps = {
+  line1: string;
+  line2: string;
+  line2Highlight: string;
+  subline: string;
+  ctaPrimary: string;
+  ctaPrimaryHref: string;
+  ctaSecondary: string;
+  ctaSecondaryHref: string;
+};
+
+export default function GlobeHero({
+  line1, line2, line2Highlight, subline,
+  ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref,
+}: GlobeHeroProps) {
   const [isMobile,        setIsMobile]        = useState<boolean | null>(null);
   const [geoLines,        setGeoLines]        = useState<Float32Array | null>(null);
   const globeRef         = useRef<THREE.Group | null>(null);
@@ -519,15 +534,23 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
             pointerEvents: 'none', padding: '0 5vw',
           }}>
             <div className={montserrat.className} style={{ fontSize: 'clamp(2.4rem,5.8vw,4.8rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.06 }}>
-              Dein nächster Kunde
+              {line1}
             </div>
             <div className={montserrat.className} style={{ fontSize: 'clamp(2.4rem,5.8vw,4.8rem)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.06 }}>
-              sucht dich{' '}
-              <span style={{ color: '#6cfcff' }}>gerade online.</span>
+              {line2}{' '}
+              <span style={{ color: '#6cfcff' }}>{line2Highlight}</span>
             </div>
             <div style={{ marginTop: '1.1rem', height: 2, width: 'clamp(60px,8vw,120px)', background: 'rgba(108,252,255,0.5)', borderRadius: 2 }} />
             <div style={{ marginTop: '1rem', fontSize: 'clamp(0.95rem,1.5vw,1.2rem)', color: 'rgba(255,255,255,0.72)', fontFamily: 'inherit', letterSpacing: '0.01em', lineHeight: 1.5 }}>
-              Website in 7 Tagen — professionell, fertig, gefunden.
+              {subline}
+            </div>
+            <div style={{ marginTop: '1.6rem', display: 'flex', gap: '0.9rem', flexWrap: 'wrap', pointerEvents: 'auto' }}>
+              <Link href={ctaPrimaryHref} style={{ background: '#00ffe7', color: '#001a17', fontWeight: 700, padding: '0.85rem 1.7rem', borderRadius: 10, textDecoration: 'none', fontSize: 'clamp(0.9rem,1.3vw,1.05rem)', display: 'inline-flex', alignItems: 'center', gap: 8, boxShadow: '0 8px 30px rgba(0,255,231,0.28)' }}>
+                {ctaPrimary} →
+              </Link>
+              <Link href={ctaSecondaryHref} style={{ background: 'rgba(255,255,255,0.07)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, padding: '0.85rem 1.7rem', borderRadius: 10, textDecoration: 'none', fontSize: 'clamp(0.9rem,1.3vw,1.05rem)' }}>
+                {ctaSecondary}
+              </Link>
             </div>
           </div>
 
@@ -539,14 +562,22 @@ export default function GlobeHero({ children }: { children?: ReactNode }) {
         <>
           <div style={{ position: 'absolute', top: '18vw', left: 0, width: '100vw', padding: '0 5vw', zIndex: 2, pointerEvents: 'none' }}>
             <div className={montserrat.className} style={{ fontSize: 'clamp(1.5rem,6.5vw,2.4rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
-              Dein nächster Kunde
+              {line1}
             </div>
             <div className={montserrat.className} style={{ fontSize: 'clamp(1.5rem,6.5vw,2.4rem)', fontWeight: 700, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
-              sucht dich <span style={{ color: '#6cfcff' }}>gerade online.</span>
+              {line2} <span style={{ color: '#6cfcff' }}>{line2Highlight}</span>
             </div>
             <div style={{ marginTop: '0.7rem', height: 2, width: 60, background: 'rgba(108,252,255,0.5)', borderRadius: 2 }} />
             <div style={{ marginTop: '0.6rem', fontSize: 'clamp(0.8rem,3.5vw,1rem)', color: 'rgba(255,255,255,0.70)', lineHeight: 1.45 }}>
-              Website in 7 Tagen —{'\u00A0'}fertig, gefunden.
+              {subline}
+            </div>
+            <div style={{ marginTop: '1.1rem', display: 'flex', gap: '0.6rem', flexWrap: 'wrap', pointerEvents: 'auto' }}>
+              <Link href={ctaPrimaryHref} style={{ background: '#00ffe7', color: '#001a17', fontWeight: 700, padding: '0.7rem 1.2rem', borderRadius: 9, textDecoration: 'none', fontSize: 'clamp(0.8rem,3.6vw,0.95rem)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {ctaPrimary} →
+              </Link>
+              <Link href={ctaSecondaryHref} style={{ background: 'rgba(255,255,255,0.07)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, padding: '0.7rem 1.2rem', borderRadius: 9, textDecoration: 'none', fontSize: 'clamp(0.8rem,3.6vw,0.95rem)' }}>
+                {ctaSecondary}
+              </Link>
             </div>
           </div>
         </>
