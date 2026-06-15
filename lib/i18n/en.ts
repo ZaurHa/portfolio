@@ -16,6 +16,7 @@ const en: Dictionary = {
     heroSubline: 'Professional website in 5 days — done, found, from €490.',
     heroCtaPrimary: 'Free consultation',
     heroCtaSecondary: 'View projects',
+    heroEyebrow: 'Web Developer · Munich',
     statsProjects: 'Top-3 on Google',
     statsYears: 'Fixed price from',
     statsSatisfaction: 'hidden costs',

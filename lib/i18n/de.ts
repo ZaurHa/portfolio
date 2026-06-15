@@ -14,6 +14,7 @@ const de = {
     heroSubline: 'Professionelle Website in 5 Tagen — fertig, gefunden, ab 490€.',
     heroCtaPrimary: 'Kostenloses Erstgespräch',
     heroCtaSecondary: 'Projekte ansehen',
+    heroEyebrow: 'Webentwickler · München',
     statsProjects: 'Top-3 bei Google',
     statsYears: 'Festpreis ab',
     statsSatisfaction: 'versteckte Kosten',

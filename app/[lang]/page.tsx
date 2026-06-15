@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import GlobeHero from "../../components/GlobeHero";
+import WorkHero from "../../components/WorkHero";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import { AnimatedCounter, FadeInSection } from "../../components/HomeAnimations";
 import { getDictionary, locales, type Locale } from "../../lib/i18n";
@@ -166,7 +166,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* HERO */}
       <section style={{ position: "relative", width: "100%", minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", zIndex: 2 }}>
         <ErrorBoundary label="Globe Hero">
-        <GlobeHero
+        <WorkHero
+          eyebrow={t.heroEyebrow}
           line1={t.heroLine1}
           line2={t.heroLine2}
           line2Highlight={t.heroLine2Highlight}
