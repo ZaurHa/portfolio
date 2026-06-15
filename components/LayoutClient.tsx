@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from 'next/navigation';
 import type { Dictionary, Locale } from '../lib/i18n';
@@ -87,14 +88,30 @@ export default function LayoutClient({ children, lang, dict }: Props) {
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <Link href={`/${lang}`} className="flex items-center space-x-2">
-              <Image
-                src="/images/brandwerkxweiss.webp"
-                alt="BrandWerkX"
-                width={140}
-                height={32}
-                className="h-8 w-auto"
-              />
+            <Link href={`/${lang}`} className="flex items-center" aria-label="BrandWerkX">
+              <span style={{ display: 'inline-flex', alignItems: 'baseline', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em', color: '#fff', lineHeight: 1 }}>
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.4, y: 2 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: 'inline-block' }}
+                >B</motion.span>
+                {"randWerk".split("").map((ch, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, x: -7, filter: 'blur(3px)' }}
+                    animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                    transition={{ duration: 0.32, ease: 'easeOut', delay: 0.42 + i * 0.055 }}
+                    style={{ display: 'inline-block' }}
+                  >{ch}</motion.span>
+                ))}
+                <motion.span
+                  initial={{ opacity: 0, scale: 0, rotate: -35 }}
+                  animate={{ opacity: 1, scale: [0, 1.25, 0.94, 1], rotate: [-35, 10, -2, 0] }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: 0.95 }}
+                  style={{ display: 'inline-block', color: '#00ffe7' }}
+                >X</motion.span>
+              </span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
