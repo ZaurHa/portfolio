@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 290" role="img" aria-label="MRG Trans und Logistik">
+  <title>MRG Trans &amp; Logistik</title>
+  <path d="M 0 235 L 55 0 L 117 150 L 180 0 L 235 235 Z" fill="#FFFFFF"/>
+  <path d="M 260 235 L 260 5 L 352 5 C 393 5 423 36 423 77 C 423 108 403 134 374 145 L 428 235 L 374 235 L 328 153 L 300 153 L 300 235 Z M 300 47 L 300 117 L 337 117 C 359 117 380 102 380 82 C 380 62 359 47 337 47 Z" fill="#FFFFFF" fill-rule="evenodd"/>
+  <path d="M 492 252 C 430 252 380 205 380 128 C 380 51 430 4 492 4 C 542 4 583 30 595 71 L 545 71 C 537 53 519 41 492 41 C 455 41 422 70 422 128 C 422 186 455 215 492 215 C 519 215 542 204 549 180 L 492 180 L 492 134 L 595 134 L 595 220 C 573 240 535 252 492 252 Z" fill="#FFFFFF"/>
+  <rect x="0" y="248" width="428" height="3" fill="#FFFFFF"/>
+  <text x="0" y="278" font-family="'Helvetica Neue', 'Inter Tight', 'Arial Black', Arial, sans-serif" font-weight="900" font-size="18" letter-spacing="4.2" fill="#FFFFFF">TRANS &amp; LOGISTIK</text>
+</svg>

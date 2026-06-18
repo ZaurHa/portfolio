@@ -842,6 +842,12 @@ hr, .neumorph-divider {
   transform: translateY(-3px);
 }
 
+.testimonial-logo {
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.92;
+}
+
 .testimonial-stars {
   color: #FBBF24;
   font-size: 0.95rem;

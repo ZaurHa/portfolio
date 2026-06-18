@@ -281,15 +281,27 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </FadeInSection>
         <div className="testimonials-grid">
           {[
-            { quote: t.t1quote, name: t.t1name, role: t.t1role },
-          ].map((t, i) => (
-            <FadeInSection key={t.name} delay={i * 100}>
+            { quote: t.t1quote, name: t.t1name, role: t.t1role, logo: null as string | null },
+            { quote: t.t2quote, name: t.t2name, role: t.t2role, logo: "/images/mrg-logo.svg" },
+          ].map((item, i) => (
+            <FadeInSection key={item.name} delay={i * 100}>
               <div className="testimonial-card">
+                {item.logo && (
+                  <Image
+                    src={item.logo}
+                    alt={item.name}
+                    width={150}
+                    height={72}
+                    unoptimized
+                    className="testimonial-logo"
+                    style={{ height: 32, width: "auto" }}
+                  />
+                )}
                 <div className="testimonial-stars">★★★★★</div>
-                <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+                <p className="testimonial-quote">&ldquo;{item.quote}&rdquo;</p>
                 <div className="testimonial-author">
-                  <span className="testimonial-name">{t.name}</span>
-                  <span className="testimonial-role">{t.role}</span>
+                  <span className="testimonial-name">{item.name}</span>
+                  <span className="testimonial-role">{item.role}</span>
                 </div>
               </div>
             </FadeInSection>
