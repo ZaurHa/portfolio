@@ -132,13 +132,13 @@ export default function Kontakt() {
             <div className="kontakt-info-card">
               <h3 className="kontakt-info-title">Direkter Kontakt</h3>
               <div className="kontakt-info-links">
-                <a href="mailto:zaur@brandwerkx.de" className="kontakt-info-link">
+                <a href="mailto:brandwerkx@gmail.com" className="kontakt-info-link">
                   <div className="kontakt-info-icon">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z" /></svg>
                   </div>
                   <div>
                     <div className="kontakt-info-link-label">E-Mail</div>
-                    <div className="kontakt-info-link-value">zaur@brandwerkx.de</div>
+                    <div className="kontakt-info-link-value">brandwerkx@gmail.com</div>
                   </div>
                 </a>
                 <a href="https://github.com/ZaurHa" target="_blank" rel="noopener noreferrer" className="kontakt-info-link">

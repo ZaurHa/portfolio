@@ -427,7 +427,7 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
               </p>
 
               <a
-                href={`mailto:zaurhatu@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Hallo%20Zaur%2C%0A%0Aich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
+                href={`mailto:brandwerkx@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Hallo%20Zaur%2C%0A%0Aich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -691,7 +691,7 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
                   Deine Auswahl wurde gespeichert. Schreib mir und ich setze es um.
                 </p>
                 <a
-                  href={`mailto:zaurhatu@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Ich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
+                  href={`mailto:brandwerkx@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Ich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
                   style={{
                     display: "block",
                     background: "#00ffe7",

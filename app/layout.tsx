@@ -132,7 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "name": "BrandWerkX – Webentwicklung München",
                 "description": "Professionelle Websites für Handwerker, Selbstständige und kleine Unternehmen — ab 490€, fertig in 5 Tagen, SEO-optimiert.",
                 "url": "https://brandwerkx.de",
-                "email": "zaurhatu@gmail.com",
+                "email": "brandwerkx@gmail.com",
                 "founder": "Zaur Hatuev",
                 "address": {
                   "@type": "PostalAddress",
@@ -208,7 +208,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "contactType": "Kundenanfragen",
-                  "email": "zaurhatu@gmail.com",
+                  "email": "brandwerkx@gmail.com",
                   "availableLanguage": ["German", "English", "Russian"]
                 }
               }

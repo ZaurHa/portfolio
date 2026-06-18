@@ -8,7 +8,7 @@ export default function Datenschutz() {
       <h2>1. Allgemeine Hinweise</h2>
       <p>Der Schutz Ihrer Daten ist uns wichtig. Diese Website verarbeitet personenbezogene Daten nur im technisch notwendigen Umfang.</p>
       <h2>2. Verantwortlicher</h2>
-      <p>Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />E-Mail: <a href="mailto:zaur@brandwerkx.de">zaur@brandwerkx.de</a></p>
+      <p>Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></p>
       <h2>3. Zugriffsdaten und Hosting</h2>
       <p>Beim Besuch dieser Website werden automatisch Informationen in Server-Logfiles gespeichert. Diese Daten sind nicht bestimmten Personen zuordenbar und dienen ausschließlich der Betriebssicherheit.</p>
       <h2>4. Kontaktformular</h2>

@@ -28,7 +28,7 @@ export default async function Impressum({ params }: { params: Promise<{ lang: st
         <div className="legal-section">
           <h2>{t.contactTitle}</h2>
           <p>
-            E-Mail: <a href="mailto:zaur@brandwerkx.de">zaur@brandwerkx.de</a><br />
+            E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a><br />
             Website: <a href="https://brandwerkx.de" target="_blank" rel="noopener noreferrer">https://brandwerkx.de</a>
           </p>
         </div>

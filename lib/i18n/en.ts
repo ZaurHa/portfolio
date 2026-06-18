@@ -177,7 +177,7 @@ const en: Dictionary = {
     submit: 'Send inquiry',
     submitting: 'Sending…',
     successMsg: "Message received — I'll get back to you within 24 hours.",
-    errorMsg: 'Sending failed. Write me directly: zaurhatu@gmail.com',
+    errorMsg: 'Sending failed. Write me directly: brandwerkx@gmail.com',
     directContact: 'Direct contact',
     responseTime: 'Response time',
     responseDesc: 'I reply to every inquiry — usually the same day.',

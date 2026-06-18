@@ -175,7 +175,7 @@ const de = {
     submit: 'Anfrage abschicken',
     submitting: 'Wird gesendet…',
     successMsg: 'Nachricht angekommen — ich melde mich innerhalb von 24 Stunden.',
-    errorMsg: 'Senden fehlgeschlagen. Schreib mir direkt: zaurhatu@gmail.com',
+    errorMsg: 'Senden fehlgeschlagen. Schreib mir direkt: brandwerkx@gmail.com',
     directContact: 'Direktkontakt',
     responseTime: 'Antwortzeit',
     responseDesc: 'Ich antworte auf jede Anfrage — meist noch am selben Tag.',
