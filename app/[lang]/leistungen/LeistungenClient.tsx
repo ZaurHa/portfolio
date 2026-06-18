@@ -138,10 +138,10 @@ export default function LeistungenClient({ lang, dict }: { lang: string; dict: D
   const t = dict.services;
 
   const processSteps = [
-    { num: "01", title: t.step1, desc: t.step1desc, icon: "💬" },
-    { num: "02", title: t.step2, desc: t.step2desc, icon: "✏️" },
-    { num: "03", title: t.step3, desc: t.step3desc, icon: "⚙️" },
-    { num: "04", title: t.step4, desc: t.step4desc, icon: "🤝" },
+    { num: "01", title: t.step1, desc: t.step1desc, icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>) },
+    { num: "02", title: t.step2, desc: t.step2desc, icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>) },
+    { num: "03", title: t.step3, desc: t.step3desc, icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>) },
+    { num: "04", title: t.step4, desc: t.step4desc, icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00ffe7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/></svg>) },
   ];
 
   const faqs = [

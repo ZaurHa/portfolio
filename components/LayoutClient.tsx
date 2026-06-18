@@ -39,7 +39,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
   const navLinks = [
     { href: `/${lang}`, label: dict.nav.home },
     { href: `/${lang}/leistungen`, label: dict.nav.services },
-    { href: '/muster', label: '🎨 Designs', highlight: true },
+    { href: '/muster', label: (<> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: '-2px', marginRight: 5 }}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Designs</>), highlight: true },
     { href: `/${lang}/projekte`, label: dict.nav.projects },
     { href: `/${lang}/ueber-mich`, label: dict.nav.about },
     { href: `/${lang}/kontakt`, label: dict.nav.contact },
