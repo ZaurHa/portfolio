@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FadeInSection } from "../../../components/HomeAnimations";
 import { getDictionary, type Locale } from "../../../lib/i18n";
 import type { Metadata } from "next";
@@ -87,7 +88,14 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
         <FadeInSection className="about-hero-inner">
           <div className="about-avatar-wrap">
             <div className="about-avatar">
-              <span className="about-avatar-initials">ZH</span>
+              <Image
+                src="/images/zaur-portrait.jpg"
+                alt="Zaur Hatuev – Webentwickler & UI/UX Designer aus München"
+                fill
+                sizes="(max-width: 639px) 88px, 120px"
+                className="about-avatar-img"
+                style={{ objectFit: "cover", borderRadius: "50%" }}
+              />
             </div>
             <div className="about-avatar-ring" />
           </div>
