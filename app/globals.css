@@ -1840,7 +1840,7 @@ hr, .neumorph-divider {
    ============================================ */
 
 .legal-page {
-  background: #000;
+  background: var(--bw-bg-deep);
   min-height: 100vh;
   padding: 4rem 2rem;
 }
@@ -1855,33 +1855,33 @@ hr, .neumorph-divider {
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   text-decoration: none;
   margin-bottom: 2rem;
   transition: color 0.2s;
 }
 
 .legal-back:hover {
-  color: #f0f4ff;
+  color: var(--bw-text);
 }
 
 .legal-title {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0 0 0.25rem;
 }
 
 .legal-updated {
   font-size: 0.82rem;
-  color: #4b5563;
+  color: var(--bw-text-dim);
   margin: 0 0 2.5rem;
 }
 
 .legal-section {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid var(--bw-divider);
 }
 
 .legal-section:last-of-type {
@@ -1899,13 +1899,13 @@ hr, .neumorph-divider {
 
 .legal-section p {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.75;
   margin: 0;
 }
 
 .legal-section a {
-  color: #00ffe7;
+  color: var(--bw-accent);
   text-decoration: none;
 }
 
@@ -1918,18 +1918,18 @@ hr, .neumorph-divider {
   gap: 1.5rem;
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #111;
+  border-top: 1px solid var(--bw-divider);
 }
 
 .legal-footer-links a {
   font-size: 0.85rem;
-  color: #4b5563;
+  color: var(--bw-text-dim);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .legal-footer-links a:hover {
-  color: #00ffe7;
+  color: var(--bw-accent);
 }
 
 /* ============================================
