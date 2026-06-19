@@ -1027,21 +1027,21 @@ hr, .neumorph-divider {
 .page-hero {
   text-align: center;
   padding: 5rem 2rem 4rem;
-  background: #000;
-  border-bottom: 1px solid #111;
+  background: var(--bw-bg-deep);
+  border-bottom: 1px solid var(--bw-divider);
 }
 
 .page-hero-title {
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   line-height: 1.1;
   margin: 0.75rem 0 1rem;
 }
 
 .page-hero-desc {
   font-size: 1.05rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   max-width: 520px;
   margin: 0 auto 2rem;
   line-height: 1.7;
@@ -1057,11 +1057,11 @@ hr, .neumorph-divider {
 .hero-badge {
   font-size: 0.78rem;
   font-weight: 500;
-  color: #00ffe7;
-  border: 1px solid rgba(0, 255, 231, 0.25);
+  color: var(--bw-accent);
+  border: 1px solid rgba(var(--bw-accent-rgb), 0.25);
   border-radius: 999px;
   padding: 0.3em 1em;
-  background: rgba(0, 255, 231, 0.05);
+  background: rgba(var(--bw-accent-rgb), 0.05);
 }
 
 .section-wrap {
@@ -1071,7 +1071,7 @@ hr, .neumorph-divider {
 }
 
 .section-alt {
-  background: #040404;
+  background: var(--bw-bg-alt);
 }
 
 /* ============================================
