@@ -856,7 +856,7 @@ hr, .neumorph-divider {
 .testimonials-section {
   padding: 5rem 2rem;
   background: #040406;
-  border-top: 1px solid #111;
+  border-top: 1px solid var(--bw-divider);
 }
 
 .testimonials-grid {
@@ -868,7 +868,7 @@ hr, .neumorph-divider {
 }
 
 .testimonial-card {
-  background: #0d0d12;
+  background: var(--bw-surface-2);
   border: 1px solid #1a1a24;
   border-radius: 16px;
   padding: 2rem;
@@ -879,7 +879,7 @@ hr, .neumorph-divider {
 }
 
 .testimonial-card:hover {
-  border-color: rgba(0, 255, 231, 0.2);
+  border-color: rgba(var(--bw-accent-rgb), 0.2);
   transform: translateY(-3px);
 }
 
@@ -897,7 +897,7 @@ hr, .neumorph-divider {
 
 .testimonial-quote {
   font-size: 0.95rem;
-  color: #b0b8c8;
+  color: var(--bw-text-body);
   line-height: 1.75;
   flex: 1;
   font-style: italic;
@@ -919,7 +919,7 @@ hr, .neumorph-divider {
 
 .testimonial-role {
   font-size: 0.78rem;
-  color: #4b5563;
+  color: var(--bw-text-dim);
   letter-spacing: 0.02em;
 }
 
