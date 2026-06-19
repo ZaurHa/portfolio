@@ -70,6 +70,15 @@
 
   /* Sekundärer Link-Akzent (Projekt-CTA, Avatar-Gradient) */
   --bw-link: #4a9eff;
+
+  /* Sekundärer Text (Zwischen-Grau, wiederverwendet) */
+  --bw-text-secondary: #d1d5db;
+
+  /* Status-Farben (Formular-Feedback Erfolg/Fehler) */
+  --bw-success: #4ade80;
+  --bw-success-rgb: 74, 222, 128;
+  --bw-error: #f87171;
+  --bw-error-rgb: 248, 113, 113;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -842,7 +851,7 @@ hr, .neumorph-divider {
 .skill-name {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   letter-spacing: 0.03em;
 }
 
@@ -1639,15 +1648,15 @@ hr, .neumorph-divider {
 }
 
 .form-success {
-  background: rgba(74, 222, 128, 0.08);
-  border: 1px solid rgba(74, 222, 128, 0.25);
-  color: #4ade80;
+  background: rgba(var(--bw-success-rgb), 0.08);
+  border: 1px solid rgba(var(--bw-success-rgb), 0.25);
+  color: var(--bw-success);
 }
 
 .form-error {
-  background: rgba(248, 113, 113, 0.08);
-  border: 1px solid rgba(248, 113, 113, 0.25);
-  color: #f87171;
+  background: rgba(var(--bw-error-rgb), 0.08);
+  border: 1px solid rgba(var(--bw-error-rgb), 0.25);
+  color: var(--bw-error);
 }
 
 .contact-form {
@@ -1770,7 +1779,7 @@ hr, .neumorph-divider {
 .kontakt-info-link-value {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
 }
 
 .kontakt-info-text {
@@ -1891,7 +1900,7 @@ hr, .neumorph-divider {
 .legal-section h2 {
   font-size: 1rem;
   font-weight: 700;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   margin: 0 0 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2003,7 +2012,7 @@ hr, .neumorph-divider {
 .case-kpi-label {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   margin: 0.4rem 0 0.25rem;
 }
 
@@ -2099,7 +2108,7 @@ hr, .neumorph-divider {
 .case-tech-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0 0 1rem;
@@ -2144,7 +2153,7 @@ hr, .neumorph-divider {
 .case-results-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0 0 1rem;
@@ -2195,7 +2204,7 @@ hr, .neumorph-divider {
 
 .case-quote-text {
   font-size: 1.1rem;
-  color: #d1d5db;
+  color: var(--bw-text-secondary);
   line-height: 1.75;
   font-style: italic;
   margin: 0 0 1.5rem;
