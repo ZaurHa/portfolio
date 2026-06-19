@@ -31,6 +31,47 @@
   --accent: var(--neumorph-accent);
 }
 
+/* ============================================
+   BRANDWERKX DESIGN TOKENS (v1)
+   Rein additiv — berührt KEINE bestehenden Variablen
+   (--neumorph-* / Legacy bleiben unangetastet).
+   Ziel: hartcodierte Werte später schrittweise auf
+   diese Tokens migrieren (Cyan, Surfaces, Text, Border).
+   Usage-Beispiel Akzent-Deckkraft:
+     rgba(var(--bw-accent-rgb), 0.2)
+   ============================================ */
+:root {
+  /* Accent (Cyan) — primäre Markenfarbe */
+  --bw-accent: #00ffe7;
+  --bw-accent-hover: #00e8d1;
+  --bw-accent-rgb: 0, 255, 231;
+
+  /* Surfaces (Hintergründe) */
+  --bw-bg: #050505;
+  --bw-bg-deep: #000000;
+  --bw-bg-alt: #040404;
+  --bw-surface: #0a0a0a;
+  --bw-surface-2: #0d0d12;
+  --bw-surface-3: #111111;
+
+  /* Text */
+  --bw-text: #f0f4ff;
+  --bw-text-bright: #ffffff;
+  --bw-text-body: #b0b8c8;
+  --bw-text-muted: #9ca3af;
+  --bw-text-faint: #6b7280;
+  --bw-text-dim: #4b5563;
+
+  /* Borders & Dividers */
+  --bw-border: #1a1a1a;
+  --bw-border-2: #1f2028;
+  --bw-border-faint: #141414;
+  --bw-divider: #111111;
+
+  /* Sekundärer Link-Akzent (Projekt-CTA, Avatar-Gradient) */
+  --bw-link: #4a9eff;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--neumorph-bg);
