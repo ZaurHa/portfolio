@@ -503,18 +503,18 @@ hr, .neumorph-divider {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00ffe7;
+  color: var(--bw-accent);
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(0, 255, 231, 0.25);
+  border: 1px solid rgba(var(--bw-accent-rgb), 0.25);
   border-radius: 999px;
   padding: 0.25em 1em;
-  background: rgba(0, 255, 231, 0.06);
+  background: rgba(var(--bw-accent-rgb), 0.06);
 }
 
 .section-title {
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   line-height: 1.1;
   margin: 0.5rem 0 1rem;
 }
@@ -981,7 +981,7 @@ hr, .neumorph-divider {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #00ffe7;
+  background: var(--bw-accent);
   color: #000;
   font-weight: 700;
   font-size: 0.95rem;
@@ -994,7 +994,7 @@ hr, .neumorph-divider {
 }
 
 .cta-btn-primary:hover {
-  background: #00e8d1;
+  background: var(--bw-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -1002,12 +1002,12 @@ hr, .neumorph-divider {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   font-weight: 600;
   font-size: 0.95rem;
   padding: 0.8em 2em;
   border-radius: 50px;
-  border: 1px solid #1f2028;
+  border: 1px solid var(--bw-border-2);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s, transform 0.2s;
@@ -1015,7 +1015,7 @@ hr, .neumorph-divider {
 }
 
 .cta-btn-secondary:hover {
-  color: #f0f4ff;
+  color: var(--bw-text);
   border-color: #444;
   transform: translateY(-1px);
 }
