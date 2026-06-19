@@ -1403,14 +1403,14 @@ hr, .neumorph-divider {
    ============================================ */
 
 .ueber-mich-page {
-  background: #000;
+  background: var(--bw-bg-deep);
   min-height: 100vh;
 }
 
 .about-hero {
   padding: 5rem 2rem 4rem;
-  background: #000;
-  border-bottom: 1px solid #111;
+  background: var(--bw-bg-deep);
+  border-bottom: 1px solid var(--bw-divider);
 }
 
 .about-hero-inner {
@@ -1440,7 +1440,7 @@ hr, .neumorph-divider {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0d9488, #4a9eff);
+  background: linear-gradient(135deg, #0d9488, var(--bw-link));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1459,7 +1459,7 @@ hr, .neumorph-divider {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 255, 231, 0.2);
+  border: 1px solid rgba(var(--bw-accent-rgb), 0.2);
 }
 
 .about-hero-text {
@@ -1469,21 +1469,21 @@ hr, .neumorph-divider {
 .about-name {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0.5rem 0 0.25rem;
   line-height: 1.1;
 }
 
 .about-role {
   font-size: 1rem;
-  color: #00ffe7;
+  color: var(--bw-accent);
   margin: 0 0 1rem;
   opacity: 0.85;
 }
 
 .about-bio {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.8;
   max-width: 580px;
   margin: 0 0 1.5rem;
@@ -1501,8 +1501,8 @@ hr, .neumorph-divider {
   gap: 6px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #9ca3af;
-  border: 1px solid #1f2028;
+  color: var(--bw-text-muted);
+  border: 1px solid var(--bw-border-2);
   border-radius: 8px;
   padding: 0.45em 1em;
   text-decoration: none;
@@ -1510,7 +1510,7 @@ hr, .neumorph-divider {
 }
 
 .about-social-link:hover {
-  color: #f0f4ff;
+  color: var(--bw-text);
   border-color: #333;
 }
 
@@ -1526,17 +1526,17 @@ hr, .neumorph-divider {
 .skill-tag {
   font-size: 0.82rem;
   font-weight: 500;
-  color: #9ca3af;
-  border: 1px solid #1f2028;
+  color: var(--bw-text-muted);
+  border: 1px solid var(--bw-border-2);
   border-radius: 8px;
   padding: 6px 14px;
-  background: #0a0a0a;
+  background: var(--bw-surface);
   letter-spacing: 0.03em;
   transition: border-color 0.2s, color 0.2s;
 }
 
 .skill-tag:hover {
-  border-color: rgba(0, 255, 231, 0.25);
+  border-color: rgba(var(--bw-accent-rgb), 0.25);
   color: #e5e7eb;
 }
 
@@ -1554,8 +1554,8 @@ hr, .neumorph-divider {
 }
 
 .expertise-card {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 16px;
   padding: 1.5rem;
   cursor: pointer;
@@ -1563,9 +1563,9 @@ hr, .neumorph-divider {
 }
 
 .expertise-card:hover {
-  border-color: rgba(0, 255, 231, 0.15);
+  border-color: rgba(var(--bw-accent-rgb), 0.15);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 255, 231, 0.04);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(var(--bw-accent-rgb), 0.04);
 }
 
 .expertise-icon {
@@ -1575,19 +1575,19 @@ hr, .neumorph-divider {
   width: 36px;
   height: 36px;
   margin-bottom: 0.75rem;
-  color: #00ffe7;
+  color: var(--bw-accent);
 }
 
 .expertise-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0 0 0.5rem;
 }
 
 .expertise-desc {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.65;
   margin: 0;
 }
