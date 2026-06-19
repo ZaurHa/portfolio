@@ -1597,7 +1597,7 @@ hr, .neumorph-divider {
    ============================================ */
 
 .kontakt-page {
-  background: #000;
+  background: var(--bw-bg-deep);
   min-height: 100vh;
 }
 
@@ -1615,8 +1615,8 @@ hr, .neumorph-divider {
 }
 
 .kontakt-form-wrap {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 20px;
   padding: 2rem;
 }
@@ -1624,7 +1624,7 @@ hr, .neumorph-divider {
 .kontakt-form-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0 0 1.5rem;
 }
 
@@ -1677,16 +1677,16 @@ hr, .neumorph-divider {
 .form-label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .form-input {
-  background: #111;
-  border: 1px solid #1f2028;
+  background: var(--bw-surface-3);
+  border: 1px solid var(--bw-border-2);
   border-radius: 10px;
-  color: #f0f4ff;
+  color: var(--bw-text);
   padding: 0.7rem 1rem;
   font-size: 0.9rem;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -1696,12 +1696,12 @@ hr, .neumorph-divider {
 
 .form-input:focus {
   outline: none;
-  border-color: rgba(0, 255, 231, 0.4);
-  box-shadow: 0 0 0 3px rgba(0, 255, 231, 0.06);
+  border-color: rgba(var(--bw-accent-rgb), 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--bw-accent-rgb), 0.06);
 }
 
 .form-input option {
-  background: #111;
+  background: var(--bw-surface-3);
 }
 
 .form-textarea {
@@ -1716,8 +1716,8 @@ hr, .neumorph-divider {
 }
 
 .kontakt-info-card {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 16px;
   padding: 1.5rem;
 }
@@ -1725,7 +1725,7 @@ hr, .neumorph-divider {
 .kontakt-info-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0 0 1rem;
 }
 
@@ -1750,19 +1750,19 @@ hr, .neumorph-divider {
 .kontakt-info-icon {
   width: 36px;
   height: 36px;
-  background: #141414;
-  border: 1px solid #1f2028;
+  background: var(--bw-border-faint);
+  border: 1px solid var(--bw-border-2);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00ffe7;
+  color: var(--bw-accent);
   flex-shrink: 0;
 }
 
 .kontakt-info-link-label {
   font-size: 0.75rem;
-  color: #4b5563;
+  color: var(--bw-text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -1775,7 +1775,7 @@ hr, .neumorph-divider {
 
 .kontakt-info-text {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.65;
   margin: 0 0 0.75rem;
 }
@@ -1791,13 +1791,13 @@ hr, .neumorph-divider {
   align-items: center;
   gap: 8px;
   font-size: 0.82rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
 }
 
 .kontakt-dot {
   width: 6px;
   height: 6px;
-  background: #00ffe7;
+  background: var(--bw-accent);
   border-radius: 50%;
   opacity: 0.6;
   flex-shrink: 0;
@@ -1817,21 +1817,21 @@ hr, .neumorph-divider {
   align-items: center;
   gap: 10px;
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--bw-text-muted);
 }
 
 .kontakt-step-num {
   width: 22px;
   height: 22px;
-  background: rgba(0, 255, 231, 0.08);
-  border: 1px solid rgba(0, 255, 231, 0.2);
+  background: rgba(var(--bw-accent-rgb), 0.08);
+  border: 1px solid rgba(var(--bw-accent-rgb), 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #00ffe7;
+  color: var(--bw-accent);
   flex-shrink: 0;
 }
 
