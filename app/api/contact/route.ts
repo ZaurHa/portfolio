@@ -3,8 +3,8 @@ import { Resend } from 'resend';
 
 export const dynamic = 'force-dynamic';
 
-const logoUrl = 'https://brandwerkx.vercel.app/images/brandwerkxweiss.webp';
-const siteUrl = 'https://brandwerkx.vercel.app';
+const logoUrl = 'https://brandwerkx.de/images/brandwerkxweiss.webp';
+const siteUrl = 'https://brandwerkx.de';
 const githubUrl = 'https://github.com/ZaurHa';
 const cyan = '#00f7e4';
 const dark = '#0b0c0f';
@@ -46,7 +46,7 @@ function adminMailHtml({ name, email, company, project, budget, message }: MailD
         </div>
       </div>
       <div style="background:#101114;padding:24px 32px 18px 32px;text-align:center;border-top:1px solid #23232a;margin-top:24px;">
-        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.vercel.app</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
+        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.de</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
         <div style="color:#888;font-size:0.98rem;margin-top:10px;">Diese E-Mail wurde automatisch generiert.</div>
       </div>
     </div>
@@ -76,7 +76,7 @@ function customerMailHtml({ name, project, budget, message }: MailData) {
         </div>
       </div>
       <div style="background:#101114;padding:24px 32px 18px 32px;text-align:center;border-top:1px solid #23232a;margin-top:24px;">
-        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.vercel.app</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
+        <a href="${siteUrl}" style="color:${cyan};text-decoration:none;font-weight:600;">brandwerkx.de</a> &nbsp;|&nbsp; <a href="${githubUrl}" style="color:${cyan};text-decoration:none;">GitHub</a>
         <div style="color:#888;font-size:0.98rem;margin-top:10px;">Diese E-Mail wurde automatisch generiert.</div>
       </div>
     </div>
