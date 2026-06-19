@@ -529,9 +529,9 @@ hr, .neumorph-divider {
 
 /* ---- STATS ---- */
 .stats-section {
-  background: #050505;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  background: var(--bw-bg);
+  border-top: 1px solid var(--bw-divider);
+  border-bottom: 1px solid var(--bw-divider);
   padding: 4rem 2rem;
 }
 
@@ -561,7 +561,7 @@ hr, .neumorph-divider {
   top: 20%;
   height: 60%;
   width: 1px;
-  background: #1a1a1a;
+  background: var(--bw-border);
 }
 
 .stat-item:last-child::after,
@@ -581,7 +581,7 @@ hr, .neumorph-divider {
 .stat-number {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: #fff;
+  color: var(--bw-text-bright);
   line-height: 1;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
