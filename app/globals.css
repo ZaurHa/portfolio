@@ -1079,7 +1079,7 @@ hr, .neumorph-divider {
    ============================================ */
 
 .leistungen-page {
-  background: #000;
+  background: var(--bw-bg-deep);
   min-height: 100vh;
 }
 
@@ -1098,8 +1098,8 @@ hr, .neumorph-divider {
 }
 
 .pricing-card {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 20px;
   padding: 2rem;
   display: flex;
@@ -1118,14 +1118,14 @@ hr, .neumorph-divider {
 }
 
 .pricing-card-popular {
-  border-color: rgba(0, 255, 231, 0.3);
-  background: linear-gradient(160deg, #0a0f0e 0%, #0a0a0a 100%);
-  box-shadow: 0 0 40px rgba(0, 255, 231, 0.07), 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(var(--bw-accent-rgb), 0.3);
+  background: linear-gradient(160deg, #0a0f0e 0%, var(--bw-surface) 100%);
+  box-shadow: 0 0 40px rgba(var(--bw-accent-rgb), 0.07), 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .pricing-card-popular:hover {
-  border-color: rgba(0, 255, 231, 0.55);
-  box-shadow: 0 0 60px rgba(0, 255, 231, 0.12), 0 16px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(var(--bw-accent-rgb), 0.55);
+  box-shadow: 0 0 60px rgba(var(--bw-accent-rgb), 0.12), 0 16px 48px rgba(0, 0, 0, 0.5);
   transform: translateY(-6px);
 }
 
@@ -1134,7 +1134,7 @@ hr, .neumorph-divider {
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #00ffe7;
+  background: var(--bw-accent);
   color: #000;
   font-size: 0.68rem;
   font-weight: 800;
@@ -1151,21 +1151,21 @@ hr, .neumorph-divider {
 .pricing-name {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0;
 }
 
 .pricing-price {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #00ffe7;
+  color: var(--bw-accent);
   letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .pricing-desc {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   margin: 0;
 }
 
@@ -1184,7 +1184,7 @@ hr, .neumorph-divider {
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--bw-text-muted);
 }
 
 /* Addons */
@@ -1204,8 +1204,8 @@ hr, .neumorph-divider {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 16px;
   padding: 1.5rem;
   cursor: pointer;
@@ -1213,8 +1213,8 @@ hr, .neumorph-divider {
 }
 
 .addon-card:hover {
-  border-color: rgba(0, 255, 231, 0.15);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 255, 231, 0.04);
+  border-color: rgba(var(--bw-accent-rgb), 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(var(--bw-accent-rgb), 0.04);
   transform: translateY(-2px);
 }
 
@@ -1235,20 +1235,20 @@ hr, .neumorph-divider {
 .addon-name {
   font-size: 1rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0;
 }
 
 .addon-price {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #00ffe7;
+  color: var(--bw-accent);
   white-space: nowrap;
 }
 
 .addon-desc {
   font-size: 0.83rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.6;
   margin: 0;
 }
@@ -1275,8 +1275,8 @@ hr, .neumorph-divider {
 
 .process-step {
   text-align: center;
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 16px;
   padding: 1.75rem 1rem;
   position: relative;
@@ -1290,7 +1290,7 @@ hr, .neumorph-divider {
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #00ffe7;
+  color: var(--bw-accent);
   opacity: 0.6;
   margin-bottom: 0.5rem;
 }
@@ -1303,13 +1303,13 @@ hr, .neumorph-divider {
 .process-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #f0f4ff;
+  color: var(--bw-text);
   margin: 0 0 0.5rem;
 }
 
 .process-desc {
   font-size: 0.78rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.6;
   margin: 0;
 }
@@ -1328,7 +1328,7 @@ hr, .neumorph-divider {
     right: -1.25rem;
     width: 1.5rem;
     height: 1px;
-    background: linear-gradient(90deg, rgba(0, 255, 231, 0.12), rgba(0, 255, 231, 0.55));
+    background: linear-gradient(90deg, rgba(var(--bw-accent-rgb), 0.12), rgba(var(--bw-accent-rgb), 0.55));
   }
   .process-connector::after {
     content: '';
@@ -1340,7 +1340,7 @@ hr, .neumorph-divider {
     height: 0;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
-    border-left: 6px solid rgba(0, 255, 231, 0.6);
+    border-left: 6px solid rgba(var(--bw-accent-rgb), 0.6);
   }
 }
 
@@ -1354,8 +1354,8 @@ hr, .neumorph-divider {
 }
 
 .faq-item {
-  background: #0a0a0a;
-  border: 1px solid #1a1a1a;
+  background: var(--bw-surface);
+  border: 1px solid var(--bw-border);
   border-radius: 14px;
   cursor: pointer;
   transition: border-color 0.2s;
@@ -1364,7 +1364,7 @@ hr, .neumorph-divider {
 
 .faq-item:hover,
 .faq-open {
-  border-color: rgba(0, 255, 231, 0.2);
+  border-color: rgba(var(--bw-accent-rgb), 0.2);
 }
 
 .faq-question {
@@ -1379,22 +1379,22 @@ hr, .neumorph-divider {
 }
 
 .faq-icon {
-  color: #6b7280;
+  color: var(--bw-text-faint);
   flex-shrink: 0;
   transition: transform 0.25s;
 }
 
 .faq-icon-open {
   transform: rotate(180deg);
-  color: #00ffe7;
+  color: var(--bw-accent);
 }
 
 .faq-answer {
   padding: 0 1.5rem 1.25rem;
   font-size: 0.88rem;
-  color: #6b7280;
+  color: var(--bw-text-faint);
   line-height: 1.7;
-  border-top: 1px solid #141414;
+  border-top: 1px solid var(--bw-border-faint);
   padding-top: 1rem;
 }
 
