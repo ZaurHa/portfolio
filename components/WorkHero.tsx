@@ -20,7 +20,7 @@ const ACCENT = "#00ffe7";
 
 // Echte Projekte als Showcase-Stack (kann niemand kopieren = einzigartig + Proof)
 const SHOWCASE = [
-  { src: "/images/mrg-tlogistik-preview.png", label: "MRG-T Logistik",
+  { src: "/images/mrg-tlogistik-preview.png", label: "MRG-Logistik",
     top: "30%", left: "2%", rotate: -7, z: 1, w: "62%", badge: null as string | null },
   { src: "/images/beauty-praxis-mockup.webp", label: "Zaira Beauty Face",
     top: "4%", left: "20%", rotate: 4, z: 3, w: "66%", badge: "Top 3 · Google" },

@@ -122,14 +122,14 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       year: "2026",
     },
     {
-      title: locale === "de" ? "MRG-T Logistik – Werkvertrag & Lager" : "MRG-T Logistik – Contract Logistics",
+      title: locale === "de" ? "MRG-Logistik – Werkvertrag & Lager" : "MRG-Logistik – Contract Logistics",
       description: locale === "de"
         ? "Professionelle B2B-Website für einen Logistik-Dienstleister (Lager, Kommissionierung, Werkvertrag) — dunkles Design, 3D-Illustration, klare Leistungsstruktur. Gebaut auf Cloudflare Workers."
         : "Professional B2B website for a logistics provider (warehousing, picking, contract work) — dark design, 3D illustration, clear service structure. Built on Cloudflare Workers.",
       category: locale === "de" ? "Firmen-Website · Logistik B2B" : "Company Website · Logistics B2B",
       tech: ["Cloudflare Workers", "TypeScript", "TailwindCSS", "SEO"],
       image: "/images/mrg-tlogistik-preview.png",
-      link: "https://mrg-tlogistik.mrg-tlogistik-tech.workers.dev",
+      link: "https://mrg-logistik.de",
       label: "LIVE",
       labelColor: "#f59e0b",
       results: locale === "de"
