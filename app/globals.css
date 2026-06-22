@@ -1446,8 +1446,8 @@ hr, .neumorph-divider {
 }
 
 .about-avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background: linear-gradient(135deg, #0d9488, var(--bw-link));
   display: flex;
@@ -2299,7 +2299,7 @@ hr, .neumorph-divider {
   }
 
   /* ── About page ── */
-  .about-avatar { width: 88px; height: 88px; }
+  .about-avatar { width: 130px; height: 130px; }
   .about-avatar-initials { font-size: 1.7rem; }
 
   /* ── Kontakt ── */

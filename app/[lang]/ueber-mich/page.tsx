@@ -92,9 +92,9 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
                 src="/images/zaur-portrait.jpg"
                 alt="Zaur Hatuev – Webentwickler & UI/UX Designer aus München"
                 fill
-                sizes="(max-width: 639px) 88px, 120px"
+                sizes="(max-width: 639px) 130px, 180px"
                 className="about-avatar-img"
-                style={{ objectFit: "cover", borderRadius: "50%" }}
+                style={{ objectFit: "cover", objectPosition: "50% 25%", borderRadius: "50%" }}
               />
             </div>
             <div className="about-avatar-ring" />
