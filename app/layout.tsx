@@ -10,14 +10,14 @@ export const viewport: Viewport = {
 // Load fonts via next/font — eliminates render-blocking @import in CSS
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["500", "600", "700"],
   variable: "--font-space-grotesk",
   display: "swap",
 });

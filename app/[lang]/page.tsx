@@ -94,14 +94,30 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   const projects = [
     {
+      title: locale === "de" ? "Serlo – Social-App mit Live & Shop" : "Serlo – Social App with Live & Shop",
+      description: locale === "de"
+        ? "Mein eigenes Produkt: Social-Media-Plattform mit Video-Feed, Live-Streaming, Geschenken und integriertem Shop. iOS-App im App Store + Web-App — Design, Entwicklung und Betrieb komplett aus einer Hand."
+        : "My own product: a social media platform with video feed, live streaming, gifts and a built-in shop. iOS app on the App Store + web app — design, development and operations all from one hand.",
+      category: locale === "de" ? "Eigenes Produkt · iOS + Web" : "Own Product · iOS + Web",
+      tech: ["React Native", "Next.js", "Supabase", "LiveKit"],
+      image: "/images/serlo-preview.png",
+      link: "https://serlo.ch",
+      label: locale === "de" ? "IM APP STORE" : "ON APP STORE",
+      labelColor: "#00ffe7",
+      results: locale === "de"
+        ? ["Live im App Store", "Live-Streaming, Gifts & Shop", "Web-App auf serlo.ch"]
+        : ["Live on the App Store", "Live streaming, gifts & shop", "Web app at serlo.ch"],
+      year: "2026",
+    },
+    {
       title: tp.zairaTitle,
       description: tp.zairaDesc,
       category: tp.zairaCategory,
       tech: ["Next.js", "TailwindCSS", "Figma", "SEO"],
       image: "/images/beauty-praxis-mockup.webp",
       link: `/${lang}/projekte/zaira-beauty`,
-      label: tp.labelFeatured,
-      labelColor: "#00ffe7",
+      label: "TOP 3 · GOOGLE",
+      labelColor: "#84ff7d",
       results: [tp.zairaResult1, tp.zairaResult2, tp.zairaResult3],
       year: "2024",
     },

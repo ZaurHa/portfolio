@@ -20,12 +20,14 @@ const ACCENT = "#00ffe7";
 
 // Echte Projekte als Showcase-Stack (kann niemand kopieren = einzigartig + Proof)
 const SHOWCASE = [
-  { src: "/images/mrg-tlogistik-preview.png", label: "MRG-Logistik",
-    top: "30%", left: "2%", rotate: -7, z: 1, w: "62%", badge: null as string | null },
+  { src: "/images/serlo-preview.png", label: "Serlo — serlo.ch",
+    top: "2%", left: "-2%", rotate: -3, z: 4, w: "62%", badge: "Im App Store" as string | null },
   { src: "/images/beauty-praxis-mockup.webp", label: "Zaira Beauty Face",
-    top: "4%", left: "20%", rotate: 4, z: 3, w: "66%", badge: "Top 3 · Google" },
+    top: "20%", left: "40%", rotate: 4, z: 3, w: "58%", badge: "Top 3 · Google" },
+  { src: "/images/mrg-tlogistik-preview.png", label: "MRG-Logistik",
+    top: "56%", left: "4%", rotate: -7, z: 2, w: "52%", badge: null },
   { src: "/images/mobilwerk-preview.png", label: "Mobilwerk",
-    top: "58%", left: "44%", rotate: -3, z: 2, w: "46%", badge: null },
+    top: "64%", left: "50%", rotate: 3, z: 1, w: "46%", badge: null },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -89,15 +91,17 @@ export default function WorkHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.34 }}
             style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
-            <Link href={ctaPrimaryHref} style={{ background: ACCENT, color: "#04140f", fontWeight: 700,
-              padding: "0.9rem 1.8rem", borderRadius: 11, textDecoration: "none",
+            <Link href={ctaPrimaryHref} className="hero-cta-primary" style={{
+              background: `linear-gradient(180deg, #4dffee, ${ACCENT} 55%)`, color: "#04140f", fontWeight: 700,
+              padding: "0.95rem 1.9rem", borderRadius: 12, textDecoration: "none",
               fontSize: "clamp(0.92rem,1.3vw,1.05rem)", display: "inline-flex", alignItems: "center",
-              gap: 8, boxShadow: `0 10px 34px ${ACCENT}40` }}>
+              gap: 8, boxShadow: `0 10px 34px ${ACCENT}55, inset 0 1px 0 rgba(255,255,255,0.4)` }}>
               {ctaPrimary} →
             </Link>
-            <Link href={ctaSecondaryHref} style={{ background: "rgba(255,255,255,0.06)", color: "#fff",
-              border: "1px solid rgba(255,255,255,0.18)", fontWeight: 600, padding: "0.9rem 1.8rem",
-              borderRadius: 11, textDecoration: "none", fontSize: "clamp(0.92rem,1.3vw,1.05rem)" }}>
+            <Link href={ctaSecondaryHref} className="hero-cta-secondary" style={{ background: "rgba(255,255,255,0.05)", color: "#fff",
+              border: "1px solid rgba(255,255,255,0.16)", fontWeight: 600, padding: "0.95rem 1.9rem",
+              borderRadius: 12, textDecoration: "none", fontSize: "clamp(0.92rem,1.3vw,1.05rem)",
+              display: "inline-flex", alignItems: "center", gap: 8, backdropFilter: "blur(6px)" }}>
               {ctaSecondary}
             </Link>
           </motion.div>
@@ -105,7 +109,7 @@ export default function WorkHero({
 
         {/* Showcase-Stack: echte Projekte */}
         <div style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
-          height: "clamp(300px,42vw,440px)" }}>
+          height: "clamp(340px,46vw,500px)" }}>
           {SHOWCASE.map((p, i) => (
             <motion.div
               key={p.src}
