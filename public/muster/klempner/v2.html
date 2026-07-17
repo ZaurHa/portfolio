@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="robots" content="noindex, nofollow"/>
 <title>Klempner Berlin – Mustermann Klempner | Meisterbetrieb & 24h Notdienst</title>
 <meta name="description" content="Klempner Berlin gesucht? ✓ Mustermann Klempner – Meisterbetrieb seit 2009. Rohrbruch, Badsanierung, Heizung. 24h Notdienst, Festpreisgarantie."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.bunny.net"/>
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin/>
+<link href="https://fonts.bunny.net/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
   --navy:    #0B1929;
@@ -142,7 +143,10 @@ footer { background: #050D18; padding: 28px 0; }
 .footer-row a:hover { color: var(--electric); }
 
 @media (max-width: 900px) {
-  .about-split, .contact-layout { grid-template-columns: 1fr; }
+  .about-split, .contact-layout { grid-template-columns: minmax(0,1fr); }
+  .about-split > *, .contact-layout > * { min-width: 0; }
+  .about-text { padding: 48px 24px; }
+  .cert-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .about-image { min-height: 280px; }
   .testi-scroll { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 48px 1fr; }
@@ -152,6 +156,7 @@ footer { background: #050D18; padding: 28px 0; }
 @media(max-width:480px){
   body{overflow-x:hidden}
   nav{padding:0 14px}
+  .cert-grid{grid-template-columns:1fr}
   footer{padding:16px}
 }
 </style>
