@@ -32,6 +32,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const progressRef = useRef<HTMLDivElement | null>(null);
 
   const otherLang = getOtherLang(lang);
   const otherLangPath = switchLangPath(pathname ?? `/${lang}`, lang, otherLang);
@@ -49,6 +50,41 @@ export default function LayoutClient({ children, lang, dict }: Props) {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll-Progress-Linie: direkte Style-Mutation via rAF, kein Re-Render pro Scroll
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${p})`;
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Spotlight: Cursor-Position als CSS-Variablen auf der jeweils berührten Karte
+  useEffect(() => {
+    const SELECTOR = '.project-card, .skill-card, .testimonial-card, .pricing-card';
+    const onMove = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest?.(SELECTOR) as HTMLElement | null;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    };
+    document.addEventListener('pointermove', onMove, { passive: true });
+    return () => document.removeEventListener('pointermove', onMove);
   }, []);
 
   useEffect(() => {
@@ -78,6 +114,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
 
   return (
     <div className="site-shell min-h-screen bg-black">
+      <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
@@ -253,74 +290,75 @@ export default function LayoutClient({ children, lang, dict }: Props) {
         </svg>
       </a>
 
-      <footer style={{
-        width: '100%',
-        background: '#040406',
-        borderTop: '1px solid rgba(0, 255, 231, 0.08)',
-        color: '#fff',
-        fontSize: '1rem',
-        paddingTop: '2.5rem',
-        paddingBottom: '2rem',
-      }}>
-        {/* Top glow line */}
-        <div style={{ width: '100%', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(0,255,231,0.18), rgba(74,158,255,0.12), transparent)', marginBottom: '2rem' }} />
+      <footer className="footer-shell">
+        <div className="footer-glowline" />
+        <div className="footer-grid">
+          {/* Brand */}
+          <div>
+            <Image src="/images/brandwerkxweiss.webp" alt="BrandWerkX" width={150} height={30} style={{ height: 30, width: 'auto' }} />
+            <p className="footer-brand-tagline">
+              {lang === 'de'
+                ? 'Websites mit Substanz und Wirkung — Design, Entwicklung und SEO aus einer Hand.'
+                : 'Websites with substance and impact — design, development and SEO from one hand.'}
+            </p>
+            <span className="footer-brand-location">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              München, Deutschland
+            </span>
+          </div>
 
-        {/* Brand + tagline */}
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <Image src="/images/brandwerkxweiss.webp" alt="BrandWerkX" width={140} height={28} style={{ height: 28, width: 'auto', marginBottom: '0.75rem' }} />
-          <div style={{ fontSize: '0.85rem', color: '#4b5563', letterSpacing: '0.04em' }}>
-            Design mit Substanz und Wirkung.
+          {/* Navigation */}
+          <div>
+            <div className="footer-col-title">{lang === 'de' ? 'Navigation' : 'Navigate'}</div>
+            <div className="footer-links">
+              <Link href={`/${lang}`} className="footer-link">{dict.nav.home}</Link>
+              <Link href={`/${lang}/leistungen`} className="footer-link">{dict.nav.services}</Link>
+              <Link href="/muster" className="footer-link">Designs</Link>
+              <Link href={`/${lang}/projekte`} className="footer-link">{dict.nav.projects}</Link>
+              <Link href={`/${lang}/ueber-mich`} className="footer-link">{dict.nav.about}</Link>
+            </div>
+          </div>
+
+          {/* Kontakt */}
+          <div>
+            <div className="footer-col-title">{dict.footer.contact}</div>
+            <div className="footer-links">
+              <Link href={`/${lang}/kontakt`} className="footer-link">
+                {lang === 'de' ? 'Projekt anfragen' : 'Start a project'}
+              </Link>
+              <a href="mailto:brandwerkx@gmail.com" className="footer-link">brandwerkx@gmail.com</a>
+              <a
+                href="https://wa.me/491728471641?text=Hallo%20Zaur%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website."
+                target="_blank" rel="noopener noreferrer" className="footer-link"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="https://www.linkedin.com/in/zaur-hatuev"
+                target="_blank" rel="noopener noreferrer" className="footer-link"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Nav links */}
-        <nav style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-          {[
-            { href: `/${lang}/impressum`, label: dict.footer.impressum },
-            { href: `/${lang}/datenschutz`, label: dict.footer.datenschutz },
-            { href: `/${lang}/kontakt`, label: dict.footer.contact },
-            { href: '/muster', label: 'Muster' },
-          ].map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              style={{
-                color: '#6b7280',
-                textDecoration: 'none',
-                fontSize: '0.85rem',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#00ffe7')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#6b7280')}
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Social + copyright */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
-          <a
-            href="https://www.linkedin.com/in/zaur-hatuev"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              color: '#4b5563', fontSize: '0.82rem', textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#00ffe7')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#4b5563')}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            LinkedIn
-          </a>
-          <div style={{ fontSize: '0.8rem', color: '#374151' }}>
+        <div className="footer-bottom">
+          <span>
             © {new Date().getFullYear()} BrandWerkX. {dict.footer.rights}
-          </div>
+            {' · '}
+            <Link href={`/${lang}/impressum`} className="footer-link" style={{ fontSize: 'inherit' }}>{dict.footer.impressum}</Link>
+            {' · '}
+            <Link href={`/${lang}/datenschutz`} className="footer-link" style={{ fontSize: 'inherit' }}>{dict.footer.datenschutz}</Link>
+          </span>
+          <span className="footer-bottom-made">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            {lang === 'de' ? 'Gebaut in München' : 'Built in Munich'}
+          </span>
         </div>
       </footer>
     </div>

@@ -14,6 +14,7 @@ type WorkHeroProps = {
   ctaPrimaryHref: string;
   ctaSecondary: string;
   ctaSecondaryHref: string;
+  trustItems?: string[];
 };
 
 const ACCENT = "#00ffe7";
@@ -34,7 +35,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function WorkHero({
   eyebrow, line1, line2, line2Highlight, subline,
-  ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref,
+  ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustItems,
 }: WorkHeroProps) {
   return (
     <MotionConfig reducedMotion="user">
@@ -71,10 +72,11 @@ export default function WorkHero({
             initial={{ opacity: 0, y: 22, filter: "blur(5px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7, ease, delay: 0.08 }}
-            style={{ fontSize: "clamp(2.3rem,5.6vw,4.4rem)", fontWeight: 700, lineHeight: 1.05,
-              letterSpacing: "-0.03em", color: "#fff", margin: 0 }}>
+            style={{ fontSize: "clamp(2.4rem,5.8vw,4.7rem)", fontWeight: 700, lineHeight: 1.04,
+              letterSpacing: "-0.04em", color: "#fff", margin: 0 }}>
             {line1} {line2}{" "}
-            <span style={{ color: ACCENT }}>{line2Highlight}</span>
+            <span className="serif-accent" style={{ color: ACCENT, fontSize: "1.06em",
+              textShadow: `0 0 40px ${ACCENT}40` }}>{line2Highlight}</span>
           </motion.h1>
 
           <motion.p
@@ -105,6 +107,23 @@ export default function WorkHero({
               {ctaSecondary}
             </Link>
           </motion.div>
+
+          {trustItems && trustItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease, delay: 0.5 }}
+              className="hero-trust-row">
+              {trustItems.map((item) => (
+                <span key={item}>
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7l4 4 6-7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </motion.div>
+          )}
         </div>
 
         {/* Showcase-Stack: echte Projekte */}

@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, Instrument_Serif } from "next/font/google";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -19,6 +19,15 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+// Editorial-Kontrast: kursive Serif für Highlight-Wörter (Hero, CTA)
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -102,7 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="de"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable}`}
     >
       <head>
         {/* Favicon */}

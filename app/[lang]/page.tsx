@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import WorkHero from "../../components/WorkHero";
+import TickerMarquee from "../../components/TickerMarquee";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import { AnimatedCounter, FadeInSection } from "../../components/HomeAnimations";
 import { getDictionary, locales, type Locale } from "../../lib/i18n";
@@ -160,7 +161,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         : "Ready-made website designs for plumbers and sanitation businesses — 5 versions to choose from, SEO-optimized for Munich.",
       category: locale === "de" ? "Muster-Website · Handwerk" : "Template Website · Trades",
       tech: ["HTML", "CSS", "SEO", "Mobile"],
-      image: "/images/kleinanzeigen-preview.webp",
+      image: "/images/klempner-preview.png",
       link: "/muster/klempner",
       label: locale === "de" ? "LIVE DEMO" : "LIVE DEMO",
       labelColor: "#a78bfa",
@@ -192,9 +193,19 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           ctaPrimaryHref={`/${lang}/kontakt`}
           ctaSecondary={t.heroCtaSecondary}
           ctaSecondaryHref={`/${lang}/projekte`}
+          trustItems={locale === "de"
+            ? ["Antwort in 24h", "Festpreis ab 490€", "Live in 5 Tagen"]
+            : ["Reply within 24h", "Fixed price from €490", "Live in 5 days"]}
         />
         </ErrorBoundary>
       </section>
+
+      {/* TICKER */}
+      <TickerMarquee
+        items={locale === "de"
+          ? ["Webdesign", "*ab 490€", "Online-Shops", "SEO", "*in 5 Tagen live", "Landingpages", "Web-Apps", "*München", "Branding", "Wartung & Support"]
+          : ["Web Design", "*from €490", "Online Shops", "SEO", "*live in 5 days", "Landing Pages", "Web Apps", "*Munich", "Branding", "Care & Support"]}
+      />
 
       {/* STATS */}
       <section className="stats-section">
