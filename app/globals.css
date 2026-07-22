@@ -1357,6 +1357,14 @@ hr, .neumorph-divider {
   opacity: 1;
 }
 
+/* 3D-Tilt: Projekt-Karten neigen sich zur Maus (Variablen via LayoutClient) */
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-8px);
+    transition: transform 0.16s ease-out, border-color 0.3s ease, box-shadow 0.4s ease, background 0.3s ease;
+  }
+}
+
 /* ---- BUTTON-SHINE: Glanz-Sweep über Primär-CTAs ---- */
 .cta-btn-primary,
 .hero-cta-primary {

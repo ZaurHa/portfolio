@@ -73,7 +73,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
     };
   }, []);
 
-  // Spotlight: Cursor-Position als CSS-Variablen auf der jeweils berührten Karte
+  // Spotlight + 3D-Tilt: Cursor-Position als CSS-Variablen auf der berührten Karte
   useEffect(() => {
     const SELECTOR = '.project-card, .skill-card, .testimonial-card, .pricing-card';
     const onMove = (e: PointerEvent) => {
@@ -82,9 +82,26 @@ export default function LayoutClient({ children, lang, dict }: Props) {
       const r = el.getBoundingClientRect();
       el.style.setProperty('--mx', `${e.clientX - r.left}px`);
       el.style.setProperty('--my', `${e.clientY - r.top}px`);
+      if (e.pointerType === 'mouse' && el.classList.contains('project-card')) {
+        const relX = (e.clientX - r.left) / r.width - 0.5;
+        const relY = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--ry', `${(relX * 7).toFixed(2)}deg`);
+        el.style.setProperty('--rx', `${(-relY * 5).toFixed(2)}deg`);
+      }
+    };
+    const onOut = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest?.('.project-card') as HTMLElement | null;
+      if (el && !el.contains(e.relatedTarget as Node | null)) {
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      }
     };
     document.addEventListener('pointermove', onMove, { passive: true });
-    return () => document.removeEventListener('pointermove', onMove);
+    document.addEventListener('pointerout', onOut, { passive: true });
+    return () => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerout', onOut);
+    };
   }, []);
 
   useEffect(() => {

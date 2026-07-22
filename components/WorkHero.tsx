@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, MotionConfig } from "framer-motion";
+import dynamic from "next/dynamic";
+import { motion, MotionConfig, useMotionValue, useSpring } from "framer-motion";
+
+// WebGL-Szene nachgelagert laden — kein Einfluss auf LCP, kein SSR
+const HeroScene3D = dynamic(() => import("./HeroScene3D"), { ssr: false });
 
 type WorkHeroProps = {
   eyebrow: string;
@@ -37,9 +41,29 @@ export default function WorkHero({
   eyebrow, line1, line2, line2Highlight, subline,
   ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustItems,
 }: WorkHeroProps) {
+  // Maus-Tilt für den Showcase-Stack (Spring-geglättet, nur echte Maus)
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const rotX = useSpring(tiltX, { stiffness: 110, damping: 16 });
+  const rotY = useSpring(tiltY, { stiffness: 110, damping: 16 });
+
+  const handleTiltMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    tiltY.set(px * 7);
+    tiltX.set(-py * 6);
+  };
+  const handleTiltLeave = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
+
   return (
     <MotionConfig reducedMotion="user">
     <div style={{ position: "relative", width: "100%", background: "linear-gradient(180deg, #0a0d0c 0%, #070908 65%, #050505 100%)", overflow: "hidden" }}>
+      <HeroScene3D />
       {/* Grüner Glow + feines Raster */}
       <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
         maxWidth: 760, maxHeight: 760, pointerEvents: "none",
@@ -50,7 +74,10 @@ export default function WorkHero({
         maskImage: "radial-gradient(circle at 70% 30%, #000, transparent 75%)",
         WebkitMaskImage: "radial-gradient(circle at 70% 30%, #000, transparent 75%)" }} />
 
-      <div style={{ position: "relative", maxWidth: 1240, margin: "0 auto",
+      <div
+        onPointerMove={handleTiltMove}
+        onPointerLeave={handleTiltLeave}
+        style={{ position: "relative", zIndex: 1, maxWidth: 1240, margin: "0 auto",
         padding: "clamp(5rem,11vh,8rem) clamp(1.25rem,5vw,4rem) clamp(3rem,7vh,5rem)",
         display: "flex", flexWrap: "wrap", alignItems: "center", gap: "clamp(2rem,5vw,4rem)" }}>
 
@@ -126,9 +153,11 @@ export default function WorkHero({
           )}
         </div>
 
-        {/* Showcase-Stack: echte Projekte */}
-        <div style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
-          height: "clamp(340px,46vw,500px)" }}>
+        {/* Showcase-Stack: echte Projekte — neigt sich in 3D zur Maus */}
+        <motion.div style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
+          height: "clamp(340px,46vw,500px)",
+          rotateX: rotX, rotateY: rotY,
+          transformPerspective: 1100, transformStyle: "preserve-3d" }}>
           {SHOWCASE.map((p, i) => (
             <motion.div
               key={p.src}
@@ -162,7 +191,7 @@ export default function WorkHero({
               </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
     </MotionConfig>
