@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { motion, MotionConfig, useMotionValue, useSpring } from "framer-motion";
-
-// WebGL-Szene nachgelagert laden — kein Einfluss auf LCP, kein SSR
-const HeroScene3D = dynamic(() => import("./HeroScene3D"), { ssr: false });
 
 type WorkHeroProps = {
   eyebrow: string;
@@ -63,7 +59,6 @@ export default function WorkHero({
   return (
     <MotionConfig reducedMotion="user">
     <div style={{ position: "relative", width: "100%", background: "linear-gradient(180deg, #0a0d0c 0%, #070908 65%, #050505 100%)", overflow: "hidden" }}>
-      <HeroScene3D />
       {/* Grüner Glow + feines Raster */}
       <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
         maxWidth: 760, maxHeight: 760, pointerEvents: "none",
