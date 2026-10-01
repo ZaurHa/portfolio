@@ -6,6 +6,7 @@ import ErrorBoundary from "../../components/ErrorBoundary";
 import { AnimatedCounter, FadeInSection } from "../../components/HomeAnimations";
 import { getDictionary, locales, type Locale } from "../../lib/i18n";
 import type { Metadata } from "next";
+import { pageMetadata } from "../../lib/seo";
 
 function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
@@ -13,39 +14,9 @@ function isLocale(value: string): value is Locale {
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-    description: "Zaur Hatuev – Freelance Webentwickler & UI/UX Designer aus München. Moderne Websites, Landingpages und Webanwendungen mit Next.js ab 490€. Schnell, fair, messbar.",
-    keywords: [
-      "Webentwickler München", "Webdesign München", "Website erstellen lassen München",
-      "Freelancer Webentwicklung München", "Landingpage München", "Next.js Entwickler München",
-      "UI/UX Designer München", "Website für Handwerker München", "Webdesign für kleine Unternehmen",
-      "günstige Website erstellen", "BrandWerkX", "Zaur Hatuev",
-    ],
-    alternates: {
-      canonical: "https://brandwerkx.de/de",
-      languages: { de: "https://brandwerkx.de/de", en: "https://brandwerkx.de/en" },
-    },
-    openGraph: {
-      title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-      description: "Freelance Webentwickler aus München. Moderne Websites mit Next.js ab 490€.",
-      url: "https://brandwerkx.de/de",
-    },
-  } : {
-    title: "Web Developer Munich – Get a Website Built | BrandWerkX",
-    description: "Zaur Hatuev – Freelance web developer & UI/UX designer from Munich. Modern websites, landing pages and web apps with Next.js from €490.",
-    keywords: ["web developer Munich", "web design Munich", "freelancer Munich", "website Munich", "Next.js developer"],
-    alternates: {
-      canonical: "https://brandwerkx.de/en",
-      languages: { de: "https://brandwerkx.de/de", en: "https://brandwerkx.de/en" },
-    },
-    openGraph: {
-      title: "Web Developer Munich – Get a Website Built | BrandWerkX",
-      description: "Freelance web developer from Munich. Modern websites with Next.js from €490.",
-      url: "https://brandwerkx.de/en",
-    },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "", title: "Web Design Geretsried & Munich – Website from €490", description: "Get a website built from €490: web design from Geretsried (near Munich) for tradespeople and small businesses. Live in 5 days, SEO included.", absoluteTitle: true })
+    : pageMetadata({ lang, path: "", title: "Webdesign Geretsried & München – Website ab 490 €", description: "Website erstellen lassen ab 490 €: Webdesign aus Geretsried für Handwerker und kleine Betriebe in München und dem Oberland. In 5 Tagen live, SEO inklusive.", absoluteTitle: true });
 }
 
 // SVG Icons (Lucide-style) — no emojis per UI UX Pro Max guidelines
@@ -203,8 +174,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       {/* TICKER */}
       <TickerMarquee
         items={locale === "de"
-          ? ["Webdesign", "*ab 490€", "Online-Shops", "SEO", "*in 5 Tagen live", "Landingpages", "Web-Apps", "*München", "Branding", "Wartung & Support"]
-          : ["Web Design", "*from €490", "Online Shops", "SEO", "*live in 5 days", "Landing Pages", "Web Apps", "*Munich", "Branding", "Care & Support"]}
+          ? ["Webdesign", "*ab 490€", "Online-Shops", "SEO", "*in 5 Tagen live", "Landingpages", "Web-Apps", "*Geretsried & München", "Branding", "Wartung & Support"]
+          : ["Web Design", "*from €490", "Online Shops", "SEO", "*live in 5 days", "Landing Pages", "Web Apps", "*Geretsried & Munich", "Branding", "Care & Support"]}
       />
 
       {/* STATS */}

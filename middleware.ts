@@ -20,6 +20,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/images/') ||
     pathname.startsWith('/music/') ||
+    pathname === '/opengraph-image' ||
+    pathname === '/twitter-image' ||
     pathname.startsWith('/muster/') || // Design-Showcase: kein Sprachpräfix
     pathname === '/muster' ||
     pathname.includes('.') // Dateien wie favicon.ico

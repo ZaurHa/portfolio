@@ -1,5 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getDictionary, type Locale } from "../../../lib/i18n";
+import { pageMetadata } from "../../../lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/impressum", title: "Legal Notice", description: "Legal notice of BrandWerkX, Zaur Hatuev, Geretsried.", noindex: true })
+    : pageMetadata({ lang, path: "/impressum", title: "Impressum", description: "Impressum von BrandWerkX, Zaur Hatuev, Geretsried.", noindex: true });
+}
 
 export default async function Impressum({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -22,7 +31,7 @@ export default async function Impressum({ params }: { params: Promise<{ lang: st
 
         <div className="legal-section">
           <h2>{t.responsible}</h2>
-          <p>Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />Deutschland</p>
+          <p>BrandWerkX – Inhaber Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />Deutschland</p>
         </div>
 
         <div className="legal-section">
@@ -31,6 +40,11 @@ export default async function Impressum({ params }: { params: Promise<{ lang: st
             E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a><br />
             Website: <a href="https://brandwerkx.de" target="_blank" rel="noopener noreferrer">https://brandwerkx.de</a>
           </p>
+        </div>
+
+        <div className="legal-section">
+          <h2>{t.taxTitle}</h2>
+          <p>{t.taxText}</p>
         </div>
 
         <div className="legal-section">

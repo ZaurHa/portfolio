@@ -1,23 +1,13 @@
 import { getDictionary, type Locale } from "../../../lib/i18n";
 import KontaktClient from "./KontaktClient";
 import type { Metadata } from "next";
+import { pageMetadata } from "../../../lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Kontakt – Website anfragen | BrandWerkX München",
-    description: "Website erstellen lassen? Jetzt Projekt anfragen – kostenlose Erstberatung, Antwort innerhalb 24 Stunden. Webentwickler München, faire Preise ab 790€.",
-    keywords: ["Website anfragen München", "Webentwickler kontaktieren", "kostenlose Webdesign Beratung", "Freelancer München anfragen"],
-    alternates: { canonical: "https://brandwerkx.de/de/kontakt" },
-    openGraph: { title: "Kontakt – Website anfragen | BrandWerkX München", description: "Kostenlose Erstberatung, Antwort in 24h. Webentwickler München ab 790€.", url: "https://brandwerkx.de/de/kontakt" },
-  } : {
-    title: "Contact – Request a Website | BrandWerkX München",
-    description: "Request your website project – free initial consultation, reply within 24 hours. Web developer München, fair prices from €790.",
-    keywords: ["contact web developer München", "website quote München", "freelancer inquiry München"],
-    alternates: { canonical: "https://brandwerkx.de/en/kontakt" },
-    openGraph: { title: "Contact – Request a Website | BrandWerkX München", description: "Free consultation, reply in 24h. Web developer München from €790.", url: "https://brandwerkx.de/en/kontakt" },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/kontakt", title: "Contact – Request a Website", description: "Request your website project: free initial call, reply within 24 hours. Web design from Geretsried for Munich and the surrounding region." })
+    : pageMetadata({ lang, path: "/kontakt", title: "Website anfragen – kostenloses Erstgespräch", description: "Projekt anfragen: kostenloses Erstgespräch, Antwort innerhalb von 24 Stunden. Webdesign aus Geretsried für München und das Oberland." });
 }
 
 export default async function Kontakt({ params }: { params: Promise<{ lang: string }> }) {

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: 'Vibes – Social Video App',
   description: 'Die Social Video App. Teile kurze Videos, folge Creators und entdecke neue Inhalte. Jetzt kostenlos herunterladen.',
 };

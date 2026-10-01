@@ -322,7 +322,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
               </svg>
-              München, Deutschland
+              Geretsried · München &amp; Oberland
             </span>
           </div>
 
@@ -374,7 +374,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
             </svg>
-            {lang === 'de' ? 'Gebaut in München' : 'Built in Munich'}
+            {lang === 'de' ? 'Gebaut in Geretsried' : 'Built in Geretsried'}
           </span>
         </div>
       </footer>

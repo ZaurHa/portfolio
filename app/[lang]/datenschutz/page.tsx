@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from 'next';
+import { pageMetadata } from '../../../lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  return lang === 'en'
+    ? pageMetadata({ lang, path: '/datenschutz', title: 'Privacy Policy', description: 'Privacy policy of BrandWerkX.', noindex: true })
+    : pageMetadata({ lang, path: '/datenschutz', title: 'Datenschutzerklärung', description: 'Datenschutzerklärung von BrandWerkX.', noindex: true });
+}
 
 export default function Datenschutz() {
   return (

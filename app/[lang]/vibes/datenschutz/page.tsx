@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: 'Datenschutzerklärung – Vibes App',
   description: 'Datenschutzerklärung der Vibes Social Video App. DSGVO-konform.',
 };

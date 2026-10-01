@@ -3,33 +3,13 @@ import Link from "next/link";
 import { FadeInSection } from "../../../../components/HomeAnimations";
 import { getDictionary, type Locale } from "../../../../lib/i18n";
 import type { Metadata } from "next";
+import { pageMetadata } from "../../../../lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Zaira Beauty Face – Webdesign Case Study München | BrandWerkX",
-    description: "Case Study: Kosmetikstudio-Website in München mit Next.js und TailwindCSS. Ergebnis: 40% mehr Kundenkontakte, Top-3 Google-Ranking, Lighthouse 97/100 in 3 Monaten.",
-    keywords: ["Webdesign Kosmetikstudio", "Case Study Webentwicklung München", "Zaira Beauty Face", "Website Kosmetik München", "Next.js Case Study", "SEO Ergebnisse München"],
-    alternates: { canonical: "https://brandwerkx.de/de/projekte/zaira-beauty" },
-    openGraph: {
-      title: "Zaira Beauty Face – Webdesign Case Study | BrandWerkX",
-      description: "40% mehr Kundenkontakte nach Website-Relaunch. Case Study: Webdesign & SEO für Kosmetikstudio München.",
-      url: "https://brandwerkx.de/de/projekte/zaira-beauty",
-      images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
-    },
-  } : {
-    title: "Zaira Beauty Face – Web Design Case Study Munich | BrandWerkX",
-    description: "Case Study: Beauty studio website in Munich with Next.js and TailwindCSS. Result: 40% more client contacts, top-3 Google ranking, Lighthouse 97/100 within 3 months.",
-    keywords: ["web design beauty studio", "case study web development Munich", "Zaira Beauty Face", "Next.js case study"],
-    alternates: { canonical: "https://brandwerkx.de/en/projekte/zaira-beauty" },
-    openGraph: {
-      title: "Zaira Beauty Face – Web Design Case Study | BrandWerkX",
-      description: "40% more client contacts after website relaunch. Case study: web design & SEO for beauty studio Munich.",
-      url: "https://brandwerkx.de/en/projekte/zaira-beauty",
-      images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
-    },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Beauty Studio Website Case Study", description: "Case study: rebranding and new website for a beauty studio — strategy, design and development with Next.js and TailwindCSS from a single source." })
+    : pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Case Study Kosmetikstudio-Website", description: "Case Study: Rebranding und neue Website für ein Kosmetikstudio — Strategie, Design und Entwicklung mit Next.js und TailwindCSS aus einer Hand." });
 }
 
 const processSteps = [

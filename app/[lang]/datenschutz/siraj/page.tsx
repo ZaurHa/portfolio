@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: 'Datenschutzerklärung – Siraj Quran',
   description: 'Datenschutzerklärung für die App Siraj — Quran & Gebetszeiten',
-  robots: { index: true, follow: true },
 };
 
 export default function SirajDatenschutz() {

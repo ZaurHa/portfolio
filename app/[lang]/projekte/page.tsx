@@ -3,23 +3,13 @@ import Image from "next/image";
 import { FadeInSection } from "../../../components/HomeAnimations";
 import { getDictionary, type Locale } from "../../../lib/i18n";
 import type { Metadata } from "next";
+import { pageMetadata } from "../../../lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Portfolio – Webdesign Projekte München | BrandWerkX",
-    description: "Webdesign-Projekte von Zaur Hatuev: Kosmetikstudio-Website mit 40% mehr Kundenkontakten. Moderne Websites, Landingpages und Webanwendungen aus München.",
-    keywords: ["Webdesign Portfolio München", "Website Case Study", "Webentwickler Referenzen", "Next.js Projekte", "Zaira Beauty Face"],
-    alternates: { canonical: "https://brandwerkx.de/de/projekte" },
-    openGraph: { title: "Portfolio – Webdesign Projekte München | BrandWerkX", description: "Webdesign-Projekte mit messbaren Ergebnissen aus München.", url: "https://brandwerkx.de/de/projekte" },
-  } : {
-    title: "Portfolio – Web Design Projects München | BrandWerkX",
-    description: "Web design projects by Zaur Hatuev: beauty studio website with 40% more customer inquiries. Modern websites from München.",
-    keywords: ["web design portfolio München", "website case study", "Next.js projects"],
-    alternates: { canonical: "https://brandwerkx.de/en/projekte" },
-    openGraph: { title: "Portfolio – Web Design Projects München | BrandWerkX", description: "Web design projects with measurable results from München.", url: "https://brandwerkx.de/en/projekte" },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/projekte", title: "Web Design Projects & References", description: "BrandWerkX references: websites for a beauty studio, logistics, transport and trades — built with Next.js, fast and SEO-optimized." })
+    : pageMetadata({ lang, path: "/projekte", title: "Webdesign Referenzen & Projekte", description: "Referenzen von BrandWerkX: Websites für Kosmetikstudio, Logistik, Transport und Handwerk — mit Next.js, schnell und SEO-optimiert." });
 }
 
 export default async function Projekte({ params }: { params: Promise<{ lang: string }> }) {

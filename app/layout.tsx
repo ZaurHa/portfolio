@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter, Space_Grotesk, Instrument_Serif } from "next/font/google";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -31,30 +31,13 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://brandwerkx.de'),
   title: {
-    default: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-    template: "%s | BrandWerkX"
+    default: "Webdesign Geretsried & München – Website ab 490 € | BrandWerkX",
+    template: "%s | BrandWerkX",
   },
-  description: "Webentwickler & UI/UX Designer aus München. Ich erstelle moderne Websites, Landingpages und Webanwendungen mit Next.js. Schnelle Umsetzung, faire Preise, messbare Ergebnisse.",
-  keywords: [
-    "Webentwickler München",
-    "Webdesign München",
-    "Website erstellen lassen München",
-    "Freelancer Webentwicklung München",
-    "Landingpage erstellen München",
-    "Next.js Entwickler München",
-    "UI/UX Designer München",
-    "Website für Handwerker",
-    "Webdesign für kleine Unternehmen",
-    "günstige Website erstellen",
-    "Zaur Hatuev",
-    "BrandWerkX",
-    "Full-Stack Entwickler München",
-    "React Entwickler",
-    "SEO Optimierung München",
-  ],
+  description: "Website erstellen lassen ab 490 €: Webdesign aus Geretsried für Handwerker und kleine Betriebe in München und dem Oberland. In 5 Tagen live, SEO inklusive.",
   authors: [{ name: "Zaur Hatuev", url: "https://brandwerkx.de/de/ueber-mich" }],
   creator: "Zaur Hatuev",
   publisher: "BrandWerkX",
@@ -62,36 +45,6 @@ export const metadata = {
     email: false,
     address: false,
     telephone: false,
-  },
-  alternates: {
-    canonical: "https://brandwerkx.de/de",
-    languages: {
-      "de": "https://brandwerkx.de/de",
-      "en": "https://brandwerkx.de/en",
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "de_DE",
-    alternateLocale: "en_US",
-    url: "https://brandwerkx.de",
-    siteName: "BrandWerkX",
-    title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-    description: "Webentwickler & UI/UX Designer aus München. Moderne Websites, Landingpages und Webanwendungen mit Next.js. Schnelle Umsetzung, faire Preise.",
-    images: [
-      {
-        url: "https://brandwerkx.de/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "BrandWerkX – Webentwickler München",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Webentwickler München – Website erstellen lassen | BrandWerkX",
-    description: "Webentwickler & UI/UX Designer aus München. Moderne Websites mit Next.js. Faire Preise, messbare Ergebnisse.",
-    images: ["https://brandwerkx.de/opengraph-image"],
   },
   robots: {
     index: true,
@@ -106,6 +59,99 @@ export const metadata = {
   },
 };
 
+const SITE = "https://brandwerkx.de";
+
+// Verknüpfter Entity-Graph (@id) — eine Quelle der Wahrheit für Name, Ort, Preise.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      "name": "BrandWerkX",
+      "url": SITE,
+      "inLanguage": ["de", "en"],
+      "publisher": { "@id": `${SITE}/#business` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE}/#business`,
+      "name": "BrandWerkX",
+      "alternateName": "BrandWerkX Webdesign",
+      "description": "Webdesign und Webentwicklung für Handwerker, Selbstständige und kleine Unternehmen — Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
+      "url": SITE,
+      "logo": `${SITE}/images/brandwerkxweiss.webp`,
+      "image": `${SITE}/opengraph-image`,
+      "email": "brandwerkx@gmail.com",
+      "founder": { "@id": `${SITE}/#zaur` },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Steiner Ring 64",
+        "postalCode": "82538",
+        "addressLocality": "Geretsried",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Geretsried" },
+        { "@type": "City", "name": "München" },
+        { "@type": "AdministrativeArea", "name": "Landkreis Bad Tölz-Wolfratshausen" },
+        { "@type": "Country", "name": "Deutschland" }
+      ],
+      "priceRange": "ab 490 €",
+      "serviceType": [
+        "Webdesign",
+        "Webentwicklung",
+        "Landingpage-Erstellung",
+        "SEO-Optimierung",
+        "Website-Wartung"
+      ],
+      "sameAs": [
+        "https://github.com/ZaurHa",
+        "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Website-Pakete",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Muster-Website",
+            "description": "Fertiges Website-Design individuell angepasst — mit Logo, Texten, Kontaktformular und SEO. Fertig in 3–5 Werktagen.",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 490, "priceCurrency": "EUR" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Custom Website",
+            "description": "Individuell gestaltete Website nach Kundenwunsch — SEO-optimiert, mobile-first.",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 990, "priceCurrency": "EUR" }
+          },
+          {
+            "@type": "Offer",
+            "name": "SEO & Wartung",
+            "description": "Bestehende Website für Google optimieren, monatliche Updates und technische Betreuung.",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 99, "priceCurrency": "EUR", "unitText": "MON" }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE}/#zaur`,
+      "name": "Zaur Hatuev",
+      "jobTitle": "Webdesigner & Webentwickler",
+      "worksFor": { "@id": `${SITE}/#business` },
+      "url": `${SITE}/de/ueber-mich`,
+      "sameAs": [
+        "https://github.com/ZaurHa",
+        "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
+      ],
+      "knowsAbout": ["Webdesign", "Webentwicklung", "Next.js", "React", "TypeScript", "UI/UX Design", "SEO", "TailwindCSS", "Figma"],
+      "knowsLanguage": ["de", "en", "ru"]
+    }
+  ]
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -116,113 +162,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Strukturierte Daten */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "BrandWerkX",
-                "url": "https://brandwerkx.de",
-                "description": "Webentwickler & UI/UX Designer aus München. Moderne Websites, Landingpages und Webanwendungen.",
-                "inLanguage": ["de", "en"],
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": "https://brandwerkx.de/de/projekte"
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "ProfessionalService",
-                "name": "BrandWerkX – Webentwicklung München",
-                "description": "Professionelle Websites für Handwerker, Selbstständige und kleine Unternehmen — ab 490€, fertig in 5 Tagen, SEO-optimiert.",
-                "url": "https://brandwerkx.de",
-                "email": "brandwerkx@gmail.com",
-                "founder": "Zaur Hatuev",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "München",
-                  "addressCountry": "DE"
-                },
-                "areaServed": {
-                  "@type": "City",
-                  "name": "München"
-                },
-                "priceRange": "€€",
-                "serviceType": [
-                  "Webentwicklung",
-                  "UI/UX Design",
-                  "Landingpage Erstellung",
-                  "SEO Optimierung",
-                  "Webdesign",
-                  "Branding"
-                ],
-                "sameAs": [
-                  "https://github.com/ZaurHa",
-                  "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
-                ],
-                "hasOfferCatalog": {
-                  "@type": "OfferCatalog",
-                  "name": "Website-Pakete München",
-                  "itemListElement": [
-                    {
-                      "@type": "Offer",
-                      "name": "Muster-Website",
-                      "description": "Fertiges Website-Design individuell angepasst — mit Logo, Texten, Kontaktformular und SEO. Fertig in 3–5 Werktagen.",
-                      "price": "490",
-                      "priceCurrency": "EUR"
-                    },
-                    {
-                      "@type": "Offer",
-                      "name": "Custom Website",
-                      "description": "Individuell gestaltete Website nach deinen Wünschen — bis zu 5 Seiten, SEO-optimiert, mobile-first.",
-                      "price": "990",
-                      "priceCurrency": "EUR"
-                    },
-                    {
-                      "@type": "Offer",
-                      "name": "SEO & Wartung",
-                      "description": "Bestehende Website für Google optimieren, monatliche Updates und technische Betreuung.",
-                      "price": "99",
-                      "priceCurrency": "EUR"
-                    }
-                  ]
-                }
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Zaur Hatuev",
-                "jobTitle": "Webentwickler & UI/UX Designer München",
-                "worksFor": { "@type": "Organization", "name": "BrandWerkX" },
-                "url": "https://brandwerkx.de/de/ueber-mich",
-                "sameAs": [
-                  "https://github.com/ZaurHa",
-                  "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
-                ],
-                "knowsAbout": [
-                  "Webentwicklung München",
-                  "Next.js",
-                  "React",
-                  "TypeScript",
-                  "UI/UX Design",
-                  "SEO",
-                  "TailwindCSS",
-                  "Figma"
-                ],
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "contactType": "Kundenanfragen",
-                  "email": "brandwerkx@gmail.com",
-                  "availableLanguage": ["German", "English", "Russian"]
-                }
-              }
-            ])
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body

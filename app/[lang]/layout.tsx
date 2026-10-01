@@ -1,6 +1,8 @@
 import { getDictionary, type Locale } from '../../lib/i18n';
 import LayoutClient from '../../components/LayoutClient';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return [{ lang: 'de' }, { lang: 'en' }];
 }

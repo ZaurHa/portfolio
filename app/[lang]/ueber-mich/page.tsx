@@ -3,23 +3,13 @@ import Image from "next/image";
 import { FadeInSection } from "../../../components/HomeAnimations";
 import { getDictionary, type Locale } from "../../../lib/i18n";
 import type { Metadata } from "next";
+import { pageMetadata } from "../../../lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Über mich – Zaur Hatuev | Webentwickler München",
-    description: "Zaur Hatuev – Freelance Webentwickler & UI/UX Designer aus München. 8+ Jahre Erfahrung mit Next.js, React, TypeScript und Figma. Projekte für kleine Unternehmen und Startups.",
-    keywords: ["Zaur Hatuev", "Webentwickler München", "Freelancer München", "Full-Stack Entwickler", "UI/UX Designer München", "Next.js Entwickler"],
-    alternates: { canonical: "https://brandwerkx.de/de/ueber-mich" },
-    openGraph: { title: "Über mich – Zaur Hatuev | Webentwickler München", description: "Freelance Webentwickler & UI/UX Designer aus München. 8+ Jahre Erfahrung.", url: "https://brandwerkx.de/de/ueber-mich" },
-  } : {
-    title: "About – Zaur Hatuev | Web Developer München",
-    description: "Zaur Hatuev – Freelance web developer & UI/UX designer based in München. 8+ years experience with Next.js, React and TypeScript.",
-    keywords: ["Zaur Hatuev", "web developer München", "freelancer München", "Next.js developer"],
-    alternates: { canonical: "https://brandwerkx.de/en/ueber-mich" },
-    openGraph: { title: "About – Zaur Hatuev | Web Developer München", description: "Freelance web developer & UI/UX designer based in München.", url: "https://brandwerkx.de/en/ueber-mich" },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/ueber-mich", title: "About – Zaur Hatuev, Web Designer", description: "Zaur Hatuev, freelance web designer and developer from Geretsried: websites with Next.js, React and TypeScript for tradespeople, freelancers and small businesses." })
+    : pageMetadata({ lang, path: "/ueber-mich", title: "Über mich – Zaur Hatuev, Webdesigner", description: "Zaur Hatuev, Freelance-Webdesigner und Entwickler aus Geretsried: Websites mit Next.js, React und TypeScript für Handwerker, Selbstständige und kleine Unternehmen." });
 }
 
 const skills = [
@@ -90,7 +80,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
             <div className="about-avatar">
               <Image
                 src="/images/zaur-portrait.jpg"
-                alt="Zaur Hatuev – Webentwickler & UI/UX Designer aus München"
+                alt="Zaur Hatuev – Webdesigner und Webentwickler aus Geretsried"
                 fill
                 sizes="(max-width: 639px) 130px, 180px"
                 className="about-avatar-img"
