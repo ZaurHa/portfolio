@@ -1,7 +1,29 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Design-Showcase-Links sind für Kunden, nicht für Suchmaschinen
-Disallow: /muster/
+# /muster (Design-Übersicht) ist indexierbar; die Einzel-Demos tragen selbst noindex
+
+# KI-Suchsysteme ausdrücklich erlaubt (Sichtbarkeit in ChatGPT, Perplexity, Gemini, Claude)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
 
 Sitemap: https://brandwerkx.de/sitemap.xml

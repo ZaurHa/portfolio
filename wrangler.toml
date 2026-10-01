@@ -1,0 +1,6 @@
+# Cloudflare Pages – Projektkonfiguration
+# Build: `npm run build` (statischer Export nach ./out, inkl. postbuild)
+# Kontaktformular: functions/api/contact.ts (Secret RESEND_API_KEY im Dashboard setzen)
+name = "brandwerkx"
+pages_build_output_dir = "out"
+compatibility_date = "2026-09-01"

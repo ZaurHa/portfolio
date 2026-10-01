@@ -1,0 +1,15 @@
+# Cloudflare Pages – Weiterleitungen (ersetzt die frühere Next.js-Middleware)
+/                        /de                        302
+/kontakt                 /de/kontakt                301
+/leistungen              /de/leistungen             301
+/projekte                /de/projekte               301
+/projekte/zaira-beauty   /de/projekte/zaira-beauty  301
+/ueber-mich              /de/ueber-mich             301
+/impressum               /de/impressum              301
+/datenschutz             /de/datenschutz            301
+/datenschutz/siraj       /de/datenschutz/siraj      301
+/agb                     /de                        301
+/vibes                   /de/vibes                  301
+/webdesign               /de/webdesign              301
+/webdesign/*             /de/webdesign/:splat       301
+/de/seite-nicht-gefunden /de                        301

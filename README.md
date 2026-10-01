@@ -23,20 +23,21 @@ npm run dev
 ```
 Die Seite läuft dann auf [http://localhost:3000](http://localhost:3000) (oder nächster freier Port).
 
-## Deployment
-Empfohlen: [Vercel](https://vercel.com/) (1-Klick-Deploy für Next.js)
+## Deployment (Cloudflare Pages)
+Die Seite wird als statischer Export gebaut und auf Cloudflare Pages gehostet (kommerzielle Nutzung im Free-Plan erlaubt).
 
-1. Repository auf GitHub pushen
-2. Auf [vercel.com/import](https://vercel.com/import) das Repo auswählen
-3. Deploy klicken – fertig!
+1. Cloudflare-Dashboard → Workers & Pages → Erstellen → Pages → Mit Git verbinden → Repo wählen
+2. Build-Befehl: `npm run build` · Ausgabeverzeichnis: `out` · Umgebungsvariable `NODE_VERSION=20`
+3. Unter Einstellungen → Variablen und Geheimnisse: `RESEND_API_KEY` (verschlüsselt) setzen
+4. Eigene Domain `brandwerkx.de` unter „Benutzerdefinierte Domains“ hinzufügen
 
-Alternativ: [Netlify](https://www.netlify.com/), [Render](https://render.com/)
+Lokal wie live testen: `npm run build && npm run preview`
 
 ## Anpassung
-- **Projekte:** In `app/page.tsx` und `app/projekte/[slug]/page.tsx` anpassen/ergänzen
-- **Social Links:** In `app/ueber-mich/page.tsx` ändern
-- **Farben/Design:** In `app/globals.css` (`--accent` für Akzentfarbe)
-- **SEO:** In `app/layout.tsx` (Meta-Tags)
+- **Startseite:** `lib/home.ts` · **Landingpages:** `lib/landing.ts`
+- **Projekte:** `app/[lang]/projekte/page.tsx`
+- **Design:** `app/design-v3.css`
+- **SEO:** `lib/seo.ts` (Metadaten je Seite), `lib/root.tsx` (strukturierte Daten)
 
 ## Kontakt
 Fragen oder Feedback? Einfach eine Mail an [deine@email.de](mailto:deine@email.de)

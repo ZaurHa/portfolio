@@ -1,0 +1,35 @@
+# BrandWerkX
+
+> BrandWerkX ist ein Freelance-Webdesign- und Webentwicklungs-Angebot von Zaur Hatuev aus Geretsried (Bayern, Oberbayern) für Handwerker, Selbstständige und kleine Unternehmen in München, im Oberland und deutschlandweit. Websites ab 490 €, fertig in 3–10 Tagen, SEO inklusive. Arbeitssprachen: Deutsch, Englisch, Russisch.
+
+## Kernfakten
+- Anbieter: Zaur Hatuev, Inhaber von BrandWerkX, Steiner Ring 64, 82538 Geretsried
+- Leistungen: Webdesign, Webentwicklung (Next.js, React, TypeScript), Landingpages, SEO-Optimierung, Website-Wartung
+- Preise (Kleinunternehmer nach § 19 UStG, keine Umsatzsteuer): Muster-Website ab 490 €, Custom-Website ab 990 €, SEO & Wartung ab 99 € pro Monat
+- Ablauf: Design wählen, Infos senden, Website live, Übergabe mit 30 Tagen Support
+- Kontakt: Telefon 0172 8471641 (+49 172 8471641), brandwerkx@gmail.com oder Kontaktformular, Antwort innerhalb von 24 Stunden
+
+## Seiten
+- [Startseite](https://brandwerkx.de/de): Überblick, Referenzen, Kundenstimmen
+- [Leistungen & Preise](https://brandwerkx.de/de/leistungen): Pakete, Zusatzleistungen, Ablauf, häufige Fragen
+- [Projekte](https://brandwerkx.de/de/projekte): Referenzen aus Beauty, Logistik, Transport und Handwerk
+- [Case Study Zaira Beauty Face](https://brandwerkx.de/de/projekte/zaira-beauty): Rebranding und neue Website für ein Kosmetikstudio
+- [Über mich](https://brandwerkx.de/de/ueber-mich): Zaur Hatuev, Werkzeuge und Schwerpunkte
+- [Kontakt](https://brandwerkx.de/de/kontakt): Projekt anfragen
+
+## Webdesign-Themen (Deutsch)
+- [Übersicht](https://brandwerkx.de/de/webdesign)
+- [Website erstellen lassen](https://brandwerkx.de/de/webdesign/website-erstellen-lassen)
+- [Was kostet eine Website?](https://brandwerkx.de/de/webdesign/website-kosten)
+- [SEO-Optimierung](https://brandwerkx.de/de/webdesign/seo-optimierung)
+- [Landingpage erstellen](https://brandwerkx.de/de/webdesign/landingpage-erstellen)
+- [Website für Handwerker](https://brandwerkx.de/de/webdesign/handwerker)
+- [Website für Kosmetikstudios](https://brandwerkx.de/de/webdesign/kosmetikstudio)
+- [Website für Logistik & Transport](https://brandwerkx.de/de/webdesign/logistik-und-transport)
+- [Webdesign Geretsried](https://brandwerkx.de/de/webdesign/geretsried)
+- [Webdesign Wolfratshausen & Bad Tölz](https://brandwerkx.de/de/webdesign/oberland)
+- [Webdesign München](https://brandwerkx.de/de/webdesign/muenchen)
+
+## English
+- [Home](https://brandwerkx.de/en): freelance web design from Geretsried near Munich, websites from €490
+- [Services & pricing](https://brandwerkx.de/en/leistungen)

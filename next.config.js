@@ -1,18 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Statischer Export für Cloudflare Pages (Ausgabe in ./out).
+  // Das Kontaktformular läuft als Pages Function: functions/api/contact.ts
+  output: 'export',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-      },
-    ],
+    // Ohne Next-Server keine Laufzeit-Optimierung – Bilder liegen bereits als WebP vor
+    unoptimized: true,
   },
   // ESLint läuft beim Build — Fehler blockieren den Deploy
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

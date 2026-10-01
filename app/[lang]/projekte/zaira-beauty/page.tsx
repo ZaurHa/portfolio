@@ -1,316 +1,178 @@
-import Image from "next/image";
 import Link from "next/link";
-import { FadeInSection } from "../../../../components/HomeAnimations";
-import { getDictionary, type Locale } from "../../../../lib/i18n";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { pageMetadata, SITE_URL } from "../../../../lib/seo";
+import PageHero from "../../../../components/v3/PageHero";
+import ClosingCta from "../../../../components/v3/ClosingCta";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Zaira Beauty Face – Webdesign Case Study München | BrandWerkX",
-    description: "Case Study: Kosmetikstudio-Website in München mit Next.js und TailwindCSS. Ergebnis: 40% mehr Kundenkontakte, Top-3 Google-Ranking, Lighthouse 97/100 in 3 Monaten.",
-    keywords: ["Webdesign Kosmetikstudio", "Case Study Webentwicklung München", "Zaira Beauty Face", "Website Kosmetik München", "Next.js Case Study", "SEO Ergebnisse München"],
-    alternates: { canonical: "https://brandwerkx.de/de/projekte/zaira-beauty" },
-    openGraph: {
-      title: "Zaira Beauty Face – Webdesign Case Study | BrandWerkX",
-      description: "40% mehr Kundenkontakte nach Website-Relaunch. Case Study: Webdesign & SEO für Kosmetikstudio München.",
-      url: "https://brandwerkx.de/de/projekte/zaira-beauty",
-      images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
-    },
-  } : {
-    title: "Zaira Beauty Face – Web Design Case Study Munich | BrandWerkX",
-    description: "Case Study: Beauty studio website in Munich with Next.js and TailwindCSS. Result: 40% more client contacts, top-3 Google ranking, Lighthouse 97/100 within 3 months.",
-    keywords: ["web design beauty studio", "case study web development Munich", "Zaira Beauty Face", "Next.js case study"],
-    alternates: { canonical: "https://brandwerkx.de/en/projekte/zaira-beauty" },
-    openGraph: {
-      title: "Zaira Beauty Face – Web Design Case Study | BrandWerkX",
-      description: "40% more client contacts after website relaunch. Case study: web design & SEO for beauty studio Munich.",
-      url: "https://brandwerkx.de/en/projekte/zaira-beauty",
-      images: [{ url: "/images/beauty-praxis-mockup.webp", width: 1200, height: 800 }],
-    },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Beauty Studio Website Case Study", description: "Case study: rebrand and new website for Zaira Beauty Face, a beauty studio in Geretsried – strategy, design and development from one source." })
+    : pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Case Study Kosmetikstudio-Website", description: "Case Study: Rebranding und neue Website für Zaira Beauty Face, ein Kosmetikstudio in Geretsried – Strategie, Design und Entwicklung aus einer Hand." });
 }
 
-const processSteps = [
-  { num: "01", title: "Research", desc: "Marktanalyse, Zielgruppen-Research, Wettbewerbsanalyse" },
-  { num: "02", title: "Konzept", desc: "Branding-Konzept, Wireframes, Design-System" },
-  { num: "03", title: "Design", desc: "UI/UX Design, Prototyping, Kunden-Feedback" },
-  { num: "04", title: "Umsetzung", desc: "Entwicklung, Testing, Launch, Support" },
-];
-
-const frontend = ["Next.js 14", "React 18", "TailwindCSS", "Framer Motion", "Responsive Design"];
-const features = ["SEO-Optimierung", "Kontaktformular", "Service-Galerie", "Preisübersicht", "Mobile-First"];
-
-const problemItems = [
-  "Eine moderne, vertrauensvolle Website",
-  "Ein einheitliches Branding",
-  "Mehr Online-Sichtbarkeit",
-  "Einfache Terminbuchung",
-  "Professionelle Darstellung der Services",
-];
-
-const solutionItems = [
-  "Responsive Website mit modernem Design",
-  "Komplettes Branding (Logo, Farben, Typografie)",
-  "SEO-Optimierung für lokale Suche",
-  "Kontaktformular mit Terminbuchung",
-  "Service-Übersicht mit Preisen",
-  "Galerie mit Vorher-Nachher-Bildern",
-];
+const LIVE_URL = "https://zairabeauty.de";
 
 export default async function ZairaBeautyCaseStudy({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const locale = (lang === "en" ? "en" : "de") as Locale;
-  const d = await getDictionary(locale);
-  const t = d.caseStudy;
+  const de = lang !== "en";
 
-  const kpis = [
-    { value: "+40%", label: t.kpi1label, desc: t.kpi1desc },
-    { value: "+150%", label: t.kpi2label, desc: t.kpi2desc },
-    { value: "Top 3", label: t.kpi3label, desc: t.kpi3desc },
-    { value: "0.8s", label: t.kpi4label, desc: t.kpi4desc },
+  const goals = de
+    ? ["Eine moderne, vertrauenswürdige Website", "Ein einheitliches Erscheinungsbild", "Mehr Sichtbarkeit in der Region", "Behandlungen klar und verständlich zeigen", "Einfacher Weg zur Terminanfrage"]
+    : ["A modern, trustworthy website", "A consistent brand identity", "More visibility in the region", "Show treatments clearly", "An easy path to booking enquiries"];
+  const delivered = de
+    ? ["Rebranding: Logo, Farben, Typografie", "Responsive Website, mobil zuerst gebaut", "Behandlungsübersicht mit Preisen", "Lokale SEO-Grundlagen für Geretsried", "Kontaktweg für Terminanfragen"]
+    : ["Rebrand: logo, colours, typography", "Responsive website, built mobile-first", "Treatment overview with prices", "Local SEO basics for Geretsried", "Contact path for appointment requests"];
+  const treatments = de
+    ? ["Aquafacial", "Anti-Aging", "Microneedling", "Lashlifting", "Dauerhafte Haarentfernung"]
+    : ["Aquafacial", "Anti-ageing", "Microneedling", "Lash lifting", "Permanent hair removal"];
+  const steps: [string, string][] = de
+    ? [
+        ["Verstehen", "Studio, Zielgruppe und Wettbewerb in Geretsried kennenlernen."],
+        ["Marke", "Logo, Farben und Typografie als einheitliches Erscheinungsbild."],
+        ["Design", "Seitenaufbau und Gestaltung – abgestimmt im direkten Austausch."],
+        ["Launch", "Entwicklung, Test auf allen Geräten, Livegang und Übergabe."],
+      ]
+    : [
+        ["Understand", "Get to know the studio, audience and competition in Geretsried."],
+        ["Brand", "Logo, colours and typography as one consistent identity."],
+        ["Design", "Page structure and design – agreed in direct exchange."],
+        ["Launch", "Development, testing on all devices, go-live and handover."],
+      ];
+  const stack: [string, string][] = [
+    ["Framework", "Next.js · React"],
+    ["Styling", "TailwindCSS"],
+    ["Design", "Figma"],
+    [de ? "Fokus" : "Focus", de ? "Mobil zuerst · lokale SEO" : "Mobile-first · local SEO"],
   ];
 
-  const qualitative = [
-    locale === "en" ? "Professional appearance" : "Professionelles Erscheinungsbild",
-    locale === "en" ? "Easier appointment booking" : "Einfachere Terminbuchung",
-    locale === "en" ? "Better customer communication" : "Bessere Kundenkommunikation",
-    locale === "en" ? "Increased trust with new clients" : "Erhöhtes Vertrauen bei Neukunden",
-  ];
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: de ? "Case Study: Website für Zaira Beauty Face" : "Case study: website for Zaira Beauty Face",
+    url: `${SITE_URL}/${lang}/projekte/zaira-beauty`,
+    creator: { "@id": `${SITE_URL}/#business` },
+    about: { "@type": "BeautySalon", name: "Zaira Beauty Face", url: LIVE_URL, address: { "@type": "PostalAddress", addressLocality: "Geretsried", addressCountry: "DE" } },
+    inLanguage: lang,
+  };
 
   return (
-    <div className="case-study-page">
-      <div className="case-back-wrap">
-        <Link href={`/${lang}/projekte`} className="legal-back">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 4L6 8l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          {t.back}
-        </Link>
+    <div className="v3">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      <div className="v3-wrap v3-crumbs v3-mono">
+        <Link href={`/${lang}/projekte`}>← {de ? "Alle Projekte" : "All projects"}</Link>
       </div>
 
-      <div className="case-hero">
-        <FadeInSection>
-          <span className="section-eyebrow">{t.eyebrow}</span>
-          <h1 className="case-hero-title">{t.title}</h1>
-          <p className="case-hero-desc">{t.desc}</p>
-          <div className="hero-badges">
-            {["Next.js", "TailwindCSS", "Figma", "SEO", "Branding"].map((tag) => (
-              <span key={tag} className="hero-badge">{tag}</span>
+      <PageHero
+        meta={de ? "Case Study · Kosmetik · Geretsried" : "Case study · Beauty · Geretsried"}
+        metaRight={<b>2024</b>}
+        title={<><span className="l">Zaira</span><span className="l"><span className="c">Beauty</span> <span className="o">Face.</span></span></>}
+        lead={de
+          ? "Rebranding und neue Website für ein Kosmetikstudio in Geretsried – Strategie, Design und Entwicklung aus einer Hand."
+          : "Rebrand and new website for a beauty studio in Geretsried – strategy, design and development from one source."}
+        actions={
+          <>
+            <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-accent">{de ? "Website ansehen" : "View website"} <span className="arr" aria-hidden="true">↗</span></a>
+            <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-ghost">{de ? "Ähnliches Projekt anfragen" : "Request a similar project"}</Link>
+          </>
+        }
+        facts={[
+          { label: de ? "Kunde" : "Client", value: "Zaira Beauty Face" },
+          { label: de ? "Ort" : "Location", value: "Geretsried" },
+          { label: de ? "Leistung" : "Scope", value: de ? "Rebranding + Website" : "Rebrand + website" },
+          { label: "Live", value: <a href={LIVE_URL} target="_blank" rel="noopener noreferrer">zairabeauty.de ↗</a> },
+        ]}
+      />
+
+      <div className="v3-wrap v3-case-hero-img">
+        <div className="v3-frame v3-frame-static">
+          <div className="bar"><i /><i /><i /><span>zairabeauty.de</span></div>
+          <div className="img img-wide">
+            <Image src="/images/beauty-praxis-mockup.webp" alt={de ? "Website Zaira Beauty Face" : "Zaira Beauty Face website"} fill sizes="100vw" priority />
+          </div>
+        </div>
+      </div>
+
+      <section className="v3-sec" aria-labelledby="h-z-ausgang">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">01 / {de ? "Ausgangslage" : "Starting point"}</span>
+            <h2 id="h-z-ausgang">{de ? <>Treue Kundinnen.<br /><span className="o">Keine</span> Online-Präsenz.</> : <>Loyal clients.<br /><span className="o">No</span> online presence.</>}</h2>
+            <p>{de ? "Das Studio hatte treue Stammkundinnen – aber keinen professionellen Auftritt im Netz." : "The studio had loyal regulars – but no professional presence online."}</p>
+          </div>
+          <div className="v3-two">
+            <div>
+              <span className="v3-mono">{de ? "Ziele" : "Goals"}</span>
+              <ul className="v3-plus v3-plus-lg">{goals.map((g) => <li key={g}>{g}</li>)}</ul>
+            </div>
+            <div>
+              <span className="v3-mono">{de ? "Umgesetzt" : "Delivered"}</span>
+              <ul className="v3-plus v3-plus-lg">{delivered.map((g) => <li key={g}>{g}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="v3-sec" aria-labelledby="h-z-studio">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">02 / {de ? "Das Studio" : "The studio"}</span>
+            <h2 id="h-z-studio">{de ? <>Behandlungen,<br />die <span className="c">man versteht.</span></> : <>Treatments<br />people <span className="c">understand.</span></>}</h2>
+            <p>{de ? "Die Website zeigt das Angebot so, dass Kundinnen sofort wissen, was sie erwartet." : "The website presents the offer so clients know straight away what to expect."}</p>
+          </div>
+          <div className="v3-treatments">
+            {treatments.map((t, i) => (
+              <div key={t}><span className="v3-mono">{String(i + 1).padStart(2, "0")}</span><b>{t}</b></div>
             ))}
           </div>
-        </FadeInSection>
-      </div>
-
-      <section className="case-kpis">
-        {kpis.map((kpi, i) => (
-          <FadeInSection key={kpi.label} delay={i * 80}>
-            <div className="case-kpi-card">
-              <div className="case-kpi-value">{kpi.value}</div>
-              <div className="case-kpi-label">{kpi.label}</div>
-              <div className="case-kpi-desc">{kpi.desc}</div>
-            </div>
-          </FadeInSection>
-        ))}
-      </section>
-
-      <section className="case-image-section">
-        <FadeInSection>
-          <div className="case-image-wrap">
-            <Image
-              src="/images/beauty-praxis-mockup.webp"
-              alt="Zaira Beauty Face Website Mockup"
-              width={1200}
-              height={800}
-              className="case-main-image"
-            />
-          </div>
-        </FadeInSection>
-      </section>
-
-      <section className="section-wrap">
-        <div className="case-split">
-          <FadeInSection>
-            <div className="case-split-block">
-              <span className="section-eyebrow">{t.problemEyebrow}</span>
-              <h2 className="case-split-title">{t.problemTitle}</h2>
-              <p className="case-split-intro">{t.problemIntro}</p>
-              <ul className="case-list">
-                {problemItems.map((item) => (
-                  <li key={item}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7l4 4 6-7" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeInSection>
-
-          <FadeInSection delay={120}>
-            <div className="case-split-block">
-              <span className="section-eyebrow">{t.solutionEyebrow}</span>
-              <h2 className="case-split-title">{t.solutionTitle}</h2>
-              <p className="case-split-intro">{t.solutionIntro}</p>
-              <ul className="case-list">
-                {solutionItems.map((item) => (
-                  <li key={item}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7l4 4 6-7" stroke="#00ffe7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeInSection>
         </div>
       </section>
 
-      <section className="section-wrap section-alt">
-        <FadeInSection>
-          <div className="section-header">
-            <span className="section-eyebrow">{t.processEyebrow}</span>
-            <h2 className="section-title">{t.processTitle}</h2>
+      <section className="v3-sec" aria-labelledby="h-z-ablauf">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">03 / {de ? "Vorgehen" : "Process"}</span>
+            <h2 id="h-z-ablauf">{de ? <>Vom Gespräch<br />zum <span className="o">Launch.</span></> : <>From first call<br />to <span className="o">launch.</span></>}</h2>
+            <p />
           </div>
-        </FadeInSection>
-        <div className="process-grid">
-          {processSteps.map((step, i) => (
-            <FadeInSection key={step.num} delay={i * 80}>
-              <div className="process-step">
-                <div className="process-num">{step.num}</div>
-                <h3 className="process-title">{step.title}</h3>
-                <p className="process-desc">{step.desc}</p>
-              </div>
-            </FadeInSection>
-          ))}
+          <ol className="v3-steps">
+            {steps.map(([t, d], i) => (
+              <li key={t}>
+                <span className="s-n">{String(i + 1).padStart(2, "0")}</span>
+                <span className="knot" aria-hidden="true" />
+                <div><h3>{t}</h3><p>{d}</p></div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="section-wrap">
-        <FadeInSection>
-          <div className="section-header">
-            <span className="section-eyebrow">{t.techEyebrow}</span>
-            <h2 className="section-title">{t.techTitle}</h2>
+      <section className="v3-sec" aria-labelledby="h-z-tech">
+        <div className="v3-wrap v3-extras v3-extras-top">
+          <span className="v3-mono">04 / Tech</span>
+          <div>
+            <h2 id="h-z-tech" className="v3-sr">Tech-Stack</h2>
+            <table><tbody>{stack.map(([k, v]) => <tr key={k}><td>{k}</td><td>{v}</td></tr>)}</tbody></table>
           </div>
-        </FadeInSection>
-        <div className="case-tech-grid">
-          <FadeInSection>
-            <div className="case-tech-card">
-              <h3 className="case-tech-title">{t.frontendTitle}</h3>
-              <ul className="case-tech-list">
-                {frontend.map((item) => (
-                  <li key={item}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7l4 4 6-7" stroke="#00ffe7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeInSection>
-          <FadeInSection delay={100}>
-            <div className="case-tech-card">
-              <h3 className="case-tech-title">{t.featuresTitle}</h3>
-              <ul className="case-tech-list">
-                {features.map((item) => (
-                  <li key={item}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7l4 4 6-7" stroke="#00ffe7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeInSection>
         </div>
       </section>
 
-      <section className="section-wrap section-alt">
-        <FadeInSection>
-          <div className="section-header">
-            <span className="section-eyebrow">{t.resultsEyebrow}</span>
-            <h2 className="section-title">{t.resultsTitle}</h2>
-          </div>
-        </FadeInSection>
-        <div className="case-results-grid">
-          <FadeInSection>
-            <div className="case-results-card">
-              <h3 className="case-results-title">{t.quantTitle}</h3>
-              <div className="case-results-rows">
-                {[
-                  [locale === "en" ? "Client contacts" : "Kundenkontakte", "+40%"],
-                  [locale === "en" ? "Website visitors" : "Website-Besucher", "+150%"],
-                  ["Google-Ranking", "Top 3"],
-                  [locale === "en" ? "Load time" : "Ladezeit", "0.8s"],
-                ].map(([label, val]) => (
-                  <div key={label} className="case-results-row">
-                    <span>{label}</span>
-                    <span className="case-results-val">{val}</span>
-                  </div>
-                ))}
-              </div>
+      <section className="v3-sec" aria-labelledby="h-z-quote">
+        <div className="v3-wrap">
+          <h2 id="h-z-quote" className="v3-sr">{de ? "Kundenstimme" : "Testimonial"}</h2>
+          <figure className="v3-quote">
+            <div><span className="qm" aria-hidden="true">“</span><span className="v3-mono src">05 / {de ? "Kundin" : "Client"}</span></div>
+            <div>
+              <blockquote lang="de">Zaur hat in <mark>5 Tagen</mark> genau das geliefert, was ich wollte — und noch mehr. Die Website sieht professionell aus und kommt bei meinen Kunden super an.</blockquote>
+              <figcaption className="v3-mono"><span><b>Zaira K.</b> · Inhaberin Zaira Beauty Face</span></figcaption>
             </div>
-          </FadeInSection>
-          <FadeInSection delay={100}>
-            <div className="case-results-card">
-              <h3 className="case-results-title">{t.qualTitle}</h3>
-              <ul className="case-list" style={{ marginTop: "0.5rem" }}>
-                {qualitative.map((item) => (
-                  <li key={item}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7l4 4 6-7" stroke="#00ffe7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeInSection>
+          </figure>
         </div>
       </section>
 
-      <section className="section-wrap">
-        <FadeInSection>
-          <div className="case-testimonial">
-            <div className="case-testimonial-quote">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="case-quote-icon">
-                <path d="M6 20c0-4.4 2.8-8.2 7-10l1.5 2.2C11.2 13.5 9.8 15.5 9.5 18H13v8H6v-6zm14 0c0-4.4 2.8-8.2 7-10l1.5 2.2C25.2 13.5 23.8 15.5 23.5 18H27v8h-7v-6z" fill="#00ffe7" opacity="0.2" />
-              </svg>
-              <blockquote className="case-quote-text">{t.quote}</blockquote>
-              <div className="case-quote-author">
-                <div className="case-quote-avatar">Z</div>
-                <div>
-                  <div className="case-quote-name">{t.quoteName}</div>
-                  <div className="case-quote-role">{t.quoteRole}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
-
-      <section className="cta-section">
-        <FadeInSection>
-          <div className="cta-glow" />
-          <span className="section-eyebrow">{t.ctaEyebrow}</span>
-          <h2 className="cta-title">{t.ctaTitle}</h2>
-          <p className="cta-desc">{t.ctaDesc}</p>
-          <div className="cta-buttons">
-            <Link href={`/${lang}/kontakt`} className="cta-btn-primary">
-              {t.ctaPrimary}
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-            <Link href={`/${lang}/leistungen`} className="cta-btn-secondary">{t.ctaSecondary}</Link>
-          </div>
-        </FadeInSection>
-      </section>
+      <ClosingCta lang={lang} ask={de ? "Dein Studio als nächstes Projekt?" : "Your studio as the next project?"} />
     </div>
   );
 }

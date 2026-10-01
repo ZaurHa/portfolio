@@ -1,174 +1,163 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FadeInSection } from "../../../components/HomeAnimations";
-import { getDictionary, type Locale } from "../../../lib/i18n";
 import type { Metadata } from "next";
+import { pageMetadata, SITE_URL } from "../../../lib/seo";
+import ClosingCta from "../../../components/v3/ClosingCta";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const isDE = lang !== "en";
-  return isDE ? {
-    title: "Über mich – Zaur Hatuev | Webentwickler München",
-    description: "Zaur Hatuev – Freelance Webentwickler & UI/UX Designer aus München. 8+ Jahre Erfahrung mit Next.js, React, TypeScript und Figma. Projekte für kleine Unternehmen und Startups.",
-    keywords: ["Zaur Hatuev", "Webentwickler München", "Freelancer München", "Full-Stack Entwickler", "UI/UX Designer München", "Next.js Entwickler"],
-    alternates: { canonical: "https://brandwerkx.de/de/ueber-mich" },
-    openGraph: { title: "Über mich – Zaur Hatuev | Webentwickler München", description: "Freelance Webentwickler & UI/UX Designer aus München. 8+ Jahre Erfahrung.", url: "https://brandwerkx.de/de/ueber-mich" },
-  } : {
-    title: "About – Zaur Hatuev | Web Developer München",
-    description: "Zaur Hatuev – Freelance web developer & UI/UX designer based in München. 8+ years experience with Next.js, React and TypeScript.",
-    keywords: ["Zaur Hatuev", "web developer München", "freelancer München", "Next.js developer"],
-    alternates: { canonical: "https://brandwerkx.de/en/ueber-mich" },
-    openGraph: { title: "About – Zaur Hatuev | Web Developer München", description: "Freelance web developer & UI/UX designer based in München.", url: "https://brandwerkx.de/en/ueber-mich" },
-  };
+  return lang === "en"
+    ? pageMetadata({ lang, path: "/ueber-mich", title: "About – Zaur Hatuev, Web Designer", description: "Zaur Hatuev, freelance web designer and developer from Geretsried: websites with Next.js, React and TypeScript for tradespeople, freelancers and small businesses." })
+    : pageMetadata({ lang, path: "/ueber-mich", title: "Über mich – Zaur Hatuev, Webdesigner", description: "Zaur Hatuev, Freelance-Webdesigner und Entwickler aus Geretsried: Websites mit Next.js, React und TypeScript für Handwerker, Selbstständige und kleine Unternehmen." });
 }
-
-const skills = [
-  "Next.js", "React", "TypeScript", "TailwindCSS",
-  "Figma", "SEO", "Vercel", "Git",
-  "Webdesign", "Performance", "AI Tools", "Responsive Design",
-];
-
-const socials = [
-  {
-    label: "GitHub",
-    href: "https://github.com/ZaurHa",
-    icon: (
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/",
-    icon: (
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    label: "E-Mail",
-    href: "mailto:brandwerkx@gmail.com",
-    icon: (
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z" />
-      </svg>
-    ),
-  },
-];
 
 export default async function UeberMich({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
-  const locale = (lang === "en" ? "en" : "de") as Locale;
-  const d = await getDictionary(locale);
-  const t = d.about;
+  const de = lang !== "en";
 
-  const expIcons = [
-    // Code / Monitor
-    <svg key="code" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
-    // Settings / Gear
-    <svg key="gear" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
-    // Pen / Design
-    <svg key="pen" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>,
-    // Rocket / Launch
-    <svg key="rocket" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>,
-  ];
+  const principles: [string, string][] = de
+    ? [
+        ["Festpreis vorab", "Du weißt vor dem Start, was es kostet. Kein Stundenzettel, keine Überraschung."],
+        ["Direkter Draht", "Du sprichst immer mit mir – per Telefon, WhatsApp oder Mail. Kein Callcenter, kein Projektmanager dazwischen."],
+        ["Schnell online", "Muster-Websites in 3–5 Werktagen. Weil ein Betrieb nicht monatelang auf seine Website warten sollte."],
+        ["Gefunden werden", "Saubere Technik, klare Texte und lokale Signale – damit Kunden dich finden, wenn sie suchen."],
+      ]
+    : [
+        ["Fixed price upfront", "You know the cost before we start. No timesheets, no surprises."],
+        ["Direct line", "You always talk to me – by phone, WhatsApp or email. No call centre, no project manager in between."],
+        ["Online fast", "Template websites in 3–5 working days. A business shouldn't wait months for its website."],
+        ["Get found", "Clean tech, clear copy and local signals – so customers find you when they search."],
+      ];
 
-  const experience = [
-    { icon: expIcons[0], title: t.exp1title, description: t.exp1desc },
-    { icon: expIcons[1], title: t.exp2title, description: t.exp2desc },
-    { icon: expIcons[2], title: t.exp3title, description: t.exp3desc },
-    { icon: expIcons[3], title: t.exp4title, description: t.exp4desc },
-  ];
+  const skills: [string, string][] = de
+    ? [
+        ["Webdesign", "Seitenaufbau, Gestaltung, Figma-Entwürfe"],
+        ["Entwicklung", "Next.js, React, TypeScript, TailwindCSS"],
+        ["SEO", "Technik, Inhalte, lokale Sichtbarkeit"],
+        ["Betrieb", "Hosting, Domain, Wartung, Support"],
+      ]
+    : [
+        ["Web design", "Page structure, visual design, Figma drafts"],
+        ["Development", "Next.js, React, TypeScript, TailwindCSS"],
+        ["SEO", "Tech, content, local visibility"],
+        ["Operations", "Hosting, domain, maintenance, support"],
+      ];
+
+  const stack = ["Next.js", "React", "TypeScript", "TailwindCSS", "Figma", "Vercel", "Cloudflare", "Supabase", "React Native", "Git"];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: `${SITE_URL}/${lang}/ueber-mich`,
+    mainEntity: { "@id": `${SITE_URL}/#zaur` },
+    inLanguage: lang,
+  };
 
   return (
-    <div className="ueber-mich-page">
-      <section className="about-hero">
-        <FadeInSection className="about-hero-inner">
-          <div className="about-avatar-wrap">
-            <div className="about-avatar">
-              <Image
-                src="/images/zaur-portrait.jpg"
-                alt="Zaur Hatuev – Webentwickler & UI/UX Designer aus München"
-                fill
-                sizes="(max-width: 639px) 130px, 180px"
-                className="about-avatar-img"
-                style={{ objectFit: "cover", objectPosition: "50% 25%", borderRadius: "50%" }}
-              />
-            </div>
-            <div className="about-avatar-ring" />
-          </div>
-          <div className="about-hero-text">
-            <span className="section-eyebrow">{t.eyebrow}</span>
-            <h1 className="about-name">{t.name}</h1>
-            <p className="about-role">{t.role}</p>
-            <p className="about-bio">{t.bio}</p>
-            <div className="about-socials">
-              {socials.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="about-social-link">
-                  {s.icon}
-                  <span>{s.label}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
+    <div className="v3">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <section className="section-wrap section-alt">
-        <FadeInSection>
-          <div className="section-header">
-            <span className="section-eyebrow">{t.skillsEyebrow}</span>
-            <h2 className="section-title">{t.skillsTitle}</h2>
+      <section className="v3-hero v3-page-hero">
+        <div className="v3-wrap">
+          <div className="v3-hero-top v3-rise">
+            <span className="v3-mono"><span className="v3-dot" />{de ? "Über mich · Geretsried" : "About · Geretsried"}</span>
+            <span className="v3-mono v3-hide-sm"><b>{de ? "Webdesigner & Entwickler" : "Web designer & developer"}</b></span>
           </div>
-        </FadeInSection>
-        <FadeInSection>
-          <div className="skills-tags">
-            {skills.map((skill) => (
-              <span key={skill} className="skill-tag">{skill}</span>
-            ))}
-          </div>
-        </FadeInSection>
-      </section>
-
-      <section className="section-wrap">
-        <FadeInSection>
-          <div className="section-header">
-            <span className="section-eyebrow">{t.expertiseEyebrow}</span>
-            <h2 className="section-title">{t.expertiseTitle}</h2>
-          </div>
-        </FadeInSection>
-        <div className="expertise-grid">
-          {experience.map((exp, i) => (
-            <FadeInSection key={exp.title} delay={i * 80}>
-              <div className="expertise-card">
-                <span className="expertise-icon">{exp.icon}</span>
-                <h3 className="expertise-title">{exp.title}</h3>
-                <p className="expertise-desc">{exp.description}</p>
+          <div className="v3-about-hero">
+            <div>
+              <h1 className="v3-h1 v3-h1-page v3-rise d1">
+                <span className="l">Zaur</span>
+                <span className="l"><span className="o">Hatuev.</span></span>
+              </h1>
+              <p className="v3-about-claim v3-rise d2">
+                {de ? <>Kein Agentur-Pingpong. <em>Ein Ansprechpartner</em> – vom ersten Anruf bis zur fertigen Seite.</> : <>No agency ping-pong. <em>One point of contact</em> – from the first call to the finished site.</>}
+              </p>
+              <p className="v3-lead v3-rise d2">
+                {de
+                  ? "Ich bin Webdesigner und Entwickler aus Geretsried. Ich baue Websites für Handwerker, Selbstständige und kleine Betriebe, die keine Zeit für Webdesign haben – und betreibe mit Mobilwerk selbst einen. Ich weiß also, worauf es ankommt: schnell online, gut gefunden werden, Anfragen bekommen."
+                  : "I'm a web designer and developer from Geretsried. I build websites for tradespeople, freelancers and small businesses with no time for web design – and run one myself, Mobilwerk. So I know what matters: online fast, easy to find, getting enquiries."}
+              </p>
+              <div className="v3-cta-row v3-rise d3">
+                <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{de ? "Schreib mir" : "Get in touch"} <span className="arr" aria-hidden="true">→</span></Link>
+                <a href="https://www.linkedin.com/in/zaur-hatuev-8559b91a1/" target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-ghost">LinkedIn ↗</a>
+                <a href="https://github.com/ZaurHa" target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-ghost">GitHub ↗</a>
               </div>
-            </FadeInSection>
-          ))}
+            </div>
+            <figure className="v3-portrait v3-rise d2">
+              <Image src="/images/zaur-portrait.webp" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
+              <figcaption><span>Zaur Hatuev</span><span>Geretsried</span></figcaption>
+            </figure>
+          </div>
+          <div className="v3-facts v3-rise d3">
+            <div><span className="v3-mono">{de ? "Standort" : "Based in"}</span><span className="v">Geretsried</span></div>
+            <div><span className="v3-mono">{de ? "Servicegebiet" : "Service area"}</span><span className="v">{de ? "München & Oberland" : "Munich & Oberland"}</span></div>
+            <div><span className="v3-mono">{de ? "Sprachen" : "Languages"}</span><span className="v">{de ? "Deutsch · Englisch · Russisch" : "German · English · Russian"}</span></div>
+            <div><span className="v3-mono">{de ? "Zusammenarbeit" : "Working"}</span><span className="v">{de ? "Digital" : "Remote"}</span></div>
+          </div>
         </div>
       </section>
 
-      <section className="cta-section">
-        <FadeInSection>
-          <div className="cta-glow" />
-          <span className="section-eyebrow">{t.ctaEyebrow}</span>
-          <h2 className="cta-title">{t.ctaTitle}<br /><span className="cta-highlight">{t.ctaHighlight}</span></h2>
-          <p className="cta-desc">{t.ctaDesc}</p>
-          <div className="cta-buttons">
-            <Link href={`/${lang}/kontakt`} className="cta-btn-primary">
-              {t.ctaPrimary}
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-            <Link href={`/${lang}/leistungen`} className="cta-btn-secondary">{t.ctaSecondary}</Link>
+      <section className="v3-sec" aria-labelledby="h-prinzip">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">01 / {de ? "Arbeitsweise" : "How I work"}</span>
+            <h2 id="h-prinzip">{de ? <>Vier Regeln.<br /><span className="o">Keine</span> Ausnahmen.</> : <>Four rules.<br /><span className="o">No</span> exceptions.</>}</h2>
+            <p>{de ? "So arbeite ich mit jedem Betrieb – egal ob Muster-Website oder individuelles Projekt." : "This is how I work with every business – template website or custom project."}</p>
           </div>
-        </FadeInSection>
+          <div className="v3-rules">
+            {principles.map(([t, d], i) => (
+              <div key={t}>
+                <span className="v3-case-n">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
+
+      <section className="v3-sec" aria-labelledby="h-skills">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">02 / {de ? "Was ich mitbringe" : "What I bring"}</span>
+            <h2 id="h-skills">{de ? <>Design, Code<br />und <span className="c">SEO.</span></> : <>Design, code<br />and <span className="c">SEO.</span></>}</h2>
+            <p>{de ? "Alles, was eine Website braucht – aus einer Hand." : "Everything a website needs – from one source."}</p>
+          </div>
+          <div className="v3-extras v3-extras-top">
+            <span className="v3-mono">{de ? "Schwerpunkte" : "Focus"}</span>
+            <div>
+              <table><tbody>{skills.map(([k, v]) => <tr key={k}><td>{k}</td><td>{v}</td></tr>)}</tbody></table>
+              <div className="v3-stack-row">
+                {stack.map((s) => <span key={s} className="v3-chip">{s}</span>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="v3-sec" aria-labelledby="h-proof">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">03 / {de ? "Eigene Projekte" : "Own projects"}</span>
+            <h2 id="h-proof">{de ? <>Ich baue auch<br /><span className="o">für mich selbst.</span></> : <>I also build<br /><span className="o">for myself.</span></>}</h2>
+            <p>{de ? "Mit Mobilwerk und der Social-App Serlo betreibe ich eigene Projekte – was dort funktioniert, kommt deinem Betrieb zugute." : "With Mobilwerk and the social app Serlo I run my own projects – what works there benefits your business."}</p>
+          </div>
+          <div className="v3-bento v3-bento-2">
+            <a href="https://mobilwerk.vercel.app" target="_blank" rel="noopener noreferrer" className="v3-tile">
+              <span className="tag">{de ? "Eigener Betrieb" : "Own business"}</span>
+              <figure><Image src="/images/mobilwerk-preview.webp" alt={de ? "Website Mobilwerk" : "Mobilwerk website"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <div className="meta"><div><h3>Mobilwerk</h3><p>{de ? "Transport & Umzug" : "Moving & transport"}</p></div><span className="n">↗</span></div>
+            </a>
+            <a href="https://serlo.ch" target="_blank" rel="noopener noreferrer" className="v3-tile">
+              <span className="tag live">{de ? "Im App Store" : "On the App Store"}</span>
+              <figure><Image src="/images/serlo-preview.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <div className="meta"><div><h3>Serlo</h3><p>{de ? "Social-App: Live, Shop, Community" : "Social app: live, shop, community"}</p></div><span className="n">↗</span></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <ClosingCta lang={lang} ask={de ? "Lass uns kennenlernen." : "Let's get to know each other."} />
     </div>
   );
 }

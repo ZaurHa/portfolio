@@ -45,3 +45,7 @@ node_modules
 dist
 .env
 *.log
+
+# Cloudflare Wrangler (lokale Testdaten)
+/.wrangler/
+.dev.vars
