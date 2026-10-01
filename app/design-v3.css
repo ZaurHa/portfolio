@@ -108,7 +108,9 @@
 }
 .v3-h1 .l { display: block; }
 .v3-h1 .c { color: var(--v3-accent); }
-.v3-h1 .o { color: transparent; -webkit-text-stroke: 1.5px rgba(238, 239, 238, 0.72); }
+.v3-h1 .o {
+  color: var(--v3-bg); -webkit-text-stroke: 3px rgba(238, 239, 238, 0.85); paint-order: stroke fill;
+}
 .v3-h1 .sub {
   display: flex; flex-wrap: wrap; gap: 0.2em 0.6em; align-items: baseline;
   margin-top: clamp(22px, 2.4vw, 34px);
@@ -220,7 +222,7 @@
 .site-shell .v3 h2 {
   font: 800 clamp(40px, 5.8vw, 88px)/0.94 var(--v3-display); letter-spacing: -0.04em; margin: 0; color: var(--v3-ink);
 }
-.v3 h2 .o { color: transparent; -webkit-text-stroke: 1.2px rgba(238, 239, 238, 0.62); }
+.v3 h2 .o { color: var(--v3-muted); }
 .v3 h2 .c { color: var(--v3-accent); }
 .v3-sec-head p { margin: 0; color: var(--v3-muted); max-width: 22em; text-align: right; }
 .v3-more { margin-top: 32px; display: flex; justify-content: flex-end; }
@@ -385,7 +387,10 @@
   .v3-rise.d3 { animation-delay: 0.28s; }
   .v3-rise.d4 { animation-delay: 0.4s; }
   .v3-ticket-zone.v3-rise .v3-stamp { animation: v3-stamp 0.6s 0.75s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
-  @keyframes v3-rise { from { opacity: 0; transform: translateY(24px); } }
+  /* Startet bei 1 % Deckkraft statt 0, damit der Browser das LCP-Element erfasst */
+  @keyframes v3-rise { from { opacity: 0.01; transform: translateY(24px); } }
+  .v3-h1.v3-rise, .v3-h1 .v3-rise, .v3-lead { animation-name: v3-rise-move; }
+  @keyframes v3-rise-move { from { transform: translateY(18px); } }
   @keyframes v3-stamp { from { opacity: 0; transform: rotate(-16deg) scale(1.3); } to { opacity: 1; transform: rotate(-7deg) scale(1); } }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -421,7 +426,7 @@
 }
 @media (max-width: 560px) {
   .v3-hide-sm { display: none !important; }
-  .v3-h1 .o { -webkit-text-stroke: 1.2px rgba(238, 239, 238, 0.78); display: block; }
+  .v3-h1 .o { -webkit-text-stroke: 2.4px rgba(238, 239, 238, 0.9); display: block; }
   .site-shell .v3-h1 { font-size: clamp(46px, 13.6vw, 62px); }
   .v3-h1 .sub { font-size: 19px; display: block; }
   .v3-h1 .sub i { display: none; }
@@ -463,7 +468,7 @@
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   transition: background 0.3s, border-color 0.3s;
 }
-.v3-nav.is-scrolled { background: rgba(10, 11, 10, 0.9); border-bottom-color: var(--v3-line); }
+.v3-nav.is-scrolled { background: rgba(10, 11, 10, 0.97); border-bottom-color: var(--v3-line); }
 .v3-nav-row { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
 .v3-logo {
   display: inline-flex; align-items: baseline; font: 800 22px/1 var(--v3-display);
@@ -737,3 +742,161 @@
   .v3-bento-2 { grid-template-columns: 1fr; }
   .v3-cta-row .v3-btn { flex: 1 1 100%; justify-content: center; }
 }
+
+
+/* ============================================================
+   V3 FEINSCHLIFF (Review-Runde)
+   ============================================================ */
+/* Sprung-Link für Tastaturnutzer */
+.v3-skip {
+  position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 999px;
+  background: var(--v3-accent); color: var(--v3-accent-ink); font-weight: 600; text-decoration: none; transition: top 0.2s;
+}
+.v3-skip:focus { top: 12px; }
+#main:focus { outline: none; }
+
+/* Geschlossenes Mobilmenü komplett aus der Tab-Reihenfolge */
+@media (max-width: 1080px) {
+  .v3-menu { visibility: hidden; transition: max-height 0.4s ease, visibility 0s linear 0.4s; }
+  .v3-menu.is-open { visibility: visible; transition: max-height 0.4s ease, visibility 0s; }
+}
+
+/* Footer-Spaltentitel (statt h4) */
+.site-shell .v3-foot-h { margin: 0 0 14px; font: 500 12px/1 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--v3-dim); }
+
+/* Links in der Faktenleiste */
+.v3-facts a.v { text-decoration: none; transition: color 0.2s; }
+.v3-facts a.v:hover { color: var(--v3-accent); }
+
+/* Hoher Kontrast (Windows): Konturschrift als normale Schrift */
+@media (forced-colors: active) {
+  .v3 .o, .v3-h1 .o { color: CanvasText; -webkit-text-stroke: 0; }
+}
+
+/* Mindestgrößen für Mono-Beschriftungen */
+.v3-frame .bar span { font-size: 12px; }
+.v3-ticket .t-head span, .v3-ticket dt, .v3-tile .tag { font-size: 12px; }
+
+/* Showreel pausiert auch bei Tastaturfokus und über Pause-Knopf */
+.v3-reel:focus-within .v3-reel-track,
+.v3-reel.is-paused .v3-reel-track { animation-play-state: paused; }
+.v3-reel-toggle {
+  font: 500 12px/1 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--v3-muted);
+  background: none; border: 1px solid var(--v3-line-2); border-radius: 999px; padding: 7px 12px; cursor: pointer;
+}
+.v3-reel-toggle:hover { color: var(--v3-accent); border-color: var(--v3-accent); }
+
+/* Projekt-Kacheln: Chip unten links, damit er Logos nicht verdeckt */
+.v3-tile .tag { top: auto; bottom: 12px; }
+.v3-tile figure .tag { bottom: 12px; }
+
+/* Unterseiten (alter Aufbau): engeres Tracking nur für große Größen */
+.site-shell .section-title { letter-spacing: -0.03em; }
+.site-shell .section-wrap { border-top: 0; }
+.site-shell .section-wrap + .section-wrap,
+.site-shell .section-wrap + .cta-section { border-top: 1px solid var(--v3-line); }
+
+/* Regionen-/Branchen-Links auf der Startseite */
+.v3-links { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--v3-line-2); }
+.v3-links a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 22px 24px 22px 0;
+  border-bottom: 1px solid var(--v3-line); color: var(--v3-ink); text-decoration: none;
+  font: 700 clamp(19px, 1.7vw, 24px)/1.2 var(--v3-display); letter-spacing: -0.02em; transition: color 0.2s;
+}
+.v3-links a:nth-child(3n+2), .v3-links a:nth-child(3n+3) { padding-left: 24px; border-left: 1px solid var(--v3-line); }
+.v3-links a span { font: 500 12px/1 var(--v3-mono); color: var(--v3-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+.v3-links a:hover { color: var(--v3-accent); }
+@media (max-width: 860px) {
+  .v3-links { grid-template-columns: 1fr; }
+  .v3-links a, .v3-links a:nth-child(3n+2), .v3-links a:nth-child(3n+3) { padding-left: 0; border-left: 0; }
+}
+
+/* Handy: Hero-Raster aus, Arbeitsauftrag sauber im Fluss, WhatsApp kleiner */
+@media (max-width: 600px) {
+  .v3-hero::before { display: none; }
+}
+@media (max-width: 960px) {
+  .v3-ticket-zone { padding-top: 0; margin-top: 40px; }
+  .v3-stamp { position: relative; right: auto; top: auto; margin: 0 0 -28px auto; z-index: 3; }
+  .v3-ticket { transform: none; }
+}
+@media (max-width: 560px) {
+  .v3-ticket-zone { padding-top: 0; }
+  .v3-stamp { width: 128px; margin: 0 8px -22px auto; }
+  .v3-wa { width: 46px; height: 46px; right: 14px; bottom: 14px; }
+  .v3-footer { padding-bottom: 76px; }
+}
+
+/* Rechtstexte (Impressum, Datenschutz) im V3-Raster */
+.v3-legal { padding-top: clamp(40px, 6vw, 88px); padding-bottom: clamp(64px, 8vw, 120px); }
+.site-shell .v3-legal h1 { font: 800 clamp(44px, 7vw, 96px)/0.95 var(--v3-display); letter-spacing: -0.045em; margin: 18px 0 12px; }
+.v3-legal .stand { margin-bottom: clamp(36px, 5vw, 64px); }
+.v3-legal section {
+  display: grid; grid-template-columns: 240px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--v3-line);
+}
+.site-shell .v3-legal h2 { font: 500 12px/1.5 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--v3-accent); margin: 4px 0 0; }
+.v3-legal section > div { max-width: 46em; color: #c4c8c5; }
+.v3-legal p { margin: 0 0 14px; }
+.v3-legal ul { margin: 0 0 14px; padding-left: 20px; }
+.v3-legal li { margin-bottom: 6px; }
+.v3-legal a { color: var(--v3-ink); text-decoration: underline; text-decoration-color: var(--v3-accent); text-underline-offset: 3px; }
+.v3-legal strong { color: var(--v3-ink); font-weight: 600; }
+@media (max-width: 860px) { .v3-legal section { grid-template-columns: 1fr; gap: 10px; } }
+
+/* Leistungen: Vergleichstabelle + Extras */
+.v3-compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--v3-line-2); border-radius: 16px; }
+.v3-compare { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px; }
+.v3-compare th, .v3-compare td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--v3-line); vertical-align: top; }
+.v3-compare thead th { font: 700 18px/1.2 var(--v3-display); letter-spacing: -0.02em; color: var(--v3-ink); background: var(--v3-bg-2); }
+.v3-compare tbody th { font: 500 12px/1.4 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--v3-muted); width: 28%; }
+.v3-compare td { color: #d6d9d7; }
+.v3-compare .hot { background: rgba(0, 255, 231, 0.05); }
+.v3-compare thead .hot { box-shadow: inset 0 2px 0 var(--v3-accent); }
+.v3-compare tr:last-child th, .v3-compare tr:last-child td { border-bottom: 0; }
+.v3-compare .yes { color: var(--v3-accent); font-weight: 700; }
+.v3-compare .no { color: var(--v3-dim); }
+.v3-extra-list { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--v3-line-2); }
+.v3-extra-list > div { display: grid; grid-template-columns: 1fr auto; gap: 6px 24px; padding: 26px 28px 26px 0; border-bottom: 1px solid var(--v3-line); }
+.v3-extra-list > div:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--v3-line); }
+.site-shell .v3 .v3-extra-list h3 { font: 700 20px/1.2 var(--v3-display); letter-spacing: -0.02em; margin: 0; }
+.v3-extra-list p { grid-column: 1; margin: 0; color: var(--v3-muted); font-size: 15px; }
+.v3-extra-list .price { grid-column: 2; grid-row: 1; font: 500 14px/1.4 var(--v3-mono); color: var(--v3-accent); white-space: nowrap; }
+.v3-faq-more { margin: 28px 0 0; color: var(--v3-muted); }
+.v3-faq-more a { color: var(--v3-ink); text-decoration: underline; text-decoration-color: var(--v3-accent); text-underline-offset: 3px; }
+@media (max-width: 860px) {
+  .v3-extra-list { grid-template-columns: 1fr; }
+  .v3-extra-list > div:nth-child(even) { padding-left: 0; border-left: 0; }
+  .v3-extra-list > div { grid-template-columns: 1fr; }
+  .v3-extra-list .price { grid-column: 1; grid-row: auto; }
+}
+
+/* Landingpages V3 */
+.site-shell .v3-h1-page .v3-h1-long, .site-shell .v3-h1 .v3-h1-long { font-size: clamp(40px, 5.6vw, 84px); line-height: 0.98; max-width: 16em; }
+.v3-sec-head-sm { grid-template-columns: 200px 1fr; }
+.site-shell .v3 .v3-sec-head-sm h2 { font-size: clamp(32px, 4vw, 60px); }
+.v3-landing-body { margin-left: calc(200px + 24px); max-width: 52em; }
+.v3-landing-text { margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: #c4c8c5; }
+.v3-links-desc a { flex-direction: column; align-items: flex-start; gap: 8px; }
+.v3-links-desc b { font: inherit; }
+.v3-links-desc small { font: 400 14px/1.5 var(--v3-body); color: var(--v3-muted); letter-spacing: 0; }
+@media (max-width: 1080px) {
+  .v3-sec-head-sm { grid-template-columns: 1fr; }
+  .v3-landing-body { margin-left: 0; }
+}
+
+/* Kontakt: Formular im V3-Stil */
+.site-shell .kontakt-page { background: var(--v3-bg); }
+.site-shell .kontakt-grid { max-width: var(--v3-max); }
+.site-shell .form-label {
+  font: 500 12px/1.4 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--v3-muted);
+}
+.site-shell .form-input { padding: 14px 16px; font-size: 16px; border-radius: 12px; transition: border-color 0.2s, box-shadow 0.2s; }
+.site-shell .form-input:focus { border-color: var(--v3-accent); box-shadow: 0 0 0 3px rgba(0, 255, 231, 0.18); outline: none; }
+.site-shell select.form-input {
+  appearance: none; -webkit-appearance: none; padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300ffe7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center;
+}
+.site-shell .kontakt-form-title, .site-shell .kontakt-info-title { font-family: var(--v3-display); letter-spacing: -0.02em; }
+.site-shell .kontakt-info-link-label { font-family: var(--v3-mono); letter-spacing: 0.06em; }
+.site-shell .kontakt-info-icon { background: transparent; border: 1px solid var(--v3-line-2); color: var(--v3-accent); }

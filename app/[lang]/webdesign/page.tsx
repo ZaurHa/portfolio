@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { pageMetadata, SITE_URL } from "../../../lib/seo";
 import { KIND_LABEL, landingPages, type LandingKind } from "../../../lib/landing";
+import PageHero from "../../../components/v3/PageHero";
+import ClosingCta from "../../../components/v3/ClosingCta";
 
 export const dynamicParams = false;
 
@@ -38,34 +40,35 @@ export default async function WebdesignHub({ params }: { params: Promise<{ lang:
   };
 
   return (
-    <div className="leistungen-page">
+    <div className="v3">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="page-hero">
-        <span className="section-eyebrow">Webdesign</span>
-        <h1 className="page-hero-title">Webdesign von BrandWerkX</h1>
-        <p className="page-hero-desc">
-          Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried — ab 490 €, SEO inklusive.
-          Hier findest du Antworten zu Leistungen, Preisen, Branchen und Regionen.
-        </p>
-      </div>
-
-      {kinds.map((kind) => (
-        <section key={kind} className="section-wrap">
-          <div className="section-header">
-            <h2 className="section-title">{KIND_LABEL[kind]}</h2>
-          </div>
-          <div className="landing-grid">
-            {landingPages
-              .filter((p) => p.kind === kind)
-              .map((p) => (
-                <Link key={p.slug} href={`/de/webdesign/${p.slug}`} className="landing-card">
-                  <h3>{p.label}</h3>
-                  <p>{p.metaDescription}</p>
+      <PageHero
+        meta="Webdesign · Themen"
+        metaRight={<b>Leistungen · Branchen · Regionen</b>}
+        title={<><span className="l">Webdesign</span><span className="l"><span className="c">von BrandWerkX.</span></span></>}
+        lead="Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried – ab 490 €, SEO inklusive. Hier findest du Antworten zu Leistungen, Preisen, Branchen und Regionen."
+        actions={<Link href="/de/kontakt" className="v3-btn v3-btn-accent">Kostenloses Erstgespräch <span className="arr" aria-hidden="true">→</span></Link>}
+      />
+      {kinds.map((kind, i) => (
+        <section key={kind} className="v3-sec" aria-labelledby={`h-${kind}`}>
+          <div className="v3-wrap">
+            <div className="v3-sec-head v3-sec-head-sm">
+              <span className="num">{String(i + 1).padStart(2, "0")} / {KIND_LABEL[kind]}</span>
+              <h2 id={`h-${kind}`}>{KIND_LABEL[kind]}.</h2>
+            </div>
+            <nav className="v3-links v3-links-desc" aria-label={KIND_LABEL[kind]}>
+              {landingPages.filter((p) => p.kind === kind).map((p) => (
+                <Link key={p.slug} href={`/de/webdesign/${p.slug}`}>
+                  <b>{p.label}</b>
+                  <small>{p.metaDescription}</small>
+                  <span>Lesen →</span>
                 </Link>
               ))}
+            </nav>
           </div>
         </section>
       ))}
+      <ClosingCta lang="de" />
     </div>
   );
 }

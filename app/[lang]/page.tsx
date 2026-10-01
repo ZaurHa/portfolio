@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 import { pageMetadata } from "../../lib/seo";
 import type { Locale } from "../../lib/i18n";
 import { getHomeContent, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, EMAIL } from "../../lib/home";
+import ReelToggle from "../../components/v3/ReelToggle";
+import PriceBoard from "../../components/v3/PriceBoard";
+import Steps from "../../components/v3/Steps";
+import Faq from "../../components/v3/Faq";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -31,8 +35,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </div>
 
           <h1 id="h-hero" className="v3-h1">
-            <span className="l v3-rise d1">{c.hero.l1}</span>
-            <span className="l v3-rise d2"><span className="c">{c.hero.accent}</span> <span className="o">{c.hero.outline}</span></span>
+            <span className="l v3-rise d1">{`${c.hero.l1} `}</span>
+            <span className="l v3-rise d2"><span className="c">{`${c.hero.accent} `}</span><span className="o">{c.hero.outline}</span></span>
             <span className="sub v3-rise d3">{c.hero.subPrice} <i aria-hidden="true" /> <em>{c.hero.subPlace}</em></span>
           </h1>
 
@@ -73,7 +77,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </section>
 
       {/* SHOWREEL */}
-      <div className="v3-reel" aria-label={c.reel.label}>
+      <section className="v3-reel" id="showreel" aria-label={c.reel.label}>
         <div className="v3-reel-light" aria-hidden="true" />
         <div className="v3-reel-stage">
           <div className="v3-reel-track">
@@ -90,15 +94,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <div className="v3-reel-cap"><div className="v3-wrap">
           <span className="v3-mono"><span className="v3-dot" />{c.reel.label}</span>
           <span className="v3-mono v3-hide-sm">{c.reel.fields}</span>
+          <ReelToggle target="showreel" pauseLabel={locale === "de" ? "Pause" : "Pause"} playLabel={locale === "de" ? "Abspielen" : "Play"} />
         </div></div>
-      </div>
+      </section>
 
       {/* 01 PROJEKTE */}
       <section className="v3-sec" id="projekte" aria-labelledby="h-proj">
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.projects.num}</span>
-            <h2 id="h-proj">{c.projects.h1}<br /><span className="o">{c.projects.h2o}</span> {c.projects.h2}</h2>
+            <h2 id="h-proj">{c.projects.h1}<br /><span className="o">{c.projects.h2o}</span>{` ${c.projects.h2}`}</h2>
             <p>{c.projects.text}</p>
           </div>
           <div className="v3-bento">
@@ -109,9 +114,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 className={`v3-tile t${i + 1}`}
                 {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
-                <span className={`tag${p.live ? " live" : ""}`}>{p.tag}</span>
                 <figure>
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 860px) 100vw, 58vw" />
+                  <span className={`tag${p.live ? " live" : ""}`}>{p.tag}</span>
                 </figure>
                 <div className="meta">
                   <div><h3>{p.title}</h3><p>{p.desc}</p></div>
@@ -129,26 +134,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.pricing.num}</span>
-            <h2 id="h-leist">{c.pricing.h1}<br /><span className="c">{c.pricing.hc}</span> {c.pricing.h2}</h2>
+            <h2 id="h-leist">{c.pricing.h1}<br /><span className="c">{c.pricing.hc}</span>{` ${c.pricing.h2}`}</h2>
             <p>{c.pricing.text}</p>
           </div>
-          <div className="v3-board">
-            <div className="board-top"><b>{c.pricing.boardTitle}</b><span className="v3-mono">{c.pricing.boardMeta}</span></div>
-            <div className="v3-prices">
-              {c.pricing.plans.map((plan) => (
-                <article key={plan.name} className={`v3-plan${plan.hot ? " hot" : ""}`}>
-                  <div className="top"><span className="v3-mono">{plan.code}</span>{plan.hot && <span className="v3-badge">{c.pricing.popular}</span>}</div>
-                  <h3>{plan.name}</h3>
-                  <p className="desc">{plan.desc}</p>
-                  <div className="v3-price"><small>{c.pricing.from}</small><span className="amt">{plan.amount}</span><span className="eur">€</span></div>
-                  <div className="unit">{plan.unit}</div>
-                  <ul>{plan.items.map((it) => <li key={it}>{it}</li>)}</ul>
-                  <Link href={plan.href} className={`v3-btn ${plan.hot ? "v3-btn-accent" : "v3-btn-ghost"}`}>{plan.cta} <Arrow /></Link>
-                </article>
-              ))}
-            </div>
-            <div className="board-foot">{c.pricing.foot.map((f) => <span key={f}>{f}</span>)}</div>
-          </div>
+          <PriceBoard pricing={c.pricing} />
           <div className="v3-extras">
             <span className="v3-mono">{c.pricing.extrasLabel}</span>
             <div>
@@ -168,18 +157,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.process.num}</span>
-            <h2 id="h-ablauf">{c.process.h1}<br />{c.process.h2} <span className="o">{c.process.h2o}</span></h2>
+            <h2 id="h-ablauf">{c.process.h1}<br />{`${c.process.h2} `}<span className="o">{c.process.h2o}</span></h2>
             <p>{c.process.text}</p>
           </div>
-          <ol className="v3-steps">
-            {c.process.steps.map(([t, d], i) => (
-              <li key={t}>
-                <span className="s-n">{String(i + 1).padStart(2, "0")}</span>
-                <span className="knot" aria-hidden="true" />
-                <div><h3>{t}</h3><p>{d}</p></div>
-              </li>
-            ))}
-          </ol>
+          <Steps steps={c.process.steps} />
         </div>
       </section>
 
@@ -192,7 +173,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </figure>
           <div>
             <span className="v3-mono v3-accent-txt">{c.about.num}</span>
-            <h2 id="h-about" className="big">{c.about.big1} <em>{c.about.bigEm}</em>{c.about.big2}</h2>
+            <h2 id="h-about" className="big">{`${c.about.big1} `}<em>{c.about.bigEm}</em>{c.about.big2}</h2>
             <p className="txt">{c.about.text}</p>
             <div className="v3-kv">
               {c.about.kv.map(([k, v]) => <div key={k} className="v3-mono">{k}<span>{v}</span></div>)}
@@ -207,8 +188,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.quotes.num}</span>
-            <h2 id="h-stimmen">{c.quotes.h1} <span className="o">{c.quotes.h2o}</span></h2>
-            <p />
+            <h2 id="h-stimmen">{`${c.quotes.h1} `}<span className="o">{c.quotes.h2o}</span></h2>
           </div>
           <div className="v3-quotes">
             {c.quotes.items.map((q) => (
@@ -224,22 +204,42 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
+      {/* Branchen & Regionen (interne Verlinkung der Landingpages, nur DE) */}
+      {locale === "de" && (
+        <section className="v3-sec" aria-labelledby="h-fuer-dich">
+          <div className="v3-wrap">
+            <div className="v3-sec-head">
+              <span className="num">Für dich</span>
+              <h2 id="h-fuer-dich">Deine Branche.<br /><span className="o">Deine</span>{" Region."}</h2>
+              <p>Websites für Handwerk, Kosmetik und Logistik – in Geretsried, im Oberland und in München.</p>
+            </div>
+            <nav className="v3-links" aria-label="Webdesign nach Branche und Region">
+              {[
+                ["/de/webdesign/handwerker", "Website für Handwerker", "Branche"],
+                ["/de/webdesign/kosmetikstudio", "Website für Kosmetikstudios", "Branche"],
+                ["/de/webdesign/logistik-und-transport", "Logistik & Transport", "Branche"],
+                ["/de/webdesign/geretsried", "Webdesign Geretsried", "Region"],
+                ["/de/webdesign/oberland", "Wolfratshausen & Bad Tölz", "Region"],
+                ["/de/webdesign/muenchen", "Webdesign München", "Region"],
+                ["/de/webdesign/website-kosten", "Was kostet eine Website?", "Ratgeber"],
+                ["/de/webdesign/seo-optimierung", "SEO für kleine Betriebe", "Ratgeber"],
+                ["/de/webdesign/website-erstellen-lassen", "Website erstellen lassen", "Ratgeber"],
+              ].map(([href, label, kind]) => (
+                <Link key={href} href={href}>{label}<span>{kind} →</span></Link>
+              ))}
+            </nav>
+          </div>
+        </section>
+      )}
+
       {/* 06 FAQ */}
       <section className="v3-sec" id="faq" aria-labelledby="h-faq">
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.faq.num}</span>
-            <h2 id="h-faq">{c.faq.h1} <span className="o">{c.faq.h2o}</span></h2>
-            <p />
+            <h2 id="h-faq">{`${c.faq.h1} `}<span className="o">{c.faq.h2o}</span></h2>
           </div>
-          <div className="v3-faq">
-            <span className="v3-mono">{c.faq.label}</span>
-            <div>
-              {c.faq.items.map(([q, a], i) => (
-                <details key={q} open={i === 0}><summary>{q}</summary><p>{a}</p></details>
-              ))}
-            </div>
-          </div>
+          <Faq label={c.faq.label} items={c.faq.items} jsonLd={locale === "de"} />
         </div>
       </section>
 

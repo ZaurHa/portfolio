@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import Link from "next/link";
 
 export interface MusterVersion {
   id: string;
   label: string;
   description: string;
+  /** Optionaler Mono-Chip, z. B. „Empfohlen“ */
   tag?: string;
-  tagColor?: string;
   src: string;
 }
 
@@ -18,14 +18,272 @@ interface MusterShowcaseProps {
   clientName?: string;
 }
 
+// ─── Kontakt / Conversion ───────────────────────────────────────────────────
+
+export const MUSTER_PHONE_HREF = "tel:+491728471641";
+export const MUSTER_PHONE_LABEL = "0172 8471641";
+
+/** Kontakt-Link mit Paket + optionalem Design (z. B. „klempner-v3“). */
+export function musterKontaktHref(design?: string) {
+  const params = new URLSearchParams({ package: "muster" });
+  if (design) params.set("design", design);
+  return `/de/kontakt?${params.toString()}`;
+}
+
+// ─── Design-Tokens (V3) & gemeinsame Styles ─────────────────────────────────
+
+const MUSTER_CSS = `
+:root{
+  --mx-bg:#0a0b0a;
+  --mx-surface:#101211;
+  --mx-text:#eeefee;
+  --mx-muted:#a3a8a5;
+  --mx-line:rgba(255,255,255,.09);
+  --mx-line-strong:rgba(255,255,255,.16);
+  --mx-accent:#00ffe7;
+  --mx-on-accent:#021412;
+  --mx-cta-h:64px;
+  --mx-safe:env(safe-area-inset-bottom,0px);
+}
+@media (max-width:767px){ :root{ --mx-cta-h:76px; } }
+html,body{ background:var(--mx-bg); }
+body{ padding-bottom:calc(var(--mx-cta-h) + var(--mx-safe)); }
+
+.mx-root{ background:var(--mx-bg); color:var(--mx-text); font-family:var(--font-inter),system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+.mx-display{ font-family:var(--font-display),system-ui,sans-serif; font-weight:800; letter-spacing:-0.04em; }
+.mx-label{ font-family:var(--font-mono),ui-monospace,monospace; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--mx-muted); }
+
+.mx-header{ position:sticky; top:0; z-index:50; height:60px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 24px; background:rgba(10,11,10,.88); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--mx-line); }
+.mx-header-left,.mx-header-right{ display:flex; align-items:center; gap:12px; min-width:0; }
+.mx-wordmark{ font-family:var(--font-display),system-ui,sans-serif; font-weight:800; letter-spacing:-0.04em; font-size:19px; color:var(--mx-text); text-decoration:none; white-space:nowrap; }
+.mx-wordmark span{ color:var(--mx-accent); }
+.mx-crumbs{ display:flex; align-items:center; gap:10px; min-width:0; }
+.mx-crumb{ font-family:var(--font-mono),ui-monospace,monospace; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--mx-muted); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+a.mx-crumb:hover{ color:var(--mx-text); }
+.mx-sep{ color:rgba(255,255,255,.22); font-size:12px; }
+.mx-link{ font-size:14px; color:var(--mx-muted); text-decoration:none; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; transition:color .15s; }
+.mx-link:hover{ color:var(--mx-accent); }
+
+.mx-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; padding:0 22px; border-radius:999px; background:var(--mx-accent); color:var(--mx-on-accent); border:1px solid var(--mx-accent); font-family:inherit; font-weight:700; font-size:14px; text-decoration:none; white-space:nowrap; cursor:pointer; transition:box-shadow .15s, transform .15s; }
+.mx-btn:hover{ box-shadow:0 0 0 4px rgba(0,255,231,.16); }
+.mx-btn-sm{ height:36px; padding:0 16px; font-size:13px; }
+.mx-btn-ghost{ background:transparent; color:var(--mx-text); border-color:var(--mx-line-strong); }
+.mx-btn-ghost:hover{ border-color:var(--mx-accent); color:var(--mx-accent); box-shadow:none; }
+.mx-icon-btn{ width:36px; height:36px; flex-shrink:0; border-radius:999px; border:1px solid var(--mx-line-strong); background:transparent; color:var(--mx-text); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; text-decoration:none; transition:border-color .15s, color .15s; }
+.mx-icon-btn:hover:not(:disabled){ border-color:var(--mx-accent); color:var(--mx-accent); }
+.mx-icon-btn:disabled{ opacity:.3; cursor:not-allowed; }
+
+.mx-chip{ display:inline-flex; align-items:center; font-family:var(--font-mono),ui-monospace,monospace; font-size:11px; line-height:1.4; text-transform:uppercase; letter-spacing:.06em; color:var(--mx-text); border:1px solid var(--mx-line-strong); border-radius:999px; padding:3px 9px; white-space:nowrap; }
+.mx-chip-accent{ color:var(--mx-accent); border-color:rgba(0,255,231,.4); }
+
+/* Conversion-Leiste */
+.mx-cta{ position:fixed; left:0; right:0; bottom:0; z-index:60; box-sizing:border-box; height:calc(var(--mx-cta-h) + var(--mx-safe)); padding:0 24px var(--mx-safe); background:rgba(10,11,10,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-top:1px solid var(--mx-line); display:flex; align-items:center; justify-content:center; font-family:var(--font-inter),system-ui,sans-serif; color:var(--mx-text); }
+.mx-cta-inner{ width:100%; max-width:1200px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.mx-cta-text{ font-size:15px; line-height:1.35; min-width:0; }
+.mx-cta-text strong{ color:var(--mx-accent); font-weight:700; }
+.mx-cta-l2{ color:var(--mx-muted); }
+.mx-cta-actions{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+@media (max-width:767px){
+  .mx-header{ height:52px; padding:0 12px; gap:10px; }
+  .mx-hide-sm{ display:none !important; }
+  .mx-cta{ padding:0 12px var(--mx-safe); }
+  .mx-cta-inner{ gap:10px; }
+  .mx-cta-text{ font-size:13px; }
+  .mx-cta-l2{ display:block; }
+  .mx-cta-dash{ display:none; }
+  .mx-cta .mx-btn{ padding:0 16px; }
+  .mx-tel-num{ display:none; }
+  .mx-cta .mx-tel{ width:44px; padding:0; }
+}
+
+/* Showcase-App: füllt genau den Viewport über der Conversion-Leiste */
+.mx-app{ height:calc(100vh - var(--mx-cta-h) - var(--mx-safe)); height:calc(100dvh - var(--mx-cta-h) - var(--mx-safe)); display:flex; flex-direction:column; overflow:hidden; }
+.mx-side-item{ width:100%; text-align:left; padding:14px 20px; background:transparent; border:none; border-left:2px solid transparent; border-bottom:1px solid var(--mx-line); cursor:pointer; display:block; color:inherit; font-family:inherit; transition:background .15s; }
+.mx-side-item:hover{ background:rgba(255,255,255,.03); }
+.mx-side-item[data-active="true"]{ background:rgba(0,255,231,.05); border-left-color:var(--mx-accent); }
+.mx-tab{ flex-shrink:0; height:36px; padding:0 14px; border-radius:999px; border:1px solid var(--mx-line-strong); background:transparent; color:var(--mx-muted); font-family:inherit; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; display:inline-flex; align-items:center; gap:6px; transition:all .15s; }
+.mx-tab[data-active="true"]{ border-color:var(--mx-accent); color:var(--mx-accent); background:rgba(0,255,231,.06); font-weight:700; }
+[data-tabscroll]{ scrollbar-width:none; }
+[data-tabscroll]::-webkit-scrollbar{ display:none; }
+@keyframes mx-spin{ to{ transform:rotate(360deg); } }
+`;
+
+export function MusterStyles() {
+  return <style dangerouslySetInnerHTML={{ __html: MUSTER_CSS }} />;
+}
+
+// ─── Icons (Linien, currentColor) ───────────────────────────────────────────
+
+type IconProps = { size?: number };
+const svgBase = (size: number) => ({
+  width: size,
+  height: size,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+});
+
+export const IconChevronLeft = ({ size = 16 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M15 5l-7 7 7 7" /></svg>
+);
+export const IconChevronRight = ({ size = 16 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M9 5l7 7-7 7" /></svg>
+);
+export const IconPhone = ({ size = 16 }: IconProps) => (
+  <svg {...svgBase(size)}>
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+  </svg>
+);
+const IconExpand = ({ size = 14 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M4 9V4h5M15 4h5v5M4 15v5h5M20 15v5h-5" /></svg>
+);
+const IconCollapse = ({ size = 14 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M9 4v5H4M20 9h-5V4M4 15h5v5M15 20v-5h5" /></svg>
+);
+const IconAlert = ({ size = 24 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M12 3l9.5 17h-19L12 3z" /><path d="M12 10v4M12 17.5v.01" /></svg>
+);
+export const IconWrench = ({ size = 28 }: IconProps) => (
+  <svg {...svgBase(size)}>
+    <path d="M14.7 6.3a4 4 0 005.2 5.2L11 20.4a2.1 2.1 0 01-3-3l8.9-8.9a4 4 0 01-2.2-2.2z" />
+    <path d="M14.7 6.3L17.5 3.5a4 4 0 012.9 5.3" />
+  </svg>
+);
+export const IconBolt = ({ size = 28 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" /></svg>
+);
+export const IconSparkle = ({ size = 28 }: IconProps) => (
+  <svg {...svgBase(size)}>
+    <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+    <path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2z" />
+  </svg>
+);
+export const IconPlus = ({ size = 24 }: IconProps) => (
+  <svg {...svgBase(size)}><path d="M12 5v14M5 12h14" /></svg>
+);
+
+// ─── Kopfleiste ─────────────────────────────────────────────────────────────
+
+export function MusterHeader({
+  crumbs = [],
+  children,
+}: {
+  crumbs?: { label: string; href?: string }[];
+  /** Zusätzliche Elemente rechts (vor „Zur Hauptseite“) */
+  children?: ReactNode;
+}) {
+  return (
+    <header className="mx-header">
+      <div className="mx-header-left">
+        <Link href="/de" className="mx-wordmark" aria-label="BrandWerkX – Startseite">
+          BrandWerk<span>X</span>
+        </Link>
+        {crumbs.length > 0 && (
+          <nav className="mx-crumbs mx-hide-sm" aria-label="Brotkrumen">
+            {crumbs.map((c) => (
+              <span key={c.label} style={{ display: "contents" }}>
+                <span className="mx-sep">/</span>
+                {c.href ? (
+                  <Link href={c.href} className="mx-crumb">{c.label}</Link>
+                ) : (
+                  <span className="mx-crumb" style={{ color: "var(--mx-text)" }}>{c.label}</span>
+                )}
+              </span>
+            ))}
+          </nav>
+        )}
+      </div>
+      <div className="mx-header-right">
+        {children}
+        <Link href="/de" className="mx-link">
+          <IconChevronLeft size={14} />
+          Zur Hauptseite
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+// ─── Conversion-Leiste (fixiert unten) ──────────────────────────────────────
+
+export function MusterCtaBar({ design }: { design?: string }) {
+  return (
+    <aside className="mx-cta" aria-label="Design anfragen">
+      <div className="mx-cta-inner">
+        <p className="mx-cta-text" style={{ margin: 0 }}>
+          Dieses Design ab <strong>490 €</strong>
+          <span className="mx-cta-dash"> – </span>
+          <span className="mx-cta-l2">in 3–5 Werktagen online</span>
+        </p>
+        <div className="mx-cta-actions">
+          <a href={MUSTER_PHONE_HREF} className="mx-btn mx-btn-ghost mx-tel" aria-label={`Anrufen: ${MUSTER_PHONE_LABEL}`}>
+            <IconPhone size={16} />
+            <span className="mx-tel-num">{MUSTER_PHONE_LABEL}</span>
+          </a>
+          <Link href={musterKontaktHref(design)} className="mx-btn">
+            Design anfragen →
+          </Link>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+// ─── Lade-/Fehlerzustand ────────────────────────────────────────────────────
+
+function LoadOverlay({ error, onRetry }: { error: boolean; onRetry: () => void }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "var(--mx-bg)",
+        zIndex: 10,
+      }}
+    >
+      {error ? (
+        <div style={{ textAlign: "center", color: "var(--mx-accent)" }}>
+          <IconAlert size={28} />
+          <p style={{ color: "var(--mx-muted)", fontSize: 14, margin: "12px 0 16px" }}>Design konnte nicht geladen werden.</p>
+          <button type="button" onClick={onRetry} className="mx-btn mx-btn-ghost mx-btn-sm">
+            Nochmal versuchen
+          </button>
+        </div>
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              width: 28,
+              height: 28,
+              border: "2px solid var(--mx-line-strong)",
+              borderTopColor: "var(--mx-accent)",
+              borderRadius: "50%",
+              animation: "mx-spin 0.8s linear infinite",
+              margin: "0 auto 12px",
+            }}
+          />
+          <p className="mx-label" style={{ margin: 0 }}>Lade Design …</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Showcase ───────────────────────────────────────────────────────────────
+
 export default function MusterShowcase({ kunde, versions, clientName }: MusterShowcaseProps) {
   const [active, setActive] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [showSelectedSheet, setShowSelectedSheet] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -43,7 +301,7 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
   // Auto-scroll active tab into view
   useEffect(() => {
     if (!isMobile || !tabsRef.current) return;
-    const activeBtn = tabsRef.current.querySelector("[data-active='true']") as HTMLElement;
+    const activeBtn = tabsRef.current.querySelector("[data-active='true']") as HTMLElement | null;
     if (activeBtn) {
       activeBtn.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
     }
@@ -54,7 +312,6 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") setActive((p) => Math.min(p + 1, versions.length - 1));
       if (e.key === "ArrowLeft") setActive((p) => Math.max(p - 1, 0));
-      if (e.key === "Escape") setFullscreen(false);
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
@@ -98,952 +355,244 @@ export default function MusterShowcase({ kunde, versions, clientName }: MusterSh
   }, [active, versions, isMobile]);
 
   const current = versions[active];
+  const designId = `${kunde}-${current.id}`;
+  const kontaktHref = musterKontaktHref(designId);
+  const prev = () => setActive((p) => Math.max(p - 1, 0));
+  const next = () => setActive((p) => Math.min(p + 1, versions.length - 1));
+
+  const retry = () => {
+    setLoadError(false);
+    setLoading(true);
+    const iframe = iframeRef.current;
+    if (iframe) iframe.src = versions[active].src;
+  };
+
+  const iframeEl = (
+    <iframe
+      ref={iframeRef}
+      onLoad={() => {
+        if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
+        setLoading(false);
+        setLoadError(false);
+      }}
+      onError={() => {
+        if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
+        setLoading(false);
+        setLoadError(true);
+      }}
+      style={{ width: "100%", height: "100%", border: "none", display: "block", background: "#fff" }}
+      title={current.label}
+    />
+  );
 
   // ─── MOBILE LAYOUT ─────────────────────────────────────────────────────────
   if (isMobile) {
-    const TOPBAR_H = 52;
-    const TABBAR_H = 56;
-    const BOTTOMBAR_H = 72;
-    const previewH = typeof window !== "undefined"
-      ? Math.max(window.innerHeight - TOPBAR_H - TABBAR_H - BOTTOMBAR_H, 300)
-      : 500;
-
     return (
-      <div style={{ background: "#050505", minHeight: "100vh", fontFamily: "'Inter', sans-serif", color: "#f5f6fa" }}>
-        {/* ── Top bar ── */}
-        <div
-          style={{
-            height: TOPBAR_H,
-            borderBottom: "1px solid #1a1a1a",
-            padding: "0 12px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            background: "#0a0a0a",
-            position: "sticky",
-            top: 0,
-            zIndex: 50,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <Link
-              href="/muster"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 36,
-                height: 36,
-                borderRadius: 8,
-                border: "1px solid #1e1e1e",
-                background: "#111",
-                color: "#888",
-                textDecoration: "none",
-                flexShrink: 0,
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-              <Link href="/de" style={{ color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif" }}>
-                brandwerkx
-              </Link>
-              <span style={{ color: "#333", fontSize: 13 }}>/</span>
-              <span style={{ color: "#666", fontSize: 13 }}>{clientName || kunde}</span>
-            </div>
-          </div>
-          <span style={{ color: "#444", fontSize: 12 }}>{active + 1} / {versions.length}</span>
-        </div>
+      <>
+        <MusterStyles />
+        <div className="mx-root mx-app">
+          <MusterHeader crumbs={[{ label: "Muster", href: "/muster" }, { label: clientName || kunde }]} />
 
-        {/* ── Tab bar ── */}
-        <div
-          ref={tabsRef}
-          data-tabscroll=""
-          style={{
-            height: TABBAR_H,
-            background: "#080808",
-            borderBottom: "1px solid #111",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "0 12px",
-            overflowX: "auto",
-            scrollbarWidth: "none" as const,
-          }}
-        >
-          {/* hide scrollbar in webkit */}
-          <style>{`[data-tabscroll]::-webkit-scrollbar { display: none; }`}</style>
-          {versions.map((v, i) => (
-            <button
-              key={v.id}
-              data-active={active === i ? "true" : "false"}
-              onClick={() => setActive(i)}
-              style={{
-                flexShrink: 0,
-                height: 36,
-                padding: "0 14px",
-                borderRadius: 20,
-                border: `1.5px solid ${active === i ? "#00ffe7" : "#1e1e1e"}`,
-                background: active === i ? "#00ffe712" : "#0f0f0f",
-                color: active === i ? "#00ffe7" : "#555",
-                fontSize: 13,
-                fontWeight: active === i ? 700 : 500,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                transition: "all 0.15s",
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              {selected === i && (
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M2 5l2.5 2.5L8 2.5" stroke="#00ffe7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-              {v.label}
-              {v.tag && (
-                <span style={{
-                  fontSize: 9,
-                  fontWeight: 700,
-                  color: v.tagColor || "#00ffe7",
-                  border: `1px solid ${v.tagColor || "#00ffe7"}`,
-                  borderRadius: 3,
-                  padding: "1px 4px",
-                  letterSpacing: "0.06em",
-                }}>
-                  {v.tag}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* ── Mobile iframe — full native width so responsive CSS activates ── */}
-        <div
-          style={{
-            width: "100%",
-            height: previewH,
-            overflow: "hidden",
-            position: "relative",
-            background: "#fff",
-          }}
-        >
-          {/* Loading / Error overlay */}
-          {(loading || loadError) && (
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "#050505",
-                zIndex: 10,
-              }}
-            >
-              {loadError ? (
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
-                  <p style={{ color: "#666", fontSize: 13, marginBottom: 12 }}>Design konnte nicht geladen werden.</p>
-                  <button
-                    onClick={() => {
-                      setLoadError(false);
-                      setLoading(true);
-                      const iframe = iframeRef.current;
-                      if (iframe) iframe.src = versions[active].src;
-                    }}
-                    style={{
-                      background: "#111",
-                      border: "1px solid #333",
-                      borderRadius: 8,
-                      padding: "8px 18px",
-                      color: "#aaa",
-                      fontSize: 13,
-                      cursor: "pointer",
-                    }}
-                  >
-                    Nochmal versuchen
-                  </button>
-                </div>
-              ) : (
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      width: 28,
-                      height: 28,
-                      border: "2px solid #111",
-                      borderTop: "2px solid #00ffe7",
-                      borderRadius: "50%",
-                      animation: "spin 0.8s linear infinite",
-                      margin: "0 auto 10px",
-                    }}
-                  />
-                  <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                  <p style={{ color: "#444", fontSize: 12 }}>Lade Design...</p>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Native-width iframe — HTML's responsive CSS activates properly */}
-          <iframe
-            ref={iframeRef}
-            onLoad={() => {
-              if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
-              setLoading(false);
-              setLoadError(false);
-            }}
-            onError={() => {
-              if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
-              setLoading(false);
-              setLoadError(true);
-            }}
-            style={{
-              width: "100%",
-              height: previewH,
-              border: "none",
-              display: "block",
-              pointerEvents: "auto",
-            }}
-            title={current.label}
-          />
-        </div>
-
-        {/* ── Bottom CTA bar ── */}
-        <div
-          style={{
-            position: "sticky",
-            bottom: 0,
-            height: BOTTOMBAR_H,
-            background: "#0a0a0a",
-            borderTop: "1px solid #1a1a1a",
-            padding: "0 16px",
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            zIndex: 40,
-          }}
-        >
-          {/* Version info */}
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#f5f6fa", fontFamily: "'Space Grotesk', sans-serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              {current.label}
-            </div>
-            <div style={{ fontSize: 11, color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              {current.description}
-            </div>
-          </div>
-
-          {/* Select button */}
-          <button
-            onClick={() => {
-              setSelected(active);
-              setShowSelectedSheet(true);
-            }}
-            style={{
-              flexShrink: 0,
-              height: 44,
-              padding: "0 18px",
-              borderRadius: 10,
-              border: `1.5px solid ${selected === active ? "#00ffe7" : "#333"}`,
-              background: selected === active ? "#00ffe7" : "transparent",
-              color: selected === active ? "#000" : "#aaa",
-              fontSize: 13,
-              fontWeight: 700,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              transition: "all 0.15s",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {selected === active ? (
-              <>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7l3.5 3.5L12 3" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Ausgewählt
-              </>
-            ) : "Wählen →"}
-          </button>
-        </div>
-
-        {/* ── Selected bottom sheet ── */}
-        {showSelectedSheet && selected !== null && (
+          {/* Tab bar */}
           <div
+            ref={tabsRef}
+            data-tabscroll=""
             style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 100,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-            }}
-          >
-            {/* Backdrop */}
-            <div
-              style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)" }}
-              onClick={() => setShowSelectedSheet(false)}
-            />
-            {/* Sheet */}
-            <div
-              style={{
-                position: "relative",
-                background: "#0f0f0f",
-                borderTop: "1px solid #00ffe730",
-                borderRadius: "20px 20px 0 0",
-                padding: "24px 24px 40px",
-              }}
-            >
-              {/* Drag handle */}
-              <div style={{ width: 36, height: 4, background: "#222", borderRadius: 2, margin: "0 auto 20px" }} />
-
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <div style={{
-                  width: 40, height: 40, borderRadius: "50%",
-                  background: "#00ffe710", border: "1px solid #00ffe730",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M3 9l4.5 4.5L15 4" stroke="#00ffe7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: "#00ffe7", fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {versions[selected].label} gewählt
-                  </div>
-                  <div style={{ fontSize: 12, color: "#555", marginTop: 2 }}>
-                    Bestätige deine Auswahl per E-Mail
-                  </div>
-                </div>
-              </div>
-
-              <p style={{ fontSize: 13, color: "#555", margin: "0 0 20px", lineHeight: 1.5 }}>
-                Zaur setzt dein gewähltes Design für dich um. Schick ihm eine kurze Nachricht zur Bestätigung.
-              </p>
-
-              <a
-                href={`mailto:brandwerkx@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Hallo%20Zaur%2C%0A%0Aich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  width: "100%",
-                  height: 52,
-                  background: "#00ffe7",
-                  color: "#000",
-                  fontWeight: 700,
-                  fontSize: 15,
-                  borderRadius: 12,
-                  textDecoration: "none",
-                  marginBottom: 12,
-                }}
-              >
-                Auswahl per E-Mail bestätigen →
-              </a>
-
-              <button
-                onClick={() => setShowSelectedSheet(false)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  height: 44,
-                  background: "transparent",
-                  border: "1px solid #1a1a1a",
-                  borderRadius: 12,
-                  color: "#555",
-                  fontSize: 14,
-                  cursor: "pointer",
-                }}
-              >
-                Schließen
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // ─── DESKTOP LAYOUT (unchanged) ────────────────────────────────────────────
-  return (
-    <div
-      style={{
-        background: "#050505",
-        minHeight: "100vh",
-        fontFamily: "'Inter', sans-serif",
-        color: "#f5f6fa",
-      }}
-    >
-      {/* Top bar */}
-      <div
-        style={{
-          borderBottom: "1px solid #1a1a1a",
-          padding: "16px 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          background: "#0a0a0a",
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link
-            href="/muster"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 32,
-              height: 32,
-              borderRadius: 8,
-              border: "1px solid #1e1e1e",
-              background: "#111",
-              color: "#888",
-              textDecoration: "none",
+              height: 56,
               flexShrink: 0,
-            }}
-            title="Zurück zu Muster-Übersicht"
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-          <Link
-            href="/de"
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 700,
-              fontSize: 16,
-              letterSpacing: "-0.5px",
-              color: "#fff",
-              textDecoration: "none",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.color = "#00ffe7")}
-            onMouseLeave={e => (e.currentTarget.style.color = "#fff")}
-          >
-            brandwerkx
-          </Link>
-          <span style={{ color: "#333", fontSize: 14 }}>/</span>
-          <Link
-            href="/muster"
-            style={{ color: "#666", fontSize: 14, textDecoration: "none" }}
-            onMouseEnter={e => (e.currentTarget.style.color = "#aaa")}
-            onMouseLeave={e => (e.currentTarget.style.color = "#666")}
-          >
-            Muster
-          </Link>
-          <span style={{ color: "#333", fontSize: 14 }}>/</span>
-          <span style={{ color: "#888", fontSize: 14 }}>{clientName || kunde}</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ color: "#555", fontSize: 13 }}>
-            {active + 1} / {versions.length}
-          </span>
-          <button
-            onClick={() => setFullscreen(!fullscreen)}
-            style={{
-              background: "#141414",
-              border: "1px solid #222",
-              borderRadius: 8,
-              padding: "6px 14px",
-              color: "#aaa",
-              fontSize: 13,
-              cursor: "pointer",
+              borderBottom: "1px solid var(--mx-line)",
               display: "flex",
               alignItems: "center",
-              gap: 6,
+              gap: 8,
+              padding: "0 12px",
+              overflowX: "auto",
             }}
           >
-            {fullscreen ? (
-              <>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M5 1H1v4M9 1h4v4M1 9v4h4M13 9v4H9" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-                Verkleinern
-              </>
-            ) : (
-              <>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M1 5V1h4M9 1h4v4M5 13H1V9M13 9v4H9" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-                Vollbild
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-
-      <div style={{ display: "flex", height: fullscreen ? "calc(100vh - 57px)" : "auto" }}>
-        {/* Sidebar */}
-        {!fullscreen && (
-          <aside
-            style={{
-              width: 260,
-              minWidth: 260,
-              borderRight: "1px solid #111",
-              background: "#080808",
-              padding: "24px 0",
-              height: "calc(100vh - 57px)",
-              overflowY: "auto",
-              position: "sticky",
-              top: 57,
-            }}
-          >
-            <div style={{ padding: "0 16px 16px", color: "#555", fontSize: 11, textTransform: "uppercase", letterSpacing: 1 }}>
-              Versionen
-            </div>
+            <Link href="/muster" className="mx-icon-btn" aria-label="Zurück zur Muster-Übersicht">
+              <IconChevronLeft size={14} />
+            </Link>
             {versions.map((v, i) => (
               <button
                 key={v.id}
+                type="button"
+                className="mx-tab"
+                data-active={active === i ? "true" : "false"}
                 onClick={() => setActive(i)}
-                style={{
-                  width: "100%",
-                  textAlign: "left",
-                  padding: "12px 16px",
-                  background: active === i ? "#0f1f1f" : "transparent",
-                  borderLeft: `3px solid ${active === i ? "#00ffe7" : "transparent"}`,
-                  border: "none",
-                  borderRight: "none",
-                  borderTop: "none",
-                  borderBottom: "1px solid #0e0e0e",
-                  cursor: "pointer",
-                  transition: "background 0.15s",
-                  display: "block",
-                }}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: active === i ? "#00ffe7" : "#ccc",
-                      fontFamily: "'Space Grotesk', sans-serif",
-                    }}
-                  >
-                    {v.label}
-                  </span>
-                  {v.tag && (
-                    <span
-                      style={{
-                        fontSize: 10,
-                        padding: "2px 7px",
-                        borderRadius: 4,
-                        border: `1px solid ${v.tagColor || "#00ffe7"}`,
-                        color: v.tagColor || "#00ffe7",
-                        fontWeight: 700,
-                        letterSpacing: 0.5,
-                      }}
-                    >
-                      {v.tag}
-                    </span>
-                  )}
-                </div>
-                <p style={{ fontSize: 12, color: "#555", margin: 0, lineHeight: 1.4 }}>
-                  {v.description}
-                </p>
-                {selected === i && (
-                  <div
-                    style={{
-                      marginTop: 8,
-                      padding: "4px 10px",
-                      background: "#00ffe710",
-                      borderRadius: 6,
-                      fontSize: 11,
-                      color: "#00ffe7",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
-                    }}
-                  >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M2 5l2.5 2.5L8 2.5" stroke="#00ffe7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    Ausgewählt
-                  </div>
-                )}
+                {v.label}
+                {v.tag && <span className="mx-chip mx-chip-accent" style={{ fontSize: 10, padding: "1px 6px" }}>{v.tag}</span>}
               </button>
             ))}
-
-            {selected !== null && (
-              <div
-                style={{
-                  margin: "16px",
-                  padding: "16px",
-                  background: "#00ffe708",
-                  border: "1px solid #00ffe720",
-                  borderRadius: 10,
-                }}
-              >
-                <div style={{ fontSize: 12, color: "#00ffe7", fontWeight: 600, marginBottom: 6 }}>
-                  ✓ {versions[selected].label} gewählt
-                </div>
-                <p style={{ fontSize: 11, color: "#555", margin: "0 0 12px" }}>
-                  Deine Auswahl wurde gespeichert. Schreib mir und ich setze es um.
-                </p>
-                <a
-                  href={`mailto:brandwerkx@gmail.com?subject=Design-Auswahl%20${encodeURIComponent(clientName || kunde)}&body=Ich%20habe%20mich%20für%20${encodeURIComponent(versions[selected]?.label || "")}%20entschieden.`}
-                  style={{
-                    display: "block",
-                    background: "#00ffe7",
-                    color: "#000",
-                    fontWeight: 700,
-                    fontSize: 12,
-                    padding: "8px 12px",
-                    borderRadius: 7,
-                    textAlign: "center",
-                    textDecoration: "none",
-                  }}
-                >
-                  Auswahl bestätigen →
-                </a>
-              </div>
-            )}
-          </aside>
-        )}
-
-        {/* Main preview area */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-          {!fullscreen && (
-            <div
-              style={{
-                padding: "16px 24px",
-                borderBottom: "1px solid #111",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                background: "#060606",
-              }}
-            >
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <h2
-                    style={{
-                      margin: 0,
-                      fontSize: 18,
-                      fontWeight: 700,
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      color: "#f5f6fa",
-                    }}
-                  >
-                    {current.label}
-                  </h2>
-                  {current.tag && (
-                    <span
-                      style={{
-                        fontSize: 11,
-                        padding: "3px 9px",
-                        borderRadius: 5,
-                        border: `1px solid ${current.tagColor || "#00ffe7"}`,
-                        color: current.tagColor || "#00ffe7",
-                        fontWeight: 700,
-                        letterSpacing: 0.5,
-                      }}
-                    >
-                      {current.tag}
-                    </span>
-                  )}
-                </div>
-                <p style={{ margin: "4px 0 0", fontSize: 13, color: "#555" }}>
-                  {current.description}
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                <button
-                  onClick={() => setActive((p) => Math.max(p - 1, 0))}
-                  disabled={active === 0}
-                  style={{
-                    background: "#111",
-                    border: "1px solid #222",
-                    borderRadius: 8,
-                    width: 36,
-                    height: 36,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: active === 0 ? "not-allowed" : "pointer",
-                    opacity: active === 0 ? 0.3 : 1,
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M10 3L5 8l5 5" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setActive((p) => Math.min(p + 1, versions.length - 1))}
-                  disabled={active === versions.length - 1}
-                  style={{
-                    background: "#111",
-                    border: "1px solid #222",
-                    borderRadius: 8,
-                    width: 36,
-                    height: 36,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    cursor: active === versions.length - 1 ? "not-allowed" : "pointer",
-                    opacity: active === versions.length - 1 ? 0.3 : 1,
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 3l5 5-5 5" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setSelected(active)}
-                  style={{
-                    background: selected === active ? "#00ffe7" : "transparent",
-                    border: `1px solid ${selected === active ? "#00ffe7" : "#333"}`,
-                    borderRadius: 8,
-                    padding: "8px 20px",
-                    color: selected === active ? "#000" : "#aaa",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    transition: "all 0.15s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                  }}
-                >
-                  {selected === active ? (
-                    <>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7l3.5 3.5L12 3" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      Ausgewählt
-                    </>
-                  ) : (
-                    "Diese Version wählen"
-                  )}
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* iframe preview */}
-          <div style={{ flex: 1, position: "relative", background: "#000" }}>
-            {(loading || loadError) && (
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "#050505",
-                  zIndex: 10,
-                }}
-              >
-                {loadError ? (
-                  <div style={{ textAlign: "center" }}>
-                    <div style={{ fontSize: 32, marginBottom: 12 }}>⚠️</div>
-                    <p style={{ color: "#666", fontSize: 14, marginBottom: 12 }}>Design konnte nicht geladen werden.</p>
-                    <button
-                      onClick={() => {
-                        setLoadError(false);
-                        setLoading(true);
-                        const iframe = iframeRef.current;
-                        if (iframe) iframe.src = versions[active].src;
-                      }}
-                      style={{
-                        background: "#111",
-                        border: "1px solid #333",
-                        borderRadius: 8,
-                        padding: "8px 20px",
-                        color: "#aaa",
-                        fontSize: 13,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Nochmal versuchen
-                    </button>
-                  </div>
-                ) : (
-                  <div style={{ textAlign: "center" }}>
-                    <div
-                      style={{
-                        width: 32,
-                        height: 32,
-                        border: "2px solid #111",
-                        borderTop: "2px solid #00ffe7",
-                        borderRadius: "50%",
-                        animation: "spin 0.8s linear infinite",
-                        margin: "0 auto 12px",
-                      }}
-                    />
-                    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-                    <p style={{ color: "#444", fontSize: 13 }}>Lade Design...</p>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {fullscreen && (
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 24,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  zIndex: 20,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  background: "rgba(0,0,0,0.82)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid #222",
-                  borderRadius: 12,
-                  padding: "10px 16px",
-                  boxShadow: "0 4px 32px rgba(0,0,0,0.6)",
-                }}
-              >
-                <button
-                  onClick={() => setActive((p) => Math.max(p - 1, 0))}
-                  disabled={active === 0}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    cursor: active === 0 ? "not-allowed" : "pointer",
-                    opacity: active === 0 ? 0.25 : 1,
-                    padding: 4,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                    <path d="M10 3L5 8l5 5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-
-                <div style={{ textAlign: "center", minWidth: 160 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: "#f5f6fa", fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {current.label}
-                  </div>
-                  <div style={{ fontSize: 11, color: "#555", marginTop: 2 }}>
-                    {active + 1} / {versions.length}
-                    {current.tag && (
-                      <span style={{ marginLeft: 8, color: current.tagColor || "#00ffe7", fontWeight: 700 }}>
-                        ★ {current.tag}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setActive((p) => Math.min(p + 1, versions.length - 1))}
-                  disabled={active === versions.length - 1}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    cursor: active === versions.length - 1 ? "not-allowed" : "pointer",
-                    opacity: active === versions.length - 1 ? 0.25 : 1,
-                    padding: 4,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 3l5 5-5 5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-
-                <div style={{ width: 1, background: "#222", height: 28, margin: "0 4px" }} />
-
-                <button
-                  onClick={() => setSelected(active)}
-                  style={{
-                    background: selected === active ? "#00ffe7" : "transparent",
-                    border: `1px solid ${selected === active ? "#00ffe7" : "#333"}`,
-                    borderRadius: 7,
-                    padding: "5px 14px",
-                    color: selected === active ? "#000" : "#aaa",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {selected === active ? "✓ Gewählt" : "Wählen"}
-                </button>
-              </div>
-            )}
-
-            <iframe
-              ref={iframeRef}
-              onLoad={() => {
-                if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
-                setLoading(false);
-                setLoadError(false);
-              }}
-              onError={() => {
-                if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current);
-                setLoading(false);
-                setLoadError(true);
-              }}
-              style={{
-                width: "100%",
-                height: fullscreen ? "calc(100vh - 57px)" : "calc(100vh - 57px - 73px)",
-                border: "none",
-                display: "block",
-              }}
-              title={current.label}
-            />
           </div>
 
+          {/* Preview — native Breite, damit das responsive CSS der Demo greift */}
+          <div style={{ flex: 1, minHeight: 0, position: "relative" }}>
+            {(loading || loadError) && <LoadOverlay error={loadError} onRetry={retry} />}
+            {iframeEl}
+          </div>
+        </div>
+        <MusterCtaBar design={designId} />
+      </>
+    );
+  }
+
+  // ─── DESKTOP LAYOUT ────────────────────────────────────────────────────────
+  return (
+    <>
+      <MusterStyles />
+      <div className="mx-root mx-app">
+        <MusterHeader crumbs={[{ label: "Muster", href: "/muster" }, { label: clientName || kunde }]}>
+          <span className="mx-label">
+            {active + 1} / {versions.length}
+          </span>
+          <button type="button" onClick={() => setFullscreen(!fullscreen)} className="mx-btn mx-btn-ghost mx-btn-sm">
+            {fullscreen ? <IconCollapse /> : <IconExpand />}
+            {fullscreen ? "Verkleinern" : "Vollbild"}
+          </button>
+        </MusterHeader>
+
+        <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
+          {/* Sidebar */}
           {!fullscreen && (
-            <div
+            <aside
               style={{
-                borderTop: "1px solid #111",
-                padding: "12px 24px",
-                background: "#080808",
-                display: "flex",
-                gap: 8,
-                overflowX: "auto",
+                width: 280,
+                minWidth: 280,
+                borderRight: "1px solid var(--mx-line)",
+                overflowY: "auto",
+                paddingBottom: 16,
               }}
             >
+              <div className="mx-label" style={{ padding: "20px 20px 12px" }}>
+                Versionen · {versions.length}
+              </div>
               {versions.map((v, i) => (
                 <button
                   key={v.id}
+                  type="button"
+                  className="mx-side-item"
+                  data-active={active === i ? "true" : "false"}
                   onClick={() => setActive(i)}
-                  style={{
-                    flexShrink: 0,
-                    padding: "6px 16px",
-                    borderRadius: 8,
-                    border: `1px solid ${active === i ? "#00ffe7" : "#1a1a1a"}`,
-                    background: active === i ? "#00ffe710" : "#0f0f0f",
-                    color: active === i ? "#00ffe7" : "#666",
-                    fontSize: 12,
-                    fontWeight: active === i ? 700 : 400,
-                    cursor: "pointer",
-                    transition: "all 0.15s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    whiteSpace: "nowrap",
-                  }}
                 >
-                  {selected === i && (
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M2 5l2.5 2.5L8 2.5" stroke="#00ffe7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
-                  {v.label}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 4 }}>
+                    <span
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: active === i ? "var(--mx-accent)" : "var(--mx-text)",
+                      }}
+                    >
+                      {v.label}
+                    </span>
+                    {v.tag && <span className="mx-chip mx-chip-accent" style={{ fontSize: 10, padding: "2px 7px" }}>{v.tag}</span>}
+                  </div>
+                  <p style={{ fontSize: 12, color: "var(--mx-muted)", margin: 0, lineHeight: 1.45 }}>
+                    {v.description}
+                  </p>
                 </button>
               ))}
-            </div>
+            </aside>
           )}
+
+          {/* Main preview area */}
+          <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
+            {!fullscreen && (
+              <div
+                style={{
+                  padding: "14px 24px",
+                  borderBottom: "1px solid var(--mx-line)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 16,
+                  flexShrink: 0,
+                }}
+              >
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <h2 className="mx-display" style={{ margin: 0, fontSize: 20, lineHeight: 1.2 }}>
+                      {current.label}
+                    </h2>
+                    {current.tag && <span className="mx-chip mx-chip-accent">{current.tag}</span>}
+                  </div>
+                  <p style={{ margin: "4px 0 0", fontSize: 13, color: "var(--mx-muted)" }}>
+                    {current.description}
+                  </p>
+                </div>
+                <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
+                  <button type="button" onClick={prev} disabled={active === 0} className="mx-icon-btn" aria-label="Vorherige Version">
+                    <IconChevronLeft />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={next}
+                    disabled={active === versions.length - 1}
+                    className="mx-icon-btn"
+                    aria-label="Nächste Version"
+                  >
+                    <IconChevronRight />
+                  </button>
+                  <Link href={kontaktHref} className="mx-btn mx-btn-ghost mx-btn-sm">
+                    Diese Version wählen
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* iframe preview */}
+            <div style={{ flex: 1, minHeight: 0, position: "relative" }}>
+              {(loading || loadError) && <LoadOverlay error={loadError} onRetry={retry} />}
+
+              {fullscreen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 20,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 20,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    background: "rgba(10,11,10,.88)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid var(--mx-line-strong)",
+                    borderRadius: 999,
+                    padding: "6px 6px 6px 10px",
+                    boxShadow: "0 8px 32px rgba(0,0,0,.5)",
+                  }}
+                >
+                  <button type="button" onClick={prev} disabled={active === 0} className="mx-icon-btn" aria-label="Vorherige Version">
+                    <IconChevronLeft />
+                  </button>
+                  <div style={{ textAlign: "center", minWidth: 170 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700 }}>{current.label}</div>
+                    <div className="mx-label" style={{ fontSize: 11, marginTop: 2 }}>
+                      {active + 1} / {versions.length}
+                      {current.tag && <span style={{ marginLeft: 8, color: "var(--mx-accent)" }}>{current.tag}</span>}
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={next}
+                    disabled={active === versions.length - 1}
+                    className="mx-icon-btn"
+                    aria-label="Nächste Version"
+                  >
+                    <IconChevronRight />
+                  </button>
+                  <Link href={kontaktHref} className="mx-btn mx-btn-sm">
+                    Wählen
+                  </Link>
+                </div>
+              )}
+
+              {iframeEl}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <MusterCtaBar design={designId} />
+    </>
   );
 }

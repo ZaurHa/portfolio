@@ -29,6 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Design-Vorlagen (ohne Sprachpräfix)
+  entries.push({ url: `${SITE_URL}/muster`, lastModified, changeFrequency: "monthly", priority: 0.7 });
+
   // Nur deutsche Landingpages
   entries.push({ url: `${SITE_URL}/de/webdesign`, lastModified, changeFrequency: "monthly", priority: 0.8 });
   for (const p of landingPages) {

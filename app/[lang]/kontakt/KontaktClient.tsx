@@ -1,36 +1,76 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { FadeInSection } from "../../../components/HomeAnimations";
 import type { Dictionary, Locale } from "../../../lib/i18n";
 
+type PackageKey = "muster" | "custom" | "seo" | "unklar";
+type FormState = { name: string; email: string; phone: string; package: PackageKey | ""; message: string; website: string };
+type Status = { kind: "idle" } | { kind: "success"; text: string } | { kind: "error"; text: string };
+
+const EMPTY_FORM: FormState = { name: "", email: "", phone: "", package: "", message: "", website: "" };
+
+/** Maps ?package= values (incl. legacy values like "muster-website", "Custom-Paket") to a known key. */
+function normalizePackage(raw: string | null): PackageKey | "" {
+  if (!raw) return "";
+  const v = raw.toLowerCase();
+  if (v.includes("muster")) return "muster";
+  if (v.includes("custom")) return "custom";
+  if (v.includes("seo")) return "seo";
+  if (v === "unklar") return "unklar";
+  return "";
+}
+
 export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const t = dict.contact;
-  const [formData, setFormData] = useState({ name: "", email: "", company: "", project: "", budget: "", message: "" });
+  const [formData, setFormData] = useState<FormState>(EMPTY_FORM);
+  const [startedAt, setStartedAt] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const submittingRef = useRef(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    setStartedAt(Date.now());
+    // Read URL params client-side (avoids useSearchParams/Suspense during static rendering)
+    const params = new URLSearchParams(window.location.search);
+    const pkg = normalizePackage(params.get("package"));
+    if (pkg) setFormData((prev) => ({ ...prev, package: pkg }));
+    // Aus /muster gewählte Design-Version in die Nachricht übernehmen
+    const design = params.get("design");
+    if (design && /^[a-z0-9-]{2,60}$/i.test(design)) {
+      const note = lang === "en" ? `Chosen design: ${design}\n\n` : `Gewähltes Design: ${design}\n\n`;
+      setFormData((prev) => (prev.message ? prev : { ...prev, message: note }));
+    }
+    if (params.get("sent") === "1") setStatus({ kind: "success", text: t.successMsg });
+    else if (params.get("error") === "1") setStatus({ kind: "error", text: t.errorMsg });
+  }, [t.successMsg, t.errorMsg, lang]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submittingRef.current) return; // double-click protection
+    submittingRef.current = true;
     setIsSubmitting(true);
+    setStatus({ kind: "idle" });
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, startedAt, lang }),
       });
-      const result = await response.json();
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", company: "", project: "", budget: "", message: "" });
+      const result = (await response.json().catch(() => ({}))) as { success?: boolean; message?: string; error?: string };
+      if (response.ok && result.success) {
+        setStatus({ kind: "success", text: t.successMsg });
+        setFormData(EMPTY_FORM);
+        setStartedAt(Date.now());
       } else {
-        console.error("API-Fehler:", result.error);
-        setSubmitStatus("error");
+        setStatus({ kind: "error", text: result.error || t.errorMsg });
       }
     } catch (error) {
       console.error("Netzwerk-Fehler:", error);
-      setSubmitStatus("error");
+      setStatus({ kind: "error", text: t.errorMsg });
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
   };
@@ -41,88 +81,108 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
 
   return (
     <div className="kontakt-page">
-      <div className="page-hero">
-        <FadeInSection>
-          <span className="section-eyebrow">{t.eyebrow}</span>
-          <h1 className="page-hero-title">{t.heroTitle}</h1>
-          <p className="page-hero-desc">{t.heroDesc}</p>
-        </FadeInSection>
-      </div>
+      <section className="v3-hero v3-page-hero v3-kontakt-hero">
+        <div className="v3-wrap">
+          <div className="v3-hero-top">
+            <span className="v3-mono"><span className="v3-dot" />{t.eyebrow} · Geretsried</span>
+            <span className="v3-mono v3-hide-sm"><b>{lang === "de" ? "Antwort meist innerhalb 24 h" : "Reply usually within 24 h"}</b></span>
+          </div>
+          <h1 className="v3-h1 v3-h1-page">
+            <span className="l">{lang === "de" ? "Website" : "Request a"}</span>
+            <span className="l"><span className="c">{lang === "de" ? "anfragen." : "website."}</span></span>
+          </h1>
+          <div className="v3-page-hero-grid">
+            <p className="v3-lead">{t.heroDesc}</p>
+            <div className="v3-cta-row v3-cta-end">
+              <a href="tel:+491728471641" className="v3-btn v3-btn-accent">0172 8471641</a>
+              <a href="https://wa.me/491728471641" target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-ghost">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="kontakt-grid section-wrap">
         <FadeInSection>
           <div className="kontakt-form-wrap">
             <h2 className="kontakt-form-title">{t.formTitle}</h2>
 
-            {submitStatus === "success" && (
-              <div className="form-status form-success">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M2 8l4 4 8-8" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {t.successMsg}
-              </div>
-            )}
-            {submitStatus === "error" && (
-              <div className="form-status form-error">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 5v4M8 11v.5" stroke="#f87171" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-                {t.errorMsg}
-              </div>
-            )}
+            {/* Always-present live regions so screen readers announce status changes */}
+            <div role="status" aria-live="polite">
+              {status.kind === "success" && (
+                <div className="form-status form-success">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M2 8l4 4 8-8" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {status.text}
+                </div>
+              )}
+            </div>
+            <div role="alert">
+              {status.kind === "error" && (
+                <div className="form-status form-error">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M8 5v4M8 11v.5" stroke="#f87171" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  {status.text}
+                </div>
+              )}
+            </div>
 
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form method="post" action="/api/contact" onSubmit={handleSubmit} className="contact-form">
+              <input type="hidden" name="lang" value={lang} />
+              <input type="hidden" name="startedAt" value={startedAt ? String(startedAt) : ""} />
+
+              {/* Honeypot: invisible for humans, bots tend to fill it */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                <label htmlFor="contact-website">{t.honeypotLabel}</label>
+                <input type="text" id="contact-website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div className="form-row">
                 <div className="form-field">
-                  <label className="form-label">{t.labelName}</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="form-input" placeholder={t.placeholderName} />
+                  <label htmlFor="contact-name" className="form-label">{t.labelName}</label>
+                  <input type="text" id="contact-name" name="name" value={formData.name} onChange={handleChange} required aria-required="true" minLength={2} maxLength={100} autoComplete="name" className="form-input" placeholder={t.placeholderName} />
                 </div>
                 <div className="form-field">
-                  <label className="form-label">{t.labelEmail}</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" placeholder={t.placeholderEmail} />
+                  <label htmlFor="contact-email" className="form-label">{t.labelEmail}</label>
+                  <input type="email" id="contact-email" name="email" value={formData.email} onChange={handleChange} required aria-required="true" autoComplete="email" className="form-input" placeholder={t.placeholderEmail} />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-field">
+                  <label htmlFor="contact-phone" className="form-label">
+                    {t.labelPhone} <span style={{ opacity: 0.7, fontWeight: 400 }}>{t.phoneHint}</span>
+                  </label>
+                  <input type="tel" id="contact-phone" name="phone" value={formData.phone} onChange={handleChange} maxLength={40} pattern="[0-9 +\-\(\)\/]*" autoComplete="tel" className="form-input" placeholder={t.placeholderPhone} />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="contact-package" className="form-label">{t.labelPackage}</label>
+                  <select id="contact-package" name="package" value={formData.package} onChange={handleChange} className="form-input">
+                    <option value="">{t.selectPackage}</option>
+                    <option value="muster">{t.packageMuster}</option>
+                    <option value="custom">{t.packageCustom}</option>
+                    <option value="seo">{t.packageSeo}</option>
+                    <option value="unklar">{t.packageUnklar}</option>
+                  </select>
                 </div>
               </div>
 
               <div className="form-field">
-                <label className="form-label">{t.labelCompany}</label>
-                <input type="text" name="company" value={formData.company} onChange={handleChange} className="form-input" placeholder={t.placeholderCompany} />
+                <label htmlFor="contact-message" className="form-label">{t.labelMessage}</label>
+                <textarea id="contact-message" name="message" value={formData.message} onChange={handleChange} required aria-required="true" minLength={10} maxLength={5000} className="form-input form-textarea" placeholder={t.placeholderMessage} />
               </div>
 
-              <div className="form-row">
-                <div className="form-field">
-                  <label className="form-label">{t.labelProject}</label>
-                  <select name="project" value={formData.project} onChange={handleChange} className="form-input">
-                    <option value="">{t.selectProject}</option>
-                    <option value="website">{t.projectWebsite}</option>
-                    <option value="webapp">{t.projectWebapp}</option>
-                    <option value="design">{t.projectDesign}</option>
-                    <option value="branding">{t.projectBranding}</option>
-                    <option value="consulting">{t.projectConsulting}</option>
-                    <option value="other">{t.projectOther}</option>
-                  </select>
-                </div>
-                <div className="form-field">
-                  <label className="form-label">{t.labelBudget}</label>
-                  <select name="budget" value={formData.budget} onChange={handleChange} className="form-input">
-                    <option value="">{t.selectBudget}</option>
-                    <option value="790-1500">{t.budget1}</option>
-                    <option value="1500-2500">{t.budget2}</option>
-                    <option value="2500-5000">{t.budget3}</option>
-                    <option value="5000+">{t.budget4}</option>
-                    <option value="discuss">{t.budgetOpen}</option>
-                  </select>
-                </div>
-              </div>
+              <p style={{ fontSize: "0.85rem", opacity: 0.75, margin: 0 }}>
+                {t.privacyBefore}
+                <Link href={`/${lang}/datenschutz`} style={{ color: "var(--accent)", textDecoration: "underline" }}>{t.privacyLink}</Link>
+                {t.privacyAfter}
+              </p>
 
-              <div className="form-field">
-                <label className="form-label">{t.labelMessage}</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} required className="form-input form-textarea" placeholder={t.placeholderMessage} />
-              </div>
-
-              <button type="submit" disabled={isSubmitting} className="cta-btn-primary w-full justify-center">
+              <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="cta-btn-primary w-full justify-center">
                 {isSubmitting ? t.submitting : t.submit}
                 {!isSubmitting && (
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                     <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )}

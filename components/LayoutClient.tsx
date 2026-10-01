@@ -15,6 +15,8 @@ function getOtherLang(lang: Locale): Locale {
 }
 
 function switchLangPath(pathname: string, currentLang: Locale, targetLang: Locale): string {
+  // Landingpages unter /de/webdesign gibt es nur auf Deutsch → Startseite der Zielsprache
+  if (pathname.startsWith(`/${currentLang}/webdesign`)) return `/${targetLang}`;
   // /de/projekte → /en/projekte
   if (pathname.startsWith(`/${currentLang}/`)) {
     return `/${targetLang}/${pathname.slice(currentLang.length + 2)}`;
@@ -30,6 +32,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const burgerRef = useRef<HTMLButtonElement | null>(null);
   const progressRef = useRef<HTMLDivElement | null>(null);
 
   const otherLang = getOtherLang(lang);
@@ -71,55 +74,44 @@ export default function LayoutClient({ children, lang, dict }: Props) {
     };
   }, []);
 
-  // Spotlight + 3D-Tilt: Cursor-Position als CSS-Variablen auf der berührten Karte
-  useEffect(() => {
-    const SELECTOR = '.project-card, .skill-card, .testimonial-card, .pricing-card';
-    const onMove = (e: PointerEvent) => {
-      const el = (e.target as Element | null)?.closest?.(SELECTOR) as HTMLElement | null;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-      if (e.pointerType === 'mouse' && el.classList.contains('project-card')) {
-        const relX = (e.clientX - r.left) / r.width - 0.5;
-        const relY = (e.clientY - r.top) / r.height - 0.5;
-        el.style.setProperty('--ry', `${(relX * 7).toFixed(2)}deg`);
-        el.style.setProperty('--rx', `${(-relY * 5).toFixed(2)}deg`);
-      }
-    };
-    const onOut = (e: PointerEvent) => {
-      const el = (e.target as Element | null)?.closest?.('.project-card') as HTMLElement | null;
-      if (el && !el.contains(e.relatedTarget as Node | null)) {
-        el.style.removeProperty('--rx');
-        el.style.removeProperty('--ry');
-      }
-    };
-    document.addEventListener('pointermove', onMove, { passive: true });
-    document.addEventListener('pointerout', onOut, { passive: true });
-    return () => {
-      document.removeEventListener('pointermove', onMove);
-      document.removeEventListener('pointerout', onOut);
-    };
-  }, []);
-
   useEffect(() => {
     if (!isMenuOpen) return;
     function handleClickOutside(e: MouseEvent | TouchEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (burgerRef.current?.contains(target)) return;
+      if (menuRef.current && !menuRef.current.contains(target)) {
         setIsMenuOpen(false);
+      }
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        burgerRef.current?.focus();
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('keydown', handleKey);
+    // Fokus ins Menü setzen
+    menuRef.current?.querySelector<HTMLElement>('a')?.focus();
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKey);
     };
   }, [isMenuOpen]);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  // Geschlossenes Menü inert setzen (nicht fokussierbar, für Screenreader verborgen)
+  useEffect(() => {
+    const el = menuRef.current;
+    if (!el) return;
+    if (isMenuOpen) el.removeAttribute('inert');
+    else el.setAttribute('inert', '');
+  }, [isMenuOpen]);
 
   function isActive(href: string) {
     if (href === `/${lang}`) return pathname === `/${lang}`;
@@ -131,6 +123,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
 
   return (
     <div className="site-shell min-h-screen">
+      <a href="#main" className="v3-skip">{lang === 'de' ? 'Zum Inhalt springen' : 'Skip to content'}</a>
       <div className="scroll-progress" ref={progressRef} aria-hidden="true" />
       <header className={`v3-nav${scrolled ? ' is-scrolled' : ''}`}>
         <div className="v3-wrap v3-nav-row">
@@ -163,6 +156,8 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               {dict.nav.cta} <span className="arr" aria-hidden="true">→</span>
             </Link>
             <button
+              ref={burgerRef}
+              aria-controls="site-menu"
               className="v3-burger"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? (lang === 'de' ? 'Menü schließen' : 'Close menu') : (lang === 'de' ? 'Menü öffnen' : 'Open menu')}
@@ -173,10 +168,19 @@ export default function LayoutClient({ children, lang, dict }: Props) {
           </div>
         </div>
 
-        <div ref={menuRef} className={`v3-menu${isMenuOpen ? ' is-open' : ''}`}>
+        <div
+          ref={menuRef}
+          id="site-menu"
+          className={`v3-menu${isMenuOpen ? ' is-open' : ''}`}
+        >
           <div className="v3-wrap">
             {navLinks.map((item, i) => (
-              <Link key={item.href} href={item.href} className={isActive(item.href) ? 'is-active' : undefined}>
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive(item.href) ? 'is-active' : undefined}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
                 <span className="v3-mono">{String(i + 1).padStart(2, '0')}</span>{item.text}
               </Link>
             ))}
@@ -188,7 +192,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
         </div>
       </header>
 
-      <main>
+      <main id="main" tabIndex={-1}>
         {children}
       </main>
 
@@ -217,7 +221,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               </p>
             </div>
             <div>
-              <h4>{lang === 'de' ? 'Seiten' : 'Pages'}</h4>
+              <p className="v3-foot-h">{lang === 'de' ? 'Seiten' : 'Pages'}</p>
               <ul>
                 {navLinks.map((item) => (
                   <li key={item.href}><Link href={item.href}>{item.text}</Link></li>
@@ -226,7 +230,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               </ul>
             </div>
             <div>
-              <h4>{dict.footer.contact}</h4>
+              <p className="v3-foot-h">{dict.footer.contact}</p>
               <ul>
                 <li><a href="tel:+491728471641">0172 8471641</a></li>
                 <li><a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></li>
@@ -235,10 +239,20 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               </ul>
             </div>
             <div>
-              <h4>{lang === 'de' ? 'Standort' : 'Location'}</h4>
+              <p className="v3-foot-h">{lang === 'de' ? 'Standort' : 'Location'}</p>
               <ul>
-                <li>Geretsried</li>
-                <li>{lang === 'de' ? 'München & Oberland' : 'Munich & Oberland'}</li>
+                {lang === 'de' ? (
+                  <>
+                    <li><Link href="/de/webdesign/geretsried">Webdesign Geretsried</Link></li>
+                    <li><Link href="/de/webdesign/oberland">Wolfratshausen &amp; Bad Tölz</Link></li>
+                    <li><Link href="/de/webdesign/muenchen">Webdesign München</Link></li>
+                  </>
+                ) : (
+                  <>
+                    <li>Geretsried</li>
+                    <li>Munich &amp; Oberland</li>
+                  </>
+                )}
                 <li><Link href={`/${lang}/impressum`}>{dict.footer.impressum}</Link></li>
                 <li><Link href={`/${lang}/datenschutz`}>{dict.footer.datenschutz}</Link></li>
               </ul>

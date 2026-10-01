@@ -1,15 +1,18 @@
-import "./globals.css";
-import "./design-v3.css";
+/**
+ * Gemeinsame Bausteine der Root-Layouts (app/[lang]/layout.tsx, app/muster/layout.tsx):
+ * Schriften, Basis-Metadaten, Viewport und strukturierte Daten.
+ */
 import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#0a0b0a",
 };
 
 // Load fonts via next/font — eliminates render-blocking @import in CSS
-const inter = Inter({
+export const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
@@ -17,7 +20,7 @@ const inter = Inter({
 });
 
 // Display-Schrift für Headlines (Design V3)
-const interTight = Inter_Tight({
+export const interTight = Inter_Tight({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   variable: "--font-display",
@@ -25,14 +28,16 @@ const interTight = Inter_Tight({
 });
 
 // Mono für Metadaten/Labels (Design V3)
-const jetbrainsMono = JetBrains_Mono({
+export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const fontClassName = `${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`;
+
+export const baseMetadata: Metadata = {
   metadataBase: new URL('https://brandwerkx.de'),
   title: {
     default: "Webdesign Geretsried & München – Website ab 490 € | BrandWerkX",
@@ -63,7 +68,7 @@ export const metadata: Metadata = {
 const SITE = "https://brandwerkx.de";
 
 // Verknüpfter Entity-Graph (@id) — eine Quelle der Wahrheit für Name, Ort, Preise.
-const jsonLd = {
+export const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -154,29 +159,3 @@ const jsonLd = {
   ]
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html
-      lang="de"
-      suppressHydrationWarning
-      className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
-    >
-      <head>
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-
-        {/* Strukturierte Daten */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body
-        className="bg-black text-white font-sans min-h-screen"
-        style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}

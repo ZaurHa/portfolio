@@ -58,7 +58,7 @@ export const landingPages: LandingPage[] = [
         title: 'Zwei Wege zur eigenen Website',
         bullets: [
           'Muster-Website ab 490 €: ein geprüftes Design wird mit deinem Logo, deinen Texten und Kontaktdaten angepasst. Fertig in 3–5 Werktagen.',
-          'Custom-Website ab 990 €: Aufbau und Gestaltung nach deinen Vorstellungen, SEO-optimiert und mobile-first. Fertig in 5–10 Tagen.',
+          'Custom-Website ab 990 €: Aufbau und Gestaltung nach deinen Vorstellungen, SEO-optimiert und mobile-first. Fertig in 7–14 Werktagen.',
           'Beides mit Kontaktformular, schneller Ladezeit und sauberer Grundlage für die Suche bei Google.',
         ],
       },
@@ -78,7 +78,7 @@ export const landingPages: LandingPage[] = [
     ],
     faqs: [
       { q: 'Was kostet es, eine Website erstellen zu lassen?', a: 'Eine Muster-Website startet bei 490 €, eine individuelle Custom-Website bei 990 €. SEO und Wartung gibt es ab 99 € pro Monat. Die Preise sind Festpreise und enthalten keine Umsatzsteuer (Kleinunternehmer nach § 19 UStG).' },
-      { q: 'Wie lange dauert es, bis die Website online ist?', a: 'Eine Muster-Website ist in der Regel in 3–5 Werktagen fertig, eine Custom-Website in 5–10 Tagen — sobald Logo, Texte und Bilder vorliegen.' },
+      { q: 'Wie lange dauert es, bis die Website online ist?', a: 'Eine Muster-Website ist in der Regel in 3–5 Werktagen fertig, eine Custom-Website in 7–14 Werktagen — sobald Logo, Texte und Bilder vorliegen.' },
       { q: 'Muss ich Texte und Bilder selbst liefern?', a: 'Du lieferst Logo, Kerninfos und vorhandene Fotos. Daraus entstehen die Seitentexte. Ich helfe dir, wenn noch etwas fehlt.' },
       { q: 'Gehört mir die Website nach der Übergabe?', a: 'Ja. Du bekommst die Zugangsdaten, eine kurze Einführung und 30 Tage Support. Danach kannst du selbst Änderungen vornehmen oder ein Wartungspaket buchen.' },
     ],

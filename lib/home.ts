@@ -114,12 +114,12 @@ export function getHomeContent(lang: Locale) {
       name: de ? 'Custom-Website' : 'Custom website',
       desc: de ? 'Individuell für dich gestaltet – Aufbau, Look und Inhalte nach Maß.' : 'Designed just for you – structure, look and content made to measure.',
       amount: '990',
-      unit: de ? 'einmalig · 5–10 Tage' : 'one-off · 5–10 days',
+      unit: de ? 'einmalig · 7–14 Werktage' : 'one-off · 7–14 working days',
       items: de
         ? ['Eigenes Design statt Vorlage', 'SEO-optimiert, mobile-first', 'Domain & Hosting im 1. Jahr', '30 Tage Support nach Übergabe']
         : ['Your own design, not a template', 'SEO-optimised, mobile-first', 'Domain & hosting in year one', '30 days of support after handover'],
       cta: de ? 'Projekt starten' : 'Start a project',
-      href: `${p}/kontakt`,
+      href: `${p}/kontakt?package=custom`,
       hot: true,
     },
     {
@@ -132,7 +132,7 @@ export function getHomeContent(lang: Locale) {
         ? ['Suchmaschinen-Optimierung', 'Updates & Pflege', 'Ein fester Ansprechpartner']
         : ['Search engine optimisation', 'Updates & maintenance', 'One fixed point of contact'],
       cta: de ? 'Anfragen' : 'Enquire',
-      href: `${p}/kontakt`,
+      href: `${p}/kontakt?package=seo`,
     },
   ];
 
@@ -269,14 +269,14 @@ export function getHomeContent(lang: Locale) {
       label: de ? 'Häufige Fragen' : 'Common questions',
       items: (de
         ? [
-            ['Was kostet meine Website?', 'Eine Muster-Website gibt es ab 490 €, eine individuelle Custom-Website ab 990 €. Das sind Endpreise – als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer.'],
-            ['Wie schnell ist meine Seite online?', 'Eine Muster-Website ist in 3–5 Werktagen fertig, eine Custom-Website in 5–10 Tagen – sobald Logo, Texte und Farben da sind.'],
+            ['Was kostet meine Website?', 'Eine Muster-Website gibt es ab 490 €, eine individuelle Custom-Website ab 990 €. Das sind Endpreise – als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer. Ab dem zweiten Jahr fallen für Domain und Hosting etwa 10–15 € im Monat an.'],
+            ['Wie schnell ist meine Seite online?', 'Eine Muster-Website ist in 3–5 Werktagen fertig, eine Custom-Website in 7–14 Werktagen – gerechnet ab dem Tag, an dem Logo, Texte und Farben da sind.'],
             ['Brauche ich eine eigene Domain und Hosting?', 'Nein. Domain und Hosting sind im ersten Jahr inklusive. Darum kümmere ich mich.'],
             ['Was passiert nach der Übergabe?', 'Du bekommst 30 Tage Support. Danach kannst du Wartung ab 49 € oder SEO & Wartung ab 99 € im Monat dazubuchen – musst du aber nicht.'],
           ]
         : [
             ['What does my website cost?', 'A template website starts at €490, a custom website at €990. These are final prices – as a small business under § 19 UStG I charge no VAT.'],
-            ['How fast will my site be online?', 'A template website is ready in 3–5 working days, a custom website in 5–10 days – as soon as logo, copy and colours are in.'],
+            ['How fast will my site be online?', 'A template website is ready in 3–5 working days, a custom website in 7–14 working days – counted from the day logo, copy and colours are in.'],
             ['Do I need my own domain and hosting?', "No. Domain and hosting are included in the first year. I'll take care of it."],
             ['What happens after handover?', 'You get 30 days of support. After that you can add maintenance from €49 or SEO & care from €99 per month – but you don’t have to.'],
           ]) as [string, string][],

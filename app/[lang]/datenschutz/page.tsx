@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { pageMetadata } from '../../../lib/seo';
 
@@ -9,23 +9,101 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     : pageMetadata({ lang, path: '/datenschutz', title: 'Datenschutzerklärung', description: 'Datenschutzerklärung von BrandWerkX.', noindex: true });
 }
 
-export default function Datenschutz() {
+/** Fester Stand – bei Änderungen an Diensten (Hosting, Mail, Tracking) anpassen. */
+const STAND = 'Oktober 2026';
+
+export default async function Datenschutz({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+
   return (
-    <main style={{ maxWidth: 700, margin: '0 auto', padding: '2rem 1rem' }}>
-      <h1>Datenschutzerklärung</h1>
-      <p><strong>Stand:</strong> {new Date().toLocaleDateString('de-DE')}</p>
-      <h2>1. Allgemeine Hinweise</h2>
-      <p>Der Schutz Ihrer Daten ist uns wichtig. Diese Website verarbeitet personenbezogene Daten nur im technisch notwendigen Umfang.</p>
-      <h2>2. Verantwortlicher</h2>
-      <p>Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></p>
-      <h2>3. Zugriffsdaten und Hosting</h2>
-      <p>Beim Besuch dieser Website werden automatisch Informationen in Server-Logfiles gespeichert. Diese Daten sind nicht bestimmten Personen zuordenbar und dienen ausschließlich der Betriebssicherheit.</p>
-      <h2>4. Kontaktformular</h2>
-      <p>Wenn Sie uns per Kontaktformular Anfragen senden, werden Ihre Angaben gespeichert, um die Anfrage zu bearbeiten. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-      <h2>5. Cookies und Tracking</h2>
-      <p>Diese Website verwendet keine Cookies, kein Tracking und keine Analyse-Tools.</p>
-      <h2>6. Ihre Rechte</h2>
-      <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Sperrung oder Löschung Ihrer gespeicherten Daten. Hierzu können Sie sich jederzeit an die im Impressum angegebene Adresse wenden.</p>
-    </main>
+    <div className="v3">
+      <div className="v3-wrap v3-legal" lang="de">
+        <span className="v3-mono"><span className="v3-dot" />DSGVO</span>
+        <h1>Datenschutz&shy;erklärung</h1>
+        <p className="v3-mono stand">Stand: {STAND}</p>
+        {lang === 'en' && (
+          <p className="v3-lead" lang="en">This privacy policy is provided in German. In short: no cookies, no tracking; data you send via the contact form is only used to answer your request.</p>
+        )}
+
+        <section>
+          <h2>1. Verantwortlicher</h2>
+          <div>
+            <p>BrandWerkX – Inhaber Zaur Hatuev<br />Steiner Ring 64, 82538 Geretsried<br />Telefon: <a href="tel:+491728471641">0172 8471641</a><br />E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></p>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. Das Wichtigste in Kürze</h2>
+          <div>
+            <ul>
+              <li>Diese Website setzt <strong>keine Cookies</strong> und verwendet <strong>kein Tracking</strong> und keine Analyse-Tools.</li>
+              <li>Schriftarten werden <strong>lokal</strong> von diesem Server geladen – es besteht keine Verbindung zu Google Fonts.</li>
+              <li>Personenbezogene Daten verarbeite ich nur, wenn du mich kontaktierst, und nur, um deine Anfrage zu bearbeiten.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>3. Hosting und Server-Logfiles</h2>
+          <div>
+            <p>Diese Website wird bei <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf werden technisch notwendige Daten verarbeitet: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Referrer, Browser und Betriebssystem. Das dient der sicheren und stabilen Auslieferung der Website.</p>
+            <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb). Mit Vercel besteht ein Vertrag zur Auftragsverarbeitung. Eine Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. der EU-Standardvertragsklauseln.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Kontaktformular</h2>
+          <div>
+            <p>Wenn du das Kontaktformular nutzt, verarbeite ich die Angaben, die du eingibst: Name, E-Mail-Adresse, optional Telefonnummer und gewünschtes Paket sowie deine Nachricht. Die Daten werden ausschließlich zur Bearbeitung deiner Anfrage und für eventuelle Anschlussfragen genutzt.</p>
+            <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertrags) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen).</p>
+            <p>Für den Versand der Formular-E-Mails nutze ich den Dienst <strong>Resend</strong> (Plus Five Five, Inc., USA). Die Anfrage wird an mein E-Mail-Postfach bei <strong>Google</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) zugestellt. Mit beiden Anbietern bestehen Verträge zur Auftragsverarbeitung; Übermittlungen in die USA erfolgen auf Grundlage der EU-Standardvertragsklauseln bzw. des EU-US Data Privacy Framework.</p>
+            <p>Deine Daten werden gelöscht, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Kommt ein Auftrag zustande, gelten die handels- und steuerrechtlichen Aufbewahrungsfristen (bis zu 10 Jahre).</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>5. Kontakt per E-Mail, Telefon oder WhatsApp</h2>
+          <div>
+            <p>Wenn du mich per E-Mail oder Telefon kontaktierst, verarbeite ich deine Angaben zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b bzw. f DSGVO).</p>
+            <p>Der WhatsApp-Button ist ein einfacher Link. Erst wenn du ihn anklickst, wirst du zu WhatsApp (WhatsApp Ireland Limited, Merrion Road, Dublin 4, Irland) weitergeleitet; ab dann gilt deren Datenschutzerklärung. Vorher werden keine Daten an WhatsApp übertragen.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>6. Externe Links</h2>
+          <div>
+            <p>Diese Website enthält Links zu anderen Websites, z. B. LinkedIn, GitHub und Referenzprojekten. Beim bloßen Besuch dieser Website werden keine Daten an diese Anbieter übertragen. Erst wenn du einen Link anklickst, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>7. Deine Rechte</h2>
+          <div>
+            <p>Du hast jederzeit das Recht auf:</p>
+            <ul>
+              <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO)</li>
+              <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+              <li>Löschung (Art. 17 DSGVO)</li>
+              <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+              <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+              <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+            </ul>
+            <p>Eine formlose Nachricht an die oben genannten Kontaktdaten genügt. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Bayerischen Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>8. Verschlüsselung</h2>
+          <div>
+            <p>Diese Website nutzt eine SSL- bzw. TLS-Verschlüsselung. Du erkennst sie am „https://“ in der Adresszeile.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Weitere Angaben</h2>
+          <div><p><Link href={`/${lang}/impressum`}>Impressum →</Link></p></div>
+        </section>
+      </div>
+    </div>
   );
 }
