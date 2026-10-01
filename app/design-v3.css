@@ -551,74 +551,17 @@
    UNTERSEITEN (bestehende Klassen) im V3-Stil
    ============================================================ */
 .site-shell h1, .site-shell h2, .site-shell h3 { font-family: var(--v3-display); color: var(--v3-ink); }
-.site-shell .page-hero {
-  text-align: left; max-width: var(--v3-max); margin: 0 auto;
-  padding: clamp(56px, 8vw, 120px) var(--v3-pad) clamp(48px, 6vw, 88px);
-  background: none; border-bottom: 1px solid var(--v3-line);
-}
-.site-shell .page-hero-title {
-  font: 800 clamp(40px, 6.2vw, 96px)/0.94 var(--v3-display); letter-spacing: -0.045em;
-  color: var(--v3-ink); margin: 18px 0 24px; max-width: 14em;
-}
-.site-shell .page-hero-desc { margin: 0 0 28px; max-width: 34em; font-size: clamp(17px, 1.4vw, 20px); color: var(--v3-muted); }
-.site-shell .hero-badges { justify-content: flex-start; }
-.site-shell .hero-badge {
-  font: 500 12px/1 var(--v3-mono); letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--v3-ink); background: none; border: 1px solid var(--v3-line-2); padding: 9px 12px;
-}
-.site-shell .section-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px; padding: 0; background: none; border: 0; box-shadow: none;
-  font: 500 12px/1 var(--v3-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--v3-accent);
-}
-.site-shell .section-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--v3-accent); box-shadow: 0 0 10px var(--v3-accent); }
-.site-shell .section-eyebrow > span:first-child { display: none; }
-.site-shell .section-title {
-  font: 800 clamp(36px, 5vw, 72px)/0.95 var(--v3-display); letter-spacing: -0.04em;
-  background: none; -webkit-text-fill-color: currentColor; color: var(--v3-ink);
-}
-.site-shell .section-header { text-align: left; }
-.site-shell .section-subtitle { color: var(--v3-muted); margin-left: 0; }
 .site-shell .section-wrap { max-width: var(--v3-max); padding-left: var(--v3-pad); padding-right: var(--v3-pad); border-top: 1px solid var(--v3-line); }
-.site-shell .section-alt { background: none; }
 
 .site-shell .cta-btn-primary {
   background: var(--v3-accent); color: var(--v3-accent-ink); border: 0; border-radius: 999px;
   box-shadow: none; font-weight: 600;
 }
 .site-shell .cta-btn-primary:hover { box-shadow: 0 0 0 6px rgba(0, 255, 231, 0.14); transform: translateY(-1px); }
-.site-shell .cta-btn-secondary { background: none; color: var(--v3-ink); border: 1px solid var(--v3-line-2); border-radius: 999px; }
-.site-shell .cta-btn-secondary:hover { border-color: var(--v3-accent); background: none; }
 
-.site-shell .project-card, .site-shell .pricing-card, .site-shell .addon-card, .site-shell .skill-card,
-.site-shell .testimonial-card, .site-shell .faq-item, .site-shell .landing-card, .site-shell .kontakt-info-card,
-.site-shell .process-step, .site-shell .kontakt-form-card, .site-shell .expertise-card {
+.site-shell .kontakt-info-card {
   background: var(--v3-bg-2); border: 1px solid var(--v3-line); border-radius: 14px; box-shadow: none;
 }
-.site-shell .project-card::before { display: none; }
-.site-shell .project-card:hover, .site-shell .landing-card:hover, .site-shell .pricing-card:hover,
-.site-shell .addon-card:hover, .site-shell .skill-card:hover {
-  border-color: rgba(0, 255, 231, 0.4); box-shadow: none; background: var(--v3-bg-2);
-}
-.site-shell .pricing-card-popular { border-color: var(--v3-accent); background: linear-gradient(180deg, rgba(0, 255, 231, 0.06), var(--v3-bg-2) 40%); }
-.site-shell .pricing-popular-badge { background: var(--v3-accent); color: var(--v3-accent-ink); font-family: var(--v3-mono); }
-.site-shell .pricing-price { font: 800 clamp(40px, 4vw, 56px)/1 var(--v3-display); letter-spacing: -0.04em; color: var(--v3-ink); }
-.site-shell .addon-price { font-family: var(--v3-mono); color: var(--v3-accent); }
-.site-shell .tech-badge {
-  font: 500 11px/1 var(--v3-mono); letter-spacing: 0.04em; text-transform: uppercase;
-  background: none; border: 1px solid var(--v3-line-2); color: var(--v3-muted);
-}
-.site-shell .project-label { font-family: var(--v3-mono); background: rgba(10, 11, 10, 0.82) !important; }
-.site-shell .process-num { font-family: var(--v3-mono); color: var(--v3-accent); }
-.site-shell .faq-question { color: var(--v3-ink); font-family: var(--v3-display); }
-.site-shell .faq-answer { color: var(--v3-muted); }
-.site-shell .testimonial-quote { color: var(--v3-ink); font-style: normal; }
-.site-shell .testimonial-name { color: var(--v3-ink); }
-.site-shell .stat-number { font-family: var(--v3-display); background: none; -webkit-text-fill-color: currentColor; color: var(--v3-ink); }
-
-.site-shell .cta-section { background: var(--v3-bg); border-top: 1px solid var(--v3-line); }
-.site-shell .cta-title { font: 800 clamp(40px, 6vw, 96px)/0.92 var(--v3-display); letter-spacing: -0.045em; background: none; -webkit-text-fill-color: currentColor; color: var(--v3-ink); }
-.site-shell .cta-highlight { background: none; -webkit-text-fill-color: currentColor; color: var(--v3-accent); }
-.site-shell .cta-glow { background: radial-gradient(50% 60% at 50% 30%, rgba(0, 255, 231, 0.1), transparent 70%); }
 
 .site-shell input, .site-shell textarea, .site-shell select {
   background: var(--v3-bg); color: var(--v3-ink); border: 1px solid var(--v3-line-2); border-radius: 10px;
@@ -626,12 +569,6 @@
 .site-shell input:focus, .site-shell textarea:focus, .site-shell select:focus { border-color: var(--v3-accent); outline: none; }
 
 /* Landingpages */
-.site-shell .landing-prose p, .site-shell .landing-list li, .site-shell .landing-card p { color: #c4c8c5; }
-.site-shell .landing-list li::before { background: var(--v3-accent); }
-.site-shell .landing-crumbs, .site-shell .landing-crumbs a { font-family: var(--v3-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--v3-dim); }
-.site-shell .landing-prose { margin-left: 0; }
-.site-shell .landing-prose .section-title { font-size: clamp(30px, 3.6vw, 52px); }
-.site-shell .leistungen-page { background: var(--v3-bg); }
 
 /* ============================================================
    V3 UNTERSEITEN-BAUSTEINE (Projekte, Case Study, Über mich)
@@ -791,10 +728,8 @@
 .v3-tile figure .tag { bottom: 12px; }
 
 /* Unterseiten (alter Aufbau): engeres Tracking nur für große Größen */
-.site-shell .section-title { letter-spacing: -0.03em; }
 .site-shell .section-wrap { border-top: 0; }
-.site-shell .section-wrap + .section-wrap,
-.site-shell .section-wrap + .cta-section { border-top: 1px solid var(--v3-line); }
+.site-shell .section-wrap + .section-wrap { border-top: 1px solid var(--v3-line); }
 
 /* Regionen-/Branchen-Links auf der Startseite */
 .v3-links { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--v3-line-2); }
