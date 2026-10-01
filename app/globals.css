@@ -2826,3 +2826,34 @@ hr, .neumorph-divider {
   .project-image-wrap { height: 155px; }
   .cta-section     { padding: 3rem 1rem; }
 }
+
+
+/* ============================================
+   SEO-LANDINGPAGES (/de/webdesign/*)
+   ============================================ */
+.landing-crumbs { font-size: 0.8rem; color: var(--bw-text-faint); margin-bottom: 1rem; }
+.landing-crumbs a { color: var(--bw-text-faint); text-decoration: none; }
+.landing-crumbs a:hover { color: var(--bw-accent); }
+.landing-intro { max-width: 720px; }
+.landing-prose { max-width: 760px; margin: 0 auto; }
+.landing-prose p { color: var(--bw-text-faint); line-height: 1.8; font-size: 1rem; }
+.landing-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.75rem; }
+.landing-list li {
+  position: relative; padding-left: 1.6rem; color: var(--bw-text-faint); line-height: 1.7;
+}
+.landing-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.7em; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--bw-accent);
+}
+.landing-faq summary { list-style: none; cursor: pointer; }
+.landing-faq summary::-webkit-details-marker { display: none; }
+.landing-faq[open] { border-color: rgba(var(--bw-accent-rgb), 0.2); }
+.landing-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .landing-grid { grid-template-columns: repeat(2, 1fr); } }
+.landing-card {
+  display: block; padding: 1.25rem 1.5rem; border-radius: 14px; text-decoration: none;
+  background: var(--bw-surface); border: 1px solid var(--bw-border); transition: border-color 0.2s;
+}
+.landing-card:hover { border-color: rgba(var(--bw-accent-rgb), 0.35); }
+.landing-card h3 { margin: 0 0 0.4rem; color: var(--bw-text); font-size: 1.05rem; }
+.landing-card p { margin: 0; color: var(--bw-text-faint); font-size: 0.88rem; line-height: 1.6; }

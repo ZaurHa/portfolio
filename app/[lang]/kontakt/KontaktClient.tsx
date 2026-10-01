@@ -136,6 +136,15 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
             <div className="kontakt-info-card">
               <h3 className="kontakt-info-title">{t.directContact}</h3>
               <div className="kontakt-info-links">
+                <a href="tel:+491728471641" className="kontakt-info-link">
+                  <div className="kontakt-info-icon">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  </div>
+                  <div>
+                    <div className="kontakt-info-link-label">{lang === "de" ? "Telefon" : "Phone"}</div>
+                    <div className="kontakt-info-link-value">0172 8471641</div>
+                  </div>
+                </a>
                 <a href="mailto:brandwerkx@gmail.com" className="kontakt-info-link">
                   <div className="kontakt-info-icon">
                     <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z" /></svg>

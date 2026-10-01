@@ -83,6 +83,7 @@ const jsonLd = {
       "logo": `${SITE}/images/brandwerkxweiss.webp`,
       "image": `${SITE}/opengraph-image`,
       "email": "brandwerkx@gmail.com",
+      "telephone": "+491728471641",
       "founder": { "@id": `${SITE}/#zaur` },
       "address": {
         "@type": "PostalAddress",

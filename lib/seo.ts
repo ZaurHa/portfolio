@@ -18,6 +18,8 @@ interface PageMetaInput {
   /** true = Titel ohne Marken-Suffix aus dem Root-Template ausliefern */
   absoluteTitle?: boolean;
   noindex?: boolean;
+  /** Seite existiert nur auf Deutsch: keine en-Alternative */
+  onlyDe?: boolean;
 }
 
 /**
@@ -32,6 +34,7 @@ export function pageMetadata({
   description,
   absoluteTitle = false,
   noindex = false,
+  onlyDe = false,
 }: PageMetaInput): Metadata {
   const locale: Lang = lang === 'en' ? 'en' : 'de';
   const url = `/${locale}${path}`;
@@ -48,11 +51,9 @@ export function pageMetadata({
     description,
     alternates: {
       canonical: url,
-      languages: {
-        de: `/de${path}`,
-        en: `/en${path}`,
-        'x-default': `/de${path}`,
-      },
+      languages: onlyDe
+        ? { de: `/de${path}`, 'x-default': `/de${path}` }
+        : { de: `/de${path}`, en: `/en${path}`, 'x-default': `/de${path}` },
     },
     openGraph: {
       type: 'website',

@@ -333,6 +333,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               <Link href={`/${lang}`} className="footer-link">{dict.nav.home}</Link>
               <Link href={`/${lang}/leistungen`} className="footer-link">{dict.nav.services}</Link>
               <Link href="/muster" className="footer-link">Designs</Link>
+              {lang === 'de' && <Link href="/de/webdesign" className="footer-link">Webdesign</Link>}
               <Link href={`/${lang}/projekte`} className="footer-link">{dict.nav.projects}</Link>
               <Link href={`/${lang}/ueber-mich`} className="footer-link">{dict.nav.about}</Link>
             </div>
@@ -345,6 +346,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               <Link href={`/${lang}/kontakt`} className="footer-link">
                 {lang === 'de' ? 'Projekt anfragen' : 'Start a project'}
               </Link>
+              <a href="tel:+491728471641" className="footer-link">0172 8471641</a>
               <a href="mailto:brandwerkx@gmail.com" className="footer-link">brandwerkx@gmail.com</a>
               <a
                 href="https://wa.me/491728471641?text=Hallo%20Zaur%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website."

@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { landingPages } from "../lib/landing";
 import { SITE_URL, SITEMAP_LAST_MODIFIED } from "../lib/seo";
 
 const locales = ["de", "en"] as const;
@@ -26,6 +27,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route.priority,
       });
     }
+  }
+
+  // Nur deutsche Landingpages
+  entries.push({ url: `${SITE_URL}/de/webdesign`, lastModified, changeFrequency: "monthly", priority: 0.8 });
+  for (const p of landingPages) {
+    entries.push({
+      url: `${SITE_URL}/de/webdesign/${p.slug}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: p.kind === "leistung" ? 0.8 : 0.7,
+    });
   }
 
   return entries;
