@@ -54,13 +54,13 @@ export default function WorkHero({
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", background: "linear-gradient(180deg, #0a0d0c 0%, #070908 65%, #050505 100%)", overflow: "hidden" }}>
+    <div style={{ position: "relative", width: "100%", background: "var(--bw-bg)", overflow: "hidden" }}>
       {/* Grüner Glow + feines Raster */}
       <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
         maxWidth: 760, maxHeight: 760, pointerEvents: "none",
-        background: `radial-gradient(circle, ${ACCENT}1f, transparent 65%)` }} />
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.4,
-        backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px)",
+        background: `radial-gradient(circle, ${ACCENT}33, transparent 65%)` }} />
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.7,
+        backgroundImage: "linear-gradient(rgba(18,19,15,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(18,19,15,0.06) 1px,transparent 1px)",
         backgroundSize: "60px 60px",
         maskImage: "radial-gradient(circle at 70% 30%, #000, transparent 75%)",
         WebkitMaskImage: "radial-gradient(circle at 70% 30%, #000, transparent 75%)" }} />
@@ -76,24 +76,23 @@ export default function WorkHero({
         <div style={{ flex: "1 1 360px", minWidth: 0 }}>
           <div className="hero-in"
             style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13,
-              color: ACCENT, border: `1px solid ${ACCENT}4d`, borderRadius: 999,
-              padding: "5px 13px", marginBottom: 22, letterSpacing: "0.02em" }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENT,
-              boxShadow: `0 0 8px ${ACCENT}` }} />
+              color: "var(--bw-text)", border: "1px solid var(--bw-border-2)", background: "var(--bw-surface)", borderRadius: 999,
+              padding: "6px 14px", marginBottom: 24, letterSpacing: "0.02em", fontWeight: 500 }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: ACCENT,
+              boxShadow: `0 0 0 3px ${ACCENT}44` }} />
             {eyebrow}
           </div>
 
           {/* H1 ohne Opacity-Animation: LCP-Element ist ab dem ersten Paint sichtbar */}
           <h1 className="hero-h1"
-            style={{ fontSize: "clamp(2.4rem,5.8vw,4.7rem)", fontWeight: 700, lineHeight: 1.04,
-              letterSpacing: "-0.04em", color: "#fff", margin: 0 }}>
+            style={{ fontFamily: "var(--font-instrument-serif), Georgia, serif", fontSize: "clamp(3rem,7.2vw,6rem)", fontWeight: 400, lineHeight: 0.98,
+              letterSpacing: "-0.035em", color: "var(--bw-text)", margin: 0 }}>
             {line1} {line2}{" "}
-            <span className="serif-accent" style={{ color: ACCENT, fontSize: "1.06em",
-              textShadow: `0 0 40px ${ACCENT}40` }}>{line2Highlight}</span>
+            <span className="hero-marker">{line2Highlight}</span>
           </h1>
 
           <p className="hero-in"
-            style={{ animationDelay: "0.2s", fontSize: "clamp(1rem,1.6vw,1.25rem)", color: "rgba(255,255,255,0.66)",
+            style={{ animationDelay: "0.2s", fontSize: "clamp(1rem,1.6vw,1.25rem)", color: "var(--bw-text-muted)",
               lineHeight: 1.55, margin: "18px 0 0", maxWidth: 520 }}>
             {subline}
           </p>
@@ -101,16 +100,16 @@ export default function WorkHero({
           <div className="hero-in"
             style={{ animationDelay: "0.3s", display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
             <Link href={ctaPrimaryHref} className="hero-cta-primary" style={{
-              background: `linear-gradient(180deg, #4dffee, ${ACCENT} 55%)`, color: "#04140f", fontWeight: 700,
-              padding: "0.95rem 1.9rem", borderRadius: 12, textDecoration: "none",
+              background: "var(--bw-ink)", color: "#f4f1ea", fontWeight: 600,
+              padding: "0.95rem 1.9rem", borderRadius: 999, textDecoration: "none",
               fontSize: "clamp(0.92rem,1.3vw,1.05rem)", display: "inline-flex", alignItems: "center",
-              gap: 8, boxShadow: `0 10px 34px ${ACCENT}55, inset 0 1px 0 rgba(255,255,255,0.4)` }}>
+              gap: 8, boxShadow: "0 14px 30px -14px rgba(18,19,15,0.6)" }}>
               {ctaPrimary} →
             </Link>
-            <Link href={ctaSecondaryHref} className="hero-cta-secondary" style={{ background: "rgba(255,255,255,0.05)", color: "#fff",
-              border: "1px solid rgba(255,255,255,0.16)", fontWeight: 600, padding: "0.95rem 1.9rem",
-              borderRadius: 12, textDecoration: "none", fontSize: "clamp(0.92rem,1.3vw,1.05rem)",
-              display: "inline-flex", alignItems: "center", gap: 8, backdropFilter: "blur(6px)" }}>
+            <Link href={ctaSecondaryHref} className="hero-cta-secondary" style={{ background: "transparent", color: "var(--bw-text)",
+              border: "1px solid var(--bw-border-2)", fontWeight: 600, padding: "0.95rem 1.9rem",
+              borderRadius: 999, textDecoration: "none", fontSize: "clamp(0.92rem,1.3vw,1.05rem)",
+              display: "inline-flex", alignItems: "center", gap: 8 }}>
               {ctaSecondary}
             </Link>
           </div>
@@ -130,8 +129,9 @@ export default function WorkHero({
         </div>
 
         {/* Showcase-Stack: echte Projekte — neigt sich in 3D zur Maus */}
-        <div ref={stackRef} className="hero-stack" style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
-          height: "clamp(340px,46vw,500px)",
+        <div className="on-dark hero-stage" style={{ flex: "1 1 400px", minWidth: 300, position: "relative", borderRadius: 28, padding: "clamp(1rem,2.5vw,2rem)" }}>
+        <div ref={stackRef} className="hero-stack" style={{ position: "relative", width: "100%",
+          height: "clamp(340px,44vw,480px)",
           transform: "perspective(1100px) rotateX(0deg) rotateY(0deg)", transformStyle: "preserve-3d" }}>
           {SHOWCASE.map((p, i) => (
             <div
@@ -164,6 +164,7 @@ export default function WorkHero({
               </div>
             </div>
           ))}
+        </div>
         </div>
       </div>
     </div>
