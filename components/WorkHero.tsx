@@ -1,8 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, MotionConfig, useMotionValue, useSpring } from "framer-motion";
 
 type WorkHeroProps = {
   eyebrow: string;
@@ -31,33 +31,29 @@ const SHOWCASE = [
     top: "64%", left: "50%", rotate: 3, z: 1, w: "46%", badge: null },
 ];
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
+/**
+ * Einblend-Animationen laufen rein per CSS (.hero-in / .hero-card in globals.css).
+ * Der HTML-Text ist damit sofort sichtbar — keine JS-Hydration nötig für den LCP.
+ */
 export default function WorkHero({
   eyebrow, line1, line2, line2Highlight, subline,
   ctaPrimary, ctaPrimaryHref, ctaSecondary, ctaSecondaryHref, trustItems,
 }: WorkHeroProps) {
-  // Maus-Tilt für den Showcase-Stack (Spring-geglättet, nur echte Maus)
-  const tiltX = useMotionValue(0);
-  const tiltY = useMotionValue(0);
-  const rotX = useSpring(tiltX, { stiffness: 110, damping: 16 });
-  const rotY = useSpring(tiltY, { stiffness: 110, damping: 16 });
+  // Maus-Tilt für den Showcase-Stack: direkt per ref, kein React-State (nur echte Maus)
+  const stackRef = useRef<HTMLDivElement>(null);
 
   const handleTiltMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.pointerType !== "mouse") return;
+    if (e.pointerType !== "mouse" || !stackRef.current) return;
     const r = e.currentTarget.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
-    tiltY.set(px * 7);
-    tiltX.set(-py * 6);
+    stackRef.current.style.transform = `perspective(1100px) rotateX(${-py * 6}deg) rotateY(${px * 7}deg)`;
   };
   const handleTiltLeave = () => {
-    tiltX.set(0);
-    tiltY.set(0);
+    if (stackRef.current) stackRef.current.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg)";
   };
 
   return (
-    <MotionConfig reducedMotion="user">
     <div style={{ position: "relative", width: "100%", background: "linear-gradient(180deg, #0a0d0c 0%, #070908 65%, #050505 100%)", overflow: "hidden" }}>
       {/* Grüner Glow + feines Raster */}
       <div style={{ position: "absolute", top: "-10%", right: "-5%", width: "55vw", height: "55vw",
@@ -78,43 +74,32 @@ export default function WorkHero({
 
         {/* Text */}
         <div style={{ flex: "1 1 360px", minWidth: 0 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.6, ease }}
+          <div className="hero-in"
             style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13,
               color: ACCENT, border: `1px solid ${ACCENT}4d`, borderRadius: 999,
               padding: "5px 13px", marginBottom: 22, letterSpacing: "0.02em" }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENT,
               boxShadow: `0 0 8px ${ACCENT}` }} />
             {eyebrow}
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 22, filter: "blur(5px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, ease, delay: 0.08 }}
+          {/* H1 ohne Opacity-Animation: LCP-Element ist ab dem ersten Paint sichtbar */}
+          <h1 className="hero-h1"
             style={{ fontSize: "clamp(2.4rem,5.8vw,4.7rem)", fontWeight: 700, lineHeight: 1.04,
               letterSpacing: "-0.04em", color: "#fff", margin: 0 }}>
             {line1} {line2}{" "}
             <span className="serif-accent" style={{ color: ACCENT, fontSize: "1.06em",
               textShadow: `0 0 40px ${ACCENT}40` }}>{line2Highlight}</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease, delay: 0.22 }}
-            style={{ fontSize: "clamp(1rem,1.6vw,1.25rem)", color: "rgba(255,255,255,0.66)",
+          <p className="hero-in"
+            style={{ animationDelay: "0.2s", fontSize: "clamp(1rem,1.6vw,1.25rem)", color: "rgba(255,255,255,0.66)",
               lineHeight: 1.55, margin: "18px 0 0", maxWidth: 520 }}>
             {subline}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease, delay: 0.34 }}
-            style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
+          <div className="hero-in"
+            style={{ animationDelay: "0.3s", display: "flex", flexWrap: "wrap", gap: 12, marginTop: 30 }}>
             <Link href={ctaPrimaryHref} className="hero-cta-primary" style={{
               background: `linear-gradient(180deg, #4dffee, ${ACCENT} 55%)`, color: "#04140f", fontWeight: 700,
               padding: "0.95rem 1.9rem", borderRadius: 12, textDecoration: "none",
@@ -128,14 +113,10 @@ export default function WorkHero({
               display: "inline-flex", alignItems: "center", gap: 8, backdropFilter: "blur(6px)" }}>
               {ctaSecondary}
             </Link>
-          </motion.div>
+          </div>
 
           {trustItems && trustItems.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease, delay: 0.5 }}
-              className="hero-trust-row">
+            <div className="hero-trust-row hero-in" style={{ animationDelay: "0.4s" }}>
               {trustItems.map((item) => (
                 <span key={item}>
                   <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
@@ -144,26 +125,23 @@ export default function WorkHero({
                   {item}
                 </span>
               ))}
-            </motion.div>
+            </div>
           )}
         </div>
 
         {/* Showcase-Stack: echte Projekte — neigt sich in 3D zur Maus */}
-        <motion.div style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
+        <div ref={stackRef} className="hero-stack" style={{ flex: "1 1 360px", minWidth: 300, position: "relative",
           height: "clamp(340px,46vw,500px)",
-          rotateX: rotX, rotateY: rotY,
-          transformPerspective: 1100, transformStyle: "preserve-3d" }}>
+          transform: "perspective(1100px) rotateX(0deg) rotateY(0deg)", transformStyle: "preserve-3d" }}>
           {SHOWCASE.map((p, i) => (
-            <motion.div
+            <div
               key={p.src}
-              initial={{ opacity: 0, y: 40, scale: 0.92, rotate: p.rotate }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotate: p.rotate }}
-              transition={{ duration: 0.8, ease, delay: 0.3 + i * 0.14 }}
-              style={{ position: "absolute", top: p.top, left: p.left, width: p.w, zIndex: p.z }}>
-              <motion.div
-                animate={{ y: [0, -9, 0] }}
-                transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut" }}
-                style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #28332d",
+              className="hero-card"
+              style={{ position: "absolute", top: p.top, left: p.left, width: p.w, zIndex: p.z,
+                ["--r" as string]: `${p.rotate}deg`, animationDelay: `${0.25 + i * 0.12}s` }}>
+              <div
+                className="hero-float"
+                style={{ animationDuration: `${5 + i}s`, borderRadius: 14, overflow: "hidden", border: "1px solid #28332d",
                   boxShadow: "0 22px 50px rgba(0,0,0,0.6)", background: "#0c100e" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "7px 10px",
                   background: "#11161300", borderBottom: "1px solid #1a221e" }}>
@@ -173,7 +151,7 @@ export default function WorkHero({
                   <span style={{ marginLeft: "auto", fontSize: 10, color: "#5f6e66" }}>{p.label}</span>
                 </div>
                 <div style={{ position: "relative", aspectRatio: "16 / 10" }}>
-                  <Image src={p.src} alt={p.label} fill sizes="(max-width:768px) 70vw, 35vw"
+                  <Image src={p.src} alt={p.label} fill priority={i === 0} sizes="(max-width:768px) 70vw, 35vw"
                     style={{ objectFit: "cover" }} />
                   {p.badge && (
                     <span style={{ position: "absolute", top: 8, right: 8, fontSize: 10.5,
@@ -183,12 +161,11 @@ export default function WorkHero({
                     </span>
                   )}
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
-    </MotionConfig>
   );
 }

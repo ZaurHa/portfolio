@@ -2857,3 +2857,53 @@ hr, .neumorph-divider {
 .landing-card:hover { border-color: rgba(var(--bw-accent-rgb), 0.35); }
 .landing-card h3 { margin: 0 0 0.4rem; color: var(--bw-text); font-size: 1.05rem; }
 .landing-card p { margin: 0; color: var(--bw-text-faint); font-size: 0.88rem; line-height: 1.6; }
+
+
+/* ============================================
+   HERO & LOGO: reine CSS-Animationen (ersetzt framer-motion)
+   ============================================ */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-h1-in {
+  from { transform: translateY(14px); }
+  to   { transform: translateY(0); }
+}
+@keyframes hero-card-in {
+  from { opacity: 0; transform: translateY(40px) scale(0.92) rotate(var(--r, 0deg)); }
+  to   { opacity: 1; transform: translateY(0) scale(1) rotate(var(--r, 0deg)); }
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+@keyframes logo-b-in {
+  from { opacity: 0; transform: scale(0.4) translateY(2px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes logo-ch-in {
+  from { opacity: 0; transform: translateX(-7px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+@keyframes logo-x-in {
+  0%   { opacity: 0; transform: scale(0) rotate(-35deg); }
+  55%  { opacity: 1; transform: scale(1.25) rotate(10deg); }
+  80%  { transform: scale(0.94) rotate(-2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.hero-in      { animation: hero-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-h1      { animation: hero-h1-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-stack   { transition: transform 0.25s ease-out; will-change: transform; }
+.hero-card    { transform: rotate(var(--r, 0deg)); animation: hero-card-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-float   { animation: hero-float 6s ease-in-out infinite; }
+.logo-b, .logo-ch, .logo-x { display: inline-block; }
+.logo-b  { animation: logo-b-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.logo-ch { animation: logo-ch-in 0.32s ease-out both; }
+.logo-x  { color: #00ffe7; animation: logo-x-in 0.6s ease-out 0.95s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in, .hero-h1, .hero-card, .hero-float, .logo-b, .logo-ch, .logo-x { animation: none !important; }
+  .hero-stack { transition: none; }
+}
