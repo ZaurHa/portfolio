@@ -835,3 +835,13 @@
 .site-shell .kontakt-form-title, .site-shell .kontakt-info-title { font-family: var(--v3-display); letter-spacing: -0.02em; }
 .site-shell .kontakt-info-link-label { font-family: var(--v3-mono); letter-spacing: 0.06em; }
 .site-shell .kontakt-info-icon { background: transparent; border: 1px solid var(--v3-line-2); color: var(--v3-accent); }
+
+/* Belegte Kennzahlen in Projektzeilen */
+.v3-results { margin: 0 0 22px; }
+.v3-results-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--v3-line-2); border-bottom: 1px solid var(--v3-line); }
+.v3-results-row > div { padding: 16px 16px 16px 0; display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: baseline; }
+.v3-results-row > div + div { padding-left: 16px; border-left: 1px solid var(--v3-line); }
+.v3-results .v { font: 800 clamp(34px, 3.4vw, 48px)/1 var(--v3-display); letter-spacing: -0.04em; color: var(--v3-ink); }
+.v3-results .d { font: 600 14px/1 var(--v3-mono); color: var(--v3-accent); justify-self: start; }
+.v3-results .l { grid-column: 1 / -1; margin-top: 8px; font-size: 14px; color: var(--v3-muted); }
+.v3-results-src { margin: 10px 0 0; font: 400 12px/1.5 var(--v3-mono); color: var(--v3-dim); letter-spacing: 0.02em; }

@@ -4,78 +4,52 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-BrandWerkX portfolio — a multilingual (German/English) Next.js website for freelance web development services. Custom neumorphic dark theme with cyan accents (#00ffe7).
+BrandWerkX — multilingual (German/English) Next.js website for the freelance web design business of Zaur Hatuev (Geretsried, service area Munich & Oberland). Design system "V3": near-black (#0a0b0a), cyan accent (#00ffe7), Inter Tight headlines, JetBrains Mono labels.
 
-**Tech Stack**: Next.js 14.1 (App Router), React 18, TypeScript 5.5, TailwindCSS 3.4, Framer Motion animations, Resend for transactional email.
+**Tech Stack**: Next.js 14.1 (App Router, **static export**), React 18, TypeScript 5.5, TailwindCSS 3.4. Hosted on **Cloudflare Pages**; the contact form runs as a Cloudflare Pages Function that sends mail via the Resend REST API.
 
 ## Development Commands
 
 ```bash
-npm run dev      # Start dev server on http://localhost:3000
-npm run build    # Production build (runs ESLint — errors block deploy)
-npm run start    # Run production server
-npm run lint     # Run ESLint
+npm run dev      # Dev server on http://localhost:3000 (no /api/contact, no _redirects)
+npm run build    # Static export to ./out (+ scripts/postbuild.mjs → out/404.html); runs ESLint
+npm run preview  # Serve ./out with Wrangler like Cloudflare Pages (incl. functions, _redirects, _headers)
+npm run lint     # ESLint
 ```
 
-**No test framework is configured** — this project has no tests.
+**No test framework is configured.** Verify changes with `npm run build` and `npm run preview`.
 
 ## Architecture
 
-### Locale Routing
-- Middleware (`middleware.ts`) intercepts all requests except `/api/*`, `/muster/*`, and static files
-- Detects locale from `Accept-Language` header (defaults to `de`, prefers `en` only if explicit)
-- Redirects to `/de/*` or `/en/*` while preserving query params
-- **Exception**: `/muster/*` routes (template showcase) have no locale prefix
+### Static export (important)
+- `next.config.js` sets `output: 'export'` and `images.unoptimized: true`. No Node server at runtime:
+  no middleware, no route handlers, no `headers()`/`cookies()`, no runtime image optimisation.
+- Every dynamic segment needs `generateStaticParams` (+ `dynamicParams = false`).
+- Images in `public/images` are pre-optimised WebP — keep new images small (≤ 1600 px wide, WebP).
+- Redirects (`/` → `/de`, legacy paths) live in `public/_redirects`; security/cache headers in `public/_headers`.
+- 404: `app/[lang]/seite-nicht-gefunden` is copied to `out/404.html` by `scripts/postbuild.mjs`.
 
-### i18n System
-- Custom type-safe dictionaries in `lib/i18n/` (`de.ts`, `en.ts`)
-- `getDictionary(locale)` loads translations at page level
-- Server components receive `dict` prop; client components (like `LayoutClient`) receive it too
-- Language switcher in nav uses `switchLangPath()` to toggle between `/de/*` and `/en/*`
+### Root layouts & locales
+- Two root layouts: `app/[lang]/layout.tsx` (sets `<html lang>` per locale) and `app/muster/layout.tsx`.
+  Shared fonts, base metadata and JSON-LD live in `lib/root.tsx`.
+- Locales: `de`, `en`. Landing pages under `/de/webdesign/*` are German-only.
 
-### Server vs Client Components
-- **Server Components** (default): All pages and layouts in `app/[lang]/*` are server components
-- **Client Components** (`'use client'`): Interactive elements like forms, animations, theme toggle
-- `LayoutClient.tsx` wraps the locale layout to provide client-side interactivity (nav, menu, scroll effects)
+### Content sources
+- Home page content: `lib/home.ts` (DE/EN); landing pages: `lib/landing.ts`; per-page metadata via `pageMetadata()` in `lib/seo.ts`.
+- `lib/i18n/{de,en}.ts` only holds the remaining shared UI strings (nav, contact, impressum, footer).
+- Only use verifiable facts (prices, delivery times, Search Console numbers with source). No invented rankings or percentages.
 
-### Styling System
-- **Primary**: `app/globals.css` (~2246 lines) — neumorphic design system with CSS variables
-- Accent color: `--accent: #00ffe7` (cyan)
-- Dark theme default; light mode via `next-themes`
-- Extensive mobile overrides — responsive-first with breakpoint-specific styles
-- Glassmorphism cards, soft shadows, subtle borders
+### Contact form
+1. `app/[lang]/kontakt/KontaktClient.tsx` posts JSON (or a plain form POST without JS) to `/api/contact`
+2. `functions/api/contact.ts` (Cloudflare Pages Function): honeypot + min fill time, validation, HTML escaping, best-effort rate limit
+3. Sends admin mail + confirmation via Resend REST API; secret `RESEND_API_KEY` is set in the Cloudflare dashboard
 
-### Contact Form Flow
-1. Client form in `app/[lang]/kontakt/page.tsx` submits to `/api/contact`
-2. Rate limiting: in-memory, 5 req/10min per IP
-3. Validation → Resend API (`resend.emails.send()`)
-4. Sends HTML email to admin + confirmation to customer
-5. Environment variables: `RESEND_API_KEY`, `RESEND_DOMAIN`, `ADMIN_EMAIL`
-
-### Path Aliases
-- `@/*` maps to project root (configured in `tsconfig.json`)
-
-### Static Generation
-- Pages generate static params for locales: `de` and `en`
-- Optimized for Vercel deployment
-
-## Key Files
-
-- `middleware.ts` — Locale detection & routing (bypasses `/muster/*`)
-- `components/LayoutClient.tsx` — Main nav, menu, scroll effects, language switcher
-- `lib/i18n/index.ts` — Dictionary loader, locale types
-- `app/globals.css` — Entire design system (neumorphism, responsive overrides)
-- `app/api/contact/route.ts` — Contact form handler with Resend
-- `next.config.js` — Image domains (Unsplash, Pexels), ESLint on builds
-
-## Design Tokens
-
-Edit globals.css for theme changes:
-- `--accent` — Primary accent (cyan #00ffe7)
-- `--bg-primary`, `--bg-secondary` — Background colors
-- Neumorphic shadows: `--shadow-light`, `--shadow-dark`
-- Glassmorphism: `--glass-bg`, `--glass-border`
+### Styling
+- `app/design-v3.css` — the design system (tokens under `.site-shell`, `v3-*` components)
+- `app/globals.css` — remaining base styles still used by contact/legal pages
+- Reusable V3 components: `components/v3/*` (PageHero, PriceBoard, Steps, Faq, ClosingCta, NotFoundView, ReelToggle)
 
 ## Deployment
 
-Optimized for Vercel. Push to GitHub → connect repo → deploy. ESLint runs on build; errors block deployment.
+Cloudflare Pages, connected to the GitHub repo: build command `npm run build`, output directory `out`,
+Node 20. `functions/` is picked up automatically. Set `RESEND_API_KEY` as an encrypted variable.

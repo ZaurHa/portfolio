@@ -28,6 +28,9 @@ type Project = {
   cta: string;
   external?: boolean;
   live?: boolean;
+  /** Belegte Kennzahlen (Quelle in resultsSource) */
+  results?: { value: string; label: string; delta?: string }[];
+  resultsSource?: string;
 };
 
 function getProjects(de: boolean, lang: string): Project[] {
@@ -61,11 +64,18 @@ function getProjects(de: boolean, lang: string): Project[] {
         : "Professional B2B website for a logistics provider: warehousing, picking and contract logistics clearly structured, dark design with 3D illustration.",
       done: de ? ["B2B-Branding", "3D-Illustration", "Leistungsstruktur & Kontakt"] : ["B2B branding", "3D illustration", "Service structure & contact"],
       stack: ["Cloudflare Workers", "TypeScript", "TailwindCSS"],
-      image: "/images/mrg-tlogistik-preview.png",
+      image: "/images/mrg-tlogistik-preview.webp",
       alt: de ? "Website MRG Trans & Logistik GmbH" : "MRG Trans & Logistik GmbH website",
       bar: "mrg-logistik.de",
       href: "https://mrg-logistik.de",
       cta: de ? "Website ansehen" : "View website",
+      results: [
+        { value: "224", label: de ? "Klicks aus Google" : "clicks from Google", delta: "+918 %" },
+        { value: de ? "8.223" : "8,223", label: de ? "Impressionen in Google" : "impressions in Google", delta: "+1.374 %" },
+      ],
+      resultsSource: de
+        ? "Quelle: Google Search Console, 29.06.–27.09.2026 im Vergleich zu den 3 Monaten davor"
+        : "Source: Google Search Console, 29 Jun – 27 Sep 2026 compared with the previous 3 months",
       external: true,
       live: true,
     },
@@ -80,7 +90,7 @@ function getProjects(de: boolean, lang: string): Project[] {
         : "Company website for my own moving and transport business – branding, services, process and contact. This is where I test what works for trade and service businesses.",
       done: de ? ["Eigenes Branding & Logo", "Mobil-optimiert", "Anfrage per Telefon & WhatsApp"] : ["Own branding & logo", "Mobile-optimised", "Enquiries by phone & WhatsApp"],
       stack: ["Next.js", "TypeScript", "TailwindCSS"],
-      image: "/images/mobilwerk-preview.png",
+      image: "/images/mobilwerk-preview.webp",
       alt: de ? "Website Mobilwerk Transport & Umzug" : "Mobilwerk moving & transport website",
       bar: "mobilwerk",
       href: "https://mobilwerk.vercel.app",
@@ -99,7 +109,7 @@ function getProjects(de: boolean, lang: string): Project[] {
         : "Own social platform with video feed, live streaming, gifts and an integrated shop – as an iOS app on the App Store and as a web app. Design, development and operation in one hand.",
       done: de ? ["Live im App Store", "Live-Streaming, Gifts & Shop", "Web-App auf serlo.ch"] : ["Live on the App Store", "Live streaming, gifts & shop", "Web app on serlo.ch"],
       stack: ["React Native", "Next.js", "Supabase", "LiveKit"],
-      image: "/images/serlo-preview.png",
+      image: "/images/serlo-preview.webp",
       alt: de ? "Social-App Serlo" : "Serlo social app",
       bar: "serlo.ch",
       href: "https://serlo.ch",
@@ -118,7 +128,7 @@ function getProjects(de: boolean, lang: string): Project[] {
         : "Ready-made website designs for plumbing businesses in five variants. You pick one, I adapt logo, colours and copy – from €490, online in 3–5 working days.",
       done: de ? ["5 Designvarianten", "Mobil zuerst gebaut", "Ab 490 € Festpreis"] : ["5 design variants", "Built mobile-first", "From €490 fixed price"],
       stack: ["HTML", "CSS", "SEO"],
-      image: "/images/klempner-preview.png",
+      image: "/images/klempner-preview.webp",
       alt: de ? "Muster-Website für einen Klempnerbetrieb" : "Template website for a plumbing business",
       bar: "muster/klempner",
       href: "/muster/klempner",
@@ -177,6 +187,20 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
                 <span className={`v3-chip${p.live ? " live" : ""}`}>{p.kind}</span>
                 <h2 className="v3-case-title">{p.title}</h2>
                 <p className="v3-case-desc">{p.desc}</p>
+                {p.results && (
+                  <div className="v3-results">
+                    <div className="v3-results-row">
+                      {p.results.map((r) => (
+                        <div key={r.label}>
+                          <span className="v">{r.value}</span>
+                          <span className="l">{r.label}</span>
+                          {r.delta && <span className="d">{r.delta}</span>}
+                        </div>
+                      ))}
+                    </div>
+                    {p.resultsSource && <p className="v3-results-src">{p.resultsSource}</p>}
+                  </div>
+                )}
                 <ul className="v3-plus">{p.done.map((d) => <li key={d}>{d}</li>)}</ul>
                 <div className="v3-case-stack v3-mono">{p.stack.join(" · ")}</div>
                 <Link

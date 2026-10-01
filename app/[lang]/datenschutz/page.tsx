@@ -46,8 +46,9 @@ export default async function Datenschutz({ params }: { params: Promise<{ lang: 
         <section>
           <h2>3. Hosting und Server-Logfiles</h2>
           <div>
-            <p>Diese Website wird bei <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf werden technisch notwendige Daten verarbeitet: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Referrer, Browser und Betriebssystem. Das dient der sicheren und stabilen Auslieferung der Website.</p>
-            <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb). Mit Vercel besteht ein Vertrag zur Auftragsverarbeitung. Eine Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. der EU-Standardvertragsklauseln.</p>
+            <p>Diese Website wird über <strong>Cloudflare Pages</strong> der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA, ausgeliefert. Beim Aufruf werden technisch notwendige Daten verarbeitet: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Referrer, Browser und Betriebssystem. Das dient der sicheren, schnellen und stabilen Auslieferung der Website, auch zum Schutz vor Angriffen.</p>
+            <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb). Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung (Cloudflare Data Processing Addendum). Eine Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. der EU-Standardvertragsklauseln.</p>
+            <p>Das Kontaktformular wird ebenfalls über Cloudflare (Cloudflare Pages Functions) verarbeitet, bevor die Nachricht per E-Mail versendet wird (siehe Punkt 4).</p>
           </div>
         </section>
 

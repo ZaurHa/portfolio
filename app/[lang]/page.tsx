@@ -168,7 +168,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <section className="v3-sec" id="ueber-mich" aria-labelledby="h-about">
         <div className="v3-wrap v3-about">
           <figure className="v3-portrait">
-            <Image src="/images/zaur-portrait.jpg" alt="Zaur Hatuev" fill sizes="(max-width: 860px) 100vw, 40vw" />
+            <Image src="/images/zaur-portrait.webp" alt="Zaur Hatuev" fill sizes="(max-width: 860px) 100vw, 40vw" />
             <figcaption><span>{c.about.caption[0]}</span><span>{c.about.caption[1]}</span></figcaption>
           </figure>
           <div>

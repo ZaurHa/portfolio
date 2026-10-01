@@ -84,7 +84,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
               </div>
             </div>
             <figure className="v3-portrait v3-rise d2">
-              <Image src="/images/zaur-portrait.jpg" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
+              <Image src="/images/zaur-portrait.webp" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
               <figcaption><span>Zaur Hatuev</span><span>Geretsried</span></figcaption>
             </figure>
           </div>
@@ -145,12 +145,12 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
           <div className="v3-bento v3-bento-2">
             <a href="https://mobilwerk.vercel.app" target="_blank" rel="noopener noreferrer" className="v3-tile">
               <span className="tag">{de ? "Eigener Betrieb" : "Own business"}</span>
-              <figure><Image src="/images/mobilwerk-preview.png" alt={de ? "Website Mobilwerk" : "Mobilwerk website"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <figure><Image src="/images/mobilwerk-preview.webp" alt={de ? "Website Mobilwerk" : "Mobilwerk website"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
               <div className="meta"><div><h3>Mobilwerk</h3><p>{de ? "Transport & Umzug" : "Moving & transport"}</p></div><span className="n">↗</span></div>
             </a>
             <a href="https://serlo.ch" target="_blank" rel="noopener noreferrer" className="v3-tile">
               <span className="tag live">{de ? "Im App Store" : "On the App Store"}</span>
-              <figure><Image src="/images/serlo-preview.png" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <figure><Image src="/images/serlo-preview.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
               <div className="meta"><div><h3>Serlo</h3><p>{de ? "Social-App: Live, Shop, Community" : "Social app: live, shop, community"}</p></div><span className="n">↗</span></div>
             </a>
           </div>

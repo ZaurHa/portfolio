@@ -87,7 +87,7 @@ export const jsonLd = {
       "description": "Webdesign und Webentwicklung für Handwerker, Selbstständige und kleine Unternehmen — Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
       "url": SITE,
       "logo": `${SITE}/images/brandwerkxweiss.webp`,
-      "image": `${SITE}/opengraph-image`,
+      "image": `${SITE}/og.png`,
       "email": "brandwerkx@gmail.com",
       "telephone": "+491728471641",
       "founder": { "@id": `${SITE}/#zaur` },

@@ -1,7 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+/**
+ * Cloudflare Pages Function: POST /api/contact
+ * Verschickt Kontaktanfragen über die Resend-API (fetch, ohne SDK).
+ * Secret RESEND_API_KEY im Cloudflare-Projekt setzen (Settings → Variables and Secrets).
+ */
 
-export const dynamic = 'force-dynamic';
 
 const logoUrl = 'https://brandwerkx.de/images/brandwerkxweiss.webp';
 const siteUrl = 'https://brandwerkx.de';
@@ -167,7 +169,7 @@ function str(value: unknown, max = 10000): string {
 }
 
 // ── Rate limiting (in-memory, per IP) ───────────────────────────────────────
-// NOTE: On serverless platforms (e.g. Vercel) each instance has its own memory and
+// NOTE: On serverless platforms (Cloudflare Workers) each isolate has its own memory and
 // instances are recycled, so this limit is only best effort, not a hard guarantee.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT    = 5;          // max requests
@@ -189,7 +191,7 @@ type Outcome =
   | { kind: 'success'; message: string }
   | { kind: 'error'; status: number; error: string };
 
-async function readBody(request: NextRequest): Promise<{ body: Record<string, unknown>; isForm: boolean }> {
+async function readBody(request: Request): Promise<{ body: Record<string, unknown>; isForm: boolean }> {
   const contentType = request.headers.get('content-type') ?? '';
   if (contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')) {
     const fd = await request.formData();
@@ -203,7 +205,7 @@ async function readBody(request: NextRequest): Promise<{ body: Record<string, un
   return { body: json && typeof json === 'object' ? (json as Record<string, unknown>) : {}, isForm: false };
 }
 
-async function handle(body: Record<string, unknown>, lang: Lang, ip: string): Promise<Outcome> {
+async function handle(body: Record<string, unknown>, lang: Lang, ip: string, apiKey: string | undefined): Promise<Outcome> {
   const t = MSG[lang];
 
   if (!checkRateLimit(ip)) {
@@ -233,19 +235,17 @@ async function handle(body: Record<string, unknown>, lang: Lang, ip: string): Pr
 
   const subjectName = name.replace(/[\r\n]+/g, ' ');
 
-  // Ohne API-Key würde der Resend-Konstruktor werfen – das soll als sauberer 500 enden
-  if (!process.env.RESEND_API_KEY) {
+  if (!apiKey) {
     console.error('RESEND_API_KEY fehlt');
     return { kind: 'error', status: 500, error: t.sendFailed };
   }
-  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     // E-Mail an dich (Admin)
-    const { error: adminError } = await resend.emails.send({
+    const { error: adminError } = await sendMail(apiKey, {
       from: 'Zaur Hatuev <zaur@brandwerkx.de>',
       to: ['brandwerkx@gmail.com'],
-      replyTo: email,
+      reply_to: email,
       subject: `Neue Projektanfrage von ${subjectName}`,
       html: adminMailHtml({ name, email, phone, pkg, message, lang }),
     });
@@ -261,7 +261,7 @@ async function handle(body: Record<string, unknown>, lang: Lang, ip: string): Pr
   // Bestätigungs-E-Mail an den Absender — Fehler hier sind nicht kritisch
   try {
     const firstName = name.split(/\s+/)[0] ?? '';
-    const { error: confirmError } = await resend.emails.send({
+    const { error: confirmError } = await sendMail(apiKey, {
       from: 'Zaur Hatuev <zaur@brandwerkx.de>',
       to: [email],
       subject: lang === 'en' ? 'Thanks for your message – BrandWerkX' : 'Danke für deine Nachricht – BrandWerkX',
@@ -275,9 +275,32 @@ async function handle(body: Record<string, unknown>, lang: Lang, ip: string): Pr
   return { kind: 'success', message: t.success };
 }
 
-export async function POST(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
-    ?? request.headers.get('x-real-ip')
+interface MailPayload {
+  from: string;
+  to: string[];
+  subject: string;
+  html: string;
+  reply_to?: string;
+}
+
+/** Resend REST-API: https://resend.com/docs/api-reference/emails/send-email */
+async function sendMail(apiKey: string, payload: MailPayload): Promise<{ error: string | null }> {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (res.ok) return { error: null };
+  return { error: `${res.status} ${await res.text().catch(() => '')}` };
+}
+
+const json = (data: unknown, status = 200) =>
+  new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+
+export async function onRequestPost(context: { request: Request; env: { RESEND_API_KEY?: string } }) {
+  const { request, env } = context;
+  const ip = request.headers.get('cf-connecting-ip')
+    ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     ?? 'unknown';
 
   let body: Record<string, unknown> = {};
@@ -285,21 +308,19 @@ export async function POST(request: NextRequest) {
   try {
     ({ body, isForm } = await readBody(request));
   } catch {
-    return NextResponse.json({ error: MSG.de.invalid }, { status: 400 });
+    return json({ error: MSG.de.invalid }, 400);
   }
 
   const lang: Lang = body.lang === 'en' ? 'en' : 'de';
-  const outcome = await handle(body, lang, ip);
+  const outcome = await handle(body, lang, ip, env.RESEND_API_KEY);
 
   if (isForm) {
-    // No-JS fallback: redirect back to the contact page with a status flag
+    // Ohne JavaScript: zurück zur Kontaktseite mit Status
     const target = new URL(`/${lang}/kontakt`, request.url);
     target.searchParams.set(outcome.kind === 'success' ? 'sent' : 'error', '1');
-    return NextResponse.redirect(target, 303);
+    return Response.redirect(target.toString(), 303);
   }
 
-  if (outcome.kind === 'success') {
-    return NextResponse.json({ success: true, message: outcome.message }, { status: 200 });
-  }
-  return NextResponse.json({ error: outcome.error }, { status: outcome.status });
+  if (outcome.kind === 'success') return json({ success: true, message: outcome.message });
+  return json({ error: outcome.error }, outcome.status);
 }
