@@ -1,6 +1,6 @@
 import "./globals.css";
-import "./design-v2.css";
-import { Inter, Space_Grotesk, Instrument_Serif } from "next/font/google";
+import "./design-v3.css";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -16,19 +16,19 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Display-Schrift für Headlines (Design V3)
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-space-grotesk",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
-// Editorial-Kontrast: kursive Serif für Highlight-Wörter (Hero, CTA)
-const instrumentSerif = Instrument_Serif({
+// Mono für Metadaten/Labels (Design V3)
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="de"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable}`}
+      className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         {/* Favicon */}
