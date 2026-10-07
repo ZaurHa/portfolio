@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { pageMetadata } from "../../../lib/seo";
 import PageHero from "../../../components/v3/PageHero";
 import ClosingCta from "../../../components/v3/ClosingCta";
+import TileVideo from "../../../components/v3/TileVideo";
+import TileVideoToggle from "../../../components/v3/TileVideoToggle";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -22,6 +24,8 @@ type Project = {
   done: string[];
   stack: string[];
   image: string;
+  /** Stumme Schleife der Live-Seite (Hero oder Varianten), läuft über dem Bild */
+  video?: string;
   alt: string;
   bar: string;
   /** Ohne href (z. B. Projekt noch nicht live): Bild ohne Link, kein Button */
@@ -48,6 +52,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Logo, Farben, Typografie", "Website mit Leistungen & Preisen", "Lokale SEO-Grundlagen"] : ["Logo, colours, typography", "Website with services & prices", "Local SEO basics"],
       stack: ["Next.js", "TailwindCSS", "Figma"],
       image: "/images/beauty-praxis-mockup.webp",
+      video: "/videos/zaira-hero.mp4",
       alt: de ? "Website Zaira Beauty Face" : "Zaira Beauty Face website",
       bar: "zairabeauty.de",
       href: `/${lang}/projekte/zaira-beauty`,
@@ -66,6 +71,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["B2B-Branding", "3D-Illustration", "Leistungsstruktur & Kontakt"] : ["B2B branding", "3D illustration", "Service structure & contact"],
       stack: ["Cloudflare Workers", "TypeScript", "TailwindCSS"],
       image: "/images/mrg-tlogistik-preview.webp",
+      video: "/videos/mrg-hero.mp4",
       alt: de ? "Website MRG Trans & Logistik GmbH" : "MRG Trans & Logistik GmbH website",
       bar: "mrg-logistik.de",
       href: "https://mrg-logistik.de",
@@ -92,6 +98,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Sieben Leistungsseiten + Werkvertrag erklärt", "Container-Rechner & Einsatzkarte", "TÜV-Nachweis auf der Startseite"] : ["Seven service pages + service contract explained", "Container calculator & deployment map", "TÜV certificate on the homepage"],
       stack: ["Astro", "TailwindCSS", "SEO"],
       image: "/images/ip-logistik-preview.webp",
+      video: "/videos/ip-logistik-hero.mp4",
       alt: de ? "Website IP Logistik GmbH" : "IP Logistik GmbH website",
       bar: "ip-logistikgmbh.de",
       href: "https://ip-logistikgmbh.de",
@@ -111,6 +118,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Seiten für Staplerfahrer & Saisonpersonal", "Nachweise: AÜ-Erlaubnis, GVP-Mitglied", "Jobseite für Bewerber"] : ["Pages for forklift drivers & seasonal staff", "Proof: AÜ licence, GVP member", "Jobs page for applicants"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/mh-logistik-preview.webp",
+      video: "/videos/mh-logistik-hero.mp4",
       alt: de ? "Website MH Logistik GmbH" : "MH Logistik GmbH website",
       bar: "mh-logistikgmbh.de",
       href: "https://mh-logistikgmbh.de",
@@ -130,6 +138,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Festpreis & Ablauf auf einen Blick", "Echte Werkstatt-Videos statt Stockfotos", "Lighthouse mobil 4 × 100 zum Start"] : ["Fixed price & process at a glance", "Real workshop videos instead of stock photos", "Lighthouse mobile 4 × 100 at launch"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/dpfkat-preview.webp",
+      video: "/videos/dpfkat-hero.mp4",
       alt: de ? "Website DPF & Kat Service von SM Team" : "SM Team DPF & catalytic converter service website",
       bar: "dpfkat.de",
       href: "https://www.dpfkat.de",
@@ -149,6 +158,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Echte Einsatzfotos statt Stockbilder", "Google-Bewertungen sichtbar", "Anrufen mit einem Fingertipp"] : ["Real job photos instead of stock images", "Google reviews visible", "Call with a single tap"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/sm-umzug-preview.webp",
+      video: "/videos/sm-umzug-hero.mp4",
       alt: de ? "Website SM Team Umzug & Transport" : "SM Team moving & transport website",
       bar: "smdienstleistung.de",
       href: "https://smdienstleistung.de",
@@ -168,6 +178,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Anfrage-Formular in fünf Schritten", "Eigene Seiten pro Leistung", "Start nach Freigabe durch den Inhaber"] : ["Five-step enquiry form", "A page for every service", "Launch after owner sign-off"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/flott-umzug-preview.webp",
+      video: "/videos/flott-umzug-hero.mp4",
       alt: de ? "Vorschau der neuen Website von Flott Umzug" : "Preview of the new Flott Umzug website",
       bar: de ? "Vorschau" : "Preview",
     },
@@ -183,6 +194,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Eigenes Branding & Logo", "Mobil-optimiert", "Anfrage per Telefon & WhatsApp"] : ["Own branding & logo", "Mobile-optimised", "Enquiries by phone & WhatsApp"],
       stack: ["Next.js", "TypeScript", "TailwindCSS"],
       image: "/images/mobilwerk-preview.webp",
+      video: "/videos/mobilwerk-hero.mp4",
       alt: de ? "Website Mobilwerk Transport & Umzug" : "Mobilwerk moving & transport website",
       bar: "mobilwerk",
       href: "https://mobilwerk.vercel.app",
@@ -202,6 +214,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["Live im App Store", "Live-Streaming, Gifts & Shop", "Web-App auf serlo.ch"] : ["Live on the App Store", "Live streaming, gifts & shop", "Web app on serlo.ch"],
       stack: ["React Native", "Next.js", "Supabase", "LiveKit"],
       image: "/images/serlo-preview.webp",
+      video: "/videos/serlo-hero.mp4",
       alt: de ? "Social-App Serlo" : "Serlo social app",
       bar: "serlo.ch",
       href: "https://serlo.ch",
@@ -239,6 +252,7 @@ function getProjects(de: boolean, lang: string): Project[] {
       done: de ? ["5 Designvarianten", "Mobil zuerst gebaut", "Ab 490 € Festpreis"] : ["5 design variants", "Built mobile-first", "From €490 fixed price"],
       stack: ["HTML", "CSS", "SEO"],
       image: "/images/klempner-preview.webp",
+      video: "/videos/klempner-varianten.mp4",
       alt: de ? "Muster-Website für einen Klempnerbetrieb" : "Template website for a plumbing business",
       bar: "muster/klempner",
       href: "/muster/klempner",
@@ -273,14 +287,18 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
         ]}
       />
 
-      <section className="v3-sec v3-sec-tight" aria-label={de ? "Projektliste" : "Project list"}>
+      <section className="v3-sec v3-sec-tight" id="projektliste" aria-label={de ? "Projektliste" : "Project list"} data-tile-videos>
         <div className="v3-wrap">
+          <div className="v3-list-tools">
+            <TileVideoToggle target="projektliste" pauseLabel={de ? "Videos pausieren" : "Pause videos"} playLabel={de ? "Videos abspielen" : "Play videos"} />
+          </div>
           {projects.map((p, i) => {
             const frame = (
               <div className="v3-frame v3-frame-static">
                 <div className="bar"><i /><i /><i /><span>{p.bar}</span></div>
                 <div className="img">
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 960px) 100vw, 56vw" priority={i === 0} />
+                  {p.video && <TileVideo src={p.video} />}
                 </div>
               </div>
             );

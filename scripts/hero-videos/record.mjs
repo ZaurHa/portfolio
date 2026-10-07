@@ -12,8 +12,20 @@ const dir = `${process.env.REC_DIR || "/tmp/rec"}/${name}`;
 rmSync(dir, { recursive: true, force: true });
 mkdirSync(dir, { recursive: true });
 
-const browser = await chromium.launch({ channel: "chrome", headless: true, args: ["--autoplay-policy=no-user-gesture-required", "--hide-scrollbars"] });
+// Manche Seiten schalten Bewegung ab, wenn navigator.webdriver gesetzt ist (z. B. MH Logistik für Lighthouse).
+const browser = await chromium.launch({ channel: "chrome", headless: true, args: ["--autoplay-policy=no-user-gesture-required", "--hide-scrollbars", "--disable-blink-features=AutomationControlled"] });
 const ctx = await browser.newContext({ viewport: { width: +w, height: +h }, deviceScaleFactor: 1, reducedMotion: "no-preference", locale: "de-DE" });
+await ctx.addInitScript(() => Object.defineProperty(Navigator.prototype, "webdriver", { get: () => false }));
+// Optional: CSS nur für die Aufnahme einfügen (z. B. Cookie-Banner ausblenden, ohne ihn zu bedienen)
+if (process.env.HIDE_CSS) {
+  await ctx.addInitScript((css) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const s = document.createElement("style");
+      s.textContent = css;
+      document.head.appendChild(s);
+    });
+  }, process.env.HIDE_CSS);
+}
 const page = await ctx.newPage();
 const cdp = await ctx.newCDPSession(page);
 

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 
-/** Stummes Vorschau-Video über dem Standbild einer Projekt-Kachel: lädt erst im Sichtbereich, läuft nur dort und nicht, wenn der Bereich pausiert ist (TileVideoToggle). */
+/** Stummes Vorschau-Video über dem Standbild einer Projekt-Kachel oder eines Projektrahmens: lädt erst im Sichtbereich, läuft nur dort und nicht, wenn der Bereich pausiert ist (TileVideoToggle). */
 export default function TileVideo({ src }: { src: string }) {
   const ref = useRef<HTMLVideoElement>(null);
 

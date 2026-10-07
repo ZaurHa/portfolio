@@ -82,7 +82,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <section className="v3-reel" id="showreel" aria-label={c.reel.label}>
         <div className="v3-reel-light" aria-hidden="true" />
         <div className="v3-reel-stage">
-          <div className="v3-reel-track">
+          <div className="v3-reel-track" style={{ animationDuration: `${reel.length * 12.8}s` }}>
             {[...reel, ...reel].map((p, i) => (
               <div className="v3-frame" key={`${p.slug}-${i}`} aria-hidden={i >= reel.length ? true : undefined}>
                 <div className="bar"><i /><i /><i /><span>{p.bar}</span></div>

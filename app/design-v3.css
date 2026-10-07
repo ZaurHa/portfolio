@@ -183,7 +183,8 @@
 .v3-reel-stage { perspective: 1600px; perspective-origin: 50% 0; height: clamp(250px, 33vw, 470px); }
 .v3-reel-track {
   display: flex; gap: 28px; width: max-content;
-  transform: rotateX(14deg) rotateZ(-3deg) translateX(-2%); transform-origin: 50% 0;
+  /* Drehpunkt fest auf der Mitte von fünf Rahmen: mit 50 % würde das Band bei mehr Projekten tiefer kippen */
+  transform: rotateX(14deg) rotateZ(-3deg) translateX(-2%); transform-origin: calc(5 * (clamp(290px, 46vw, 680px) + 28px)) 0;
   animation: v3-slide 64s linear infinite;
 }
 .v3-reel:hover .v3-reel-track { animation-play-state: paused; }
@@ -441,7 +442,7 @@
   .v3-stamp .p small { font-size: 18px; }
   .v3-stamp .p strong { font-size: 44px; }
   .v3-stamp .k, .v3-stamp .f { font-size: 9px; }
-  .v3-reel-track { gap: 16px; }
+  .v3-reel-track { gap: 16px; transform-origin: calc(5 * (clamp(290px, 46vw, 680px) + 16px)) 0; }
   .v3-board .board-top, .v3-plan, .v3-board .board-foot { padding-left: 20px; padding-right: 20px; }
   .v3-kv { grid-template-columns: 1fr 1fr; }
   .v3-kv div:last-child { grid-column: 1 / -1; border-top: 1px solid var(--v3-line); }
@@ -856,6 +857,15 @@
 .v3-tile:hover video { transform: scale(1.045); filter: none; }
 .v3-more { align-items: center; gap: 12px; flex-wrap: wrap; }
 .v3-more .v3-reel-toggle { margin-right: auto; }
+
+/* Projektliste: dieselbe Schleife im Browser-Rahmen (16:10 wie das Video, kein Zuschnitt) */
+.v3-frame .img video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
+  opacity: 0; transition: opacity 0.6s;
+}
+.v3-frame .img video.is-playing { opacity: 1; }
+.v3-list-tools { display: flex; justify-content: flex-end; margin-bottom: clamp(20px, 3vw, 36px); }
+.v3-list-tools + .v3-case { padding-top: 0; }
 
 /* Bento mit drei gleich großen Kacheln (Über mich: eigene Projekte) */
 .v3-bento.v3-bento-3 { grid-template-columns: repeat(3, 1fr); }
