@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return pageMetadata({
     lang,
     path: "/webdesign",
-    title: "Webdesign Themen – Leistungen, Branchen, Regionen",
+    title: "Webdesign Themen | Leistungen, Branchen, Regionen",
     description:
       "Webdesign von BrandWerkX im Überblick: Website erstellen lassen, Kosten, SEO, Branchen wie Handwerk und Kosmetik sowie Regionen Geretsried, Oberland und München.",
     onlyDe: true,
@@ -45,8 +45,8 @@ export default async function WebdesignHub({ params }: { params: Promise<{ lang:
       <PageHero
         meta="Webdesign · Themen"
         metaRight={<b>Leistungen · Branchen · Regionen</b>}
-        title={<><span className="l">Webdesign</span><span className="l"><span className="c">von BrandWerkX.</span></span></>}
-        lead="Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried – ab 490 €, SEO inklusive. Hier findest du Antworten zu Leistungen, Preisen, Branchen und Regionen."
+        title={<><span className="l">Webdesign</span><span className="l"><span className="c">von BrandWerkX</span></span></>}
+        lead="Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried, ab 490 €, SEO inklusive. Hier findest du Antworten zu Leistungen, Preisen, Branchen und Regionen."
         actions={<Link href="/de/kontakt" className="v3-btn v3-btn-accent">Kostenloses Erstgespräch <span className="arr" aria-hidden="true">→</span></Link>}
       />
       {kinds.map((kind, i) => (

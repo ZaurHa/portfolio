@@ -8,8 +8,8 @@ import ClosingCta from "../../../../components/v3/ClosingCta";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return lang === "en"
-    ? pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Beauty Studio Website Case Study", description: "Case study: rebrand and new website for Zaira Beauty Face, a beauty studio in Geretsried – strategy, design and development from one source." })
-    : pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face – Case Study Kosmetikstudio-Website", description: "Case Study: Rebranding und neue Website für Zaira Beauty Face, ein Kosmetikstudio in Geretsried – Strategie, Design und Entwicklung aus einer Hand." });
+    ? pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face | Beauty Studio Website Case Study", description: "Case study: rebrand and new website for Zaira Beauty Face, a beauty studio in Geretsried. Strategy, design and development from one source." })
+    : pageMetadata({ lang, path: "/projekte/zaira-beauty", title: "Zaira Beauty Face | Case Study Kosmetikstudio-Website", description: "Case Study: Rebranding und neue Website für Zaira Beauty Face, ein Kosmetikstudio in Geretsried. Strategie, Design und Entwicklung aus einer Hand." });
 }
 
 const LIVE_URL = "https://zairabeauty.de";
@@ -31,13 +31,13 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
     ? [
         ["Verstehen", "Studio, Zielgruppe und Wettbewerb in Geretsried kennenlernen."],
         ["Marke", "Logo, Farben und Typografie als einheitliches Erscheinungsbild."],
-        ["Design", "Seitenaufbau und Gestaltung – abgestimmt im direkten Austausch."],
+        ["Design", "Seitenaufbau und Gestaltung, abgestimmt im direkten Austausch."],
         ["Launch", "Entwicklung, Test auf allen Geräten, Livegang und Übergabe."],
       ]
     : [
         ["Understand", "Get to know the studio, audience and competition in Geretsried."],
         ["Brand", "Logo, colours and typography as one consistent identity."],
-        ["Design", "Page structure and design – agreed in direct exchange."],
+        ["Design", "Page structure and design, agreed in direct exchange."],
         ["Launch", "Development, testing on all devices, go-live and handover."],
       ];
   const stack: [string, string][] = [
@@ -68,10 +68,10 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
       <PageHero
         meta={de ? "Case Study · Kosmetik · Geretsried" : "Case study · Beauty · Geretsried"}
         metaRight={<b>2024</b>}
-        title={<><span className="l">Zaira</span><span className="l"><span className="c">Beauty</span> <span className="o">Face.</span></span></>}
+        title={<><span className="l">Zaira</span><span className="l"><span className="c">Beauty</span> <span className="o">Face</span></span></>}
         lead={de
-          ? "Rebranding und neue Website für ein Kosmetikstudio in Geretsried – Strategie, Design und Entwicklung aus einer Hand."
-          : "Rebrand and new website for a beauty studio in Geretsried – strategy, design and development from one source."}
+          ? "Rebranding und neue Website für ein Kosmetikstudio in Geretsried. Strategie, Design und Entwicklung aus einer Hand."
+          : "Rebrand and new website for a beauty studio in Geretsried. Strategy, design and development from one source."}
         actions={
           <>
             <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-accent">{de ? "Website ansehen" : "View website"} <span className="arr" aria-hidden="true">↗</span></a>
@@ -100,7 +100,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
           <div className="v3-sec-head">
             <span className="num">01 / {de ? "Ausgangslage" : "Starting point"}</span>
             <h2 id="h-z-ausgang">{de ? <>Treue Kundinnen.<br /><span className="o">Keine</span> Online-Präsenz.</> : <>Loyal clients.<br /><span className="o">No</span> online presence.</>}</h2>
-            <p>{de ? "Das Studio hatte treue Stammkundinnen – aber keinen professionellen Auftritt im Netz." : "The studio had loyal regulars – but no professional presence online."}</p>
+            <p>{de ? "Das Studio hatte treue Stammkundinnen, aber keinen professionellen Auftritt im Netz." : "The studio had loyal regulars, but no professional presence online."}</p>
           </div>
           <div className="v3-two">
             <div>
@@ -165,7 +165,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
           <figure className="v3-quote">
             <div><span className="qm" aria-hidden="true">“</span><span className="v3-mono src">05 / {de ? "Kundin" : "Client"}</span></div>
             <div>
-              <blockquote lang="de">Zaur hat in <mark>5 Tagen</mark> genau das geliefert, was ich wollte — und noch mehr. Die Website sieht professionell aus und kommt bei meinen Kunden super an.</blockquote>
+              <blockquote lang="de">Zaur hat in <mark>5 Tagen</mark> genau das geliefert, was ich wollte, und noch mehr. Die Website sieht professionell aus und kommt bei meinen Kunden super an.</blockquote>
               <figcaption className="v3-mono"><span><b>Zaira K.</b> · Inhaberin Zaira Beauty Face</span></figcaption>
             </div>
           </figure>

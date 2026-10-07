@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: true },
-  title: 'Datenschutzerklärung – Vibes App',
+  title: 'Datenschutzerklärung | Vibes App',
   description: 'Datenschutzerklärung der Vibes Social Video App. DSGVO-konform.',
 };
 
@@ -82,7 +82,7 @@ const sections = [
       'Registrierungsdaten: E-Mail-Adresse und Passwort (verschlüsselt gespeichert).',
       'Profildaten: Benutzername, Profilbild und Biografie (freiwillig).',
       'Inhalte: Videos, Fotos und Kommentare, die du in der App veröffentlichst.',
-      'Nutzungsdaten: Zeitstempel, Geräteinformationen (iOS/Android) und App-Version — ausschließlich für technischen Betrieb.',
+      'Nutzungsdaten: Zeitstempel, Geräteinformationen (iOS/Android) und App-Version, ausschließlich für technischen Betrieb.',
       'Push-Tokens: Geräte-Token für Push-Benachrichtigungen (nur mit deiner Zustimmung).',
     ],
   },
@@ -128,7 +128,7 @@ const sections = [
   {
     title: '8. Datensicherheit',
     content: [
-      'Alle Übertragungen erfolgen verschlüsselt über HTTPS/TLS. Passwörter werden ausschließlich als Hash gespeichert — nie im Klartext.',
+      'Alle Übertragungen erfolgen verschlüsselt über HTTPS/TLS. Passwörter werden ausschließlich als Hash gespeichert, nie im Klartext.',
       'Der Zugriff auf die Datenbank ist auf autorisierte Systeme beschränkt.',
     ],
   },

@@ -7,8 +7,8 @@ import ClosingCta from "../../../components/v3/ClosingCta";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return lang === "en"
-    ? pageMetadata({ lang, path: "/ueber-mich", title: "About – Zaur Hatuev, Web Designer", description: "Zaur Hatuev, freelance web designer and developer from Geretsried: websites with Next.js, React and TypeScript for tradespeople, freelancers and small businesses." })
-    : pageMetadata({ lang, path: "/ueber-mich", title: "Über mich – Zaur Hatuev, Webdesigner", description: "Zaur Hatuev, Freelance-Webdesigner und Entwickler aus Geretsried: Websites mit Next.js, React und TypeScript für Handwerker, Selbstständige und kleine Unternehmen." });
+    ? pageMetadata({ lang, path: "/ueber-mich", title: "About | Zaur Hatuev, Web Designer", description: "Zaur Hatuev, freelance web designer and developer from Geretsried: websites with Next.js, React and TypeScript for tradespeople, freelancers and small businesses." })
+    : pageMetadata({ lang, path: "/ueber-mich", title: "Über mich | Zaur Hatuev, Webdesigner", description: "Zaur Hatuev, Freelance-Webdesigner und Entwickler aus Geretsried: Websites mit Next.js, React und TypeScript für Handwerker, Selbstständige und kleine Unternehmen." });
 }
 
 export default async function UeberMich({ params }: { params: Promise<{ lang: string }> }) {
@@ -24,9 +24,9 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
       ]
     : [
         ["Fixed price upfront", "You know the cost before we start. No timesheets, no surprises."],
-        ["Direct line", "You always talk to me – by phone, WhatsApp or email. No call centre, no project manager in between."],
-        ["Online fast", "Template websites in 3–5 working days. A business shouldn't wait months for its website."],
-        ["Get found", "Clean tech, clear copy and local signals – so customers find you when they search."],
+        ["Direct line", "You always talk to me: by phone, WhatsApp or email. No call centre, no project manager in between."],
+        ["Online fast", "Template websites in 3 to 5 working days. A business shouldn't wait months for its website."],
+        ["Get found", "Clean tech, clear copy and local signals, so customers find you when they search."],
       ];
 
   const skills: [string, string][] = de
@@ -67,15 +67,15 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
             <div>
               <h1 className="v3-h1 v3-h1-page v3-rise d1">
                 <span className="l">Zaur</span>
-                <span className="l"><span className="o">Hatuev.</span></span>
+                <span className="l"><span className="o">Hatuev</span></span>
               </h1>
               <p className="v3-about-claim v3-rise d2">
-                {de ? <>Kein Agentur-Pingpong. <em>Ein Ansprechpartner</em> – vom ersten Anruf bis zur fertigen Seite.</> : <>No agency ping-pong. <em>One point of contact</em> – from the first call to the finished site.</>}
+                {de ? <>Kein Agentur-Pingpong. <em>Ein Ansprechpartner</em>, vom ersten Anruf bis zur fertigen Seite.</> : <>No agency ping-pong. <em>One point of contact</em>, from the first call to the finished site.</>}
               </p>
               <p className="v3-lead v3-rise d2">
                 {de
-                  ? "Ich bin Webdesigner und Entwickler aus Geretsried. Ich baue Websites für Handwerker, Selbstständige und kleine Betriebe, die keine Zeit für Webdesign haben – und betreibe mit Mobilwerk selbst einen. Ich weiß also, worauf es ankommt: schnell online, gut gefunden werden, Anfragen bekommen."
-                  : "I'm a web designer and developer from Geretsried. I build websites for tradespeople, freelancers and small businesses with no time for web design – and run one myself, Mobilwerk. So I know what matters: online fast, easy to find, getting enquiries."}
+                  ? "Ich bin Webdesigner und Entwickler aus Geretsried. Ich baue Websites für Handwerker, Selbstständige und kleine Betriebe, die keine Zeit für Webdesign haben, und betreibe mit Mobilwerk selbst einen. Ich weiß also, worauf es ankommt: schnell online, gut gefunden werden, Anfragen bekommen."
+                  : "I'm a web designer and developer from Geretsried. I build websites for tradespeople, freelancers and small businesses with no time for web design, and run one myself, Mobilwerk. So I know what matters: online fast, easy to find, getting enquiries."}
               </p>
               <div className="v3-cta-row v3-rise d3">
                 <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{de ? "Schreib mir" : "Get in touch"} <span className="arr" aria-hidden="true">→</span></Link>
@@ -102,7 +102,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
           <div className="v3-sec-head">
             <span className="num">01 / {de ? "Arbeitsweise" : "How I work"}</span>
             <h2 id="h-prinzip">{de ? <>Vier Regeln.<br /><span className="o">Keine</span> Ausnahmen.</> : <>Four rules.<br /><span className="o">No</span> exceptions.</>}</h2>
-            <p>{de ? "So arbeite ich mit jedem Betrieb – egal ob Muster-Website oder individuelles Projekt." : "This is how I work with every business – template website or custom project."}</p>
+            <p>{de ? "So arbeite ich mit jedem Betrieb, egal ob Muster-Website oder individuelles Projekt." : "This is how I work with every business: template website or custom project."}</p>
           </div>
           <div className="v3-rules">
             {principles.map(([t, d], i) => (
@@ -121,7 +121,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
           <div className="v3-sec-head">
             <span className="num">02 / {de ? "Was ich mitbringe" : "What I bring"}</span>
             <h2 id="h-skills">{de ? <>Design, Code<br />und <span className="c">SEO.</span></> : <>Design, code<br />and <span className="c">SEO.</span></>}</h2>
-            <p>{de ? "Alles, was eine Website braucht – aus einer Hand." : "Everything a website needs – from one source."}</p>
+            <p>{de ? "Alles, was eine Website braucht. Aus einer Hand." : "Everything a website needs. From one source."}</p>
           </div>
           <div className="v3-extras v3-extras-top">
             <span className="v3-mono">{de ? "Schwerpunkte" : "Focus"}</span>

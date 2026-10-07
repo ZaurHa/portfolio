@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: true },
-  title: 'Nutzungsbedingungen – Vibes App',
+  title: 'Nutzungsbedingungen | Vibes App',
   description: 'Nutzungsbedingungen (AGB) der Vibes Social Video App.',
 };
 
@@ -104,7 +104,7 @@ const sections = [
     content: [
       'Vibes wird "wie besehen" bereitgestellt. Wir übernehmen keine Garantie für ununterbrochene Verfügbarkeit oder Fehlerfreiheit.',
       'Für Inhalte, die von Nutzern veröffentlicht werden, übernehmen wir keine Haftung.',
-      'Die Haftung für leichte Fahrlässigkeit ist — soweit gesetzlich zulässig — ausgeschlossen.',
+      'Die Haftung für leichte Fahrlässigkeit ist, soweit gesetzlich zulässig, ausgeschlossen.',
     ],
   },
   {

@@ -11,7 +11,7 @@ export default function NotFoundView() {
           </div>
           <h1 className="v3-h1 v3-h1-page">
             <span className="l">Seite</span>
-            <span className="l"><span className="c">nicht</span> gefunden.</span>
+            <span className="l"><span className="c">nicht</span> gefunden</span>
           </h1>
           <div className="v3-page-hero-grid">
             <p className="v3-lead">

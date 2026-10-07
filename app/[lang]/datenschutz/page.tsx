@@ -28,7 +28,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ lang: 
         <section>
           <h2>1. Verantwortlicher</h2>
           <div>
-            <p>BrandWerkX – Inhaber Zaur Hatuev<br />Steiner Ring 64, 82538 Geretsried<br />Telefon: <a href="tel:+491728471641">0172 8471641</a><br />E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></p>
+            <p>BrandWerkX, Inhaber Zaur Hatuev<br />Steiner Ring 64, 82538 Geretsried<br />Telefon: <a href="tel:+491728471641">0172 8471641</a><br />E-Mail: <a href="mailto:brandwerkx@gmail.com">brandwerkx@gmail.com</a></p>
           </div>
         </section>
 
@@ -37,7 +37,7 @@ export default async function Datenschutz({ params }: { params: Promise<{ lang: 
           <div>
             <ul>
               <li>Diese Website setzt <strong>keine Cookies</strong> und verwendet <strong>kein Tracking</strong> und keine Analyse-Tools.</li>
-              <li>Schriftarten werden <strong>lokal</strong> von diesem Server geladen – es besteht keine Verbindung zu Google Fonts.</li>
+              <li>Schriftarten werden <strong>lokal</strong> von diesem Server geladen. Es besteht keine Verbindung zu Google Fonts.</li>
               <li>Personenbezogene Daten verarbeite ich nur, wenn du mich kontaktierst, und nur, um deine Anfrage zu bearbeiten.</li>
             </ul>
           </div>

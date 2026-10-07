@@ -46,11 +46,11 @@ export default function MusterIndex() {
             className="mx-display"
             style={{ fontSize: "clamp(36px, 6vw, 64px)", lineHeight: 1.02, margin: 0 }}
           >
-            Fertige Designs für Handwerk &amp; Studios.
+            Fertige Designs für Handwerk &amp; Studios
           </h1>
           <p style={{ color: "var(--mx-muted)", fontSize: 17, lineHeight: 1.6, margin: "20px 0 0" }}>
             Wähl deine Branche, vergleich die Versionen und such dir deinen Favoriten aus. Ich passe ihn an
-            dein Unternehmen an — in 3–5 Werktagen ist deine Website online.
+            dein Unternehmen an. In 3 bis 5 Werktagen ist deine Website online.
           </p>
         </div>
 

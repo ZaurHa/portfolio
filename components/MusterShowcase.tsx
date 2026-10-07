@@ -179,7 +179,7 @@ export function MusterHeader({
   return (
     <header className="mx-header">
       <div className="mx-header-left">
-        <Link href="/de" className="mx-wordmark" aria-label="BrandWerkX – Startseite">
+        <Link href="/de" className="mx-wordmark" aria-label="BrandWerkX: Startseite">
           BrandWerk<span>X</span>
         </Link>
         {crumbs.length > 0 && (
@@ -216,8 +216,8 @@ export function MusterCtaBar({ design }: { design?: string }) {
       <div className="mx-cta-inner">
         <p className="mx-cta-text" style={{ margin: 0 }}>
           Dieses Design ab <strong>490 €</strong>
-          <span className="mx-cta-dash"> – </span>
-          <span className="mx-cta-l2">in 3–5 Werktagen online</span>
+          <span className="mx-cta-dash">, </span>
+          <span className="mx-cta-l2">in 3 bis 5 Werktagen online</span>
         </p>
         <div className="mx-cta-actions">
           <a href={MUSTER_PHONE_HREF} className="mx-btn mx-btn-ghost mx-tel" aria-label={`Anrufen: ${MUSTER_PHONE_LABEL}`}>

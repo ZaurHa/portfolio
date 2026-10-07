@@ -43,7 +43,7 @@ export function pageMetadata({
     url: '/og.png',
     width: 1200,
     height: 630,
-    alt: `${SITE_NAME} – ${locale === 'de' ? 'Webdesign aus Geretsried' : 'Web design from Geretsried'}`,
+    alt: `${SITE_NAME}: ${locale === 'de' ? 'Webdesign aus Geretsried' : 'Web design from Geretsried'}`,
   };
 
   return {

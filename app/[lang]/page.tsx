@@ -14,8 +14,8 @@ import Faq from "../../components/v3/Faq";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return lang === "en"
-    ? pageMetadata({ lang, path: "", title: "Web Design Geretsried & Munich – Website from €490", description: "Websites that win clients: web design from Geretsried (near Munich) for tradespeople and small businesses. Fixed price from €490, online in 3–5 working days.", absoluteTitle: true })
-    : pageMetadata({ lang, path: "", title: "Webdesign Geretsried & München – Website ab 490 €", description: "Websites, die Anfragen bringen: Webdesign aus Geretsried für Handwerker und kleine Betriebe in München und dem Oberland. Festpreis ab 490 €, in 3–5 Werktagen online.", absoluteTitle: true });
+    ? pageMetadata({ lang, path: "", title: "Web Design Geretsried & Munich | Website from €490", description: "Websites that win clients: web design from Geretsried (near Munich) for tradespeople and small businesses. Fixed price from €490, online in 3 to 5 working days.", absoluteTitle: true })
+    : pageMetadata({ lang, path: "", title: "Webdesign Geretsried & München | Website ab 490 €", description: "Websites, die Anfragen bringen: Webdesign aus Geretsried für Handwerker und kleine Betriebe in München und dem Oberland. Festpreis ab 490 €, in 3 bis 5 Werktagen online.", absoluteTitle: true });
 }
 
 const Arrow = () => <span className="arr" aria-hidden="true">→</span>;
@@ -217,7 +217,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <div className="v3-sec-head">
               <span className="num">Für dich</span>
               <h2 id="h-fuer-dich">Deine Branche.<br /><span className="o">Deine</span>{" Region."}</h2>
-              <p>Websites für Handwerk, Kosmetik und Logistik – in Geretsried, im Oberland und in München.</p>
+              <p>Websites für Handwerk, Kosmetik und Logistik in Geretsried, im Oberland und in München.</p>
             </div>
             <nav className="v3-links" aria-label="Webdesign nach Branche und Region">
               {[

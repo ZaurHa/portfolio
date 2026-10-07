@@ -25,7 +25,7 @@ export default async function Impressum({ params }: { params: Promise<{ lang: st
 
         <section>
           <h2>{t.responsible}</h2>
-          <div><p>BrandWerkX – Inhaber Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />Deutschland</p></div>
+          <div><p>BrandWerkX, Inhaber Zaur Hatuev<br />Steiner Ring 64<br />82538 Geretsried<br />Deutschland</p></div>
         </section>
         <section>
           <h2>{t.contactTitle}</h2>

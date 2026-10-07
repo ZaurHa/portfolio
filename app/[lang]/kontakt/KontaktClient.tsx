@@ -89,7 +89,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
           </div>
           <h1 className="v3-h1 v3-h1-page">
             <span className="l">{lang === "de" ? "Website" : "Request a"}</span>
-            <span className="l"><span className="c">{lang === "de" ? "anfragen." : "website."}</span></span>
+            <span className="l"><span className="c">{lang === "de" ? "anfragen" : "website"}</span></span>
           </h1>
           <div className="v3-page-hero-grid">
             <p className="v3-lead">{t.heroDesc}</p>
