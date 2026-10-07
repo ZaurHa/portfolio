@@ -22,7 +22,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params;
   const locale: Locale = lang === "en" ? "en" : "de";
   const c = getHomeContent(locale);
-  const reel = c.projects.items;
+  const reel = c.projects.reel;
 
   return (
     <div className="v3">
@@ -107,7 +107,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <p>{c.projects.text}</p>
           </div>
           <div className="v3-bento">
-            {reel.map((p, i) => (
+            {c.projects.items.map((p, i) => (
               <Link
                 key={p.slug}
                 href={p.href}

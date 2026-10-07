@@ -846,6 +846,10 @@
 .v3-results .l { grid-column: 1 / -1; margin-top: 8px; font-size: 14px; color: var(--v3-muted); }
 .v3-results-src { margin: 10px 0 0; font: 400 12px/1.5 var(--v3-mono); color: var(--v3-dim); letter-spacing: 0.02em; }
 
+/* Bento mit drei gleich großen Kacheln (Über mich: eigene Projekte) */
+.v3-bento.v3-bento-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) { .v3-bento.v3-bento-3 { grid-template-columns: 1fr; } }
+
 /* Raster mit sechs Einträgen (3 → 2 → 1 Spalten), z. B. Serlo-Funktionen */
 .v3-rules.v3-rules-3 { grid-template-columns: repeat(3, 1fr); }
 .v3-rules.v3-rules-3 > div:nth-child(3n+1) { padding-left: 0; border-left: 0; }

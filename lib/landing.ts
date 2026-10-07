@@ -231,6 +231,10 @@ export const landingPages: LandingPage[] = [
         text: 'Für Klempner und Elektriker gibt es fertige Muster-Designs in mehreren Varianten. Du suchst dir eines aus, ich passe es mit Logo, Farben und Texten an. So bist du in wenigen Tagen online. Die Designs findest du unter „Designs“ im Menü.',
       },
       {
+        title: 'Referenz aus der Werkstatt',
+        text: 'Für die DPF- und Katalysator-Reinigung von SM Team in Geretsried habe ich dpfkat.de gebaut: Festpreis auf den ersten Blick, echte Aufnahmen aus der eigenen Anlage und Anruf oder WhatsApp mit einem Tipp. Mehr dazu unter „Projekte“.',
+      },
+      {
         title: 'Lokal gefunden werden',
         text: 'Handwerk ist lokal. Deshalb bekommt jede Website Seiten und Titel mit Gewerk und Ort, einheitliche Angaben zu Name, Adresse und Telefon und auf Wunsch ein Google-Unternehmensprofil.',
       },
@@ -286,11 +290,11 @@ export const landingPages: LandingPage[] = [
     label: 'Website für Logistik & Transport',
     metaTitle: 'Website für Logistik, Transport und Umzug',
     metaDescription:
-      'Website für Logistik-, Transport- und Umzugsunternehmen: klare Leistungen, Anfrageformular, schnelle Ladezeit. Referenzen: MRG Trans & Logistik und Mobilwerk.',
+      'Website für Logistik-, Transport- und Umzugsunternehmen: klare Leistungen, Anfrageformular, schnelle Ladezeit. Referenzen: MRG, IP Logistik, MH Logistik, SM Team.',
     eyebrow: 'Für Logistik & Transport',
     h1: 'Website für Logistik, Transport und Umzug',
     intro:
-      'Logistik- und Transportunternehmen gewinnen Kunden, wenn Leistungen, Fuhrpark und Einsatzgebiet schnell klar sind und eine Anfrage in zwei Minuten möglich ist. BrandWerkX baut solche Websites ab 990 €. Referenzen sind die Seite von MRG Trans & Logistik und Mobilwerk (Transport & Umzug).',
+      'Logistik- und Transportunternehmen gewinnen Kunden, wenn Leistungen, Fuhrpark und Einsatzgebiet schnell klar sind und eine Anfrage in zwei Minuten möglich ist. BrandWerkX baut solche Websites ab 990 €. Referenzen sind die Websites von MRG Trans & Logistik (Hamburg), IP Logistik (Gütersloh) und MH Logistik (Herford), dazu die Umzugsbetriebe SM Team (Geretsried) und Mobilwerk.',
     sections: [
       {
         title: 'Was die Website zeigen sollte',
@@ -303,7 +307,7 @@ export const landingPages: LandingPage[] = [
       },
       {
         title: 'Referenzen',
-        text: 'MRG Trans & Logistik GmbH hat eine neue Website erhalten, Mobilwerk ist mein eigenes Projekt für Transport & Umzug. Beide findest du unter „Projekte“.',
+        text: 'Für die Logistik habe ich die Websites von MRG Trans & Logistik (Hamburg, Lager und Werkvertrag), IP Logistik (Gütersloh, Inhouse-Logistik im Werkvertrag) und MH Logistik (Herford, Personal für Lager und Logistik) gebaut. Für Umzug und Transport stehen SM Team aus Geretsried und mein eigener Betrieb Mobilwerk; die Website eines Umzugsunternehmens in Bielefeld ist in Arbeit. Alle Projekte findest du unter „Projekte“.',
       },
       {
         title: 'Für Firmenkunden und Privatkunden',
@@ -342,6 +346,10 @@ export const landingPages: LandingPage[] = [
       {
         title: 'Für wen ich arbeite',
         text: 'Für Handwerksbetriebe, Dienstleister, Kosmetikstudios und kleine Unternehmen in Geretsried und im Landkreis Bad Tölz-Wolfratshausen. Die Zusammenarbeit läuft digital — das spart dir Zeit und hält den Preis niedrig.',
+      },
+      {
+        title: 'Referenzen aus Geretsried',
+        text: 'In Geretsried habe ich unter anderem die Websites von Zaira Beauty Face (Kosmetikstudio) und SM Team gebaut: dpfkat.de für die DPF- und Katalysator-Reinigung und smdienstleistung.de für Umzug und Transport. Alle Projekte findest du unter „Projekte“.',
       },
       {
         title: 'Preise',

@@ -140,18 +140,20 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
           <div className="v3-sec-head">
             <span className="num">03 / {de ? "Eigene Projekte" : "Own projects"}</span>
             <h2 id="h-proof">{de ? <>Ich baue auch<br /><span className="o">für mich selbst.</span></> : <>I also build<br /><span className="o">for myself.</span></>}</h2>
-            <p>{de ? "Mit Mobilwerk und der Social-App Serlo betreibe ich eigene Projekte – was dort funktioniert, kommt deinem Betrieb zugute." : "With Mobilwerk and the social app Serlo I run my own projects – what works there benefits your business."}</p>
+            <p>{de ? "Mit Mobilwerk, der Social-App Serlo und der Live-Auktions-App Berkat betreibe ich eigene Projekte – was dort funktioniert, kommt deinem Betrieb zugute." : "With Mobilwerk, the social app Serlo and the live auction app Berkat I run my own projects – what works there benefits your business."}</p>
           </div>
-          <div className="v3-bento v3-bento-2">
+          <div className="v3-bento v3-bento-2 v3-bento-3">
             <a href="https://mobilwerk.vercel.app" target="_blank" rel="noopener noreferrer" className="v3-tile">
-              <span className="tag">{de ? "Eigener Betrieb" : "Own business"}</span>
-              <figure><Image src="/images/mobilwerk-preview.webp" alt={de ? "Website Mobilwerk" : "Mobilwerk website"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <figure><Image src="/images/mobilwerk-preview.webp" alt={de ? "Website Mobilwerk" : "Mobilwerk website"} fill sizes="(max-width: 860px) 100vw, 33vw" /><span className="tag">{de ? "Eigener Betrieb" : "Own business"}</span></figure>
               <div className="meta"><div><h3>Mobilwerk</h3><p>{de ? "Transport & Umzug" : "Moving & transport"}</p></div><span className="n">↗</span></div>
             </a>
             <a href="https://serlo.ch" target="_blank" rel="noopener noreferrer" className="v3-tile">
-              <span className="tag live">{de ? "Im App Store" : "On the App Store"}</span>
-              <figure><Image src="/images/serlo-preview.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /></figure>
+              <figure><Image src="/images/serlo-preview.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 33vw" /><span className="tag live">{de ? "Im App Store" : "On the App Store"}</span></figure>
               <div className="meta"><div><h3>Serlo</h3><p>{de ? "Social-App: Live, Shop, Community" : "Social app: live, shop, community"}</p></div><span className="n">↗</span></div>
+            </a>
+            <a href="https://berkat-live.pages.dev" target="_blank" rel="noopener noreferrer" className="v3-tile">
+              <figure><Image src="/images/berkat-preview.webp" alt={de ? "Website der Live-Auktions-App Berkat" : "Website of the live auction app Berkat"} fill sizes="(max-width: 860px) 100vw, 33vw" /><span className="tag">Beta</span></figure>
+              <div className="meta"><div><h3>Berkat</h3><p>{de ? "Live-Auktionen – im geschlossenen Test" : "Live auctions – in closed beta"}</p></div><span className="n">↗</span></div>
             </a>
           </div>
         </div>
