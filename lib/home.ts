@@ -16,6 +16,8 @@ export interface HomeProject {
   tag: string;
   live?: boolean;
   image: string;
+  /** Stumme Hero-Schleife der Live-Seite für die Kachel (läuft über dem Standbild) */
+  video?: string;
   alt: string;
   bar: string;
   href: string;
@@ -47,6 +49,7 @@ export function getHomeContent(lang: Locale) {
       tag: de ? 'Rebranding + Website' : 'Rebrand + website',
       live: true,
       image: '/images/beauty-praxis-mockup.webp',
+      video: '/videos/zaira-hero.mp4',
       alt: de ? 'Startseite Zaira Beauty Face' : 'Zaira Beauty Face homepage',
       bar: 'zaira-beauty-face',
       href: `${p}/projekte/zaira-beauty`,
@@ -57,6 +60,7 @@ export function getHomeContent(lang: Locale) {
       desc: de ? 'B2B-Logistik-Website' : 'B2B logistics website',
       tag: 'B2B',
       image: '/images/mrg-tlogistik-preview.webp',
+      video: '/videos/mrg-hero.mp4',
       alt: de ? 'Startseite MRG Trans & Logistik GmbH' : 'MRG Trans & Logistik GmbH homepage',
       bar: 'mrg-logistik.de',
       href: 'https://mrg-logistik.de',
@@ -69,6 +73,7 @@ export function getHomeContent(lang: Locale) {
       tag: de ? 'Logistik · OWL' : 'Logistics · OWL',
       live: true,
       image: '/images/ip-logistik-preview.webp',
+      video: '/videos/ip-logistik-hero.mp4',
       alt: de ? 'Startseite IP Logistik GmbH' : 'IP Logistik GmbH homepage',
       bar: 'ip-logistikgmbh.de',
       href: 'https://ip-logistikgmbh.de',
@@ -93,6 +98,7 @@ export function getHomeContent(lang: Locale) {
       tag: de ? 'Werkstatt · Geretsried' : 'Workshop · Geretsried',
       live: true,
       image: '/images/dpfkat-preview.webp',
+      video: '/videos/dpfkat-hero.mp4',
       alt: de ? 'Startseite DPF & Kat Service von SM Team' : 'SM Team DPF & catalytic converter service homepage',
       bar: 'dpfkat.de',
       href: 'https://www.dpfkat.de',
@@ -105,6 +111,7 @@ export function getHomeContent(lang: Locale) {
       tag: de ? 'Umzug · Geretsried' : 'Moving · Geretsried',
       live: true,
       image: '/images/sm-umzug-preview.webp',
+      video: '/videos/sm-umzug-hero.mp4',
       alt: de ? 'Startseite SM Team Umzug & Transport' : 'SM Team moving & transport homepage',
       bar: 'smdienstleistung.de',
       href: 'https://smdienstleistung.de',

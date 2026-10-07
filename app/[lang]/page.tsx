@@ -5,6 +5,8 @@ import { pageMetadata } from "../../lib/seo";
 import type { Locale } from "../../lib/i18n";
 import { getHomeContent, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, EMAIL } from "../../lib/home";
 import ReelToggle from "../../components/v3/ReelToggle";
+import TileVideo from "../../components/v3/TileVideo";
+import TileVideoToggle from "../../components/v3/TileVideoToggle";
 import PriceBoard from "../../components/v3/PriceBoard";
 import Steps from "../../components/v3/Steps";
 import Faq from "../../components/v3/Faq";
@@ -99,7 +101,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </section>
 
       {/* 01 PROJEKTE */}
-      <section className="v3-sec" id="projekte" aria-labelledby="h-proj">
+      <section className="v3-sec" id="projekte" aria-labelledby="h-proj" data-tile-videos>
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.projects.num}</span>
@@ -116,6 +118,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               >
                 <figure>
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 860px) 100vw, 58vw" />
+                  {p.video && <TileVideo src={p.video} />}
                   <span className={`tag${p.live ? " live" : ""}`}>{p.tag}</span>
                 </figure>
                 <div className="meta">
@@ -125,7 +128,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               </Link>
             ))}
           </div>
-          <div className="v3-more"><Link href={`/${lang}/projekte`} className="v3-btn v3-btn-ghost">{c.projects.all} <Arrow /></Link></div>
+          <div className="v3-more">
+            <TileVideoToggle target="projekte" pauseLabel={locale === "de" ? "Videos pausieren" : "Pause videos"} playLabel={locale === "de" ? "Videos abspielen" : "Play videos"} />
+            <Link href={`/${lang}/projekte`} className="v3-btn v3-btn-ghost">{c.projects.all} <Arrow /></Link>
+          </div>
         </div>
       </section>
 
