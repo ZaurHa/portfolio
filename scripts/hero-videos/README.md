@@ -43,13 +43,13 @@ python3 scripts/hero-videos/encode.py '[
 ]'
 ```
 
-## 3. Klempner-Vorlage: Diashow der Varianten
+## 3. Klempner-Vorlage: Diashow der 6 Varianten
 
-Screenshots von `https://brandwerkx.de/muster/klempner/v1.html` bis `v5.html` (1280 × 800, 1,8 s nach dem Laden) als `v1.png` … `v5.png`, dann:
+Screenshots von `https://brandwerkx.de/muster/klempner/v1.html` bis `v5.html` sowie Version 6 unter `…/klempner/final` (1280 × 800, 1,8 s nach dem Laden) als `v1.png` … `v6.png`, dann:
 
 ```bash
-ffmpeg -y $(for v in 1 2 3 4 5 1; do printf -- "-loop 1 -framerate 30 -t 2.2 -i v$v.png "; done) \
-  -filter_complex "[0][1]xfade=transition=fade:duration=0.5:offset=1.7[a1];[a1][2]xfade=transition=fade:duration=0.5:offset=3.4[a2];[a2][3]xfade=transition=fade:duration=0.5:offset=5.1[a3];[a3][4]xfade=transition=fade:duration=0.5:offset=6.8[a4];[a4][5]xfade=transition=fade:duration=0.5:offset=8.5[a5];[a5]trim=duration=9.0,setpts=PTS-STARTPTS,scale=960:600:flags=lanczos:out_range=tv,format=yuv420p[v]" \
+ffmpeg -y $(for v in 1 2 3 4 5 6 1; do printf -- "-loop 1 -framerate 30 -t 2.2 -i v$v.png "; done) \
+  -filter_complex "[0][1]xfade=transition=fade:duration=0.5:offset=1.7[a1];[a1][2]xfade=transition=fade:duration=0.5:offset=3.4[a2];[a2][3]xfade=transition=fade:duration=0.5:offset=5.1[a3];[a3][4]xfade=transition=fade:duration=0.5:offset=6.8[a4];[a4][5]xfade=transition=fade:duration=0.5:offset=8.5[a5];[a5][6]xfade=transition=fade:duration=0.5:offset=10.2[a6];[a6]trim=duration=10.7,setpts=PTS-STARTPTS,scale=960:600:flags=lanczos:out_range=tv,format=yuv420p[v]" \
   -map "[v]" -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart -an -r 30 public/videos/klempner-varianten.mp4
 ```
 
