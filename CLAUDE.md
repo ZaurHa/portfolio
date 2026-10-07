@@ -8,6 +8,8 @@ BrandWerkX — multilingual (German/English) Next.js website for the freelance w
 
 **Tech Stack**: Next.js 14.1 (App Router, **static export**), React 18, TypeScript 5.5, TailwindCSS 3.4. Hosted on **Cloudflare Pages**; the contact form runs as a Cloudflare Pages Function that sends mail via the Resend REST API.
 
+Current state, open tasks and known pitfalls: `HANDOFF.md` (German). The GitHub repo is **public** — keep customer names, payments and private plans out of tracked files.
+
 ## Development Commands
 
 ```bash
@@ -36,6 +38,7 @@ npm run lint     # ESLint
 
 ### Content sources
 - Home page content: `lib/home.ts` (DE/EN); landing pages: `lib/landing.ts`; per-page metadata via `pageMetadata()` in `lib/seo.ts`.
+- Project list: `app/[lang]/projekte/page.tsx`. Hero-video loops live in `public/videos/` (re-record via `scripts/hero-videos/README.md`).
 - `lib/i18n/{de,en}.ts` only holds the remaining shared UI strings (nav, contact, impressum, footer).
 - Only use verifiable facts (prices, delivery times, Search Console numbers with source). No invented rankings or percentages.
 
@@ -47,7 +50,7 @@ npm run lint     # ESLint
 ### Styling
 - `app/design-v3.css` — the design system (tokens under `.site-shell`, `v3-*` components)
 - `app/globals.css` — remaining base styles still used by contact/legal pages
-- Reusable V3 components: `components/v3/*` (PageHero, PriceBoard, Steps, Faq, ClosingCta, NotFoundView, ReelToggle)
+- Reusable V3 components: `components/v3/*` (PageHero, PriceBoard, Steps, Faq, ClosingCta, NotFoundView, ReelToggle, TileVideo, TileVideoToggle)
 
 ## Deployment
 
