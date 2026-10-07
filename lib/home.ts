@@ -155,7 +155,7 @@ export function getHomeContent(lang: Locale) {
       slug: 'klempner',
       title: de ? 'Muster-Website Klempner' : 'Template website: plumber',
       desc: de ? 'Design wählen, Inhalte rein, fertig – ab 490 €' : 'Pick a design, add your content, done – from €490',
-      tag: de ? '5 Designvarianten' : '5 design variants',
+      tag: de ? '6 Designvarianten' : '6 design variants',
       image: '/images/klempner-preview.webp',
       alt: de ? 'Muster-Website für einen Klempnerbetrieb' : 'Template website for a plumbing business',
       bar: 'muster/klempner',

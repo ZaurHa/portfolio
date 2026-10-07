@@ -247,9 +247,9 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2025",
       place: de ? "Vorlage" : "Template",
       desc: de
-        ? "Fertige Website-Designs für Klempner und Sanitärbetriebe in fünf Varianten. Du wählst ein Design, ich passe Logo, Farben und Texte an – ab 490 €, in 3–5 Werktagen online."
-        : "Ready-made website designs for plumbing businesses in five variants. You pick one, I adapt logo, colours and copy – from €490, online in 3–5 working days.",
-      done: de ? ["5 Designvarianten", "Mobil zuerst gebaut", "Ab 490 € Festpreis"] : ["5 design variants", "Built mobile-first", "From €490 fixed price"],
+        ? "Fertige Website-Designs für Klempner und Sanitärbetriebe in sechs Varianten. Du wählst ein Design, ich passe Logo, Farben und Texte an – ab 490 €, in 3–5 Werktagen online."
+        : "Ready-made website designs for plumbing businesses in six variants. You pick one, I adapt logo, colours and copy – from €490, online in 3–5 working days.",
+      done: de ? ["6 Designvarianten", "Mobil zuerst gebaut", "Ab 490 € Festpreis"] : ["6 design variants", "Built mobile-first", "From €490 fixed price"],
       stack: ["HTML", "CSS", "SEO"],
       image: "/images/klempner-preview.webp",
       video: "/videos/klempner-varianten.mp4",
