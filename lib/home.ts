@@ -16,6 +16,8 @@ export interface HomeProject {
   tag: string;
   live?: boolean;
   image: string;
+  /** Stumme Hero-Schleife der Live-Seite für die Kachel (läuft über dem Standbild) */
+  video?: string;
   alt: string;
   bar: string;
   href: string;
@@ -38,6 +40,7 @@ export function getHomeContent(lang: Locale) {
   const de = lang === 'de';
   const p = `/${lang}`;
 
+  // Reihenfolge = Showreel; die fünf Kacheln (t1–t5) zeigen nur Kundenprojekte aus `featuredSlugs`.
   const projects: HomeProject[] = [
     {
       slug: 'zaira',
@@ -46,6 +49,7 @@ export function getHomeContent(lang: Locale) {
       tag: de ? 'Rebranding + Website' : 'Rebrand + website',
       live: true,
       image: '/images/beauty-praxis-mockup.webp',
+      video: '/videos/zaira-hero.mp4',
       alt: de ? 'Startseite Zaira Beauty Face' : 'Zaira Beauty Face homepage',
       bar: 'zaira-beauty-face',
       href: `${p}/projekte/zaira-beauty`,
@@ -56,9 +60,61 @@ export function getHomeContent(lang: Locale) {
       desc: de ? 'B2B-Logistik-Website' : 'B2B logistics website',
       tag: 'B2B',
       image: '/images/mrg-tlogistik-preview.webp',
+      video: '/videos/mrg-hero.mp4',
       alt: de ? 'Startseite MRG Trans & Logistik GmbH' : 'MRG Trans & Logistik GmbH homepage',
       bar: 'mrg-logistik.de',
       href: 'https://mrg-logistik.de',
+      external: true,
+    },
+    {
+      slug: 'ip-logistik',
+      title: 'IP Logistik',
+      desc: de ? 'B2B-Website für Inhouse-Logistik im Werkvertrag' : 'B2B website for in-house logistics',
+      tag: de ? 'Logistik · OWL' : 'Logistics · OWL',
+      live: true,
+      image: '/images/ip-logistik-preview.webp',
+      video: '/videos/ip-logistik-hero.mp4',
+      alt: de ? 'Startseite IP Logistik GmbH' : 'IP Logistik GmbH homepage',
+      bar: 'ip-logistikgmbh.de',
+      href: 'https://ip-logistikgmbh.de',
+      external: true,
+    },
+    {
+      slug: 'mh-logistik',
+      title: 'MH Logistik',
+      desc: de ? 'Personaldienstleister für Lager & Logistik' : 'Staffing for warehousing & logistics',
+      tag: de ? 'Relaunch' : 'Relaunch',
+      live: true,
+      image: '/images/mh-logistik-preview.webp',
+      alt: de ? 'Startseite MH Logistik GmbH' : 'MH Logistik GmbH homepage',
+      bar: 'mh-logistikgmbh.de',
+      href: 'https://mh-logistikgmbh.de',
+      external: true,
+    },
+    {
+      slug: 'dpfkat',
+      title: 'SM Team · DPF & Kat',
+      desc: de ? 'DPF-Reinigung mit Festpreis und echten Werkstatt-Videos' : 'DPF cleaning with fixed price and real workshop videos',
+      tag: de ? 'Werkstatt · Geretsried' : 'Workshop · Geretsried',
+      live: true,
+      image: '/images/dpfkat-preview.webp',
+      video: '/videos/dpfkat-hero.mp4',
+      alt: de ? 'Startseite DPF & Kat Service von SM Team' : 'SM Team DPF & catalytic converter service homepage',
+      bar: 'dpfkat.de',
+      href: 'https://www.dpfkat.de',
+      external: true,
+    },
+    {
+      slug: 'sm-umzug',
+      title: 'SM Team · Umzug',
+      desc: de ? 'Umzug & Transport – echte Fotos, Anruf mit einem Tipp' : 'Moving & transport – real photos, one-tap calling',
+      tag: de ? 'Umzug · Geretsried' : 'Moving · Geretsried',
+      live: true,
+      image: '/images/sm-umzug-preview.webp',
+      video: '/videos/sm-umzug-hero.mp4',
+      alt: de ? 'Startseite SM Team Umzug & Transport' : 'SM Team moving & transport homepage',
+      bar: 'smdienstleistung.de',
+      href: 'https://smdienstleistung.de',
       external: true,
     },
     {
@@ -85,6 +141,17 @@ export function getHomeContent(lang: Locale) {
       external: true,
     },
     {
+      slug: 'berkat',
+      title: 'Berkat',
+      desc: de ? 'Eigene App: Live-Auktionen – im geschlossenen Test' : 'Own app: live auctions – in closed beta',
+      tag: 'Beta',
+      image: '/images/berkat-preview.webp',
+      alt: de ? 'Website der Live-Auktions-App Berkat' : 'Website of the live auction app Berkat',
+      bar: 'berkat-live.pages.dev',
+      href: 'https://berkat-live.pages.dev',
+      external: true,
+    },
+    {
       slug: 'klempner',
       title: de ? 'Muster-Website Klempner' : 'Template website: plumber',
       desc: de ? 'Design wählen, Inhalte rein, fertig – ab 490 €' : 'Pick a design, add your content, done – from €490',
@@ -95,6 +162,9 @@ export function getHomeContent(lang: Locale) {
       href: '/muster/klempner',
     },
   ];
+  const featuredSlugs = ['zaira', 'mrg', 'ip-logistik', 'dpfkat', 'sm-umzug'];
+  const featured = projects.filter((x) => featuredSlugs.includes(x.slug));
+  const projectCount = String(projects.length).padStart(2, '0');
 
   const plans: HomePlan[] = [
     {
@@ -167,8 +237,8 @@ export function getHomeContent(lang: Locale) {
       stampFoot: de ? 'Muster · Endpreis' : 'Template · final price',
     },
     reel: {
-      label: de ? 'Showreel · 05 Projekte' : 'Showreel · 05 projects',
-      fields: de ? 'Kosmetik · Logistik · Transport · Handwerk · App' : 'Beauty · Logistics · Transport · Trades · App',
+      label: de ? `Showreel · ${projectCount} Projekte` : `Showreel · ${projectCount} projects`,
+      fields: de ? 'Logistik · Umzug · Werkstatt · Kosmetik · Apps' : 'Logistics · Moving · Workshop · Beauty · Apps',
     },
     projects: {
       num: de ? '01 / Projekte' : '01 / Projects',
@@ -179,7 +249,8 @@ export function getHomeContent(lang: Locale) {
         ? 'Vom Kosmetikstudio bis zur Spedition – jede Seite ist auf den Betrieb und seine Kunden zugeschnitten.'
         : 'From beauty studio to haulier – every site is built around the business and its customers.',
       all: de ? 'Alle Projekte' : 'All projects',
-      items: projects,
+      items: featured,
+      reel: projects,
     },
     pricing: {
       num: de ? '02 / Leistungen' : '02 / Services',

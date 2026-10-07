@@ -5,6 +5,8 @@ import { pageMetadata } from "../../lib/seo";
 import type { Locale } from "../../lib/i18n";
 import { getHomeContent, PHONE_DISPLAY, PHONE_TEL, WHATSAPP, EMAIL } from "../../lib/home";
 import ReelToggle from "../../components/v3/ReelToggle";
+import TileVideo from "../../components/v3/TileVideo";
+import TileVideoToggle from "../../components/v3/TileVideoToggle";
 import PriceBoard from "../../components/v3/PriceBoard";
 import Steps from "../../components/v3/Steps";
 import Faq from "../../components/v3/Faq";
@@ -22,7 +24,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { lang } = await params;
   const locale: Locale = lang === "en" ? "en" : "de";
   const c = getHomeContent(locale);
-  const reel = c.projects.items;
+  const reel = c.projects.reel;
 
   return (
     <div className="v3">
@@ -80,7 +82,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <section className="v3-reel" id="showreel" aria-label={c.reel.label}>
         <div className="v3-reel-light" aria-hidden="true" />
         <div className="v3-reel-stage">
-          <div className="v3-reel-track">
+          <div className="v3-reel-track" style={{ animationDuration: `${reel.length * 12.8}s` }}>
             {[...reel, ...reel].map((p, i) => (
               <div className="v3-frame" key={`${p.slug}-${i}`} aria-hidden={i >= reel.length ? true : undefined}>
                 <div className="bar"><i /><i /><i /><span>{p.bar}</span></div>
@@ -99,7 +101,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </section>
 
       {/* 01 PROJEKTE */}
-      <section className="v3-sec" id="projekte" aria-labelledby="h-proj">
+      <section className="v3-sec" id="projekte" aria-labelledby="h-proj" data-tile-videos>
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">{c.projects.num}</span>
@@ -107,7 +109,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <p>{c.projects.text}</p>
           </div>
           <div className="v3-bento">
-            {reel.map((p, i) => (
+            {c.projects.items.map((p, i) => (
               <Link
                 key={p.slug}
                 href={p.href}
@@ -116,6 +118,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               >
                 <figure>
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 860px) 100vw, 58vw" />
+                  {p.video && <TileVideo src={p.video} />}
                   <span className={`tag${p.live ? " live" : ""}`}>{p.tag}</span>
                 </figure>
                 <div className="meta">
@@ -125,7 +128,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               </Link>
             ))}
           </div>
-          <div className="v3-more"><Link href={`/${lang}/projekte`} className="v3-btn v3-btn-ghost">{c.projects.all} <Arrow /></Link></div>
+          <div className="v3-more">
+            <TileVideoToggle target="projekte" pauseLabel={locale === "de" ? "Videos pausieren" : "Pause videos"} playLabel={locale === "de" ? "Videos abspielen" : "Play videos"} />
+            <Link href={`/${lang}/projekte`} className="v3-btn v3-btn-ghost">{c.projects.all} <Arrow /></Link>
+          </div>
         </div>
       </section>
 
