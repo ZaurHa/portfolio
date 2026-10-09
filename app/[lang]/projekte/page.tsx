@@ -168,19 +168,23 @@ function getProjects(de: boolean, lang: string): Project[] {
     },
     {
       slug: "flott-umzug",
-      title: "Flott Umzug",
-      kind: de ? "Umzug · In Arbeit" : "Moving · In progress",
+      title: "Flott Umzug & Transport",
+      kind: de ? "Umzug · Website" : "Moving · Website",
       year: "2026",
       place: "Bielefeld",
       desc: de
-        ? "Neue Website für ein Umzugs- und Entrümpelungsunternehmen in Bielefeld – mit Anfrage in fünf Schritten und eigenen Seiten für jede Leistung. Die Seite ist gebaut und geht nach der Abstimmung mit dem Inhaber online."
-        : "New website for a moving and house-clearance company in Bielefeld – with a five-step enquiry and a page for every service. The site is built and goes online once the owner has signed off.",
-      done: de ? ["Anfrage-Formular in fünf Schritten", "Eigene Seiten pro Leistung", "Start nach Freigabe durch den Inhaber"] : ["Five-step enquiry form", "A page for every service", "Launch after owner sign-off"],
+        ? "Neue Website für ein Umzugs- und Entrümpelungsunternehmen in Bielefeld: neues Logo, Anfrage in fünf Schritten und eine eigene Seite für jede Leistung, vom Fernumzug bis zur Halteverbotszone."
+        : "New website for a moving and house-clearance company in Bielefeld: a new logo, a five-step enquiry and a dedicated page for every service, from long-distance moves to parking-ban zones.",
+      done: de ? ["Neues Logo", "Anfrageformular in fünf Schritten", "Eigene Seite pro Leistung"] : ["New logo", "Five-step enquiry form", "A page for every service"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/flott-umzug-preview.webp",
       video: "/videos/flott-umzug-hero.mp4",
-      alt: de ? "Vorschau der neuen Website von Flott Umzug" : "Preview of the new Flott Umzug website",
-      bar: de ? "Vorschau" : "Preview",
+      alt: de ? "Website Flott Umzug & Transport" : "Flott Umzug & Transport website",
+      bar: "umzug-flott.de",
+      href: "https://umzug-flott.de",
+      cta: de ? "Website ansehen" : "View website",
+      external: true,
+      live: true,
     },
     {
       slug: "mobilwerk",
