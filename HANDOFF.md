@@ -16,7 +16,7 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 | Bereich | Inhalt | Datei |
 | --- | --- | --- |
 | Startseite | Hero, Showreel (alle 10 Projekte), 5 Projekt-Kacheln mit Video-Schleife (nur Kundenprojekte: Zaira, MRG, IP Logistik, dpfkat, SM Umzug), Leistungen und Preise, Ablauf, Über mich, Stimmen, Branchen und Regionen, FAQ, Kontakt | `app/[lang]/page.tsx`, Inhalte in `lib/home.ts` (`featuredSlugs` = Kacheln, `projects` = Showreel) |
-| Projekte | 11 Einträge: Zaira, MRG (mit Search-Console-Kennzahlen), IP Logistik, MH Logistik, SM Team DPF & Kat (dpfkat.de), SM Team Umzug (smdienstleistung.de), Flott Umzug („In Arbeit“, ohne Link), Mobilwerk, Serlo, Berkat (Beta, Standbild), Muster-Website Klempner (Diashow der 6 Varianten) | `app/[lang]/projekte/page.tsx` |
+| Projekte | 11 Einträge: Zaira, MRG (mit Search-Console-Kennzahlen), IP Logistik, MH Logistik, SM Team DPF & Kat (dpfkat.de), SM Team Umzug (smdienstleistung.de), Flott Umzug & Transport (umzug-flott.de, live seit 09.10.), Mobilwerk, Serlo, Berkat (Beta, Standbild), Muster-Website Klempner (Diashow der 6 Varianten) | `app/[lang]/projekte/page.tsx` |
 | Landingpages | Übersicht `/de/webdesign` und 10 Seiten: Website erstellen lassen, Website-Kosten, SEO, Landingpage, Handwerker, Kosmetikstudio, Logistik & Transport, Geretsried, Oberland, München (nur Deutsch) | `lib/landing.ts` |
 | Über mich | u. a. „Eigene Projekte“: Mobilwerk, Serlo, Berkat | `app/[lang]/ueber-mich/page.tsx` |
 | Serlo | `/[lang]/vibes` im V3-Design, noindex. `/[lang]/vibes/datenschutz` und `/[lang]/vibes/agb` sind in App Store Connect hinterlegt: **nie umbenennen oder löschen** (beide noch im alten lila Design) | `app/[lang]/vibes/` |
@@ -44,8 +44,7 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 2. **Nach der Freischaltung, auf der Website:** Profil-Link ins JSON-LD in `lib/root.tsx` (`sameAs`, dazu `hasMap`) und Bewertungslink auf die Kontaktseite (`app/[lang]/kontakt/`). Keine Sterne-Bewertung per Schema auf der eigenen Seite, denn bei eigenen Bewertungen zeigt Google keine Sterne. Beschreibung, Leistungen und Fotos fürs Profil liegen fertig im Brain-Dokument und in `~/Desktop/BrandWerkX-Google-Profil/`.
 3. **Footer-Hinweis „Website: BrandWerkX“ auf den fünf Kundenseiten** (mrg-logistik.de, ip-logistikgmbh.de, mh-logistikgmbh.de, dpfkat.de, smdienstleistung.de), sobald die Kunden zustimmen. Nur der Markenname als Linktext. Ziel ist die passende Branchenseite: Logistik → `/de/webdesign/logistik-und-transport`, SM Team → `/de/webdesign/geretsried`. Bisher verlinkt keine Kundenseite auf BrandWerkX.
 4. **brandwerkx.com** zeigt nur eine Hostinger-Parkseite → im hPanel per 301 auf https://brandwerkx.de weiterleiten.
-5. **Flott Umzug nach dem Livegang:** Link und Live-Status auf `/projekte` nachtragen, Video neu aufnehmen (bis dahin stammt es aus dem lokalen Build).
-6. **Aufräumen:** Repo aus iCloud holen (siehe Stolperfallen). Optional Vercel abklemmen und die Serlo-Rechtsseiten ins V3-Design bringen, ohne die Routen zu ändern.
+5. **Aufräumen:** Repo aus iCloud holen (siehe Stolperfallen). Optional Vercel abklemmen und die Serlo-Rechtsseiten ins V3-Design bringen, ohne die Routen zu ändern.
 
 ## Grenzen
 
