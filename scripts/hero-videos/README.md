@@ -7,7 +7,7 @@ Voraussetzungen: Google Chrome, `ffmpeg` mit libx264, Python 3 mit Pillow und `p
 Hinweise:
 - Das Skript verbirgt `navigator.webdriver`. Manche Seiten (z. B. MH Logistik) schalten ihre Animationen sonst in automatisierten Browsern ab.
 - `HIDE_CSS` blendet nur für die Aufnahme Elemente aus, z. B. Cookie-Banner, ohne sie zu bedienen.
-- Seiten ohne Bewegung liefern nach dem Laden keine neuen Bilder mehr (sichtbar an der Bilderzahl in der Ausgabe). Dann `SCROLL` nutzen oder ein Standbild behalten (Berkat).
+- Seiten ohne Bewegung liefern nach dem Laden keine neuen Bilder mehr (sichtbar an der Bilderzahl in der Ausgabe). Dann `SCROLL` nutzen.
 
 ## 1. Aufnehmen (12 s ab Seitenaufruf, 1280 × 800)
 
@@ -53,3 +53,17 @@ ffmpeg -y $(for v in 1 2 3 4 5 6 1; do printf -- "-loop 1 -framerate 30 -t 2.2 -
 ```
 
 Die große Kachel (Zaira) bekommt 1280 × 800, alle anderen 960 × 600. Ziel: unter 700 KB pro Video.
+
+## 4. Berkat: App-Video aus dem iOS-Simulator
+
+Berkat ist eine App, keine Website. Aufgenommen im Simulator (iPhone 17 Pro) als Gast, nur Testware im Bild:
+Startseite → Artikel „Quran mit Übersetzung“ → zurück → Kategorien → Startseite.
+Vorher jedes Bild ansehen: keine Fotos von Frauen (Berkat-Regel), keine fremden Marken (Chanel-Parfüm und Nike-Schuh in der Testware meiden), keine Namen echter Nutzer.
+
+```bash
+xcrun simctl io booted recordVideo --codec=h264 --force /tmp/berkat-rec.mp4   # Strg+C beendet
+```
+
+Dann ins Querformat 960 × 600 setzen: Bordeaux-Grund `#7B2231`, links „Berkat“, rechts das Handy mit runden Ecken
+(Maske per Pillow, `alphamerge` + `overlay` in ffmpeg, alle Standbild-Eingaben mit `-t` begrenzen, sonst läuft ffmpeg endlos).
+Ausschnitt 3,5–14,5 s, crf 26, ergibt `public/videos/berkat-hero.mp4` (rund 200 KB). Das Vorschaubild ist dasselbe Motiv in 1440 × 900.

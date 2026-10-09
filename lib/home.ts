@@ -146,7 +146,7 @@ export function getHomeContent(lang: Locale) {
       desc: de ? 'Eigene App: Live-Auktionen – im geschlossenen Test' : 'Own app: live auctions – in closed beta',
       tag: 'Beta',
       image: '/images/berkat-preview.webp',
-      alt: de ? 'Website der Live-Auktions-App Berkat' : 'Website of the live auction app Berkat',
+      alt: de ? 'Die Live-Auktions-App Berkat auf dem iPhone' : 'The live auction app Berkat on an iPhone',
       bar: 'berkat-live.pages.dev',
       href: 'https://berkat-live.pages.dev',
       external: true,

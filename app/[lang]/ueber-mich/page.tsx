@@ -152,7 +152,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
               <div className="meta"><div><h3>Serlo</h3><p>{de ? "Social-App: Live, Shop, Community" : "Social app: live, shop, community"}</p></div><span className="n">↗</span></div>
             </a>
             <a href="https://berkat-live.pages.dev" target="_blank" rel="noopener noreferrer" className="v3-tile">
-              <figure><Image src="/images/berkat-preview.webp" alt={de ? "Website der Live-Auktions-App Berkat" : "Website of the live auction app Berkat"} fill sizes="(max-width: 860px) 100vw, 33vw" /><span className="tag">Beta</span></figure>
+              <figure><Image src="/images/berkat-preview.webp" alt={de ? "Die Live-Auktions-App Berkat auf dem iPhone" : "The live auction app Berkat on an iPhone"} fill sizes="(max-width: 860px) 100vw, 33vw" /><span className="tag">Beta</span></figure>
               <div className="meta"><div><h3>Berkat</h3><p>{de ? "Live-Auktionen – im geschlossenen Test" : "Live auctions – in closed beta"}</p></div><span className="n">↗</span></div>
             </a>
           </div>
