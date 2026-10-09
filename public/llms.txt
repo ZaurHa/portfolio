@@ -12,7 +12,7 @@
 ## Seiten
 - [Startseite](https://brandwerkx.de/de): Überblick, Referenzen, Kundenstimmen
 - [Leistungen & Preise](https://brandwerkx.de/de/leistungen): Pakete, Zusatzleistungen, Ablauf, häufige Fragen
-- [Projekte](https://brandwerkx.de/de/projekte): Referenzen aus Logistik (MRG Trans & Logistik, IP Logistik, MH Logistik), Umzug (SM Team, Mobilwerk), Kfz-Werkstatt (SM Team DPF & Kat Service) und Kosmetik (Zaira Beauty Face); eigene Apps Serlo und Berkat
+- [Projekte](https://brandwerkx.de/de/projekte): Referenzen aus Logistik (MRG Trans & Logistik, IP Logistik, MH Logistik), Umzug (SM Team, Flott Umzug & Transport, Mobilwerk), Kfz-Werkstatt (SM Team DPF & Kat Service) und Kosmetik (Zaira Beauty Face); eigene Apps Serlo und Berkat
 - [Case Study Zaira Beauty Face](https://brandwerkx.de/de/projekte/zaira-beauty): Rebranding und neue Website für ein Kosmetikstudio
 - [Über mich](https://brandwerkx.de/de/ueber-mich): Zaur Hatuev, Werkzeuge und Schwerpunkte
 - [Kontakt](https://brandwerkx.de/de/kontakt): Projekt anfragen
