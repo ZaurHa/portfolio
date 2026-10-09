@@ -42,21 +42,29 @@ cdp.on("Page.domContentEventFired", (e) => { events.dcl = e.timestamp; });
 await cdp.send("Page.startScreencast", { format: "jpeg", quality: 88, maxWidth: +w, maxHeight: +h, everyNthFrame: 1 });
 const t0 = Date.now() / 1000;
 await page.goto(url, { waitUntil: "commit" });
-// Optional: weicher Scroll durch die Seite (SCROLL=px, SCROLL_AT=s, SCROLL_DUR=s)
+// Optional: weicher Scroll durch die Seite (SCROLL=px, SCROLL_AT=s, SCROLL_DUR=s).
+// SCROLL_BACK=s: nach dieser Pause wieder nach oben scrollen, damit die Schleife oben beginnt und endet.
+// behavior "instant", sonst startet bei Seiten mit scroll-behavior: smooth jeder Schritt eine
+// eigene Animation und das Bild springt (Flott, 09.10.2026).
 const scrollPx = +(process.env.SCROLL || 0);
 if (scrollPx) {
   await page.waitForTimeout(+(process.env.SCROLL_AT || 1.6) * 1000);
   const dur = +(process.env.SCROLL_DUR || 7) * 1000;
-  await page.evaluate(([px, ms]) => new Promise((done) => {
+  const glide = ([from, to, ms]) => new Promise((done) => {
     const start = performance.now();
     const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
     const step = (now) => {
       const p = Math.min((now - start) / ms, 1);
-      window.scrollTo(0, px * ease(p));
+      window.scrollTo({ top: from + (to - from) * ease(p), behavior: "instant" });
       if (p < 1) requestAnimationFrame(step); else done();
     };
     requestAnimationFrame(step);
-  }), [scrollPx, dur]);
+  });
+  await page.evaluate(glide, [0, scrollPx, dur]);
+  if (process.env.SCROLL_BACK) {
+    await page.waitForTimeout(+process.env.SCROLL_BACK * 1000);
+    await page.evaluate(glide, [scrollPx, 0, dur]);
+  }
 }
 await page.waitForTimeout(Math.max(0, +seconds * 1000 - (Date.now() / 1000 - t0) * 1000));
 await cdp.send("Page.stopScreencast");
