@@ -339,13 +339,13 @@ export const landingPages: LandingPage[] = [
         title: 'Warum ein Webdesigner aus der Region',
         bullets: [
           'Ich kenne die Region und die Suchbegriffe, mit denen Kunden hier nach Betrieben suchen.',
-          'Dein Ansprechpartner ist eine Person, erreichbar per Telefon (0172 8471641), E-Mail und WhatsApp.',
+          'Dein Ansprechpartner ist eine Person: erreichbar per Telefon (0172 8471641), E-Mail und WhatsApp, und auf Wunsch persönlich bei dir im Betrieb.',
           'Antwort in der Regel innerhalb von 24 Stunden.',
         ],
       },
       {
         title: 'Für wen ich arbeite',
-        text: 'Für Handwerksbetriebe, Dienstleister, Kosmetikstudios und kleine Unternehmen in Geretsried und im Landkreis Bad Tölz-Wolfratshausen. Die Zusammenarbeit läuft digital — das spart dir Zeit und hält den Preis niedrig.',
+        text: 'Für Handwerksbetriebe, Dienstleister, Kosmetikstudios und kleine Unternehmen in Geretsried und im Landkreis Bad Tölz-Wolfratshausen. Wir sprechen per Telefon, Video oder WhatsApp, und wenn du lieber persönlich sprichst, komme ich zu dir in den Betrieb. So sparst du Zeit, und der Preis bleibt niedrig.',
       },
       {
         title: 'Referenzen aus Geretsried',
@@ -357,7 +357,7 @@ export const landingPages: LandingPage[] = [
       },
     ],
     faqs: [
-      { q: 'Arbeitest du auch mit Kunden außerhalb von Geretsried?', a: 'Ja, mit Kunden im Oberland, in München und deutschlandweit. Besprechungen laufen per Telefon, Video oder WhatsApp.' },
+      { q: 'Arbeitest du auch mit Kunden außerhalb von Geretsried?', a: 'Ja, mit Kunden im Oberland, in München und deutschlandweit. Besprechungen laufen per Telefon, Video oder WhatsApp. Im Oberland und in München komme ich auf Wunsch auch persönlich vorbei.' },
       { q: 'Wie komme ich in Kontakt?', a: 'Per Telefon unter 0172 8471641, per E-Mail an brandwerkx@gmail.com, über WhatsApp oder das Kontaktformular auf dieser Website.' },
       { q: 'Was kostet eine Website in Geretsried?', a: 'Ab 490 € für die Muster-Website, ab 990 € für eine individuelle Website. Die Preise sind überall gleich.' },
     ],
@@ -390,7 +390,7 @@ export const landingPages: LandingPage[] = [
     ],
     faqs: [
       { q: 'Für welche Orte baust du Websites?', a: 'Für alle Orte im Landkreis Bad Tölz-Wolfratshausen, im Münchner Umland und für Betriebe deutschlandweit.' },
-      { q: 'Muss ich zu dir kommen?', a: 'Nein. Wir besprechen alles per Telefon, Video oder WhatsApp. Das spart Zeit.' },
+      { q: 'Kommst du auch persönlich vorbei?', a: 'Ja. Zum Erstgespräch oder zur Übergabe komme ich auf Wunsch zu dir in den Betrieb, im ganzen Oberland und in München. Wenn es dir lieber ist, klären wir alles per Telefon, Video oder WhatsApp.' },
       { q: 'Was kostet eine Website für meinen Betrieb im Oberland?', a: 'Ab 490 € (Muster-Website) oder ab 990 € (Custom-Website), Endpreise ohne Umsatzsteuer nach § 19 UStG.' },
     ],
     related: ['geretsried', 'handwerker', 'seo-optimierung'],
@@ -401,11 +401,11 @@ export const landingPages: LandingPage[] = [
     label: 'Webdesign München',
     metaTitle: 'Webdesign München – Website für kleine Unternehmen ab 490 €',
     metaDescription:
-      'Webdesign für München: Websites für Selbstständige, Handwerker und kleine Betriebe ab 490 €. BrandWerkX arbeitet digital und schnell, SEO inklusive.',
+      'Webdesign für München: Websites für Selbstständige, Handwerker und kleine Betriebe ab 490 €. Auf Wunsch Beratung vor Ort, SEO inklusive.',
     eyebrow: 'Webdesign München',
     h1: 'Webdesign für München — Websites für kleine Unternehmen',
     intro:
-      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München — ab 490 €. Die Zusammenarbeit läuft digital per Telefon, Video und WhatsApp, das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
+      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München — ab 490 €. Wir sprechen per Telefon, Video oder WhatsApp, auf Wunsch auch persönlich bei dir im Betrieb. Das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
     sections: [
       {
         title: 'Warum nicht die große Agentur',
@@ -421,7 +421,7 @@ export const landingPages: LandingPage[] = [
       },
     ],
     faqs: [
-      { q: 'Wo sitzt BrandWerkX?', a: 'In Geretsried (82538), südlich von München. München gehört zu meinem Einzugsgebiet, Besprechungen laufen digital.' },
+      { q: 'Wo sitzt BrandWerkX?', a: 'In Geretsried (82538), südlich von München. München gehört zu meinem Einzugsgebiet. Wir sprechen per Telefon oder Video, auf Wunsch komme ich persönlich zu dir.' },
       { q: 'Was kostet Webdesign in München bei BrandWerkX?', a: 'Ab 490 € für eine Muster-Website, ab 990 € für eine individuelle Website. Der Preis ist unabhängig vom Standort.' },
       { q: 'Kann ich vor dem Start sprechen?', a: 'Ja. Das Erstgespräch ist kostenlos und unverbindlich — telefonisch unter 0172 8471641 oder per Formular.' },
     ],

@@ -18,7 +18,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
   const principles: [string, string][] = de
     ? [
         ["Festpreis vorab", "Du weißt vor dem Start, was es kostet. Kein Stundenzettel, keine Überraschung."],
-        ["Direkter Draht", "Du sprichst immer mit mir – per Telefon, WhatsApp oder Mail. Kein Callcenter, kein Projektmanager dazwischen."],
+        ["Direkter Draht", "Du sprichst immer mit mir: per Telefon, WhatsApp, Mail oder auf Wunsch persönlich bei dir im Betrieb. Kein Callcenter, kein Projektmanager dazwischen."],
         ["Schnell online", "Muster-Websites in 3–5 Werktagen. Weil ein Betrieb nicht monatelang auf seine Website warten sollte."],
         ["Gefunden werden", "Saubere Technik, klare Texte und lokale Signale – damit Kunden dich finden, wenn sie suchen."],
       ]
@@ -92,7 +92,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
             <div><span className="v3-mono">{de ? "Standort" : "Based in"}</span><span className="v">Geretsried</span></div>
             <div><span className="v3-mono">{de ? "Servicegebiet" : "Service area"}</span><span className="v">{de ? "München & Oberland" : "Munich & Oberland"}</span></div>
             <div><span className="v3-mono">{de ? "Sprachen" : "Languages"}</span><span className="v">{de ? "Deutsch · Englisch · Russisch" : "German · English · Russian"}</span></div>
-            <div><span className="v3-mono">{de ? "Zusammenarbeit" : "Working"}</span><span className="v">{de ? "Digital" : "Remote"}</span></div>
+            <div><span className="v3-mono">{de ? "Zusammenarbeit" : "Working"}</span><span className="v">{de ? "Vor Ort & digital" : "On-site & remote"}</span></div>
           </div>
         </div>
       </section>

@@ -227,7 +227,7 @@ export function getHomeContent(lang: Locale) {
       rows: [
         [de ? 'Leistung' : 'Service', de ? 'Muster-Website, an dich angepasst' : 'Template website, adapted to you'],
         [de ? 'Lieferzeit' : 'Delivery', de ? '3–5 Werktage' : '3–5 working days'],
-        [de ? 'Ort' : 'Area', de ? 'Geretsried · München & Oberland · digital' : 'Geretsried · Munich & Oberland · remote'],
+        [de ? 'Ort' : 'Area', de ? 'Geretsried · München & Oberland · vor Ort oder digital' : 'Geretsried · Munich & Oberland · on-site or remote'],
         [de ? 'Inklusive' : 'Included', de ? 'Domain & Hosting im 1. Jahr' : 'Domain & hosting in year one'],
         [de ? 'Antwort' : 'Reply', de ? 'meist innerhalb 24 h' : 'usually within 24 h'],
       ] as [string, string][],
@@ -280,8 +280,8 @@ export function getHomeContent(lang: Locale) {
       h2: de ? 'bis' : 'to',
       h2o: de ? 'online.' : 'online.',
       text: de
-        ? 'Du lieferst die Infos, ich den Rest. Die Zusammenarbeit läuft komplett digital.'
-        : 'You send the info, I do the rest. We work together entirely online.',
+        ? 'Du lieferst die Infos, ich den Rest. Wir sprechen per Telefon, WhatsApp oder persönlich bei dir vor Ort, ganz wie es dir passt.'
+        : 'You send the info, I do the rest. We talk by phone, WhatsApp or in person at your business, whatever suits you.',
       steps: (de
         ? [
             ['Design wählen', 'Vorlage aussuchen oder individuell starten – wir klären es im Erstgespräch.'],
@@ -306,8 +306,8 @@ export function getHomeContent(lang: Locale) {
         ? 'Ich bin Zaur Hatuev, Webdesigner und Entwickler aus Geretsried. Ich baue Websites für Betriebe, die keine Zeit für Webdesign haben – und betreibe mit Mobilwerk selbst einen. Ich weiß also, worauf es ankommt: schnell online, gut gefunden werden, Anfragen bekommen.'
         : "I'm Zaur Hatuev, a web designer and developer from Geretsried. I build websites for businesses that have no time for web design – and run one myself, Mobilwerk. So I know what matters: online fast, easy to find, getting enquiries.",
       kv: (de
-        ? [['Standort', 'Geretsried'], ['Servicegebiet', 'München & Oberland'], ['Zusammenarbeit', 'Digital']]
-        : [['Based in', 'Geretsried'], ['Service area', 'Munich & Oberland'], ['Working', 'Remote']]) as [string, string][],
+        ? [['Standort', 'Geretsried'], ['Servicegebiet', 'München & Oberland'], ['Zusammenarbeit', 'Vor Ort & digital']]
+        : [['Based in', 'Geretsried'], ['Service area', 'Munich & Oberland'], ['Working', 'On-site & remote']]) as [string, string][],
       more: de ? 'Mehr über mich' : 'More about me',
     },
     quotes: {
