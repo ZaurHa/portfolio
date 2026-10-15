@@ -1,4 +1,10 @@
 # Cloudflare Pages – Header
+
+# Die Kopie unter portfolio-dcp.pages.dev nicht in den Index, Google soll nur brandwerkx.de kennen
+# (Masterplan T-16). Branch-Vorschauen bekommen noindex schon von Cloudflare.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
