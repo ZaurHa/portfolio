@@ -21,6 +21,7 @@ SCROLL=1600 SCROLL_AT=1.6 SCROLL_DUR=7 node scripts/hero-videos/record.mjs sm ht
 # Flott: steht nach der Einfahrt still, deshalb runter und wieder hoch scrollen (Schleife beginnt und endet oben)
 SCROLL=900 SCROLL_AT=2.2 SCROLL_DUR=3.5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs flott https://umzug-flott.de/ 12.5
 node scripts/hero-videos/record.mjs mobilwerk https://mobilwerk.vercel.app 12
+SCROLL=900 SCROLL_AT=2.2 SCROLL_DUR=3.5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs mogashal https://mogashal.com/ 12.5
 HIDE_CSS='div.fixed.z-50.rounded-2xl[role="dialog"]{display:none!important}' node scripts/hero-videos/record.mjs serlo https://serlo.ch 12
 ```
 
@@ -38,6 +39,7 @@ python3 scripts/hero-videos/encode.py '[
  {"name":"sm","out":"public/videos/sm-umzug-hero.mp4","S":1.0,"L":6.8,"C":0.8,"w":960,"h":600,"crf":28},
  {"name":"flott","out":"public/videos/flott-umzug-hero.mp4","S":1.6,"L":9.0,"C":0.8,"w":960,"h":600,"crf":28},
  {"name":"mobilwerk","out":"public/videos/mobilwerk-hero.mp4","S":1.6,"L":8.0,"C":0.8,"w":960,"h":600,"crf":28},
+ {"name":"mogashal","out":"public/videos/mogashal-hero.mp4","S":1.6,"L":9.0,"C":0.8,"w":960,"h":600,"crf":28},
  {"name":"serlo","out":"public/videos/serlo-hero.mp4","S":2.5,"L":8.0,"C":0.8,"w":960,"h":600,"crf":28}
 ]'
 ```

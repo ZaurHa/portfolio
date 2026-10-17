@@ -141,6 +141,18 @@ export function getHomeContent(lang: Locale) {
       external: true,
     },
     {
+      slug: 'mogashal',
+      title: 'Mogashal',
+      desc: de ? 'Eigenes Fachnetzwerk für geprüfte Ärztinnen und Ärzte' : 'Own professional network for verified doctors',
+      tag: de ? 'Online' : 'Online',
+      live: true,
+      image: '/images/mogashal-preview.webp',
+      alt: de ? 'Website des Ärzte-Netzwerks Mogashal' : "Website of the doctors' network Mogashal",
+      bar: 'mogashal.com',
+      href: 'https://mogashal.com',
+      external: true,
+    },
+    {
       slug: 'berkat',
       title: 'Berkat',
       desc: de ? 'Eigene App: Live-Auktionen – im geschlossenen Test' : 'Own app: live auctions – in closed beta',
