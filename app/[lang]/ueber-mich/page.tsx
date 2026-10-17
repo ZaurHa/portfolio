@@ -84,7 +84,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
               </div>
             </div>
             <figure className="v3-portrait v3-rise d2">
-              <Image src="/images/zaur-portrait.webp" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
+              <Image src="/images/zaur-portrait-2026.webp" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
               <figcaption><span>Zaur Hatuev</span><span>Geretsried</span></figcaption>
             </figure>
           </div>
