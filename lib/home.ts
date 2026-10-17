@@ -134,7 +134,7 @@ export function getHomeContent(lang: Locale) {
       desc: de ? 'Eigene Social-App: Live, Shop, Community' : 'Own social app: live, shop, community',
       tag: de ? 'Im App Store' : 'On the App Store',
       live: true,
-      image: '/images/serlo-preview.webp',
+      image: '/images/serlo-preview-2026.webp',
       alt: de ? 'Startseite der Social-App Serlo' : 'Serlo social app homepage',
       bar: 'serlo.ch',
       href: 'https://serlo.ch',
