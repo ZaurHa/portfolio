@@ -887,3 +887,17 @@
   .v3-rules.v3-rules-3 > div:nth-child(n) { padding: 24px 0 10px; border-left: 0; }
   .v3-rules.v3-rules-3 > div:nth-child(n+2) { border-top: 1px solid var(--v3-line); }
 }
+
+/* Porträt bewusst klein (Zaur, 17.10.2026) */
+.v3-about { grid-template-columns: minmax(0, 300px) 1fr; }
+.v3-about .v3-portrait { max-width: 300px; }
+.v3-about-hero .v3-portrait { max-width: 300px; justify-self: end; width: 100%; }
+@media (min-width: 961px) { .v3-facts.v3-facts-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 960px) {
+  .v3-about { grid-template-columns: 1fr; }
+  .v3-about .v3-portrait, .v3-about-hero .v3-portrait { max-width: 240px; justify-self: start; }
+}
+.v3-about .v3-kv { grid-template-columns: 1fr 1fr; }
+@media (max-width: 960px) {
+  .v3-about .v3-kv div:last-child { grid-column: auto; border-top: 0; }
+}

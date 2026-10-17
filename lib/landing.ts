@@ -46,19 +46,19 @@ export const landingPages: LandingPage[] = [
     slug: 'website-erstellen-lassen',
     kind: 'leistung',
     label: 'Website erstellen lassen',
-    metaTitle: 'Website erstellen lassen – ab 490 € in 5 Tagen',
+    metaTitle: 'Website erstellen lassen | ab 490 € in 5 Tagen',
     metaDescription:
-      'Website erstellen lassen ab 490 €: Muster-Website oder individuelle Lösung von BrandWerkX aus Geretsried. Festpreis, SEO inklusive, in 3–10 Tagen live.',
+      'Website erstellen lassen ab 490 €: Muster-Website oder individuelle Lösung von BrandWerkX aus Geretsried. Festpreis, SEO inklusive, in 3 bis 10 Tagen live.',
     eyebrow: 'Website erstellen lassen',
-    h1: 'Website erstellen lassen — fertig in 5 Tagen, ab 490 €',
+    h1: 'Website erstellen lassen: fertig in 5 Tagen, ab 490 €',
     intro:
       'BrandWerkX baut Websites für Handwerker, Selbstständige und kleine Unternehmen. Du wählst ein fertiges Design (ab 490 €) oder lässt dir eine individuelle Website bauen (ab 990 €). Mobil optimiert, SEO inklusive, meist in 3 bis 10 Werktagen online. Du hast einen festen Ansprechpartner: Zaur Hatuev aus Geretsried.',
     sections: [
       {
         title: 'Zwei Wege zur eigenen Website',
         bullets: [
-          'Muster-Website ab 490 €: ein geprüftes Design wird mit deinem Logo, deinen Texten und Kontaktdaten angepasst. Fertig in 3–5 Werktagen.',
-          'Custom-Website ab 990 €: Aufbau und Gestaltung nach deinen Vorstellungen, SEO-optimiert und mobile-first. Fertig in 7–14 Werktagen.',
+          'Muster-Website ab 490 €: ein geprüftes Design wird mit deinem Logo, deinen Texten und Kontaktdaten angepasst. Fertig in 3 bis 5 Werktagen.',
+          'Custom-Website ab 990 €: Aufbau und Gestaltung nach deinen Vorstellungen, SEO-optimiert und mobile-first. Fertig in 7 bis 14 Werktagen.',
           'Beides mit Kontaktformular, schneller Ladezeit und sauberer Grundlage für die Suche bei Google.',
         ],
       },
@@ -66,19 +66,19 @@ export const landingPages: LandingPage[] = [
         title: 'So läuft es ab',
         bullets: [
           'Design wählen oder kurz beschreiben, was du brauchst.',
-          'Logo, Texte, Farben schicken — mehr brauche ich nicht von dir.',
+          'Logo, Texte, Farben schicken. Mehr brauche ich nicht von dir.',
           'Ich baue, du prüfst, wir gehen live.',
           'Übergabe mit Einführung und 30 Tagen Support.',
         ],
       },
       {
         title: 'Was im Preis steckt',
-        text: 'Du zahlst einen festen Preis. Domain und Hosting sind im ersten Jahr enthalten, danach fallen je nach Anbieter etwa 10–15 € pro Monat an. Als Kleinunternehmer nach § 19 UStG weise ich keine Umsatzsteuer aus — die genannten Preise sind Endpreise.',
+        text: 'Du zahlst einen festen Preis. Domain und Hosting sind im ersten Jahr enthalten, danach fallen je nach Anbieter etwa 10 bis 15 € pro Monat an. Als Kleinunternehmer nach § 19 UStG weise ich keine Umsatzsteuer aus. Die genannten Preise sind Endpreise.',
       },
     ],
     faqs: [
       { q: 'Was kostet es, eine Website erstellen zu lassen?', a: 'Eine Muster-Website startet bei 490 €, eine individuelle Custom-Website bei 990 €. SEO und Wartung gibt es ab 99 € pro Monat. Die Preise sind Festpreise und enthalten keine Umsatzsteuer (Kleinunternehmer nach § 19 UStG).' },
-      { q: 'Wie lange dauert es, bis die Website online ist?', a: 'Eine Muster-Website ist in der Regel in 3–5 Werktagen fertig, eine Custom-Website in 7–14 Werktagen — sobald Logo, Texte und Bilder vorliegen.' },
+      { q: 'Wie lange dauert es, bis die Website online ist?', a: 'Eine Muster-Website ist in der Regel in 3 bis 5 Werktagen fertig, eine Custom-Website in 7 bis 14 Werktagen, sobald Logo, Texte und Bilder vorliegen.' },
       { q: 'Muss ich Texte und Bilder selbst liefern?', a: 'Du lieferst Logo, Kerninfos und vorhandene Fotos. Daraus entstehen die Seitentexte. Ich helfe dir, wenn noch etwas fehlt.' },
       { q: 'Gehört mir die Website nach der Übergabe?', a: 'Ja. Du bekommst die Zugangsdaten, eine kurze Einführung und 30 Tage Support. Danach kannst du selbst Änderungen vornehmen oder ein Wartungspaket buchen.' },
     ],
@@ -94,7 +94,7 @@ export const landingPages: LandingPage[] = [
     eyebrow: 'Preise & Kosten',
     h1: 'Was kostet eine Website? Die Preise im Überblick',
     intro:
-      'Eine Website für ein kleines Unternehmen kostet bei BrandWerkX ab 490 € (Muster-Website) oder ab 990 € (individuelle Custom-Website). Dazu kommen nur laufende Kosten für Hosting und Domain ab dem zweiten Jahr, etwa 10–15 € pro Monat, und optional Wartung ab 49 € pro Monat.',
+      'Eine Website für ein kleines Unternehmen kostet bei BrandWerkX ab 490 € (Muster-Website) oder ab 990 € (individuelle Custom-Website). Dazu kommen nur laufende Kosten für Hosting und Domain ab dem zweiten Jahr, etwa 10 bis 15 € pro Monat, und optional Wartung ab 49 € pro Monat.',
     sections: [
       {
         title: 'Einmalige Kosten',
@@ -109,7 +109,7 @@ export const landingPages: LandingPage[] = [
       {
         title: 'Laufende Kosten',
         bullets: [
-          'Domain und Hosting: im ersten Jahr enthalten, danach etwa 10–15 € pro Monat je nach Anbieter.',
+          'Domain und Hosting: im ersten Jahr enthalten, danach etwa 10 bis 15 € pro Monat je nach Anbieter.',
           'Wartung und Updates (optional): ab 49 € pro Monat.',
           'SEO und Wartung als Paket: ab 99 € pro Monat.',
         ],
@@ -130,7 +130,7 @@ export const landingPages: LandingPage[] = [
     slug: 'seo-optimierung',
     kind: 'leistung',
     label: 'SEO-Optimierung',
-    metaTitle: 'SEO für kleine Unternehmen – bei Google gefunden werden',
+    metaTitle: 'SEO für kleine Unternehmen | bei Google gefunden werden',
     metaDescription:
       'SEO-Optimierung für Handwerker und kleine Unternehmen: Technik, Inhalte, lokale Sichtbarkeit und Google-Unternehmensprofil. SEO & Wartung ab 99 € pro Monat.',
     eyebrow: 'SEO & Sichtbarkeit',
@@ -169,7 +169,7 @@ export const landingPages: LandingPage[] = [
     slug: 'landingpage-erstellen',
     kind: 'leistung',
     label: 'Landingpage erstellen',
-    metaTitle: 'Landingpage erstellen lassen – schnell, mobil, auf Anfragen ausgelegt',
+    metaTitle: 'Landingpage erstellen lassen | schnell, mobil, auf Anfragen ausgelegt',
     metaDescription:
       'Landingpage erstellen lassen: eine fokussierte Seite für ein Angebot, mit klarem Aufruf zur Anfrage. Schnell geladen, mobil optimiert, ab 490 €.',
     eyebrow: 'Landingpage',
@@ -208,11 +208,11 @@ export const landingPages: LandingPage[] = [
     slug: 'handwerker',
     kind: 'branche',
     label: 'Website für Handwerker',
-    metaTitle: 'Website für Handwerker – Anfragen statt Visitenkarte',
+    metaTitle: 'Website für Handwerker | Anfragen statt Visitenkarte',
     metaDescription:
       'Website für Handwerker ab 490 €: Klempner, Elektriker, Maler und mehr. Mobil optimiert, lokal bei Google auffindbar, Kontakt per Anruf oder WhatsApp.',
     eyebrow: 'Für Handwerker',
-    h1: 'Website für Handwerker — gefunden werden, wenn der Kunde sucht',
+    h1: 'Website für Handwerker: gefunden werden, wenn der Kunde sucht',
     intro:
       'Wer einen Klempner, Elektriker oder Maler braucht, sucht auf dem Handy und ruft den ersten brauchbaren Betrieb an. BrandWerkX baut Handwerker-Websites ab 490 €, die schnell laden, deine Leistungen und dein Einzugsgebiet klar nennen und den Anruf oder die WhatsApp-Nachricht mit einem Tipp möglich machen.',
     sections: [
@@ -257,7 +257,7 @@ export const landingPages: LandingPage[] = [
     eyebrow: 'Für Beauty & Kosmetik',
     h1: 'Website für Kosmetikstudios und Beauty-Betriebe',
     intro:
-      'Ein Beauty-Studio verkauft Vertrauen und Atmosphäre. BrandWerkX gestaltet Websites für Kosmetikstudios mit eleganter Optik, übersichtlicher Behandlungs- und Preisliste und einfacher Terminanfrage — ab 490 € als Muster-Design, individuell ab 990 €. Eine Referenz ist Zaira Beauty Face.',
+      'Ein Beauty-Studio verkauft Vertrauen und Atmosphäre. BrandWerkX gestaltet Websites für Kosmetikstudios mit eleganter Optik, übersichtlicher Behandlungs- und Preisliste und einfacher Terminanfrage, ab 490 € als Muster-Design, individuell ab 990 €. Eine Referenz ist Zaira Beauty Face.',
     sections: [
       {
         title: 'Was ein Kosmetikstudio auf der Website braucht',
@@ -317,7 +317,7 @@ export const landingPages: LandingPage[] = [
     faqs: [
       { q: 'Was kostet eine Website für ein Logistikunternehmen?', a: 'Ab 990 € für eine individuelle Website mit mehreren Seiten, Formular und SEO-Grundlage. Der genaue Preis hängt vom Umfang ab.' },
       { q: 'Kann ich Anfragen direkt ins E-Mail-Postfach bekommen?', a: 'Ja. Das Formular schickt dir jede Anfrage per E-Mail und der Absender bekommt eine Bestätigung.' },
-      { q: 'Kann die Website mehrsprachig sein?', a: 'Ja, mehrsprachige Websites sind möglich — diese Website gibt es zum Beispiel auf Deutsch und Englisch.' },
+      { q: 'Kann die Website mehrsprachig sein?', a: 'Ja, mehrsprachige Websites sind möglich. Diese Website gibt es zum Beispiel auf Deutsch und Englisch.' },
     ],
     related: ['website-erstellen-lassen', 'website-kosten', 'muenchen'],
   },
@@ -327,13 +327,13 @@ export const landingPages: LandingPage[] = [
     slug: 'geretsried',
     kind: 'ort',
     label: 'Webdesign Geretsried',
-    metaTitle: 'Webdesign Geretsried – Website vom Freelancer ab 490 €',
+    metaTitle: 'Webdesign Geretsried | Website vom Freelancer ab 490 €',
     metaDescription:
       'Webdesign in Geretsried: BrandWerkX, Zaur Hatuev. Websites für Handwerker und kleine Betriebe im Landkreis Bad Tölz-Wolfratshausen. Ab 490 €, SEO inklusive.',
     eyebrow: 'Webdesign Geretsried',
     h1: 'Webdesign aus Geretsried für Betriebe im Oberland',
     intro:
-      'BrandWerkX sitzt in Geretsried (Steiner Ring 64, 82538 Geretsried). Ich baue Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried, Wolfratshausen, Bad Tölz und München — ab 490 €, fertig in 3 bis 10 Werktagen, SEO inklusive.',
+      'BrandWerkX sitzt in Geretsried (Steiner Ring 64, 82538 Geretsried). Ich baue Websites für Handwerker, Selbstständige und kleine Unternehmen aus Geretsried, Wolfratshausen, Bad Tölz und München. Ab 490 €, fertig in 3 bis 10 Werktagen, SEO inklusive.',
     sections: [
       {
         title: 'Warum ein Webdesigner aus der Region',
@@ -399,13 +399,13 @@ export const landingPages: LandingPage[] = [
     slug: 'muenchen',
     kind: 'ort',
     label: 'Webdesign München',
-    metaTitle: 'Webdesign München – Website für kleine Unternehmen ab 490 €',
+    metaTitle: 'Webdesign München | Website für kleine Unternehmen ab 490 €',
     metaDescription:
       'Webdesign für München: Websites für Selbstständige, Handwerker und kleine Betriebe ab 490 €. Auf Wunsch Beratung vor Ort, SEO inklusive.',
     eyebrow: 'Webdesign München',
-    h1: 'Webdesign für München — Websites für kleine Unternehmen',
+    h1: 'Webdesign für München: Websites für kleine Unternehmen',
     intro:
-      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München — ab 490 €. Wir sprechen per Telefon, Video oder WhatsApp, auf Wunsch auch persönlich bei dir im Betrieb. Das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
+      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München, ab 490 €. Wir sprechen per Telefon, Video oder WhatsApp, auf Wunsch auch persönlich bei dir im Betrieb. Das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
     sections: [
       {
         title: 'Warum nicht die große Agentur',
@@ -423,7 +423,7 @@ export const landingPages: LandingPage[] = [
     faqs: [
       { q: 'Wo sitzt BrandWerkX?', a: 'In Geretsried (82538), südlich von München. München gehört zu meinem Einzugsgebiet. Wir sprechen per Telefon oder Video, auf Wunsch komme ich persönlich zu dir.' },
       { q: 'Was kostet Webdesign in München bei BrandWerkX?', a: 'Ab 490 € für eine Muster-Website, ab 990 € für eine individuelle Website. Der Preis ist unabhängig vom Standort.' },
-      { q: 'Kann ich vor dem Start sprechen?', a: 'Ja. Das Erstgespräch ist kostenlos und unverbindlich — telefonisch unter 0172 8471641 oder per Formular.' },
+      { q: 'Kann ich vor dem Start sprechen?', a: 'Ja. Das Erstgespräch ist kostenlos und unverbindlich: telefonisch unter 0172 8471641 oder per Formular.' },
     ],
     related: ['geretsried', 'handwerker', 'kosmetikstudio', 'seo-optimierung'],
   },

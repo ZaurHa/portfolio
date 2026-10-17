@@ -136,7 +136,7 @@ function customerMailHtml(firstName: string, lang: Lang) {
 const MSG = {
   de: {
     rateLimit: 'Zu viele Anfragen. Bitte warte 10 Minuten.',
-    name: 'Bitte gib deinen Namen an (2–100 Zeichen).',
+    name: 'Bitte gib deinen Namen an (2 bis 100 Zeichen).',
     email: 'Bitte gib eine gültige E-Mail-Adresse an.',
     message: 'Bitte schreib eine Nachricht mit 10 bis 5000 Zeichen.',
     phone: 'Bitte gib eine gültige Telefonnummer an (nur Ziffern, Leerzeichen, +, -, Klammern; max. 40 Zeichen).',
@@ -147,7 +147,7 @@ const MSG = {
   },
   en: {
     rateLimit: 'Too many requests. Please wait 10 minutes.',
-    name: 'Please enter your name (2–100 characters).',
+    name: 'Please enter your name (2 to 100 characters).',
     email: 'Please enter a valid email address.',
     message: 'Please write a message between 10 and 5000 characters.',
     phone: 'Please enter a valid phone number (digits, spaces, +, -, parentheses only; max. 40 characters).',
@@ -264,7 +264,7 @@ async function handle(body: Record<string, unknown>, lang: Lang, ip: string, api
     const { error: confirmError } = await sendMail(apiKey, {
       from: 'Zaur Hatuev <zaur@brandwerkx.de>',
       to: [email],
-      subject: lang === 'en' ? 'Thanks for your message – BrandWerkX' : 'Danke für deine Nachricht – BrandWerkX',
+      subject: lang === 'en' ? 'Thanks for your message | BrandWerkX' : 'Danke für deine Nachricht | BrandWerkX',
       html: customerMailHtml(firstName, lang),
     });
     if (confirmError) console.error('Bestätigungs-Mail fehlgeschlagen:', confirmError);

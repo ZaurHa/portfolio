@@ -18,8 +18,8 @@ export async function generateMetadata({
   if (!config) return {};
   const count = config.versions.length;
   return {
-    title: { absolute: `Website-Designs für ${config.branche} — ${count} Versionen | BrandWerkX` },
-    description: `${count} fertige Website-Designs für ${config.branche} im Vergleich. Favorit wählen, individuell angepasst, in 3–5 Werktagen online — ab 490 €.`,
+    title: { absolute: `Website-Designs für ${config.branche} | ${count} Versionen | BrandWerkX` },
+    description: `${count} fertige Website-Designs für ${config.branche} im Vergleich. Favorit wählen, individuell angepasst, in 3 bis 5 Werktagen online, ab 490 €.`,
     // Demo-Seiten mit fiktiven Firmeninhalten: nicht indexieren, Links aber verfolgen.
     robots: { index: false, follow: true },
   };
@@ -53,7 +53,7 @@ export default async function MusterPage({
           border: 0,
         }}
       >
-        Website-Designs für {config.branche} — {config.versions.length} Versionen zum Vergleich
+        Website-Designs für {config.branche}: {config.versions.length} Versionen zum Vergleich
       </h1>
       <MusterShowcase
         kunde={kunde}

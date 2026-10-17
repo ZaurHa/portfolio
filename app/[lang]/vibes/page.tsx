@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return pageMetadata({
     lang,
     path: "/vibes",
-    title: "Serlo – Social Video App",
+    title: "Serlo | Social Video App",
     description:
       "Serlo ist die Social-Video-Plattform mit Video-Feed, Live-Streaming, Geschenken und Coins, Shop, Guilds und Women-Only-Bereich. Im Browser auf serlo.ch oder als App fürs iPhone.",
     noindex: true,
@@ -35,7 +35,7 @@ const iconProps = {
 const features = [
   {
     title: "Video-Feed",
-    desc: "Dein Feed mit kurzen Videos von Creators, denen du folgst – ohne Ablenkung, ohne Ballast.",
+    desc: "Dein Feed mit kurzen Videos von Creators, denen du folgst, ohne Ablenkung, ohne Ballast.",
     icon: (
       <svg {...iconProps}>
         <rect x="3" y="4" width="18" height="16" rx="3" />
@@ -56,7 +56,7 @@ const features = [
   },
   {
     title: "Geschenke & Coins",
-    desc: "Unterstütze Creator direkt im Stream: Coins kaufen, Geschenke senden – und als Creator daran verdienen.",
+    desc: "Unterstütze Creator direkt im Stream: Coins kaufen, Geschenke senden und als Creator daran verdienen.",
     icon: (
       <svg {...iconProps}>
         <rect x="3" y="8" width="18" height="4" rx="1" />
@@ -67,7 +67,7 @@ const features = [
   },
   {
     title: "Shop",
-    desc: "Produkte entdecken und direkt in der App kaufen – der Shop verbindet Inhalte und Einkauf.",
+    desc: "Produkte entdecken und direkt in der App kaufen. Der Shop verbindet Inhalte und Einkauf.",
     icon: (
       <svg {...iconProps}>
         <path d="M5 8h14l-1 12a2 2 0 0 1-2 1.8H8A2 2 0 0 1 6 20L5 8z" />
@@ -89,7 +89,7 @@ const features = [
   },
   {
     title: "Women-Only-Bereich",
-    desc: "Ein geschützter Bereich nur für Frauen – mit eigenem Feed und eigenen Live-Streams, moderiert und sicher.",
+    desc: "Ein geschützter Bereich nur für Frauen, mit eigenem Feed und eigenen Live-Streams, moderiert und sicher.",
     icon: (
       <svg {...iconProps}>
         <path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" />
@@ -112,10 +112,10 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         title={
           <>
             <span className="l">Serlo<span className="c">.</span></span>
-            <span className="sub">Deine Bühne. <i /> <em>Deine Community.</em></span>
+            <span className="sub">Deine Bühne. <i /> <em>Deine Community</em></span>
           </>
         }
-        lead="Serlo ist die Social-Video-Plattform für kurze Videos und Live-Streams – mit Geschenken, Coins, Shop und Guilds. Direkt im Browser auf serlo.ch oder als App fürs iPhone."
+        lead="Serlo ist die Social-Video-Plattform für kurze Videos und Live-Streams, mit Geschenken, Coins, Shop und Guilds. Direkt im Browser auf serlo.ch oder als App fürs iPhone."
         actions={
           <>
             <a href={SERLO_URL} {...external} className="v3-btn v3-btn-accent">
@@ -138,10 +138,10 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head v3-sec-head-sm">
             <span className="num">01 / App</span>
-            <h2 id="h-app">Im Browser. <span className="o">Oder als App.</span></h2>
+            <h2 id="h-app">Im Browser. <span className="o">Oder als App</span></h2>
           </div>
           <article className="v3-case">
-            <a href={SERLO_URL} {...external} className="v3-case-media" aria-label="Serlo – serlo.ch öffnen">
+            <a href={SERLO_URL} {...external} className="v3-case-media" aria-label="Serlo: serlo.ch öffnen">
               <div className="v3-frame v3-frame-static">
                 <div className="bar"><i /><i /><i /><span>serlo.ch</span></div>
                 <div className="img">
@@ -154,9 +154,9 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
                 <span className="v3-chip live">Live</span>
                 <span className="v3-mono">Web · iOS</span>
               </div>
-              <h3 className="v3-case-title">Kein Download nötig.</h3>
+              <h3 className="v3-case-title">Kein Download nötig</h3>
               <p className="v3-case-desc">
-                Serlo läuft als vollwertige Web-App direkt im Browser – auf Handy, Tablet und Desktop.
+                Serlo läuft als vollwertige Web-App direkt im Browser: auf Handy, Tablet und Desktop.
                 Wer lieber eine App nutzt, lädt Serlo aus dem App Store aufs iPhone.
               </p>
               <ul className="v3-plus">
@@ -176,8 +176,8 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">02 / Funktionen</span>
-            <h2 id="h-features">Alles drin für deine <span className="c">Community.</span></h2>
-            <p>Von kurzen Videos bis zum Live-Stream mit Geschenken – Serlo bringt Creator und Community zusammen.</p>
+            <h2 id="h-features">Alles drin für deine <span className="c">Community</span></h2>
+            <p>Von kurzen Videos bis zum Live-Stream mit Geschenken. Serlo bringt Creator und Community zusammen.</p>
           </div>
           <div className="v3-rules v3-rules-3">
             {features.map((f) => (
@@ -195,7 +195,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">03 / Start</span>
-            <h2 id="h-start">Sei dabei auf <span className="c">Serlo.</span></h2>
+            <h2 id="h-start">Sei dabei auf <span className="c">Serlo</span></h2>
             <p>Kostenlos im Browser oder auf dem iPhone.</p>
           </div>
           <div className="v3-cta-row">

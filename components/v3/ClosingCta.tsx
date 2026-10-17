@@ -11,7 +11,7 @@ export default function ClosingCta({ lang, num, ask }: { lang: string; num?: str
           <span className="v3-mono v3-accent-txt">{num ?? (de ? "Kontakt" : "Contact")}</span>
           <span className="v3-mono v3-hide-sm">{de ? "Antwort meist innerhalb 24 h" : "Reply usually within 24 h"}</span>
         </div>
-        <h2 id="h-closing" className="ask">{ask ?? (de ? "Lass uns über deine Website reden." : "Let's talk about your website.")}</h2>
+        <h2 id="h-closing" className="ask">{ask ?? (de ? "Lass uns über deine Website reden" : "Let's talk about your website")}</h2>
         <a href={`tel:${PHONE_TEL}`} className="v3-tel" aria-label={PHONE_DISPLAY}>0172<span>/</span><br className="mbr" />8471641</a>
         <div className="final-row">
           <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">

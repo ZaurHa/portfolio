@@ -118,7 +118,7 @@ export default async function LandingPageRoute({
         <div className="v3-wrap">
           <div className="v3-sec-head v3-sec-head-sm">
             <span className="num">FAQ</span>
-            <h2 id="h-faq">Häufige Fragen.</h2>
+            <h2 id="h-faq">Häufige Fragen</h2>
           </div>
           <Faq label={page.label} items={page.faqs.map((f) => [f.q, f.a] as [string, string])} />
         </div>
@@ -129,7 +129,7 @@ export default async function LandingPageRoute({
           <div className="v3-wrap">
             <div className="v3-sec-head v3-sec-head-sm">
               <span className="num">Weiterlesen</span>
-              <h2 id="h-related">Passende Themen.</h2>
+              <h2 id="h-related">Passende Themen</h2>
             </div>
             <nav className="v3-links" aria-label="Passende Themen">
               {related.map((p) => (
@@ -140,7 +140,7 @@ export default async function LandingPageRoute({
         </section>
       )}
 
-      <ClosingCta lang="de" ask="Lass uns über deine Website reden." />
+      <ClosingCta lang="de" ask="Lass uns über deine Website reden" />
     </div>
   );
 }

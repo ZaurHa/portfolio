@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: true },
-  title: 'Datenschutzerklärung – Siraj Quran',
-  description: 'Datenschutzerklärung für die App Siraj — Quran & Gebetszeiten',
+  title: 'Datenschutzerklärung | Siraj Quran',
+  description: 'Datenschutzerklärung für die App Siraj: Quran & Gebetszeiten',
 };
 
 export default function SirajDatenschutz() {
@@ -14,13 +14,13 @@ export default function SirajDatenschutz() {
           Datenschutzerklärung
         </h1>
         <p className="text-[#8b949e] text-sm mb-12">
-          Siraj — Quran &amp; Gebetszeiten &nbsp;·&nbsp; Zuletzt aktualisiert: März 2026
+          Siraj: Quran &amp; Gebetszeiten &nbsp;·&nbsp; Zuletzt aktualisiert: März 2026
         </p>
 
         <Section title="1. Überblick">
           <p>
             Diese Datenschutzerklärung erläutert, wie die App{' '}
-            <strong className="text-[#e6edf3]">Siraj — Quran &amp; Gebetszeiten</strong>{' '}
+            <strong className="text-[#e6edf3]">Siraj: Quran &amp; Gebetszeiten</strong>{' '}
             mit deinen Daten umgeht. Wir legen größten Wert auf den Schutz deiner Privatsphäre.
           </p>
         </Section>
@@ -80,7 +80,7 @@ export default function SirajDatenschutz() {
           </p>
         </Section>
 
-        <Section title="6. Foto-Bibliothek" badge="Optional">
+        <Section title="6. Fotobibliothek" badge="Optional">
           <p>
             Falls du Inhalte aus deiner Fotobibliothek verwenden möchtest, greift die App nur mit
             deiner ausdrücklichen Erlaubnis darauf zu. Es werden keine Fotos ohne deine Zustimmung
@@ -94,15 +94,15 @@ export default function SirajDatenschutz() {
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
             <li>
-              <strong className="text-[#e6edf3]">api.quran.com</strong> – Quran-Text,
+              <strong className="text-[#e6edf3]">api.quran.com</strong>: Quran-Text,
               Übersetzungen, Tajweed, Rezitationen
             </li>
             <li>
-              <strong className="text-[#e6edf3]">api.alquran.cloud</strong> – Quran-Text &amp;
+              <strong className="text-[#e6edf3]">api.alquran.cloud</strong>: Quran-Text &amp;
               Übersetzungen
             </li>
             <li>
-              <strong className="text-[#e6edf3]">aladhan.com</strong> – Gebetszeitenberechnung
+              <strong className="text-[#e6edf3]">aladhan.com</strong>: Gebetszeitenberechnung
             </li>
           </ul>
           <p className="mt-3">
@@ -149,7 +149,7 @@ export default function SirajDatenschutz() {
 
         <footer className="mt-20 pt-5 border-t border-[#21262d] text-[#484f58] text-sm">
           <p>
-            Siraj — Quran &amp; Gebetszeiten &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp;{' '}
+            Siraj: Quran &amp; Gebetszeiten &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp;{' '}
             <a href="mailto:zaurhatu@gmail.com" className="text-[#57c5b6] hover:underline">
               zaurhatu@gmail.com
             </a>

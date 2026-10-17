@@ -10,8 +10,8 @@ import TileVideoToggle from "../../../components/v3/TileVideoToggle";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return lang === "en"
-    ? pageMetadata({ lang, path: "/projekte", title: "Web Design Projects & References", description: "BrandWerkX references: websites for logistics (MRG, IP Logistik, MH Logistik), moving companies, a DPF workshop and a beauty studio – plus own apps." })
-    : pageMetadata({ lang, path: "/projekte", title: "Webdesign Referenzen & Projekte", description: "Referenzen von BrandWerkX: Websites für Logistik (MRG, IP Logistik, MH Logistik), Umzugsbetriebe, eine DPF-Werkstatt und ein Kosmetikstudio – plus eigene Apps." });
+    ? pageMetadata({ lang, path: "/projekte", title: "Web Design Projects & References", description: "BrandWerkX references: websites for logistics (MRG, IP Logistik, MH Logistik), moving companies, a DPF workshop and a beauty studio, plus own apps." })
+    : pageMetadata({ lang, path: "/projekte", title: "Webdesign Referenzen & Projekte", description: "Referenzen von BrandWerkX: Websites für Logistik (MRG, IP Logistik, MH Logistik), Umzugsbetriebe, eine DPF-Werkstatt und ein Kosmetikstudio, plus eigene Apps." });
 }
 
 type Project = {
@@ -47,8 +47,8 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2024",
       place: "Geretsried",
       desc: de
-        ? "Komplettes Rebranding und neue Website für ein Kosmetikstudio in Geretsried. Strategie, Design und Entwicklung aus einer Hand – mit klarer Übersicht über Behandlungen wie Aquafacial, Microneedling und Lashlifting."
-        : "Complete rebrand and new website for a beauty studio in Geretsried. Strategy, design and development from one source – with a clear overview of treatments such as Aquafacial, microneedling and lash lifting.",
+        ? "Komplettes Rebranding und neue Website für ein Kosmetikstudio in Geretsried. Strategie, Design und Entwicklung aus einer Hand, mit klarer Übersicht über Behandlungen wie Aquafacial, Microneedling und Lashlifting."
+        : "Complete rebrand and new website for a beauty studio in Geretsried. Strategy, design and development from one source, with a clear overview of treatments such as Aquafacial, microneedling and lash lifting.",
       done: de ? ["Logo, Farben, Typografie", "Website mit Leistungen & Preisen", "Lokale SEO-Grundlagen"] : ["Logo, colours, typography", "Website with services & prices", "Local SEO basics"],
       stack: ["Next.js", "TailwindCSS", "Figma"],
       image: "/images/beauty-praxis-mockup.webp",
@@ -81,8 +81,8 @@ function getProjects(de: boolean, lang: string): Project[] {
         { value: de ? "8.223" : "8,223", label: de ? "Impressionen in Google" : "impressions in Google", delta: "+1.374 %" },
       ],
       resultsSource: de
-        ? "Quelle: Google Search Console, 29.06.–27.09.2026 im Vergleich zu den 3 Monaten davor"
-        : "Source: Google Search Console, 29 Jun – 27 Sep 2026 compared with the previous 3 months",
+        ? "Quelle: Google Search Console, 29.06. bis 27.09.2026 im Vergleich zu den 3 Monaten davor"
+        : "Source: Google Search Console, 29 Jun to 27 Sep 2026 compared with the previous 3 months",
       external: true,
       live: true,
     },
@@ -193,9 +193,9 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2026",
       place: de ? "München" : "Munich",
       desc: de
-        ? "Firmen-Website für meinen eigenen Transport- und Umzugsbetrieb – Branding, Leistungen, Ablauf und Kontakt. Hier teste ich selbst, was für Handwerks- und Dienstleistungsbetriebe funktioniert."
-        : "Company website for my own moving and transport business – branding, services, process and contact. This is where I test what works for trade and service businesses.",
-      done: de ? ["Eigenes Branding & Logo", "Mobil-optimiert", "Anfrage per Telefon & WhatsApp"] : ["Own branding & logo", "Mobile-optimised", "Enquiries by phone & WhatsApp"],
+        ? "Firmen-Website für meinen eigenen Transport- und Umzugsbetrieb: Branding, Leistungen, Ablauf und Kontakt. Hier teste ich selbst, was für Handwerks- und Dienstleistungsbetriebe funktioniert."
+        : "Company website for my own moving and transport business: branding, services, process and contact. This is where I test what works for trade and service businesses.",
+      done: de ? ["Eigenes Branding & Logo", "Mobil optimiert", "Anfrage per Telefon & WhatsApp"] : ["Own branding & logo", "Mobile-optimised", "Enquiries by phone & WhatsApp"],
       stack: ["Next.js", "TypeScript", "TailwindCSS"],
       image: "/images/mobilwerk-preview.webp",
       video: "/videos/mobilwerk-hero.mp4",
@@ -213,8 +213,8 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2026",
       place: "App Store",
       desc: de
-        ? "Eigene Social-Media-Plattform mit Video-Feed, Live-Streaming, Geschenken und integriertem Shop – als iOS-App im App Store und als Web-App. Design, Entwicklung und Betrieb komplett aus einer Hand."
-        : "Own social platform with video feed, live streaming, gifts and an integrated shop – as an iOS app on the App Store and as a web app. Design, development and operation in one hand.",
+        ? "Eigene Social-Media-Plattform mit Video-Feed, Live-Streaming, Geschenken und integriertem Shop, als iOS-App im App Store und als Web-App. Design, Entwicklung und Betrieb komplett aus einer Hand."
+        : "Own social platform with video feed, live streaming, gifts and an integrated shop, as an iOS app on the App Store and as a web app. Design, development and operation in one hand.",
       done: de ? ["Live im App Store", "Live-Streaming, Gifts & Shop", "Web-App auf serlo.ch"] : ["Live on the App Store", "Live streaming, gifts & shop", "Web app on serlo.ch"],
       stack: ["React Native", "Next.js", "Supabase", "LiveKit"],
       image: "/images/serlo-preview-2026.webp",
@@ -253,8 +253,8 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2026",
       place: "Beta",
       desc: de
-        ? "Eigene App für Live-Auktionen: Verkäufer gehen live, das Publikum bietet in Echtzeit – der Preis entsteht vor Publikum. Mit Bezahlung über Stripe und eigenen Räumen nur für Frauen. Aktuell im geschlossenen Test."
-        : "Own app for live auctions: sellers go live and the audience bids in real time – the price is set in front of an audience. With payment via Stripe and rooms just for women. Currently in closed beta.",
+        ? "Eigene App für Live-Auktionen: Verkäufer gehen live, das Publikum bietet in Echtzeit. Der Preis entsteht vor Publikum. Mit Bezahlung über Stripe und eigenen Räumen nur für Frauen. Aktuell im geschlossenen Test."
+        : "Own app for live auctions: sellers go live and the audience bids in real time. The price is set in front of an audience. With payment via Stripe and rooms just for women. Currently in closed beta.",
       done: de ? ["Live-Video mit Bieten in Echtzeit", "Bezahlung über Stripe Connect", "Im geschlossenen Test (TestFlight)"] : ["Live video with real-time bidding", "Payment via Stripe Connect", "In closed beta (TestFlight)"],
       stack: ["React Native", "Expo", "Supabase", "Stripe"],
       image: "/images/berkat-preview.webp",
@@ -272,8 +272,8 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2025",
       place: de ? "Vorlage" : "Template",
       desc: de
-        ? "Fertige Website-Designs für Klempner und Sanitärbetriebe in sechs Varianten. Du wählst ein Design, ich passe Logo, Farben und Texte an – ab 490 €, in 3–5 Werktagen online."
-        : "Ready-made website designs for plumbing businesses in six variants. You pick one, I adapt logo, colours and copy – from €490, online in 3–5 working days.",
+        ? "Fertige Website-Designs für Klempner und Sanitärbetriebe in sechs Varianten. Du wählst ein Design, ich passe Logo, Farben und Texte an, ab 490 €, in 3 bis 5 Werktagen online."
+        : "Ready-made website designs for plumbing businesses in six variants. You pick one, I adapt logo, colours and copy, from €490, online in 3 to 5 working days.",
       done: de ? ["6 Designvarianten", "Mobil zuerst gebaut", "Ab 490 € Festpreis"] : ["6 design variants", "Built mobile-first", "From €490 fixed price"],
       stack: ["HTML", "CSS", "SEO"],
       image: "/images/klempner-preview.webp",
@@ -298,17 +298,17 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
         meta={de ? "Projekte · Referenzen" : "Projects · References"}
         metaRight={<b>{de ? `${count} Projekte · seit 2024` : `${count} projects · since 2024`}</b>}
         title={de
-          ? <><span className="l">Gebaut.</span><span className="l"><span className="c">Live.</span> <span className="o">Im Einsatz.</span></span></>
-          : <><span className="l">Built.</span><span className="l"><span className="c">Live.</span> <span className="o">In use.</span></span></>}
+          ? <><span className="l">Gebaut.</span><span className="l"><span className="c">Live.</span> <span className="o">Im Einsatz</span></span></>
+          : <><span className="l">Built.</span><span className="l"><span className="c">Live.</span> <span className="o">In use</span></span></>}
         lead={de
-          ? "Vom Kosmetikstudio und der DPF-Werkstatt in Geretsried bis zur Logistik in Hamburg und Ostwestfalen: Jede Website ist auf den Betrieb und seine Kunden zugeschnitten – und läuft im echten Alltag."
-          : "From a beauty studio and a DPF workshop in Geretsried to logistics in Hamburg and East Westphalia: every website is built around the business and its customers – and runs in real day-to-day use."}
+          ? "Vom Kosmetikstudio und der DPF-Werkstatt in Geretsried bis zur Logistik in Hamburg und Ostwestfalen: Jede Website ist auf den Betrieb und seine Kunden zugeschnitten und läuft im echten Alltag."
+          : "From a beauty studio and a DPF workshop in Geretsried to logistics in Hamburg and East Westphalia: every website is built around the business and its customers and runs in real day-to-day use."}
         actions={<Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{de ? "Eigenes Projekt starten" : "Start your project"} <span className="arr" aria-hidden="true">→</span></Link>}
         facts={[
           { label: de ? "Projekte" : "Projects", value: count },
           { label: de ? "Branchen" : "Industries", value: de ? "Logistik · Umzug · Werkstatt · Kosmetik · Apps" : "Logistics · Moving · Workshop · Beauty · Apps" },
           { label: de ? "Dabei seit" : "Since", value: "2024" },
-          { label: de ? "Ansprechpartner" : "Contact", value: de ? "Einer – von Anfang bis Ende" : "One – start to finish" },
+          { label: de ? "Ansprechpartner" : "Contact", value: de ? "Einer von Anfang bis Ende" : "One from start to finish" },
         ]}
       />
 
@@ -334,7 +334,7 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
                   href={p.href}
                   className="v3-case-media"
                   {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  aria-label={`${p.title} – ${p.cta}`}
+                  aria-label={`${p.title}, ${p.cta}`}
                 >
                   {frame}
                 </Link>

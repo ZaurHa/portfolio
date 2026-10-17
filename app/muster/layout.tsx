@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   ...baseMetadata,
   title: "Website-Designs für Handwerker & Studios",
   description:
-    "Fertige Website-Designs zum Festpreis: Klempner, Elektriker, Kosmetikstudios. Mehrere Versionen vergleichen, Favorit wählen – in 3–5 Werktagen online, ab 490 €.",
+    "Fertige Website-Designs zum Festpreis: Klempner, Elektriker, Kosmetikstudios. Mehrere Versionen vergleichen, Favorit wählen. In 3 bis 5 Werktagen online, ab 490 €.",
   alternates: {
     canonical: "https://brandwerkx.de/muster",
   },

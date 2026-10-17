@@ -40,7 +40,7 @@ export const fontClassName = `${inter.variable} ${interTight.variable} ${jetbrai
 export const baseMetadata: Metadata = {
   metadataBase: new URL('https://brandwerkx.de'),
   title: {
-    default: "Webdesign Geretsried & München – Website ab 490 € | BrandWerkX",
+    default: "Webdesign Geretsried & München | Website ab 490 € | BrandWerkX",
     template: "%s | BrandWerkX",
   },
   description: "Website erstellen lassen ab 490 €: Webdesign aus Geretsried für Handwerker und kleine Betriebe in München und dem Oberland. In 5 Tagen live, SEO inklusive.",
@@ -84,7 +84,7 @@ export const jsonLd = {
       "@id": `${SITE}/#business`,
       "name": "BrandWerkX",
       "alternateName": "BrandWerkX Webdesign",
-      "description": "Webdesign und Webentwicklung für Handwerker, Selbstständige und kleine Unternehmen — Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
+      "description": "Webdesign und Webentwicklung für Handwerker, Selbstständige und kleine Unternehmen: Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
       "url": SITE,
       "logo": `${SITE}/images/brandwerkxweiss.webp`,
       "image": `${SITE}/og.png`,
@@ -124,13 +124,13 @@ export const jsonLd = {
           {
             "@type": "Offer",
             "name": "Muster-Website",
-            "description": "Fertiges Website-Design individuell angepasst — mit Logo, Texten, Kontaktformular und SEO. Fertig in 3–5 Werktagen.",
+            "description": "Fertiges Website-Design individuell angepasst, mit Logo, Texten, Kontaktformular und SEO. Fertig in 3 bis 5 Werktagen.",
             "priceSpecification": { "@type": "PriceSpecification", "minPrice": 490, "priceCurrency": "EUR" }
           },
           {
             "@type": "Offer",
             "name": "Custom Website",
-            "description": "Individuell gestaltete Website nach Kundenwunsch — SEO-optimiert, mobile-first.",
+            "description": "Individuell gestaltete Website nach Kundenwunsch: SEO-optimiert, mobile-first.",
             "priceSpecification": { "@type": "PriceSpecification", "minPrice": 990, "priceCurrency": "EUR" }
           },
           {

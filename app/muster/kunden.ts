@@ -29,37 +29,37 @@ export const kundenConfig: Record<string, KundenConfig> = {
     versions: [
       {
         id: "v1",
-        label: "Version 1 — Warm & Serif",
+        label: "Version 1: Warm & Serif",
         description: "Warme Creme- und Kupfertöne mit eleganter Serifen-Typografie. Traditionell und vertrauenswürdig.",
         src: "/muster/klempner/v1.html",
       },
       {
         id: "v2",
-        label: "Version 2 — Modern Dark",
+        label: "Version 2: Modern Dark",
         description: "Dunkles Navy mit leuchtenden Akzenten. Stripe-inspiriert, auffällig.",
         src: "/muster/klempner/v2.html",
       },
       {
         id: "v3",
-        label: "Version 3 — Editorial Grün",
-        description: "Dunkelgrün mit klassischer Serif — ruhig, edel, maximal seriös.",
+        label: "Version 3: Editorial Grün",
+        description: "Dunkelgrün mit klassischer Serif: ruhig, edel, maximal seriös.",
         src: "/muster/klempner/v3.html",
       },
       {
         id: "v4",
-        label: "Version 4 — Brutalist",
+        label: "Version 4: Brutalist",
         description: "Weiß mit Signal-Orange und Mono-Typografie. Direkt, technisch, unverwechselbar.",
         src: "/muster/klempner/v4.html",
       },
       {
         id: "v5",
-        label: "Version 5 — Bold Dark",
+        label: "Version 5: Bold Dark",
         description: "Dunkel mit kräftigem Orange, fette Condensed-Typografie. Maximal auffällig.",
         src: "/muster/klempner/v5.html",
       },
       {
         id: "final",
-        label: "Version 6 — SEO Final",
+        label: "Version 6: SEO Final",
         description: "Beste Version: Klassisch in Blau & Weiß, SEO-optimiert, München & Umland, FAQ, Schema.org.",
         tag: "Empfohlen",
         src: "/muster/klempner/final.html",
@@ -76,19 +76,19 @@ export const kundenConfig: Record<string, KundenConfig> = {
     versions: [
       {
         id: "v1",
-        label: "Version 1 — Bold Gelb",
+        label: "Version 1: Bold Gelb",
         description: "Schwarz mit gelben Akzenten und riesiger Typografie. Auffällig und selbstbewusst.",
         src: "/muster/elektriker/v1.html",
       },
       {
         id: "v2",
-        label: "Version 2 — Klassisch Blau",
+        label: "Version 2: Klassisch Blau",
         description: "Hell und seriös mit blauem Leistungs-Panel. Vertrauen auf den ersten Blick.",
         src: "/muster/elektriker/v2.html",
       },
       {
         id: "v3",
-        label: "Version 3 — Poster Orange",
+        label: "Version 3: Poster Orange",
         description: "Dunkel mit Signal-Orange und Plakat-Typografie. Modern und markant.",
         tag: "Empfohlen",
         src: "/muster/elektriker/v3.html",
@@ -105,19 +105,19 @@ export const kundenConfig: Record<string, KundenConfig> = {
     versions: [
       {
         id: "v1",
-        label: "Version 1 — Rose & Cream",
+        label: "Version 1: Rose & Cream",
         description: "Warm, feminin, einladend. Rosa Akzente auf cremefarbenem Hintergrund.",
         src: "/muster/kosmetik/v1.html",
       },
       {
         id: "v2",
-        label: "Version 2 — Luxury Dark",
-        description: "Schwarz mit Goldakzenten — premium und exklusiv.",
+        label: "Version 2: Luxury Dark",
+        description: "Schwarz mit Goldakzenten: premium und exklusiv.",
         src: "/muster/kosmetik/v2.html",
       },
       {
         id: "v3",
-        label: "Version 3 — Modern Minimal",
+        label: "Version 3: Modern Minimal",
         description: "Sauber, hell, modern. Mit Bewertungen und vollständiger Preisliste.",
         tag: "Empfohlen",
         src: "/muster/kosmetik/v3.html",

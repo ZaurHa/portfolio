@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   if (lang !== "en") return baseMetadata;
   return {
     ...baseMetadata,
-    title: { default: "Web Design Geretsried & Munich – Website from €490 | BrandWerkX", template: "%s | BrandWerkX" },
+    title: { default: "Web Design Geretsried & Munich | Website from €490 | BrandWerkX", template: "%s | BrandWerkX" },
     description: "Websites that win clients: web design from Geretsried near Munich for tradespeople and small businesses. Fixed price from €490.",
   };
 }
