@@ -227,6 +227,26 @@ function getProjects(de: boolean, lang: string): Project[] {
       live: true,
     },
     {
+      slug: "mogashal",
+      title: "Mogashal",
+      kind: de ? "Eigene Plattform · Medizin" : "Own platform · Medicine",
+      year: "2026",
+      place: de ? "Online" : "Online",
+      desc: de
+        ? "Eigenes Fachnetzwerk nur für geprüfte Ärztinnen und Ärzte: Fachgruppen und anonyme Fallbesprechungen, eine Wissensbibliothek mit Fachprüfern, Hilfe bei Medikamenten-Engpässen und Videoanrufe unter Kollegen. Auf Deutsch, Russisch und Englisch, kostenlos und ohne Werbung."
+        : "Own professional network for verified doctors only: specialty groups and anonymous case discussions, a knowledge library reviewed by specialists, help with drug shortages and video calls between colleagues. In German, Russian and English, free and without ads.",
+      done: de ? ["Nur geprüfte Ärztinnen und Ärzte", "Deutsch, Russisch und Englisch", "Web-App, Daten in Frankfurt"] : ["Verified doctors only", "German, Russian and English", "Web app, data hosted in Frankfurt"],
+      stack: ["React Native", "Expo", "Supabase", "Cloudflare"],
+      image: "/images/mogashal-preview.webp",
+      video: "/videos/mogashal-hero.mp4",
+      alt: de ? "Website des Ärzte-Netzwerks Mogashal" : "Website of the doctors' network Mogashal",
+      bar: "mogashal.com",
+      href: "https://mogashal.com",
+      cta: de ? "mogashal.com ansehen" : "View mogashal.com",
+      external: true,
+      live: true,
+    },
+    {
       slug: "berkat",
       title: "Berkat",
       kind: de ? "Eigene App · Live-Auktionen" : "Own app · Live auctions",
