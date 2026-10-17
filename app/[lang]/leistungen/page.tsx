@@ -126,7 +126,7 @@ export default async function Leistungen({ params }: { params: Promise<{ lang: s
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">02 / {de ? "Vergleich" : "Compare"}</span>
-            <h2 id="h-vergleich">{de ? <>Was genau<br /><span className="o">drin ist.</span></> : <>What exactly<br /><span className="o">is included.</span></>}</h2>
+            <h2 id="h-vergleich">{de ? <>Was genau<br /><span className="o">drin ist</span></> : <>What exactly<br /><span className="o">is included</span></>}</h2>
             <p>{de ? "Alle Leistungen auf einen Blick, damit du weißt, was du bekommst." : "Everything at a glance, so you know what you get."}</p>
           </div>
           <div className="v3-compare-wrap">
@@ -151,7 +151,7 @@ export default async function Leistungen({ params }: { params: Promise<{ lang: s
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">03 / Extras</span>
-            <h2 id="h-extras">{de ? <>Mehr<br /><span className="c">herausholen.</span></> : <>Get<br /><span className="c">more out.</span></>}</h2>
+            <h2 id="h-extras">{de ? <>Mehr<br /><span className="c">herausholen</span></> : <>Get<br /><span className="c">more out</span></>}</h2>
             <p>{de ? "Einzeln buchbar: zu jeder Website, auch zu bestehenden." : "Bookable separately: for any website, including existing ones."}</p>
           </div>
           <div className="v3-extra-list">
@@ -181,7 +181,7 @@ export default async function Leistungen({ params }: { params: Promise<{ lang: s
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">05 / FAQ</span>
-            <h2 id="h-faq">{de ? "Häufige Fragen." : "Common questions."}</h2>
+            <h2 id="h-faq">{de ? "Häufige Fragen" : "Common questions"}</h2>
           </div>
           <Faq label={c.faq.label} items={faq} jsonLd />
           {de && (

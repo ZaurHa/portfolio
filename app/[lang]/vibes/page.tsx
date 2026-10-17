@@ -138,7 +138,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head v3-sec-head-sm">
             <span className="num">01 / App</span>
-            <h2 id="h-app">Im Browser. <span className="o">Oder als App.</span></h2>
+            <h2 id="h-app">Im Browser. <span className="o">Oder als App</span></h2>
           </div>
           <article className="v3-case">
             <a href={SERLO_URL} {...external} className="v3-case-media" aria-label="Serlo: serlo.ch öffnen">
@@ -154,7 +154,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
                 <span className="v3-chip live">Live</span>
                 <span className="v3-mono">Web · iOS</span>
               </div>
-              <h3 className="v3-case-title">Kein Download nötig.</h3>
+              <h3 className="v3-case-title">Kein Download nötig</h3>
               <p className="v3-case-desc">
                 Serlo läuft als vollwertige Web-App direkt im Browser: auf Handy, Tablet und Desktop.
                 Wer lieber eine App nutzt, lädt Serlo aus dem App Store aufs iPhone.
@@ -176,7 +176,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">02 / Funktionen</span>
-            <h2 id="h-features">Alles drin für deine <span className="c">Community.</span></h2>
+            <h2 id="h-features">Alles drin für deine <span className="c">Community</span></h2>
             <p>Von kurzen Videos bis zum Live-Stream mit Geschenken. Serlo bringt Creator und Community zusammen.</p>
           </div>
           <div className="v3-rules v3-rules-3">
@@ -195,7 +195,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">03 / Start</span>
-            <h2 id="h-start">Sei dabei auf <span className="c">Serlo.</span></h2>
+            <h2 id="h-start">Sei dabei auf <span className="c">Serlo</span></h2>
             <p>Kostenlos im Browser oder auf dem iPhone.</p>
           </div>
           <div className="v3-cta-row">

@@ -19,8 +19,8 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
     ? [
         ["Festpreis vorab", "Du weißt vor dem Start, was es kostet. Kein Stundenzettel, keine Überraschung."],
         ["Direkter Draht", "Du sprichst immer mit mir: per Telefon, WhatsApp, Mail oder auf Wunsch persönlich bei dir im Betrieb. Kein Callcenter, kein Projektmanager dazwischen."],
-        ["Schnell online", "Muster-Websites in 3–5 Werktagen. Weil ein Betrieb nicht monatelang auf seine Website warten sollte."],
-        ["Gefunden werden", "Saubere Technik, klare Texte und lokale Signale – damit Kunden dich finden, wenn sie suchen."],
+        ["Schnell online", "Muster-Websites in 3 bis 5 Werktagen. Weil ein Betrieb nicht monatelang auf seine Website warten sollte."],
+        ["Gefunden werden", "Saubere Technik, klare Texte und lokale Signale, damit Kunden dich finden, wenn sie suchen."],
       ]
     : [
         ["Fixed price upfront", "You know the cost before we start. No timesheets, no surprises."],
@@ -60,7 +60,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
       <section className="v3-hero v3-page-hero">
         <div className="v3-wrap">
           <div className="v3-hero-top v3-rise">
-            <span className="v3-mono"><span className="v3-dot" />{de ? "Über mich · Geretsried" : "About · Geretsried"}</span>
+            <span className="v3-mono"><span className="v3-dot" />{de ? "Über mich" : "About"}</span>
             <span className="v3-mono v3-hide-sm"><b>{de ? "Webdesigner & Entwickler" : "Web designer & developer"}</b></span>
           </div>
           <div className="v3-about-hero">
@@ -70,7 +70,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
                 <span className="l"><span className="o">Hatuev</span></span>
               </h1>
               <p className="v3-about-claim v3-rise d2">
-                {de ? <>Kein Agentur-Pingpong. <em>Ein Ansprechpartner</em>, vom ersten Anruf bis zur fertigen Seite.</> : <>No agency ping-pong. <em>One point of contact</em>, from the first call to the finished site.</>}
+                {de ? <>Kein Agentur-Pingpong. <em>Ein Ansprechpartner</em>, vom ersten Anruf bis zur fertigen Seite</> : <>No agency ping-pong. <em>One point of contact</em>, from the first call to the finished site</>}
               </p>
               <p className="v3-lead v3-rise d2">
                 {de
@@ -84,12 +84,11 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
               </div>
             </div>
             <figure className="v3-portrait v3-rise d2">
-              <Image src="/images/zaur-portrait-2026.webp" alt={de ? "Zaur Hatuev – Webdesigner aus Geretsried" : "Zaur Hatuev – web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
-              <figcaption><span>Zaur Hatuev</span><span>Geretsried</span></figcaption>
+              <Image src="/images/zaur-portrait-2026.webp" alt={de ? "Zaur Hatuev, Webdesigner aus Geretsried" : "Zaur Hatuev, web designer from Geretsried"} fill sizes="(max-width: 960px) 100vw, 40vw" priority />
+              <figcaption><span>Zaur Hatuev</span><span>BrandWerkX</span></figcaption>
             </figure>
           </div>
-          <div className="v3-facts v3-rise d3">
-            <div><span className="v3-mono">{de ? "Standort" : "Based in"}</span><span className="v">Geretsried</span></div>
+          <div className="v3-facts v3-facts-3 v3-rise d3">
             <div><span className="v3-mono">{de ? "Servicegebiet" : "Service area"}</span><span className="v">{de ? "München & Oberland" : "Munich & Oberland"}</span></div>
             <div><span className="v3-mono">{de ? "Sprachen" : "Languages"}</span><span className="v">{de ? "Deutsch · Englisch · Russisch" : "German · English · Russian"}</span></div>
             <div><span className="v3-mono">{de ? "Zusammenarbeit" : "Working"}</span><span className="v">{de ? "Vor Ort & digital" : "On-site & remote"}</span></div>
@@ -101,7 +100,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">01 / {de ? "Arbeitsweise" : "How I work"}</span>
-            <h2 id="h-prinzip">{de ? <>Vier Regeln.<br /><span className="o">Keine</span> Ausnahmen.</> : <>Four rules.<br /><span className="o">No</span> exceptions.</>}</h2>
+            <h2 id="h-prinzip">{de ? <>Vier Regeln.<br /><span className="o">Keine</span> Ausnahmen</> : <>Four rules.<br /><span className="o">No</span> exceptions</>}</h2>
             <p>{de ? "So arbeite ich mit jedem Betrieb, egal ob Muster-Website oder individuelles Projekt." : "This is how I work with every business: template website or custom project."}</p>
           </div>
           <div className="v3-rules">
@@ -120,7 +119,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">02 / {de ? "Was ich mitbringe" : "What I bring"}</span>
-            <h2 id="h-skills">{de ? <>Design, Code<br />und <span className="c">SEO.</span></> : <>Design, code<br />and <span className="c">SEO.</span></>}</h2>
+            <h2 id="h-skills">{de ? <>Design, Code<br />und <span className="c">SEO</span></> : <>Design, code<br />and <span className="c">SEO</span></>}</h2>
             <p>{de ? "Alles, was eine Website braucht. Aus einer Hand." : "Everything a website needs. From one source."}</p>
           </div>
           <div className="v3-extras v3-extras-top">
@@ -139,7 +138,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">03 / {de ? "Eigene Projekte" : "Own projects"}</span>
-            <h2 id="h-proof">{de ? <>Ich baue auch<br /><span className="o">für mich selbst.</span></> : <>I also build<br /><span className="o">for myself.</span></>}</h2>
+            <h2 id="h-proof">{de ? <>Ich baue auch<br /><span className="o">für mich selbst</span></> : <>I also build<br /><span className="o">for myself</span></>}</h2>
             <p>{de ? "Mit Mobilwerk, der Social-App Serlo, dem Ärzte-Netzwerk Mogashal und der Live-Auktions-App Berkat betreibe ich eigene Projekte. Was dort funktioniert, kommt deinem Betrieb zugute." : "With Mobilwerk, the social app Serlo, the doctors' network Mogashal and the live auction app Berkat I run my own projects. What works there benefits your business."}</p>
           </div>
           <div className="v3-bento v3-bento-2">
@@ -157,13 +156,13 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
             </a>
             <a href="https://berkat-live.pages.dev" target="_blank" rel="noopener noreferrer" className="v3-tile">
               <figure><Image src="/images/berkat-preview.webp" alt={de ? "Die Live-Auktions-App Berkat auf dem iPhone" : "The live auction app Berkat on an iPhone"} fill sizes="(max-width: 860px) 100vw, 50vw" /><span className="tag">Beta</span></figure>
-              <div className="meta"><div><h3>Berkat</h3><p>{de ? "Live-Auktionen – im geschlossenen Test" : "Live auctions – in closed beta"}</p></div><span className="n">↗</span></div>
+              <div className="meta"><div><h3>Berkat</h3><p>{de ? "Live-Auktionen, im geschlossenen Test" : "Live auctions, in closed beta"}</p></div><span className="n">↗</span></div>
             </a>
           </div>
         </div>
       </section>
 
-      <ClosingCta lang={lang} ask={de ? "Lass uns kennenlernen." : "Let's get to know each other."} />
+      <ClosingCta lang={lang} ask={de ? "Lass uns kennenlernen" : "Let's get to know each other"} />
     </div>
   );
 }

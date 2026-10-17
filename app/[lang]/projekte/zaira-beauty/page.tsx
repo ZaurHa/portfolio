@@ -99,7 +99,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">01 / {de ? "Ausgangslage" : "Starting point"}</span>
-            <h2 id="h-z-ausgang">{de ? <>Treue Kundinnen.<br /><span className="o">Keine</span> Online-Präsenz.</> : <>Loyal clients.<br /><span className="o">No</span> online presence.</>}</h2>
+            <h2 id="h-z-ausgang">{de ? <>Treue Kundinnen.<br /><span className="o">Keine</span> Online-Präsenz</> : <>Loyal clients.<br /><span className="o">No</span> online presence</>}</h2>
             <p>{de ? "Das Studio hatte treue Stammkundinnen, aber keinen professionellen Auftritt im Netz." : "The studio had loyal regulars, but no professional presence online."}</p>
           </div>
           <div className="v3-two">
@@ -119,7 +119,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">02 / {de ? "Das Studio" : "The studio"}</span>
-            <h2 id="h-z-studio">{de ? <>Behandlungen,<br />die <span className="c">man versteht.</span></> : <>Treatments<br />people <span className="c">understand.</span></>}</h2>
+            <h2 id="h-z-studio">{de ? <>Behandlungen,<br />die <span className="c">man versteht</span></> : <>Treatments<br />people <span className="c">understand</span></>}</h2>
             <p>{de ? "Die Website zeigt das Angebot so, dass Kundinnen sofort wissen, was sie erwartet." : "The website presents the offer so clients know straight away what to expect."}</p>
           </div>
           <div className="v3-treatments">
@@ -134,7 +134,7 @@ export default async function ZairaBeautyCaseStudy({ params }: { params: Promise
         <div className="v3-wrap">
           <div className="v3-sec-head">
             <span className="num">03 / {de ? "Vorgehen" : "Process"}</span>
-            <h2 id="h-z-ablauf">{de ? <>Vom Gespräch<br />zum <span className="o">Launch.</span></> : <>From first call<br />to <span className="o">launch.</span></>}</h2>
+            <h2 id="h-z-ablauf">{de ? <>Vom Gespräch<br />zum <span className="o">Launch</span></> : <>From first call<br />to <span className="o">launch</span></>}</h2>
             <p />
           </div>
           <ol className="v3-steps">

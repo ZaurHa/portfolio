@@ -30,6 +30,8 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 - **Favicon und App-Icons:** `app/favicon.ico` (16/32/48), `app/icon.png` (192), `app/apple-icon.png` (180). Monogramm „BX“ in Inter Tight 800 (variable WOFF2 aus dem Build, Achse `wght` = 800), Laufweite −0,03 em, B `#eeefee`, X `#00ffe7`, Grund `#0a0b0a`.
 - **Vorschau und Deploy:** Jeder gepushte Branch bekommt bei Cloudflare eine Vorschau unter `https://<branch, gekürzt>.portfolio-dcp.pages.dev` (dieser hier: `claude-nifty-chebyshev-dddfa.portfolio-dcp.pages.dev`). Ein Merge nach `main` ist nach wenigen Minuten live. Vercel ist noch mit zwei Projekten (`portfolio`, `portfolio-1lqq`) verbunden und baut jeden PR mit. Das ist unnötig, schadet aber nicht, weil die Canonicals auf `https://brandwerkx.de` zeigen.
 
+- **Textregeln (Zaur):** Überschriften enden nie mit einem Punkt (Punkte mitten im Titel sind erlaubt), keine Gedankenstriche (– —) im sichtbaren Text, stattdessen Punkt, Komma, Doppelpunkt oder „3 bis 5“. Porträt bewusst klein (max. 300 px, mobil 240 px), kein „Standort Geretsried“ in den Angaben. Prüfen nach `npm run build`: Überschriften `h1` bis `h3` in `out/**/*.html` auf Schlusspunkt und den Text auf – und — durchsuchen.
+
 ## Stolperfallen
 
 - **Repo im iCloud-Schreibtisch** (`~/Desktop/portfolio-main`): iCloud lagert Dateien aus (am 07.10. rund 31.000 Dateien in `node_modules`) und legt Konfliktkopien mit „ 2“ an, auch im `.git`. Dann hängen `next dev` und `next lint`, und `git fetch` bricht ab. **Empfehlung: wie MH und IP am 03.10. nach `~/Projekte/` umziehen** und dort neu `npm ci`. Behelf am 07.10.: Pakete per `npm ci --prefer-offline` nach `/tmp/bwx-deps`, Worktree per rsync nach `/tmp/bwx-verify` gespiegelt und dort gebaut.

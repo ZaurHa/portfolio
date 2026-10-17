@@ -216,7 +216,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <div className="v3-wrap">
             <div className="v3-sec-head">
               <span className="num">Für dich</span>
-              <h2 id="h-fuer-dich">Deine Branche.<br /><span className="o">Deine</span>{" Region."}</h2>
+              <h2 id="h-fuer-dich">Deine Branche.<br /><span className="o">Deine</span>{" Region"}</h2>
               <p>Websites für Handwerk, Kosmetik und Logistik in Geretsried, im Oberland und in München.</p>
             </div>
             <nav className="v3-links" aria-label="Webdesign nach Branche und Region">

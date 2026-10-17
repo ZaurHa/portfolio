@@ -405,7 +405,7 @@ export const landingPages: LandingPage[] = [
     eyebrow: 'Webdesign München',
     h1: 'Webdesign für München: Websites für kleine Unternehmen',
     intro:
-      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München — ab 490 €. Wir sprechen per Telefon, Video oder WhatsApp, auf Wunsch auch persönlich bei dir im Betrieb. Das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
+      'BrandWerkX baut Websites für Selbstständige, Handwerker und kleine Unternehmen in München, ab 490 €. Wir sprechen per Telefon, Video oder WhatsApp, auf Wunsch auch persönlich bei dir im Betrieb. Das hält Preis und Aufwand niedrig. Mein Sitz ist Geretsried, rund 30 Kilometer südlich von München.',
     sections: [
       {
         title: 'Warum nicht die große Agentur',

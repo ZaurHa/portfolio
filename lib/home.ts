@@ -238,7 +238,7 @@ export function getHomeContent(lang: Locale) {
       title: de ? 'Arbeitsauftrag' : 'Work order',
       rows: [
         [de ? 'Leistung' : 'Service', de ? 'Muster-Website, an dich angepasst' : 'Template website, adapted to you'],
-        [de ? 'Lieferzeit' : 'Delivery', de ? '3–5 Werktage' : '3–5 working days'],
+        [de ? 'Lieferzeit' : 'Delivery', de ? '3 bis 5 Werktage' : '3 to 5 working days'],
         [de ? 'Ort' : 'Area', de ? 'Geretsried · München & Oberland · vor Ort oder digital' : 'Geretsried · Munich & Oberland · on-site or remote'],
         [de ? 'Inklusive' : 'Included', de ? 'Domain & Hosting im 1. Jahr' : 'Domain & hosting in year one'],
         [de ? 'Antwort' : 'Reply', de ? 'meist innerhalb 24 h' : 'usually within 24 h'],
@@ -256,7 +256,7 @@ export function getHomeContent(lang: Locale) {
       num: de ? '01 / Projekte' : '01 / Projects',
       h1: de ? 'Echte Betriebe.' : 'Real businesses.',
       h2o: de ? 'Echte' : 'Real',
-      h2: de ? 'Websites.' : 'websites.',
+      h2: de ? 'Websites' : 'websites',
       text: de
         ? 'Vom Kosmetikstudio bis zur Spedition: Jede Seite ist auf den Betrieb und seine Kunden zugeschnitten.'
         : 'From beauty studio to haulier: every site is built around the business and its customers.',
@@ -268,7 +268,7 @@ export function getHomeContent(lang: Locale) {
       num: de ? '02 / Leistungen' : '02 / Services',
       h1: de ? 'Ein Festpreis.' : 'One fixed price.',
       hc: de ? 'Keine' : 'No',
-      h2: de ? 'Überraschungen.' : 'surprises.',
+      h2: de ? 'Überraschungen' : 'surprises',
       text: de
         ? 'Endpreise nach § 19 UStG, keine Umsatzsteuer obendrauf. Domain & Hosting im 1. Jahr inklusive.'
         : 'Final prices under § 19 UStG (German small business rule), no VAT on top. Domain & hosting included in year one.',
@@ -290,7 +290,7 @@ export function getHomeContent(lang: Locale) {
       num: de ? '03 / Ablauf' : '03 / Process',
       h1: de ? 'Vier Schritte' : 'Four steps',
       h2: de ? 'bis' : 'to',
-      h2o: de ? 'online.' : 'online.',
+      h2o: de ? 'online' : 'online',
       text: de
         ? 'Du lieferst die Infos, ich den Rest. Wir sprechen per Telefon, WhatsApp oder persönlich bei dir vor Ort, ganz wie es dir passt.'
         : 'You send the info, I do the rest. We talk by phone, WhatsApp or in person at your business, whatever suits you.',
@@ -310,22 +310,22 @@ export function getHomeContent(lang: Locale) {
     },
     about: {
       num: de ? '04 / Über mich' : '04 / About',
-      caption: ['Zaur Hatuev', 'Geretsried'],
+      caption: ['Zaur Hatuev', 'BrandWerkX'],
       big1: de ? 'Kein Agentur-Pingpong.' : 'No agency ping-pong.',
       bigEm: de ? 'Ein Ansprechpartner' : 'One point of contact',
-      big2: de ? ', vom ersten Anruf bis zur fertigen Seite.' : ', from the first call to the finished site.',
+      big2: de ? ', vom ersten Anruf bis zur fertigen Seite' : ', from the first call to the finished site',
       text: de
         ? 'Ich bin Zaur Hatuev, Webdesigner und Entwickler aus Geretsried. Ich baue Websites für Betriebe, die keine Zeit für Webdesign haben, und betreibe mit Mobilwerk selbst einen. Ich weiß also, worauf es ankommt: schnell online, gut gefunden werden, Anfragen bekommen.'
         : "I'm Zaur Hatuev, a web designer and developer from Geretsried. I build websites for businesses that have no time for web design, and run one myself, Mobilwerk. So I know what matters: online fast, easy to find, getting enquiries.",
       kv: (de
-        ? [['Standort', 'Geretsried'], ['Servicegebiet', 'München & Oberland'], ['Zusammenarbeit', 'Vor Ort & digital']]
-        : [['Based in', 'Geretsried'], ['Service area', 'Munich & Oberland'], ['Working', 'On-site & remote']]) as [string, string][],
+        ? [['Servicegebiet', 'München & Oberland'], ['Zusammenarbeit', 'Vor Ort & digital']]
+        : [['Service area', 'Munich & Oberland'], ['Working', 'On-site & remote']]) as [string, string][],
       more: de ? 'Mehr über mich' : 'More about me',
     },
     quotes: {
       num: de ? '05 / Kundenstimmen' : '05 / Testimonials',
       h1: de ? 'Was Kunden' : 'What clients',
-      h2o: de ? 'sagen.' : 'say.',
+      h2o: de ? 'sagen' : 'say',
       items: [
         {
           src: de ? '01 · Kosmetik' : '01 · Beauty',
@@ -348,7 +348,7 @@ export function getHomeContent(lang: Locale) {
     faq: {
       num: '06 / FAQ',
       h1: de ? 'Kurz' : 'Quick',
-      h2o: de ? 'gefragt.' : 'answers.',
+      h2o: de ? 'gefragt' : 'answers',
       label: de ? 'Häufige Fragen' : 'Common questions',
       items: (de
         ? [
@@ -367,7 +367,7 @@ export function getHomeContent(lang: Locale) {
     final: {
       num: de ? '07 / Kontakt' : '07 / Contact',
       meta: de ? 'Antwort meist innerhalb 24 h' : 'Reply usually within 24 h',
-      ask: de ? 'Lass uns über deine Website reden.' : "Let's talk about your website.",
+      ask: de ? 'Lass uns über deine Website reden' : "Let's talk about your website",
       cta: de ? 'Erstgespräch anfragen' : 'Request a call',
       place: de ? 'Geretsried · München & Oberland' : 'Geretsried · Munich & Oberland',
     },

@@ -54,7 +54,7 @@ export default async function WebdesignHub({ params }: { params: Promise<{ lang:
           <div className="v3-wrap">
             <div className="v3-sec-head v3-sec-head-sm">
               <span className="num">{String(i + 1).padStart(2, "0")} / {KIND_LABEL[kind]}</span>
-              <h2 id={`h-${kind}`}>{KIND_LABEL[kind]}.</h2>
+              <h2 id={`h-${kind}`}>{KIND_LABEL[kind]}</h2>
             </div>
             <nav className="v3-links v3-links-desc" aria-label={KIND_LABEL[kind]}>
               {landingPages.filter((p) => p.kind === kind).map((p) => (
