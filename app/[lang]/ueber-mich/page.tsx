@@ -148,7 +148,7 @@ export default async function UeberMich({ params }: { params: Promise<{ lang: st
               <div className="meta"><div><h3>Mobilwerk</h3><p>{de ? "Transport & Umzug" : "Moving & transport"}</p></div><span className="n">↗</span></div>
             </a>
             <a href="https://serlo.ch" target="_blank" rel="noopener noreferrer" className="v3-tile">
-              <figure><Image src="/images/serlo-preview.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /><span className="tag live">{de ? "Im App Store" : "On the App Store"}</span></figure>
+              <figure><Image src="/images/serlo-preview-2026.webp" alt={de ? "Social-App Serlo" : "Serlo social app"} fill sizes="(max-width: 860px) 100vw, 50vw" /><span className="tag live">{de ? "Im App Store" : "On the App Store"}</span></figure>
               <div className="meta"><div><h3>Serlo</h3><p>{de ? "Social-App: Live, Shop, Community" : "Social app: live, shop, community"}</p></div><span className="n">↗</span></div>
             </a>
             <a href="https://mogashal.com" target="_blank" rel="noopener noreferrer" className="v3-tile">

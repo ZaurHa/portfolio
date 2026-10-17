@@ -145,7 +145,7 @@ export default async function SerloPage({ params }: { params: Promise<{ lang: st
               <div className="v3-frame v3-frame-static">
                 <div className="bar"><i /><i /><i /><span>serlo.ch</span></div>
                 <div className="img">
-                  <Image src="/images/serlo-preview.webp" alt="Startseite der Social-App Serlo" fill sizes="(max-width: 960px) 100vw, 56vw" priority />
+                  <Image src="/images/serlo-preview-2026.webp" alt="Startseite der Social-App Serlo" fill sizes="(max-width: 960px) 100vw, 56vw" priority />
                 </div>
               </div>
             </a>
