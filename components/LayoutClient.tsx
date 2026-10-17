@@ -239,7 +239,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
               </ul>
             </div>
             <div>
-              <p className="v3-foot-h">{lang === 'de' ? 'Standort' : 'Location'}</p>
+              <p className="v3-foot-h">{lang === 'de' ? 'Regionen' : 'Regions'}</p>
               <ul>
                 {lang === 'de' ? (
                   <>
