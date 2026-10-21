@@ -38,8 +38,11 @@ export type Ausgabe = {
 
 export const ausgaben: Ausgabe[] = daten.ausgaben;
 
-/** Öffentlicher Telegram-Kanal, z. B. "https://t.me/brandwerkx_ki". Leer = Telegram-Hinweise ausblenden. */
+/** Deutscher Telegram-Kanal, z. B. "https://t.me/brandwerkx". Leer = Telegram-Hinweise ausblenden. */
 export const TELEGRAM_KANAL: string = daten.telegram;
+
+/** Russischer Telegram-Kanal mit denselben Chancen. Leer = nur der deutsche Kanal. */
+export const TELEGRAM_KANAL_RU: string = daten.telegramRu;
 
 export const neuesteAusgabe = (): Ausgabe => ausgaben[0];
 
