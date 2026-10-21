@@ -2,12 +2,13 @@ import Link from "next/link";
 import PageHero from "./PageHero";
 import ClosingCta from "./ClosingCta";
 import { SITE_URL } from "../../lib/seo";
-import { PRUEFUNG, TELEGRAM_KANAL, type Ausgabe } from "../../lib/ki-chancen";
+import { PRUEFUNG, TELEGRAM_KANAL, TELEGRAM_KANAL_RU, type Ausgabe } from "../../lib/ki-chancen";
 
 /** Eine Wochenausgabe der KI-Chancen (neueste unter /de/ki-chancen, frühere unter /de/ki-chancen/<slug>). */
 export default function KiAusgabe({ ausgabe: a, archiv, url }: { ausgabe: Ausgabe; archiv: Ausgabe[]; url: string }) {
   const n = (x: number) => String(x).padStart(2, "0");
   const telegram = TELEGRAM_KANAL;
+  const telegramRu = TELEGRAM_KANAL_RU;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -190,11 +191,16 @@ export default function KiAusgabe({ ausgabe: a, archiv, url }: { ausgabe: Ausgab
           <div className="v3-wrap">
             <div className="v3-chance-band">
               <div>
-                <span className="v3-mono v3-accent-txt">Kostenlos · Deutsch und Russisch</span>
+                <span className="v3-mono v3-accent-txt">{telegramRu ? "Kostenlos · Deutsch und Russisch" : "Kostenlos · auf Deutsch"}</span>
                 <h2 id="h-kanal">Die Chancen zuerst lesen</h2>
-                <p>Im Telegram-Kanal kommen die geprüften Chancen, sobald sie freigegeben sind. Höchstens drei am Tag, kein Spam.</p>
+                <p>Auf Telegram kommen die geprüften Chancen, sobald sie freigegeben sind. Höchstens drei am Tag, kein Spam.</p>
               </div>
-              <a href={telegram} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-accent">Kanal beitreten <span className="arr" aria-hidden="true">→</span></a>
+              <div className="v3-cta-row">
+                <a href={telegram} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-accent">Kanal beitreten <span className="arr" aria-hidden="true">→</span></a>
+                {telegramRu && (
+                  <a href={telegramRu} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-ghost" lang="ru">Канал на русском</a>
+                )}
+              </div>
             </div>
           </div>
         </section>

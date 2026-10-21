@@ -934,10 +934,11 @@
 .v3-chance-band { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: clamp(32px, 4vw, 52px); border: 1px solid rgba(0, 255, 231, 0.35); border-radius: 16px; background: rgba(0, 255, 231, 0.04); }
 .site-shell .v3 .v3-chance-band h2 { font: 800 clamp(30px, 3.4vw, 52px)/1 var(--v3-display); letter-spacing: -0.035em; margin: 14px 0 12px; }
 .v3-chance-band p { margin: 0; color: var(--v3-muted); max-width: 34em; }
+.v3-chance-band .v3-cta-row { margin-top: 0; flex-shrink: 0; }
 @media (max-width: 960px) {
   .v3-chance { grid-template-columns: 1fr; }
   .v3-chance.is-flip .v3-chance-ticket { order: 0; }
-  .v3-chance-band { flex-direction: column; align-items: flex-start; }
+  .v3-chance-band { flex-direction: column; align-items: stretch; }
 }
 @media (max-width: 600px) {
   .v3-funnel { grid-template-columns: 1fr 1fr; }
