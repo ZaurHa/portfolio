@@ -34,11 +34,14 @@ npm run lint     # ESLint
 ### Root layouts & locales
 - Two root layouts: `app/[lang]/layout.tsx` (sets `<html lang>` per locale) and `app/muster/layout.tsx`.
   Shared fonts, base metadata and JSON-LD live in `lib/root.tsx`.
-- Locales: `de`, `en`. Landing pages under `/de/webdesign/*` are German-only.
+- Locales: `de`, `en`. Landing pages under `/de/webdesign/*` and `/de/ki-chancen` are German-only.
 
 ### Content sources
 - Home page content: `lib/home.ts` (DE/EN); landing pages: `lib/landing.ts`; per-page metadata via `pageMetadata()` in `lib/seo.ts`.
 - Project list: `app/[lang]/projekte/page.tsx`. Hero-video loops live in `public/videos/` (re-record via `scripts/hero-videos/README.md`).
+- KI-Chancen (`/de/ki-chancen` + archive `/de/ki-chancen/<year>-kw<nr>`): weekly issues in `content/ki-chancen.json`
+  (newest first), rendered by `components/v3/KiAusgabe.tsx`. New issues arrive as automated PRs from Zaur's KI-Kanal
+  that only touch this file (see HANDOFF.md); keep its shape in sync with the types in `lib/ki-chancen.ts`.
 - `lib/i18n/{de,en}.ts` only holds the remaining shared UI strings (nav, contact, impressum, footer).
 - Only use verifiable facts (prices, delivery times, Search Console numbers with source). No invented rankings or percentages.
 
@@ -50,7 +53,7 @@ npm run lint     # ESLint
 ### Styling
 - `app/design-v3.css` — the design system (tokens under `.site-shell`, `v3-*` components)
 - `app/globals.css` — remaining base styles still used by contact/legal pages
-- Reusable V3 components: `components/v3/*` (PageHero, PriceBoard, Steps, Faq, ClosingCta, NotFoundView, ReelToggle, TileVideo, TileVideoToggle)
+- Reusable V3 components: `components/v3/*` (PageHero, PriceBoard, Steps, Faq, ClosingCta, NotFoundView, ReelToggle, TileVideo, TileVideoToggle, KiAusgabe)
 
 ## Deployment
 

@@ -1,8 +1,10 @@
 # HANDOFF — BrandWerkX-Website (brandwerkx.de)
 
-Repo `ZaurHa/portfolio` (**öffentlich**) · Next.js 14.1 als statischer Export · Cloudflare Pages · Stand **07.10.2026, abends**
+Repo `ZaurHa/portfolio` (**öffentlich**) · Next.js 14.1 als statischer Export · Cloudflare Pages · Stand **21.10.2026**
 
 Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolperfallen und nächste Schritte. Weil das Repo öffentlich ist, gehören Kundennamen, Zahlungsstand, Bewertungsplan und andere private Notizen ins Brain (Pfade ganz unten), nicht in diese Datei.
+
+> **Stand 21.10.2026 — KI-Chancen (Claude-Sitzung):** neue Seite `/de/ki-chancen` mit Menüpunkt (nur auf deutschen Seiten), Archiv je Ausgabe, Sitemap und `llms.txt`. Ausgabe 43 stammt aus einem Probelauf des KI-Kanals. Ab dann füllt der KI-Kanal die Seite jeden Sonntag per PR, live erst nach Zaurs Tipp auf „Veröffentlichen“ in Telegram (siehe Technik). Der Ablauf ist am 21.10. einmal komplett gegen einen Wegwerf-Zweig getestet worden (Redakteur, Probe-Build, Push, PR, Vorschau, Merge per Knopf).
 
 > **Stand 07.10.2026 — PR #2 und PR #3 gemergt und live, Google-Profil angelegt (Claude-Sitzung, jeder Merge von Zaur freigegeben):**
 > - **PR #2** (`9fc39b6`, gemergt 18:51): alle Kundenprojekte auf der Website (die Kunden erlauben die Nennung, laut Zaur am 07.10.), Video-Schleifen der Live-Seiten in den Startseiten-Kacheln und in der Projektliste, Serlo-Seite im V3-Design, BX-Favicon statt Vercel-Dreieck, Showreel-Fix.
@@ -21,6 +23,7 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 | Über mich | u. a. „Eigene Projekte“ (2×2): Mobilwerk, Serlo, Mogashal, Berkat | `app/[lang]/ueber-mich/page.tsx` |
 | Serlo | `/[lang]/vibes` im V3-Design, noindex. `/[lang]/vibes/datenschutz` und `/[lang]/vibes/agb` sind in App Store Connect hinterlegt: **nie umbenennen oder löschen** (beide noch im alten lila Design) | `app/[lang]/vibes/` |
 | Muster | `/muster/klempner` (6 Varianten, Version 6 „SEO Final“ = `final.html`), `/muster/elektriker` und `/muster/kosmetik` (je 3) | `app/muster/kunden.ts`, `public/muster/` |
+| KI-Chancen | `/de/ki-chancen` = neueste Wochenausgabe, `/de/ki-chancen/<jahr>-kw<nr>` = Archiv (nur Deutsch, Menüpunkt nur auf deutschen Seiten). Je Ausgabe: Zahlen der Prüfung, bis zu 4 Chancen mit Ticket, Einordnung, „Durchgefallen und warum“, Verfahren, Archiv | Inhalte `content/ki-chancen.json` (neueste zuerst), Typen `lib/ki-chancen.ts`, Darstellung `components/v3/KiAusgabe.tsx` |
 | KI-Suche | Seitenüberblick und Referenzliste | `public/llms.txt` |
 
 ## Technik, die nicht in CLAUDE.md steht
@@ -29,6 +32,8 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 - **Showreel:** Das Band kippt um −3°. Der Drehpunkt sitzt fest auf der Mitte von fünf Rahmen (`transform-origin: calc(5 * (clamp(290px, 46vw, 680px) + 28px)) 0`, mobil `+ 16px`), die Laufzeit beträgt 12,8 s pro Projekt (`animationDuration` in `app/[lang]/page.tsx`). Vorher (`transform-origin: 50% 0`, feste 64 s) sackte das Band mit 10 statt 5 Projekten so tief ab, dass nur noch die Kopfzeilen der Seiten zu sehen waren, und lief doppelt so schnell.
 - **Favicon und App-Icons:** `app/favicon.ico` (16/32/48), `app/icon.png` (192), `app/apple-icon.png` (180). Monogramm „BX“ in Inter Tight 800 (variable WOFF2 aus dem Build, Achse `wght` = 800), Laufweite −0,03 em, B `#eeefee`, X `#00ffe7`, Grund `#0a0b0a`.
 - **Vorschau und Deploy:** Jeder gepushte Branch bekommt bei Cloudflare eine Vorschau unter `https://<branch, gekürzt>.portfolio-dcp.pages.dev` (dieser hier: `claude-nifty-chebyshev-dddfa.portfolio-dcp.pages.dev`). Ein Merge nach `main` ist nach wenigen Minuten live. Vercel ist noch mit zwei Projekten (`portfolio`, `portfolio-1lqq`) verbunden und baut jeden PR mit. Das ist unnötig, schadet aber nicht, weil die Canonicals auf `https://brandwerkx.de` zeigen.
+- **KI-Chancen, sonntags automatisch:** Der KI-Kanal auf Zaurs Mac (`~/.gbrain/ki-kanal/webausgabe.py`, launchd `com.gbrain.ki-kanal-woche`, sonntags 11:00, nach der Wochenstrategie) nimmt die Chancen, die Zaur in der Woche per Telegram freigegeben hat, lässt sie von einem Redakteur (Claude) für die Seite schreiben, prüft die Zahlen gegen die Quellen, setzt die Ausgabe oben in `content/ki-chancen.json` (eigener Worktree `~/.gbrain/ki-kanal/web`, Branch `ki-chancen-<jahr>-kw<nr>` auf `origin/main`), baut zur Probe (`npm run build` mit ESLint) und öffnet einen PR. Zaur bekommt Vorschau-Link und die Knöpfe „Veröffentlichen“ (Merge) und „Nicht veröffentlichen“ (PR schließen). Der Knopf mergt nur offene PRs dieses Branch-Musters, die allein `content/ki-chancen.json` ändern. Ohne freigegebene Chance gibt es keine Ausgabe, die bisherige bleibt online. Telegram-Kanal: Feld `telegram` in der JSON-Datei, kommt aus `~/.gbrain/ki-kanal/kanal.json`; leer = Telegram-Hinweise auf der Seite ausgeblendet.
+- **KI-Chancen und Suchmaschinen:** Die neueste Ausgabe hat ihren Canonical auf `/de/ki-chancen`, ihre eigene Archivadresse fehlt deshalb in der Sitemap. Ältere Ausgaben stehen einzeln in der Sitemap.
 
 - **Textregeln (Zaur):** Überschriften enden nie mit einem Punkt (Punkte mitten im Titel sind erlaubt), keine Gedankenstriche (– —) im sichtbaren Text, stattdessen Punkt, Komma, Doppelpunkt oder „3 bis 5“. Porträt bewusst klein (max. 300 px, mobil 240 px), kein „Standort Geretsried“ in den Angaben. Prüfen nach `npm run build`: Überschriften `h1` bis `h3` in `out/**/*.html` auf Schlusspunkt und den Text auf – und — durchsuchen.
 
@@ -38,6 +43,7 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 - **`next dev` liefert für `[lang]`-Seiten HTTP 500** („missing generateStaticParams“, Next 14.1 mit `output: 'export'`), auch auf `main`. Deshalb mit `npm run build` (inkl. ESLint) und `npm run preview` prüfen.
 - **Lokaler Stand läuft nicht automatisch mit:** Gemergt wird auf GitHub, der Checkout `~/Desktop/portfolio-main` bleibt dabei stehen (am 07.10. 23 Commits zurück, dann auf `6f4eb16` nachgezogen). Auch Worktrees können alt sein: Dieser hier wurde am 17.07. angelegt und stand am 07.10. noch auf dem Juli-Stand. Vor neuer Arbeit `git fetch` und auf `origin/main` aufsetzen, nach einem Merge im lokalen Checkout `git pull`.
 - **`.claude/launch.json`** im Worktree ist nicht versioniert. Die Einträge `brandwerkx-out`, `brandwerkx-verify` und `flott-dist` zeigen auf Hilfsskripte in `/tmp`, die nach einem Neustart fehlen.
+- **KI-Chancen, gleiche Kalenderwoche:** Der Slug kommt aus der ISO-Woche. Eine zweite Ausgabe derselben Woche ersetzt die erste (die Sonntagsausgabe am 25.10. ersetzt also Ausgabe 43 vom 21.10.). Bleibt ein Ausgaben-PR eine Woche liegen, kann der nächste beim Mergen kollidieren, dann den älteren schließen.
 - **Muster-Seite:** Varianten wechseln per `contentWindow.location.replace()`, das `src`-Attribut des Rahmens bleibt dabei auf `v1.html`. Zum Prüfen die URL im Rahmen lesen, nicht das Attribut. Cloudflare leitet `*.html` per 308 auf die Adresse ohne Endung um.
 
 ## Nächste Schritte
@@ -47,11 +53,12 @@ Befehle, Architektur und Deploy stehen in `CLAUDE.md`. Hier stehen Stand, Stolpe
 3. **Footer-Hinweis „Website: BrandWerkX“ auf den fünf Kundenseiten** (mrg-logistik.de, ip-logistikgmbh.de, mh-logistikgmbh.de, dpfkat.de, smdienstleistung.de), sobald die Kunden zustimmen. Nur der Markenname als Linktext. Ziel ist die passende Branchenseite: Logistik → `/de/webdesign/logistik-und-transport`, SM Team → `/de/webdesign/geretsried`. Bisher verlinkt keine Kundenseite auf BrandWerkX.
 4. **brandwerkx.com** zeigt nur eine Hostinger-Parkseite → im hPanel per 301 auf https://brandwerkx.de weiterleiten.
 5. **Aufräumen:** Repo aus iCloud holen (siehe Stolperfallen). Optional Vercel abklemmen und die Serlo-Rechtsseiten ins V3-Design bringen, ohne die Routen zu ändern.
+6. **KI-Chancen:** Telegram-Kanal anlegen (Anleitung `~/.gbrain/ki-kanal/LIESMICH.md`) und den Namen in `kanal.json` eintragen. Ab der nächsten Ausgabe zeigt die Seite dann „Im Telegram-Kanal lesen“ und den Beitritts-Kasten.
 
 ## Grenzen
 
 - `/[lang]/vibes/datenschutz` und `/[lang]/vibes/agb` nie umbenennen oder löschen (App Store Connect).
-- Ein Merge nach `main` geht sofort live, deshalb nur nach Zaurs ausdrücklichem Ja.
+- Ein Merge nach `main` geht sofort live, deshalb nur nach Zaurs ausdrücklichem Ja. Für die KI-Chancen-Wochenausgabe ist das sein Tipp auf „Veröffentlichen“ in Telegram.
 - Das Repo ist öffentlich: keine Kundennamen, Zahlungen, Bewertungspläne oder privaten Notizen in versionierte Dateien.
 - Logos und Zitate von Kunden erst nach deren Zustimmung.
 - Ins Google-Konto meldet sich Zaur selbst an. Bedingungen und Bestätigungen klickt er selbst.
