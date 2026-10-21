@@ -15,8 +15,8 @@ function getOtherLang(lang: Locale): Locale {
 }
 
 function switchLangPath(pathname: string, currentLang: Locale, targetLang: Locale): string {
-  // Landingpages unter /de/webdesign gibt es nur auf Deutsch → Startseite der Zielsprache
-  if (pathname.startsWith(`/${currentLang}/webdesign`)) return `/${targetLang}`;
+  // Landingpages unter /de/webdesign und die KI-Chancen gibt es nur auf Deutsch → Startseite der Zielsprache
+  if (pathname.startsWith(`/${currentLang}/webdesign`) || pathname.startsWith(`/${currentLang}/ki-chancen`)) return `/${targetLang}`;
   // /de/projekte → /en/projekte
   if (pathname.startsWith(`/${currentLang}/`)) {
     return `/${targetLang}/${pathname.slice(currentLang.length + 2)}`;
@@ -43,6 +43,8 @@ export default function LayoutClient({ children, lang, dict }: Props) {
     { href: `/${lang}/leistungen`, text: dict.nav.services },
     { href: '/muster', text: 'Designs' },
     { href: `/${lang}/projekte`, text: dict.nav.projects },
+    // KI-Chancen gibt es nur auf Deutsch
+    ...(lang === 'de' ? [{ href: '/de/ki-chancen', text: 'KI-Chancen' }] : []),
     { href: `/${lang}/ueber-mich`, text: dict.nav.about },
     { href: `/${lang}/kontakt`, text: dict.nav.contact },
   ];

@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { landingPages } from "../lib/landing";
+import { ausgaben } from "../lib/ki-chancen";
 import { SITE_URL, SITEMAP_LAST_MODIFIED } from "../lib/seo";
 
 const locales = ["de", "en"] as const;
@@ -41,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: p.kind === "leistung" ? 0.8 : 0.7,
     });
+  }
+
+  // KI-Chancen (nur Deutsch): Übersicht mit der neuesten Ausgabe, frühere Ausgaben als eigene Seiten
+  // (die neueste Ausgabe hat ihre Canonical auf der Übersicht und fehlt deshalb hier)
+  entries.push({ url: `${SITE_URL}/de/ki-chancen`, lastModified: new Date(ausgaben[0].datumIso), changeFrequency: "weekly", priority: 0.8 });
+  for (const a of ausgaben.slice(1)) {
+    entries.push({ url: `${SITE_URL}/de/ki-chancen/${a.slug}`, lastModified: new Date(a.datumIso), changeFrequency: "yearly", priority: 0.5 });
   }
 
   return entries;
