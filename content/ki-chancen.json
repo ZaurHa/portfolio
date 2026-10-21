@@ -7,69 +7,69 @@
       "jahr": 2026,
       "datum": "21.10.2026",
       "datumIso": "2026-10-21",
-      "signale": 162,
-      "kandidaten": 9,
+      "signale": 125,
+      "kandidaten": 12,
       "strategie": 5,
       "bestanden": 2,
-      "einordnung": "Beide Chancen dieser Woche drehen sich um dasselbe Problem: Kleine Betriebe verlieren Kunden, weil niemand rechtzeitig antwortet. Termin- und Anrufannahme lässt sich jetzt ohne Programmieren automatisieren.",
+      "einordnung": "Beide Chancen dieser Woche nehmen Arbeit ab, die kleine Betriebe sonst von Hand erledigen: Belege abtippen und Kundenanfragen beantworten. Für dich als Umsetzer steckt darin ein klares Angebot, weil du fertige Lösungen einrichtest, statt selbst zu programmieren. Prüfe vorher Lizenz und Datenschutz, dann ist der Einstieg über einen Pilotkunden machbar.",
       "chancen": [
         {
+          "titel": "Belege auslesen",
+          "titelAkzent": "für Betriebe mit viel Papier",
+          "neu": "Das offene Modell Unlimited-OCR liest Text aus Bildern und Scans aus und läuft direkt auf deinem Rechner, ohne Cloud-Abo.",
+          "geld": "Betriebe, die Rechnungen, Lieferscheine oder Briefe noch von Hand abtippen, sparen damit Zeit. Als Umsetzer kannst du kleinen Firmen einen Digitalisierungsservice anbieten.",
+          "schritt": "Lade ein eigenes Belegfoto in das Modell Unlimited-OCR und prüfe das Ergebnis.",
+          "angebot": "Belege automatisch auslesen und einsortieren",
+          "werZahlt": "Betriebe mit viel Papier",
+          "werkzeuge": "Unlimited-OCR, Python, Transformers",
+          "ersterEuro": "Wochen, ein Pilotkunde genügt",
+          "aufwand": "Lokale Einrichtung nötig, kein No-Code",
+          "beachten": "Bei fremden Belegen DSGVO beachten",
           "kategorie": "Neue Dienstleistung",
-          "titel": "WhatsApp-Terminbot",
-          "titelAkzent": "für Studios und Werkstätten",
-          "neu": "Mit dem Automatisierungswerkzeug n8n und der offiziellen WhatsApp-Schnittstelle von Meta nimmt ein Bot Buchungen per WhatsApp an, bestätigt sie und verhindert Doppelbuchungen.",
-          "geld": "Kosmetikstudios, Werkstätten und Praxen verlieren Termine, weil Nachrichten liegen bleiben. Du richtest den Bot einmal ein und berechnest Einrichtung plus monatliche Betreuung.",
-          "schritt": "Richte die WhatsApp-Schnittstelle mit der Testnummer von Meta ein und bau den Buchungsablauf in n8n nach.",
-          "punkte": 9,
-          "angebot": "Buchungsbot einrichten, monatlich betreuen",
-          "werZahlt": "Kosmetikstudios, Werkstätten, Praxen",
-          "werkzeuge": "n8n, WhatsApp-Schnittstelle von Meta",
-          "ersterEuro": "In Wochen",
-          "aufwand": "Mittel, ohne Programmieren",
-          "beachten": "Geschäftsprüfung bei Meta, Auftragsverarbeitung nach DSGVO, 24-Stunden-Antwortfenster",
+          "punkte": 8,
           "quelle": {
-            "name": "Reddit r/n8n",
-            "url": "https://www.reddit.com/r/n8n/"
+            "name": "Hugging Face Trend",
+            "url": "https://huggingface.co/baidu/Unlimited-OCR"
           }
         },
         {
+          "titel": "Kundenchats bündeln",
+          "titelAkzent": "über Claude und ChatGPT",
+          "neu": "Intelli ist jetzt ein Plugin für ChatGPT und Claude und verbindet WhatsApp, Instagram und Web-Chat über eine KI-Schnittstelle.",
+          "geld": "Wenn du Kunden über WhatsApp oder Instagram betreust, beantwortest du Anfragen zentral und wechselst nicht mehr zwischen Apps. Als Umsetzer kannst du kleinen Betrieben dieses Setup als Dienstleistung anbieten.",
+          "schritt": "Verbinde deinen eigenen WhatsApp-Kanal mit Intelli und nimm einen Testdialog auf.",
+          "angebot": "Kundenanfragen zentral per KI beantworten",
+          "werZahlt": "Firmen mit vielen Kundenanfragen",
+          "werkzeuge": "Intelli, Claude, ChatGPT",
+          "ersterEuro": "Wochen, braucht einen Pilotkunden",
+          "aufwand": "Einrichtung je Kanal nötig",
+          "beachten": "DSGVO und WhatsApp-Business-Regeln beachten",
           "kategorie": "Neue Dienstleistung",
-          "titel": "Telefon-Assistent",
-          "titelAkzent": "der Anrufe und Termine annimmt",
-          "neu": "ElevenLabs hat Eleven Realtime vorgestellt: Sprachmodelle, die in unter einer Sekunde antworten. Gespräche mit einem KI-Assistenten laufen damit ohne lange Pausen.",
-          "geld": "Handwerker und Praxen verpassen Anrufe, während sie arbeiten. Ein Telefon-Assistent nimmt an, beantwortet Standardfragen und vergibt Termine. Du verkaufst Einrichtung plus laufende Betreuung.",
-          "schritt": "Bau in ElevenLabs einen Test-Assistenten für einen Betrieb aus deinem Umfeld und prüf, wie gut er Deutsch spricht.",
-          "punkte": 8,
-          "angebot": "Telefon-Assistent einrichten und betreuen",
-          "werZahlt": "Handwerk, Praxen, Kanzleien",
-          "werkzeuge": "ElevenLabs",
-          "ersterEuro": "In Wochen",
-          "aufwand": "Mittel, Telefonanbindung einplanen",
-          "beachten": "Als KI kenntlich machen, deutsche Stimme vorher testen",
+          "punkte": 7,
           "quelle": {
-            "name": "The Decoder",
-            "url": "https://the-decoder.de/elevenlabs-stellt-eleven-realtime-vor-speech-to-speech-modelle-mit-unter-einer-sekunde-latenz/"
+            "name": "Product Hunt",
+            "url": "https://www.producthunt.com/products/intelli"
           }
         }
       ],
       "aussortiert": [
         {
-          "idee": "Woven Video",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/woven-video",
-          "grund": "Reines Schnitt-Werkzeug ohne eigene Geldidee, nur für Mac und am Starttag ungetestet."
+          "idee": "ChatGPT Work Kassenabgleich",
+          "quelle": "OpenAI",
+          "url": "https://openai.com/index/ted-taylor-restaurant",
+          "grund": "Eine US-Fallstudie ohne nachbaubaren Workflow ist für deutsche Leser ohne Programmierkenntnisse nicht umsetzbar."
         },
         {
-          "idee": "Notion Auto",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/notion-99",
-          "grund": "Vage Büro-Automatisierung ohne konkreten zahlenden Anwendungsfall, Zahlen nur vom Hersteller."
+          "idee": "LTX-2.5 Videomodell",
+          "quelle": "Hugging Face Trend",
+          "url": "https://huggingface.co/Lightricks/LTX-2.5",
+          "grund": "Der schwere GPU- und ComfyUI-Betrieb ist kein No-Code-Weg und bringt Lizenz- sowie Persönlichkeitsrechts-Risiken."
         },
         {
-          "idee": "Intelli für ChatGPT und Claude",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/intelli",
-          "grund": "Abhängig von einem fremden Plugin, dünner Geldwert und Datenschutz-Risiko bei Kunden-Chats."
+          "idee": "Flux-3 Bildmodell",
+          "quelle": "Hugging Face Trend",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+          "grund": "Die Lizenzlage für kommerzielle Firmenbilder ist unklar und der ComfyUI-Betrieb erfordert technisches Wissen."
         }
       ]
     }
