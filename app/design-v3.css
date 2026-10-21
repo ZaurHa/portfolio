@@ -901,3 +901,55 @@
 @media (max-width: 960px) {
   .v3-about .v3-kv div:last-child { grid-column: auto; border-top: 0; }
 }
+
+/* KI-Chancen (/de/ki-chancen) */
+.v3-funnel { list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--v3-line-2); border-bottom: 1px solid var(--v3-line-2); }
+.v3-funnel li { position: relative; padding: 22px 24px 20px; display: flex; flex-direction: column; gap: 10px; }
+.v3-funnel li:first-child { padding-left: 0; }
+.v3-funnel li + li { border-left: 1px solid var(--v3-line); }
+.v3-funnel li + li::before { content: "→"; position: absolute; left: -9px; top: 26px; width: 18px; text-align: center; font: 500 14px/1 var(--v3-mono); color: var(--v3-dim); background: var(--v3-bg); }
+.v3-funnel b { font: 800 clamp(40px, 4.6vw, 72px)/0.9 var(--v3-display); letter-spacing: -0.045em; color: var(--v3-ink); }
+.v3-funnel .is-win b { color: var(--v3-accent); }
+.v3-chance { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
+.v3-chance.is-flip .v3-chance-ticket { order: -1; }
+.v3-chance-ticket.v3-ticket-zone { margin-top: 0; padding-top: 120px; }
+.v3-chance-block { padding: 24px 0; border-top: 1px solid var(--v3-line); }
+.v3-chance-block:first-child { padding-top: 0; border-top: 0; }
+.v3-chance-block .v3-mono { display: block; }
+.v3-chance-block p { margin: 12px 0 0; font: 500 clamp(19px, 1.6vw, 24px)/1.4 var(--v3-display); letter-spacing: -0.015em; color: var(--v3-ink); text-wrap: pretty; }
+.v3-chance-block.is-step p { font: 400 clamp(16px, 1.25vw, 18px)/1.55 var(--v3-body); color: #c4c8c5; letter-spacing: 0; }
+.v3-chance-block.is-step .arr { color: var(--v3-accent); }
+.v3-chance-text .v3-cta-row { margin-top: 8px; }
+.v3-btn.is-soon { cursor: default; opacity: 0.75; }
+.v3-chance-quote.v3-quote { border-top: 0; border-bottom: 0; padding: 0; }
+.site-shell .v3 .v3-chance-head h2 { font-size: clamp(36px, 4vw, 64px); line-height: 0.98; }
+.v3-chance-head p { align-self: end; }
+.v3-chance-quote .v3-mono { display: block; margin-bottom: 18px; }
+.v3-compare-out { min-width: 0; }
+.v3-compare-out thead th { font-size: 16px; }
+.v3-compare-out tbody th a { color: var(--v3-ink); text-decoration: none; font: 700 17px/1.25 var(--v3-display); letter-spacing: -0.01em; text-transform: none; }
+.v3-compare-out tbody th a:hover { color: var(--v3-accent); }
+.v3-compare-out tbody th small { display: block; margin-top: 6px; }
+.v3-compare-out td.no { white-space: nowrap; font: 500 12px/1.4 var(--v3-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.v3-chance-band { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding: clamp(32px, 4vw, 52px); border: 1px solid rgba(0, 255, 231, 0.35); border-radius: 16px; background: rgba(0, 255, 231, 0.04); }
+.site-shell .v3 .v3-chance-band h2 { font: 800 clamp(30px, 3.4vw, 52px)/1 var(--v3-display); letter-spacing: -0.035em; margin: 14px 0 12px; }
+.v3-chance-band p { margin: 0; color: var(--v3-muted); max-width: 34em; }
+@media (max-width: 960px) {
+  .v3-chance { grid-template-columns: 1fr; }
+  .v3-chance.is-flip .v3-chance-ticket { order: 0; }
+  .v3-chance-band { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .v3-funnel { grid-template-columns: 1fr 1fr; }
+  .v3-funnel li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .v3-funnel li:nth-child(3)::before { display: none; }
+  .v3-funnel li:nth-child(n+3) { border-top: 1px solid var(--v3-line); }
+  .v3-compare-out td.no { white-space: normal; }
+  .v3-compare-out thead { display: none; }
+  .v3-compare-out, .v3-compare-out tbody, .v3-compare-out tr, .v3-compare-out th, .v3-compare-out td { display: block; width: auto; }
+  .v3-compare-out tr { padding: 18px 20px; border-bottom: 1px solid var(--v3-line); }
+  .v3-compare-out tr:last-child { border-bottom: 0; }
+  .v3-compare-out th, .v3-compare-out td { padding: 0; border: 0; }
+  .v3-compare-out tbody th { width: auto; }
+  .v3-compare-out td.no { margin: 10px 0 6px; }
+}
