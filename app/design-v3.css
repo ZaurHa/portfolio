@@ -153,14 +153,14 @@
 .v3-stage3d.is-ready .v3-stage3d-poster { opacity: 0; }
 .v3-stage3d-live { position: absolute; left: 4%; bottom: 3%; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--v3-line-2); border-radius: 999px; background: rgba(10, 11, 10, 0.72); backdrop-filter: blur(6px); color: var(--v3-ink); animation: v3-live-in 0.5s ease both; }
 @keyframes v3-live-in { from { opacity: 0; transform: translateY(6px); } }
-.v3-stage-zone .v3-stamp { right: -16px; top: auto; bottom: -22px; width: clamp(140px, 10.5vw, 168px); }
+.v3-stage-zone .v3-stamp { right: -12px; top: auto; bottom: -26px; scale: 0.84; transform-origin: 100% 100%; } /* als Ganzes verkleinern, Innenmaße bleiben */
 .v3-stage-zone.v3-rise .v3-stamp { animation: v3-stamp 0.6s 0.75s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
 @media (max-width: 960px) {
   .v3-stage-zone { margin-top: 28px; }
-  .v3-stage-zone .v3-stamp { position: absolute; right: 4px; top: auto; bottom: -14px; margin: 0; }
+  .v3-stage-zone .v3-stamp { position: absolute; right: 4px; top: auto; bottom: -14px; margin: 0; width: 150px; } /* Platz für „490 €“ */
 }
 @media (max-width: 560px) {
-  .v3-stage-zone .v3-stamp { width: 112px; bottom: -18px; }
+  .v3-stage-zone .v3-stamp { bottom: -18px; scale: 0.9; }
 }
 
 /* Scroll-Animationen (seit 25.10.2026, gesetzt von RevealOnScroll.tsx): eigene translate-Eigenschaft,
