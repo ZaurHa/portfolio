@@ -235,6 +235,8 @@ export function getHomeContent(lang: Locale) {
       ctaPrimary: de ? 'Kostenloses Erstgespräch' : 'Free initial call',
       stageAlt: de ? 'Laptop und Handy mit Websites, die BrandWerkX für Kunden gebaut hat' : 'Laptop and phone showing websites BrandWerkX built for clients',
       stageLive: de ? 'Live:' : 'Live:',
+      trustLabel: de ? 'Websites gebaut für' : 'Websites built for',
+      trust: ['SM Team Dienstleistungen', 'MRG Trans & Logistik', 'IP Logistik', 'MH Logistik', 'Flott Umzug & Transport', 'Zaira Beauty'],
     },
     ticket: {
       title: de ? 'Arbeitsauftrag' : 'Work order',

@@ -46,6 +46,13 @@ export default function Hero3D({ alt, liveLabel }: { alt: string; liveLabel: str
     let cancelled = false;
     let visible = false;
     const update = () => handle?.setActive(visible && document.visibilityState === "visible");
+    // Scroll-Fortschritt durch den Hero: 0 oben, 1 wenn die Bühne aus dem Bild ist (Laptop klappt etwas zu, Geräte drehen mit)
+    const onScroll = () => {
+      if (!handle) return;
+      const r = el.getBoundingClientRect();
+      handle.setScroll(window.scrollY / Math.max(1, r.bottom + window.scrollY));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     const io = new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
       update();
@@ -59,6 +66,7 @@ export default function Hero3D({ alt, liveLabel }: { alt: string; liveLabel: str
           if (cancelled) return;
           handle = startScene(h, { laptopSites: LAPTOP, phoneSite: PHONE, onReady: () => setReady(true), onSite: setSite });
           update();
+          onScroll();
         })
         .catch(() => {});
     };
@@ -72,6 +80,7 @@ export default function Hero3D({ alt, liveLabel }: { alt: string; liveLabel: str
       else window.clearTimeout(idle);
       io.disconnect();
       document.removeEventListener("visibilitychange", update);
+      window.removeEventListener("scroll", onScroll);
       handle?.dispose();
     };
   }, []);

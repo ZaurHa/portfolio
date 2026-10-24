@@ -160,8 +160,34 @@
   .v3-stage-zone .v3-stamp { position: absolute; right: 4px; top: auto; bottom: -14px; margin: 0; width: 150px; } /* Platz für „490 €“ */
 }
 @media (max-width: 560px) {
-  .v3-stage-zone .v3-stamp { bottom: -18px; scale: 0.9; }
+  .v3-stage-zone .v3-stamp { bottom: -34px; scale: 0.72; } /* kleiner, damit das Handy in der Szene frei bleibt */
 }
+
+/* Lichtschein folgt der Maus im Hero (PointerFx.tsx, nur Maus/Trackpad) */
+.v3-hero[data-glow]::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.6s ease;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 30%), rgba(0, 255, 231, 0.07), transparent 62%); }
+.v3-hero.is-glow::after { opacity: 1; }
+[data-magnet] { transition: translate 0.25s cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+/* Projektkacheln kippen in 3D zur Maus, mit wanderndem Glanz */
+.v3-tile[data-tilt] { transition: border-color 0.4s, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); transform-style: preserve-3d; }
+.v3-tile.is-tilt { transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: border-color 0.4s, transform 0.12s linear; }
+.v3-tile[data-tilt]::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity 0.4s;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.09), transparent 60%); }
+.v3-tile.is-tilt::after { opacity: 1; }
+
+/* Kundenband unter dem Hero */
+.v3-trust { position: relative; display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); margin-top: clamp(36px, 4.4vw, 64px); padding: 18px 0;
+  border-top: 1px solid var(--v3-line); border-bottom: 1px solid var(--v3-line); }
+.v3-trust-label { flex: none; padding-left: max(20px, calc((100vw - 1312px) / 2)); color: var(--v3-dim); }
+.v3-trust-band { flex: 1; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.v3-trust-track { display: flex; width: max-content; gap: clamp(28px, 4vw, 56px); animation: v3-trust 38s linear infinite; }
+.v3-trust-track span { font: 700 clamp(17px, 1.5vw, 22px)/1 var(--v3-display); letter-spacing: -0.02em; color: var(--v3-muted); white-space: nowrap; }
+.v3-trust-track span::after { content: "✦"; margin-left: clamp(28px, 4vw, 56px); color: var(--v3-accent); font-size: 0.7em; vertical-align: middle; }
+.v3-trust:hover .v3-trust-track { animation-play-state: paused; }
+@keyframes v3-trust { to { transform: translateX(-50%); } }
+@media (max-width: 760px) { .v3-trust { flex-direction: column; align-items: flex-start; gap: 12px; } .v3-trust-label { padding-left: 20px; } .v3-trust-band { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .v3-trust-track { animation: none; flex-wrap: wrap; width: auto; } }
 
 /* Scroll-Animationen (seit 25.10.2026, gesetzt von RevealOnScroll.tsx): eigene translate-Eigenschaft,
    damit bestehende transform-Effekte (gedrehte Tickets, Hover) unberührt bleiben */

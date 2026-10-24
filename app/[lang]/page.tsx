@@ -30,7 +30,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   return (
     <div className="v3">
       {/* HERO: links Botschaft, rechts 3D-Bühne mit echten Kundenseiten (seit 25.10.2026) */}
-      <section className="v3-hero" aria-labelledby="h-hero">
+      <section className="v3-hero" aria-labelledby="h-hero" data-glow>
         <div className="v3-wrap">
           <div className="v3-hero-top v3-rise">
             <span className="v3-mono"><span className="v3-dot" />{c.hero.metaLeft}</span>
@@ -49,7 +49,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                   {c.hero.lead} <strong>{c.hero.leadStrong}</strong>{c.hero.leadTail}
                 </p>
                 <div className="v3-cta-row">
-                  <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{c.hero.ctaPrimary} <Arrow /></Link>
+                  <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent" data-magnet>{c.hero.ctaPrimary} <Arrow /></Link>
                   <a href={`tel:${PHONE_TEL}`} className="v3-btn v3-btn-ghost">{PHONE_DISPLAY}</a>
                 </div>
               </div>
@@ -62,6 +62,16 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 <div className="p"><small>{c.ticket.stampFrom}</small><strong>490&nbsp;€</strong></div>
                 <div className="f">{c.ticket.stampFoot}</div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Kundenband: echte Kunden (Nennung erlaubt), läuft durch, steht bei „Bewegung reduzieren“ */}
+        <div className="v3-trust" aria-label={`${c.hero.trustLabel}: ${c.hero.trust.join(", ")}`}>
+          <span className="v3-mono v3-trust-label" aria-hidden="true">{c.hero.trustLabel}</span>
+          <div className="v3-trust-band" aria-hidden="true">
+            <div className="v3-trust-track">
+              {[...c.hero.trust, ...c.hero.trust].map((n, i) => <span key={`${n}-${i}`}>{n}</span>)}
             </div>
           </div>
         </div>
@@ -103,6 +113,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                 key={p.slug}
                 href={p.href}
                 className={`v3-tile t${i + 1}`}
+                data-tilt
                 {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 <figure>
@@ -167,7 +178,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             ))}
           </div>
           <div className="v3-cta-row">
-            <Link href={c.ki.ctaHref} className="v3-btn v3-btn-accent">{c.ki.cta} <Arrow /></Link>
+            <Link href={c.ki.ctaHref} className="v3-btn v3-btn-accent" data-magnet>{c.ki.cta} <Arrow /></Link>
           </div>
         </div>
       </section>
