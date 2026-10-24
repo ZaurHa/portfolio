@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:800px;overflow:hidden;background:#0a0b0a;color:#eeefee;font:400 16px/1.45 Inter,system-ui,sans-serif}
+.mono{font:500 12px/1.3 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a8f8b}
+.acc{color:#00ffe7}
+.badge{position:absolute;top:22px;right:26px;font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#0a0b0a;background:#00ffe7;padding:7px 10px;border-radius:999px}
+.glow{position:absolute;inset:auto -200px -260px auto;width:700px;height:700px;background:radial-gradient(circle,rgba(0,255,231,.16),transparent 65%)}
