@@ -169,12 +169,37 @@
 .v3-hero.is-glow::after { opacity: 1; }
 [data-magnet] { transition: translate 0.25s cubic-bezier(0.2, 0.7, 0.2, 1); }
 
-/* Projektkacheln kippen in 3D zur Maus, mit wanderndem Glanz */
-.v3-tile[data-tilt] { transition: border-color 0.4s, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); transform-style: preserve-3d; }
-.v3-tile.is-tilt { transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: border-color 0.4s, transform 0.12s linear; }
-.v3-tile[data-tilt]::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity 0.4s;
-  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.09), transparent 60%); }
-.v3-tile.is-tilt::after { opacity: 1; }
+/* Karten kippen in 3D zur Maus, mit wanderndem Glanz ([data-tilt="glanz"]: nur Glanz, z. B. Preistafel) */
+[data-tilt] { position: relative; transition: border-color 0.4s, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+[data-tilt].is-tilt:not([data-tilt="glanz"]) { transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: border-color 0.4s, transform 0.12s linear; }
+[data-tilt]::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: 0; transition: opacity 0.4s; border-radius: inherit;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.08), transparent 60%); }
+[data-tilt].is-tilt::after { opacity: 1; }
+[data-tilt="glanz"]::after { background: radial-gradient(360px circle at var(--gx, 50%) var(--gy, 50%), rgba(0, 255, 231, 0.07), transparent 62%); }
+/* Projektseite: Rahmen hebt sich beim Darüberfahren an UND kippt (stärker als .v3-case-media:hover .v3-frame-static) */
+.v3-case-media:hover .v3-frame-static.is-tilt { transform: translateY(-4px) perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); transition: border-color 0.4s, transform 0.12s linear; }
+
+/* Seitenübergang (app/[lang]/template.tsx): nur beim Wechsel, nicht beim ersten Aufruf */
+.v3-page-enter { animation: v3-page-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes v3-page-in { from { opacity: 0.01; translate: 0 14px; } }
+
+/* „Beliebt“: Glanz läuft über das Abzeichen */
+.v3-plan.hot .v3-badge { position: relative; overflow: hidden; }
+.v3-plan.hot .v3-badge::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%); translate: -120% 0; animation: v3-shine 3.6s 1.2s ease-in-out infinite; }
+@keyframes v3-shine { 0% { translate: -120% 0; } 35%, 100% { translate: 120% 0; } }
+
+/* Kontakt: Felder leuchten beim Ausfüllen, Bestätigung erscheint mit Haken */
+.site-shell .kontakt-page .form-input:focus { border-color: rgba(0, 255, 231, 0.55); box-shadow: 0 0 0 4px rgba(0, 255, 231, 0.1), 0 0 26px -8px rgba(0, 255, 231, 0.45); }
+.kontakt-page .form-success { animation: v3-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+.kontakt-page .form-success path { stroke-dasharray: 20; stroke-dashoffset: 20; animation: v3-draw 0.5s 0.2s ease forwards; }
+@keyframes v3-pop { from { opacity: 0; scale: 0.92; } }
+@keyframes v3-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-page-enter, .v3-plan.hot .v3-badge::after, .kontakt-page .form-success, .kontakt-page .form-success path { animation: none; }
+  .kontakt-page .form-success path { stroke-dashoffset: 0; }
+  [data-tilt].is-tilt { transform: none; }
+}
 
 /* Kundenband unter dem Hero */
 .v3-trust { position: relative; display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); margin-top: clamp(36px, 4.4vw, 64px); padding: 18px 0;

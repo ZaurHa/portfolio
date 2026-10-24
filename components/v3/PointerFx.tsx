@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
  * Kleine Maus-Effekte (nur mit Maus oder Trackpad, nie bei „Bewegung reduzieren“):
  * - [data-glow]: Lichtschein folgt dem Mauszeiger (CSS-Variablen --mx/--my)
  * - [data-magnet]: Knopf zieht leicht zum Mauszeiger (eigene translate-Eigenschaft)
- * - [data-tilt]: Kachel kippt in 3D zum Mauszeiger, mit wanderndem Glanz
+ * - [data-tilt]: Kachel kippt in 3D zum Mauszeiger, mit wanderndem Glanz; [data-tilt="glanz"]: nur der Glanz, ohne Kippen
  */
 export default function PointerFx() {
   const pathname = usePathname();
@@ -35,7 +35,7 @@ export default function PointerFx() {
       aufraeumen.push(() => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); cancelAnimationFrame(raf); });
     });
 
-    document.querySelectorAll<HTMLElement>("[data-magnet]").forEach((el) => {
+    document.querySelectorAll<HTMLElement>("[data-magnet], .v3-page-hero .v3-btn-accent").forEach((el) => {
       const move = (e: PointerEvent) => {
         const r = el.getBoundingClientRect();
         const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
@@ -56,8 +56,10 @@ export default function PointerFx() {
           const r = el.getBoundingClientRect();
           const px = (e.clientX - r.left) / r.width;
           const py = (e.clientY - r.top) / r.height;
-          el.style.setProperty("--tilt-x", `${((0.5 - py) * 7).toFixed(2)}deg`);
-          el.style.setProperty("--tilt-y", `${((px - 0.5) * 9).toFixed(2)}deg`);
+          if (el.dataset.tilt !== "glanz") {
+            el.style.setProperty("--tilt-x", `${((0.5 - py) * 7).toFixed(2)}deg`);
+            el.style.setProperty("--tilt-y", `${((px - 0.5) * 9).toFixed(2)}deg`);
+          }
           el.style.setProperty("--gx", `${(px * 100).toFixed(1)}%`);
           el.style.setProperty("--gy", `${(py * 100).toFixed(1)}%`);
           el.classList.add("is-tilt");

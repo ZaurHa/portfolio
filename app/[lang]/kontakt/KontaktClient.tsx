@@ -87,7 +87,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
 
   return (
     <div className="kontakt-page">
-      <section className="v3-hero v3-page-hero v3-kontakt-hero">
+      <section className="v3-hero v3-page-hero v3-kontakt-hero" data-glow>
         <div className="v3-wrap">
           <div className="v3-hero-top">
             <span className="v3-mono"><span className="v3-dot" />{t.eyebrow} · Geretsried</span>
@@ -185,7 +185,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
                 {t.privacyAfter}
               </p>
 
-              <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="cta-btn-primary w-full justify-center">
+              <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="cta-btn-primary w-full justify-center" data-magnet>
                 {isSubmitting ? t.submitting : t.submit}
                 {!isSubmitting && (
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -199,7 +199,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
 
         <FadeInSection delay={150}>
           <div className="kontakt-sidebar">
-            <div className="kontakt-info-card">
+            <div className="kontakt-info-card" data-tilt="glanz">
               <h3 className="kontakt-info-title">{t.directContact}</h3>
               <div className="kontakt-info-links">
                 <a href="tel:+491728471641" className="kontakt-info-link">
@@ -241,7 +241,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
               </div>
             </div>
 
-            <div className="kontakt-info-card">
+            <div className="kontakt-info-card" data-tilt="glanz">
               <h3 className="kontakt-info-title">{t.responseTime}</h3>
               <p className="kontakt-info-text">{t.responseDesc}</p>
               <div className="kontakt-hours">
@@ -250,7 +250,7 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
               </div>
             </div>
 
-            <div className="kontakt-info-card">
+            <div className="kontakt-info-card" data-tilt="glanz">
               <h3 className="kontakt-info-title">{t.nextSteps}</h3>
               <ol className="kontakt-steps">
                 <li><span className="kontakt-step-num">1</span>{t.step1}</li>

@@ -21,7 +21,7 @@ export default function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="v3-hero v3-page-hero">
+    <section className="v3-hero v3-page-hero" data-glow>
       <div className="v3-wrap">
         <div className="v3-hero-top v3-rise">
           <span className="v3-mono"><span className="v3-dot" />{meta}</span>

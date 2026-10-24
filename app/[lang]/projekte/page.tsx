@@ -370,7 +370,7 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
           </div>
           {projects.map((p, i) => {
             const frame = (
-              <div className="v3-frame v3-frame-static">
+              <div className="v3-frame v3-frame-static" data-tilt>
                 <div className="bar"><i /><i /><i /><span>{p.bar}</span></div>
                 <div className="img">
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 960px) 100vw, 56vw" priority={i === 0} />
