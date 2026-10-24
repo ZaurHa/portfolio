@@ -37,6 +37,12 @@ export default function KontaktClient({ lang, dict }: { lang: Locale; dict: Dict
     const pkg = normalizePackage(params.get("package"));
     if (pkg) setFormData((prev) => ({ ...prev, package: pkg }));
     // Aus /muster gewählte Design-Version in die Nachricht übernehmen
+    // Aus /de/ki-chancen gewähltes Paket („Paket anfragen“) in die Nachricht übernehmen
+    const thema = params.get("thema");
+    if (thema && /^[A-Za-z0-9ÄÖÜäöüß .,&+/()-]{2,80}$/.test(thema)) {
+      const note = lang === "en" ? `Interested in: ${thema}\n\n` : `Interesse an: ${thema}\n\n`;
+      setFormData((prev) => (prev.message ? prev : { ...prev, message: note }));
+    }
     const design = params.get("design");
     if (design && /^[a-z0-9-]{2,60}$/i.test(design)) {
       const note = lang === "en" ? `Chosen design: ${design}\n\n` : `Gewähltes Design: ${design}\n\n`;

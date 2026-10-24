@@ -19,6 +19,8 @@ export type Chance = {
   aufwand: string;
   beachten: string;
   quelle: { name: string; url: string };
+  /** BrandWerkX-Paket zur Chance, nur wenn Zaur in Telegram einen Preis gewählt hat (seit 25.10.2026) */
+  umsetzung?: { titel: string; leistungen: string[]; preis: string };
 };
 
 export type Ausgabe = {

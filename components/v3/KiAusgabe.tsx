@@ -75,8 +75,25 @@ export default function KiAusgabe({ ausgabe: a, archiv, url }: { ausgabe: Ausgab
                     <span className="v3-mono">Erster Schritt, noch heute</span>
                     <p><span className="arr" aria-hidden="true">→</span> {c.schritt}</p>
                   </div>
+                  {c.umsetzung && (
+                    <div className="v3-chance-block v3-chance-offer">
+                      <span className="v3-mono v3-accent-txt">Das setze ich für dich um</span>
+                      <h3>{c.umsetzung.titel}</h3>
+                      {c.umsetzung.leistungen.length > 0 && (
+                        <ul>{c.umsetzung.leistungen.map((l) => <li key={l}>{l}</li>)}</ul>
+                      )}
+                      <p className="v3-chance-price">
+                        <b>{c.umsetzung.preis}</b>
+                        {/\d/.test(c.umsetzung.preis) && <span className="v3-mono">Festpreis für die Einrichtung · keine USt (§ 19 UStG)</span>}
+                      </p>
+                    </div>
+                  )}
                   <div className="v3-cta-row">
-                    <Link href="/de/kontakt" className="v3-btn v3-btn-accent">Für meinen Betrieb umsetzen <span className="arr" aria-hidden="true">→</span></Link>
+                    {c.umsetzung ? (
+                      <Link href={`/de/kontakt?thema=${encodeURIComponent(c.umsetzung.titel)}`} className="v3-btn v3-btn-accent">Paket anfragen <span className="arr" aria-hidden="true">→</span></Link>
+                    ) : (
+                      <Link href="/de/kontakt" className="v3-btn v3-btn-accent">Für meinen Betrieb umsetzen <span className="arr" aria-hidden="true">→</span></Link>
+                    )}
                     <a href={c.quelle.url} target="_blank" rel="noopener noreferrer" className="v3-btn v3-btn-ghost">Quelle: {c.quelle.name}</a>
                   </div>
                 </div>

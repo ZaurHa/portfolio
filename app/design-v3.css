@@ -917,6 +917,15 @@
 .v3-chance-block:first-child { padding-top: 0; border-top: 0; }
 .v3-chance-block .v3-mono { display: block; }
 .v3-chance-block p { margin: 12px 0 0; font: 500 clamp(19px, 1.6vw, 24px)/1.4 var(--v3-display); letter-spacing: -0.015em; color: var(--v3-ink); text-wrap: pretty; }
+.v3-chance-offer { margin-top: 8px; padding: 22px 24px; border: 1px solid rgba(0, 255, 231, 0.35); border-radius: 14px; background: rgba(0, 255, 231, 0.04); }
+.v3-chance-block.v3-chance-offer:first-child { padding-top: 22px; border-top: 1px solid rgba(0, 255, 231, 0.35); }
+.site-shell .v3 .v3-chance-offer h3 { margin: 12px 0 0; font: 800 clamp(22px, 2vw, 30px)/1.1 var(--v3-display); letter-spacing: -0.025em; color: var(--v3-ink); }
+.v3-chance-offer ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.v3-chance-offer li { position: relative; padding-left: 22px; font: 400 16px/1.45 var(--v3-body); color: #c4c8c5; }
+.v3-chance-offer li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--v3-accent); font-weight: 700; }
+.v3-chance-block.v3-chance-offer p.v3-chance-price { margin: 18px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.v3-chance-price b { font: 800 clamp(26px, 2.4vw, 34px)/1 var(--v3-display); letter-spacing: -0.03em; color: var(--v3-accent); }
+.v3-chance-price .v3-mono { display: inline; color: var(--v3-dim); }
 .v3-chance-block.is-step p { font: 400 clamp(16px, 1.25vw, 18px)/1.55 var(--v3-body); color: #c4c8c5; letter-spacing: 0; }
 .v3-chance-block.is-step .arr { color: var(--v3-accent); }
 .v3-chance-text .v3-cta-row { margin-top: 8px; }
