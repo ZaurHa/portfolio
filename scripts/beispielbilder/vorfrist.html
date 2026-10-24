@@ -1,0 +1,40 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="stylesheet" href="basis.css"><style>
+.wrap{position:relative;height:800px;display:grid;grid-template-columns:330px 1fr;gap:44px;padding:64px 70px}
+.links h1{font:800 54px/.95 "Inter Tight";letter-spacing:-.04em;margin-top:18px}
+.links p{margin-top:20px;color:#b9bdba;font-size:17px}
+.zahl{margin-top:34px;display:grid;gap:14px}
+.zahl div{border-top:1px solid #262826;padding-top:12px}
+.zahl b{font:800 40px/1 "Inter Tight";letter-spacing:-.03em;display:block}
+.mail{background:#f4f5f3;color:#141614;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden}
+.kopf{padding:22px 28px;border-bottom:1px solid #dcdedb}
+.kopf .von{font:500 13px/1.4 Inter;color:#5d625e}
+.kopf h2{margin-top:6px;font:700 22px/1.25 "Inter Tight";letter-spacing:-.01em}
+.inhalt{padding:22px 28px}
+.inhalt p{font-size:15px;color:#2b2e2b}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:15px}
+th{text-align:left;font:500 11px/1 "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:#7a7f7b;padding:0 0 10px}
+td{padding:12px 0;border-top:1px solid #e1e3e0;vertical-align:middle}
+td.b{text-align:right;font-weight:600;white-space:nowrap}
+.tag{display:inline-block;padding:4px 9px;border-radius:999px;font:600 12px/1 Inter}
+.rot{background:#ffe1dc;color:#b42318}.gelb{background:#fff1c7;color:#8a5a00}.gruen{background:#d9f7ee;color:#05695a}
+.ok{display:inline-block;margin-left:10px;padding:6px 10px;border-radius:8px;background:#141614;color:#00ffe7;font:600 12px/1 Inter}
+.neu{margin-top:18px;padding:12px 14px;border-radius:10px;background:#eceeeb;font-size:14px;color:#3b3f3b}
+</style></head><body><div class="glow"></div><span class="badge">Beispieldaten</span>
+<div class="wrap">
+ <div class="links"><span class="mono acc">Vorfrist · Morgenmail</span>
+  <h1>Jede Frist im Blick</h1>
+  <p>Jeden Morgen eine kurze Liste: was bald fällig ist, was neu reinkam, was jemand prüfen sollte.</p>
+  <div class="zahl"><div><b>07:00</b><span class="mono">jeden Morgen</span></div><div><b>0</b><span class="mono">Rechnungen an eine KI</span></div></div>
+ </div>
+ <div class="mail">
+  <div class="kopf"><div class="von">Vorfrist an Buchhaltung · Di 14.10. · 07:00</div><h2>3 Rechnungen bald fällig, 1 heute</h2></div>
+  <div class="inhalt"><p>Guten Morgen, hier ist der Stand von heute.</p>
+   <table><tr><th>Fällig</th><th>Lieferant</th><th style="text-align:right">Betrag</th><th></th></tr>
+    <tr><td><span class="tag rot">heute</span></td><td>Reifen Muster GmbH</td><td class="b">1.240,00 €</td><td><span class="ok">Erledigt ✓</span></td></tr>
+    <tr><td><span class="tag gelb">Do 16.10.</span></td><td>Tank &amp; Service Beispiel KG</td><td class="b">3.580,40 €</td><td><span class="ok">Erledigt ✓</span></td></tr>
+    <tr><td><span class="tag gruen">Mo 20.10.</span></td><td>Telefon Nord AG</td><td class="b">89,90 €</td><td><span class="ok">Erledigt ✓</span></td></tr>
+   </table>
+   <div class="neu">Neu eingegangen: 5 Rechnungen. 1 Scan war nicht lesbar und liegt zur Prüfung bereit.</div>
+  </div>
+ </div>
+</div></body></html>

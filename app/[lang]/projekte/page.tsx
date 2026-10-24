@@ -10,8 +10,8 @@ import TileVideoToggle from "../../../components/v3/TileVideoToggle";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   return lang === "en"
-    ? pageMetadata({ lang, path: "/projekte", title: "Web Design Projects & References", description: "BrandWerkX references: websites for logistics (MRG, IP Logistik, MH Logistik), moving companies, a DPF workshop and a beauty studio, plus own apps." })
-    : pageMetadata({ lang, path: "/projekte", title: "Webdesign Referenzen & Projekte", description: "Referenzen von BrandWerkX: Websites für Logistik (MRG, IP Logistik, MH Logistik), Umzugsbetriebe, eine DPF-Werkstatt und ein Kosmetikstudio, plus eigene Apps." });
+    ? pageMetadata({ lang, path: "/projekte", title: "Web Design Projects & References", description: "BrandWerkX references: websites for logistics (MRG, IP Logistik, MH Logistik), moving companies, a DPF workshop and a beauty studio, plus own apps and AI systems." })
+    : pageMetadata({ lang, path: "/projekte", title: "Webdesign Referenzen & Projekte", description: "Referenzen von BrandWerkX: Websites für Logistik (MRG, IP Logistik, MH Logistik), Umzugsbetriebe, eine DPF-Werkstatt und ein Kosmetikstudio, plus eigene Apps und KI-Systeme." });
 }
 
 type Project = {
@@ -187,6 +187,22 @@ function getProjects(de: boolean, lang: string): Project[] {
       live: true,
     },
     {
+      slug: "vorfrist",
+      title: "Vorfrist",
+      kind: de ? "Automatisierung · Rechnungs-Erinnerungen" : "Automation · Invoice reminders",
+      year: "2026",
+      place: de ? "Im Einsatz" : "In use",
+      desc: de
+        ? "Für einen Betrieb mit vielen Eingangsrechnungen. Vorfrist holt jeden Tag die neuen Rechnungen aus dem Postfach, erkennt die Zahlungsfristen und schickt der Buchhaltung jeden Morgen eine kurze Liste mit allem, was bald fällig ist. So bleibt jede Frist im Blick. Läuft auf einem eigenen Server in Deutschland, wird rund um die Uhr überwacht, und keine Rechnung geht an eine KI."
+        : "For a business with lots of incoming invoices. Vorfrist collects the new invoices from the mailbox every day, detects the payment deadlines and sends accounting a short list every morning with everything that is due soon. Every deadline stays in sight. Runs on its own server in Germany, is monitored around the clock, and no invoice is sent to an AI.",
+      done: de ? ["Neue Rechnungen täglich aus dem Postfach", "Morgenmail mit allem, was bald fällig ist", "Eigener Server in Deutschland, überwacht"] : ["New invoices from the mailbox every day", "Morning email with everything due soon", "Own server in Germany, monitored"],
+      stack: ["Node.js", "Hetzner", "Healthchecks", "Grafana"],
+      image: "/images/vorfrist-preview.webp",
+      alt: de ? "Beispiel einer Vorfrist-Morgenmail mit bald fälligen Rechnungen (Beispieldaten)" : "Example of a Vorfrist morning email with invoices due soon (sample data)",
+      bar: de ? "Vorfrist · Morgenmail" : "Vorfrist · morning email",
+      live: true,
+    },
+    {
       slug: "mobilwerk",
       title: "Mobilwerk",
       kind: de ? "Transport & Umzug · Eigener Betrieb" : "Moving & transport · Own business",
@@ -266,6 +282,41 @@ function getProjects(de: boolean, lang: string): Project[] {
       external: true,
     },
     {
+      slug: "ki-chancen",
+      title: "KI-Chancen",
+      kind: de ? "Eigenes KI-System · Recherche mit Freigabe" : "Own AI system · Research with approval",
+      year: "2026",
+      place: "Live",
+      desc: de
+        ? "Mein eigenes KI-System liest jeden Tag rund 60 bis 160 KI-Neuheiten aus Blogs, Reddit, YouTube und neuen Modellen und sucht, womit kleine Betriebe Geld verdienen oder sparen. Zwei KI-Prüfer suchen nach Hype und Risiken. Erst nach meiner Freigabe erscheint eine Chance im Telegram-Kanal, auf Deutsch und Russisch. Sonntags wird daraus automatisch eine Wochenausgabe hier auf der Website."
+        : "My own AI system reads around 60 to 160 AI news items a day from blogs, Reddit, YouTube and new models and looks for ways small businesses can earn or save money. Two AI reviewers look for hype and risks. A chance only appears in the Telegram channel, in German and Russian, after my approval. Every Sunday it automatically becomes a weekly issue here on the website.",
+      done: de ? ["Tägliche Recherche, zwei KI-Prüfer", "Freigabe per Knopf in Telegram", "Wochenausgabe automatisch auf der Website"] : ["Daily research, two AI reviewers", "Approval with one tap in Telegram", "Weekly issue published automatically"],
+      stack: ["Python", "Claude", "Telegram-Bot", "Next.js"],
+      image: "/images/ki-chancen-preview.webp",
+      video: "/videos/ki-chancen-hero.mp4",
+      alt: de ? "Die Seite KI-Chancen der Woche auf brandwerkx.de" : "The weekly AI opportunities page on brandwerkx.de",
+      bar: "brandwerkx.de/de/ki-chancen",
+      href: "/de/ki-chancen",
+      cta: de ? "Aktuelle Ausgabe lesen" : "Read the current issue (German)",
+      live: true,
+    },
+    {
+      slug: "ki-assistent",
+      title: de ? "Mein KI-Assistent" : "My AI assistant",
+      kind: de ? "Eigenes KI-System · Telegram-Bot" : "Own AI system · Telegram bot",
+      year: "2026",
+      place: de ? "Täglich im Einsatz" : "In daily use",
+      desc: de
+        ? "Mein eigener Assistent für alles, was reinkommt. Sprachnachrichten, Fotos und Notizen schicke ich an einen Telegram-Bot, er schreibt sie ab und legt sie geordnet ab. Fotografiere ich einen Brief, erkennt er die Frist und trägt sie in meine offenen Punkte ein. Jeden Morgen um 7:30 kommt ein kurzes Briefing aufs Handy. Läuft auf meinem Mac, die Suche komplett lokal."
+        : "My own assistant for everything that comes in. I send voice messages, photos and notes to a Telegram bot, which transcribes and files them. When I photograph a letter, it detects the deadline and adds it to my open tasks. Every morning at 7:30 a short briefing arrives on my phone. Runs on my Mac, with search fully local.",
+      done: de ? ["Telegram-Bot für Sprache, Fotos und Text", "Fristen aus Briefen automatisch erkannt", "Morgen-Briefing jeden Tag um 7:30"] : ["Telegram bot for voice, photos and text", "Deadlines detected from letters", "Morning briefing every day at 7:30"],
+      stack: ["Claude", "Whisper", "Ollama", "Telegram"],
+      image: "/images/ki-assistent-preview.webp",
+      alt: de ? "Beispiel: Chat mit dem KI-Assistenten und Morgen-Briefing (Beispieldaten)" : "Example: chat with the AI assistant and morning briefing (sample data)",
+      bar: de ? "Telegram · KI-Assistent" : "Telegram · AI assistant",
+      live: true,
+    },
+    {
       slug: "klempner",
       title: de ? "Muster-Website Klempner" : "Template website: plumber",
       kind: de ? "Handwerk · Muster-Designs" : "Trades · template designs",
@@ -306,7 +357,7 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
         actions={<Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{de ? "Eigenes Projekt starten" : "Start your project"} <span className="arr" aria-hidden="true">→</span></Link>}
         facts={[
           { label: de ? "Projekte" : "Projects", value: count },
-          { label: de ? "Branchen" : "Industries", value: de ? "Logistik · Umzug · Werkstatt · Kosmetik · Apps" : "Logistics · Moving · Workshop · Beauty · Apps" },
+          { label: de ? "Branchen" : "Industries", value: de ? "Logistik · Umzug · Werkstatt · Kosmetik · Apps · KI" : "Logistics · Moving · Workshop · Beauty · Apps · AI" },
           { label: de ? "Dabei seit" : "Since", value: "2024" },
           { label: de ? "Ansprechpartner" : "Contact", value: de ? "Einer von Anfang bis Ende" : "One from start to finish" },
         ]}
