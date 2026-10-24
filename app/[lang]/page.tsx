@@ -10,6 +10,7 @@ import TileVideoToggle from "../../components/v3/TileVideoToggle";
 import PriceBoard from "../../components/v3/PriceBoard";
 import Steps from "../../components/v3/Steps";
 import Faq from "../../components/v3/Faq";
+import Hero3D from "../../components/v3/Hero3D";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
@@ -28,7 +29,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="v3">
-      {/* HERO */}
+      {/* HERO: links Botschaft, rechts 3D-Bühne mit echten Kundenseiten (seit 25.10.2026) */}
       <section className="v3-hero" aria-labelledby="h-hero">
         <div className="v3-wrap">
           <div className="v3-hero-top v3-rise">
@@ -36,43 +37,31 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <span className="v3-mono v3-hide-sm"><b>{c.hero.metaRight}</b></span>
           </div>
 
-          <h1 id="h-hero" className="v3-h1">
-            <span className="l v3-rise d1">{`${c.hero.l1} `}</span>
-            <span className="l v3-rise d2"><span className="c">{`${c.hero.accent} `}</span><span className="o">{c.hero.outline}</span></span>
-            <span className="sub v3-rise d3">{c.hero.subPrice} <i aria-hidden="true" /> <em>{c.hero.subPlace}</em></span>
-          </h1>
-
-          <div className="v3-hero-grid">
-            <div className="v3-rise d3">
-              <p className="v3-lead">
-                {c.hero.lead} <strong>{c.hero.leadStrong}</strong>{c.hero.leadTail}
-              </p>
-              <div className="v3-cta-row">
-                <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{c.hero.ctaPrimary} <Arrow /></Link>
-                <a href={`tel:${PHONE_TEL}`} className="v3-btn v3-btn-ghost">{PHONE_DISPLAY}</a>
+          <div className="v3-hero-split">
+            <div className="v3-hero-copy">
+              <h1 id="h-hero" className="v3-h1 v3-h1-split">
+                <span className="l v3-rise d1">{`${c.hero.l1} `}</span>
+                <span className="l v3-rise d2"><span className="c">{`${c.hero.accent} `}</span><span className="o">{c.hero.outline}</span></span>
+                <span className="sub v3-rise d3">{c.hero.subPrice} <i aria-hidden="true" /> <em>{c.hero.subPlace}</em></span>
+              </h1>
+              <div className="v3-rise d3">
+                <p className="v3-lead">
+                  {c.hero.lead} <strong>{c.hero.leadStrong}</strong>{c.hero.leadTail}
+                </p>
+                <div className="v3-cta-row">
+                  <Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{c.hero.ctaPrimary} <Arrow /></Link>
+                  <a href={`tel:${PHONE_TEL}`} className="v3-btn v3-btn-ghost">{PHONE_DISPLAY}</a>
+                </div>
               </div>
             </div>
 
-            {/* Arbeitsauftrag + Preisstempel */}
-            <div className="v3-ticket-zone v3-rise d4">
+            <div className="v3-stage-zone v3-rise d4">
+              <Hero3D alt={c.hero.stageAlt} liveLabel={c.hero.stageLive} />
               <div className="v3-stamp" role="img" aria-label={`${c.ticket.stampTop} ${c.ticket.stampFrom} 490 €`}>
                 <div className="k"><span>{c.ticket.stampTop}</span><span>Nr. 490</span></div>
                 <div className="p"><small>{c.ticket.stampFrom}</small><strong>490&nbsp;€</strong></div>
                 <div className="f">{c.ticket.stampFoot}</div>
               </div>
-              <aside className="v3-ticket" aria-label={c.ticket.title}>
-                <div className="t-head"><b>{c.ticket.title}</b><span>BWX-0490</span></div>
-                <dl className="t-rows">
-                  {c.ticket.rows.map(([k, v]) => (
-                    <div key={k}><dt>{k}</dt><dd>{v}</dd></div>
-                  ))}
-                  <div>
-                    <dt>{c.ticket.contactLabel}</dt>
-                    <dd><a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a> · <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">WhatsApp</a></dd>
-                  </div>
-                </dl>
-                <div className="t-foot"><div className="barcode" aria-hidden="true" /><span>Zaur Hatuev</span></div>
-              </aside>
             </div>
           </div>
         </div>
@@ -158,7 +147,32 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      {/* 03 ABLAUF */}
+      {/* 03 KI FÜR BETRIEBE (seit 25.10.2026) */}
+      <section className="v3-sec" id="ki" aria-labelledby="h-ki">
+        <div className="v3-wrap">
+          <div className="v3-sec-head">
+            <span className="num">{c.ki.num}</span>
+            <h2 id="h-ki">{c.ki.h1}<br /><span className="c">{c.ki.hc}</span></h2>
+            <p>{c.ki.text}</p>
+          </div>
+          <div className="v3-ki-grid">
+            {c.ki.items.map((k, i) => (
+              <Link key={k.title} href={k.href} className="v3-ki-card">
+                <span className="v3-mono v3-ki-tag"><span className="v3-dot" />{k.tag}</span>
+                <span className="v3-ki-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{k.title}</h3>
+                <p>{k.text}</p>
+                <span className="v3-link">{k.cta} <Arrow /></span>
+              </Link>
+            ))}
+          </div>
+          <div className="v3-cta-row">
+            <Link href={c.ki.ctaHref} className="v3-btn v3-btn-accent">{c.ki.cta} <Arrow /></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 04 ABLAUF */}
       <section className="v3-sec" id="ablauf" aria-labelledby="h-ablauf">
         <div className="v3-wrap">
           <div className="v3-sec-head">

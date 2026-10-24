@@ -22,6 +22,8 @@ SCROLL=1600 SCROLL_AT=1.6 SCROLL_DUR=7 node scripts/hero-videos/record.mjs sm ht
 SCROLL=900 SCROLL_AT=2.2 SCROLL_DUR=3.5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs flott https://umzug-flott.de/ 12.5
 node scripts/hero-videos/record.mjs mobilwerk https://mobilwerk.vercel.app 12
 SCROLL=900 SCROLL_AT=2.2 SCROLL_DUR=3.5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs mogashal https://mogashal.com/ 12.5
+# Handy-Format für den Handy-Bildschirm der 3D-Bühne im Hero (390 × 844)
+SCROLL=1400 SCROLL_AT=2.0 SCROLL_DUR=5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs zaira-mobil https://zairabeauty.de 12.5 390 844
 SCROLL=900 SCROLL_AT=2.2 SCROLL_DUR=3.5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs ki-chancen https://brandwerkx.de/de/ki-chancen 12.5
 HIDE_CSS='div.fixed.z-50.rounded-2xl[role="dialog"]{display:none!important}' SCROLL=2400 SCROLL_AT=3.0 SCROLL_DUR=5 SCROLL_BACK=1.2 node scripts/hero-videos/record.mjs serlo https://serlo.ch 16.5
 ```
@@ -33,6 +35,7 @@ HIDE_CSS='div.fixed.z-50.rounded-2xl[role="dialog"]{display:none!important}' SCR
 ```bash
 python3 scripts/hero-videos/encode.py '[
  {"name":"zaira","out":"public/videos/zaira-hero.mp4","S":2.0,"L":8.0,"C":0.8,"w":1280,"h":800,"crf":27},
+ {"name":"zaira-mobil","out":"public/videos/zaira-mobil.mp4","S":1.6,"L":9.0,"C":0.8,"w":390,"h":844,"crf":29},
  {"name":"mrg","out":"public/videos/mrg-hero.mp4","S":1.2,"L":10.0,"C":0.8,"w":960,"h":600,"crf":28},
  {"name":"ip","out":"public/videos/ip-logistik-hero.mp4","S":2.0,"L":8.0,"C":0.8,"w":960,"h":600,"crf":28},
  {"name":"mh","out":"public/videos/mh-logistik-hero.mp4","S":2.0,"L":8.0,"C":0.8,"w":960,"h":600,"crf":28},

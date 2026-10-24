@@ -3,6 +3,7 @@ import "../design-v3.css";
 import type { Metadata } from "next";
 import { getDictionary, type Locale } from "../../lib/i18n";
 import LayoutClient from "../../components/LayoutClient";
+import RevealOnScroll from "../../components/v3/RevealOnScroll";
 import { baseMetadata, fontClassName, jsonLd } from "../../lib/root";
 
 export { viewport } from "../../lib/root";
@@ -45,6 +46,7 @@ export default async function LangLayout({
         <LayoutClient lang={locale} dict={dict}>
           {children}
         </LayoutClient>
+        <RevealOnScroll />
       </body>
     </html>
   );

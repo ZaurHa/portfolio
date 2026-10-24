@@ -127,6 +127,59 @@
 .v3-lead strong { color: var(--v3-ink); font-weight: 500; }
 .v3-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
+/* Hero zweispaltig (seit 25.10.2026): links Botschaft, rechts 3D-Bühne, beides im ersten Bild */
+.v3-hero-split { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: clamp(20px, 3.6vw, 56px); align-items: center; position: relative; }
+.site-shell .v3-h1.v3-h1-split { font-size: clamp(44px, 5.6vw, 92px); }
+.v3-h1-split .sub { font-size: clamp(18px, 1.6vw, 24px); }
+.v3-hero-copy .v3-lead { margin-top: clamp(20px, 2.2vw, 30px); }
+.v3-hero-split .v3-stage-zone { margin-top: 0; }
+@media (max-width: 960px) {
+  .v3-hero-split { grid-template-columns: 1fr; }
+  .site-shell .v3-h1.v3-h1-split { font-size: clamp(46px, 11vw, 84px); }
+  .v3-hero-split .v3-stage-zone { margin-top: 36px; }
+}
+@media (max-width: 560px) {
+  .site-shell .v3-h1.v3-h1-split { font-size: clamp(42px, 12.6vw, 58px); }
+}
+
+/* 3D-Bühne im Hero (seit 25.10.2026): Standbild, darüber die lebende three.js-Szene */
+.v3-stage-zone { position: relative; margin-top: -48px; }
+.v3-stage3d { position: relative; width: 100%; aspect-ratio: 5 / 4; }
+.v3-stage3d::before { content: ""; position: absolute; inset: 10% 4% 2%; background: radial-gradient(closest-side, rgba(0, 255, 231, 0.17), transparent 72%); filter: blur(8px); pointer-events: none; }
+.v3-stage3d-poster { object-fit: contain; transition: opacity 0.9s ease; }
+.v3-stage3d-canvas { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; }
+.v3-stage3d-canvas canvas { display: block; width: 100% !important; height: 100% !important; }
+.v3-stage3d.is-ready .v3-stage3d-canvas { opacity: 1; }
+.v3-stage3d.is-ready .v3-stage3d-poster { opacity: 0; }
+.v3-stage3d-live { position: absolute; left: 4%; bottom: 3%; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--v3-line-2); border-radius: 999px; background: rgba(10, 11, 10, 0.72); backdrop-filter: blur(6px); color: var(--v3-ink); animation: v3-live-in 0.5s ease both; }
+@keyframes v3-live-in { from { opacity: 0; transform: translateY(6px); } }
+.v3-stage-zone .v3-stamp { right: -16px; top: auto; bottom: -22px; width: clamp(140px, 10.5vw, 168px); }
+.v3-stage-zone.v3-rise .v3-stamp { animation: v3-stamp 0.6s 0.75s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+@media (max-width: 960px) {
+  .v3-stage-zone { margin-top: 28px; }
+  .v3-stage-zone .v3-stamp { position: absolute; right: 4px; top: auto; bottom: -14px; margin: 0; }
+}
+@media (max-width: 560px) {
+  .v3-stage-zone .v3-stamp { width: 112px; bottom: -18px; }
+}
+
+/* Scroll-Animationen (seit 25.10.2026, gesetzt von RevealOnScroll.tsx): eigene translate-Eigenschaft,
+   damit bestehende transform-Effekte (gedrehte Tickets, Hover) unberührt bleiben */
+.rv { opacity: 0; translate: 0 26px; transition: opacity 0.7s ease var(--rv-d, 0ms), translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--rv-d, 0ms); }
+.rv.rv-in { opacity: 1; translate: none; }
+
+/* KI für Betriebe: drei Karten mit leichtem 3D-Kippen beim Darüberfahren */
+.v3-ki-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: clamp(28px, 3.4vw, 48px); perspective: 1200px; }
+.v3-ki-card { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 28px 26px 26px; border: 1px solid var(--v3-line-2); border-radius: 18px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)); color: var(--v3-ink); text-decoration: none; transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s ease, box-shadow 0.45s ease; }
+.v3-ki-card:hover, .v3-ki-card:focus-visible { transform: translateY(-6px) rotateX(4deg); border-color: rgba(0, 255, 231, 0.45); box-shadow: 0 26px 60px -26px rgba(0, 255, 231, 0.4); }
+.site-shell .v3 .v3-ki-card h3 { font: 800 clamp(24px, 2vw, 30px)/1.05 var(--v3-display); letter-spacing: -0.025em; margin: 6px 0 0; padding-right: 56px; }
+.v3-ki-card p { margin: 0; color: var(--v3-muted); font-size: 16px; line-height: 1.5; flex: 1; }
+.v3-ki-n { position: absolute; top: 20px; right: 22px; font: 800 46px/1 var(--v3-display); color: transparent; -webkit-text-stroke: 1px rgba(238, 239, 238, 0.22); }
+.v3-ki-tag { display: inline-flex; align-items: center; gap: 8px; color: var(--v3-accent); }
+#ki .v3-cta-row { margin-top: clamp(24px, 2.6vw, 36px); }
+@media (max-width: 960px) { .v3-ki-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .v3-ki-card, .v3-ki-card:hover { transition: none; transform: none; } }
+
 /* Arbeitsauftrag (Papier) + Stempel (Cyan) */
 .v3-ticket-zone { position: relative; padding-top: 150px; margin-top: -60px; }
 .v3-ticket {
