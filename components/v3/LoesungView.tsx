@@ -8,6 +8,7 @@ import PageHero from "./PageHero";
 import Faq from "./Faq";
 import Steps from "./Steps";
 import ClosingCta from "./ClosingCta";
+import { kurzPreis } from "./LoesungenHub";
 
 const T = {
   de: {
@@ -197,7 +198,7 @@ export default function LoesungView({ l }: { l: Loesung }) {
           </div>
           <nav className="v3-links" aria-label={t.related}>
             {related.map((r) => (
-              <Link key={r.key} href={loesungPfad(r.key, lang) ?? LOESUNGEN_BASIS[lang]}>{r.label}<span>{r.preise[0]?.betrag} →</span></Link>
+              <Link key={r.key} href={loesungPfad(r.key, lang) ?? LOESUNGEN_BASIS[lang]}>{r.label}<span>{kurzPreis(r.preise[0]?.betrag, lang)} →</span></Link>
             ))}
             <Link href={LOESUNGEN_BASIS[lang]}>{t.alle}<span>→</span></Link>
           </nav>

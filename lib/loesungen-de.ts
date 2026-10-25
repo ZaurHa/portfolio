@@ -286,16 +286,15 @@ export const loesungenDe: Loesung[] = [
     slug: "web-app-entwickeln-lassen",
     label: "Web-App für deinen Betrieb",
     familie: "Abläufe",
-    metaTitle: "Web-App entwickeln lassen | ab 3.000 €, Förderung möglich",
+    metaTitle: "Web-App entwickeln lassen | Festpreis, Förderung möglich",
     metaDescription:
-      "Web-App entwickeln lassen: Auftragsmappe, Fahrer-App oder Kundenportal statt Zettel und Excel. Ab 3.000 €, in Bayern bis 50 % Zuschuss über den Digitalbonus.",
+      "Web-App entwickeln lassen: Auftragsmappe, Fahrer-App oder Kundenportal statt Zettel und Excel. Festpreis nach Erstgespräch, in Bayern bis 50 % Zuschuss möglich.",
     eyebrow: "Apps · Abläufe",
     h1: "Web-App entwickeln lassen: Abläufe statt Zettel und Excel",
     intro:
-      "Eine Web-App ersetzt Zettel, Excel-Listen und Messenger-Gruppen durch einen klaren Ablauf, der auf jedem Handy läuft. Ich baue sie für kleine Betriebe, bei denen Standardsoftware nicht passt: die erste Version ab 3.000 € zum Festpreis, Betrieb ab 49 € im Monat. In Bayern kann der Digitalbonus bis zur Hälfte der Kosten übernehmen, wenn die Voraussetzungen erfüllt sind.",
+      "Eine Web-App ersetzt Zettel, Excel-Listen und Messenger-Gruppen durch einen klaren Ablauf, der auf jedem Handy läuft. Ich baue sie für kleine Betriebe, bei denen Standardsoftware nicht passt, zum schriftlichen Festpreis nach einem kostenlosen Erstgespräch. In Bayern kann der Digitalbonus bis zur Hälfte der Kosten übernehmen, wenn die Voraussetzungen erfüllt sind.",
     preise: [
-      { betrag: "ab 3.000 €", wofuer: "erste Version, Festpreis nach Umfang" },
-      { betrag: "ab 49 € im Monat", wofuer: "Betrieb, Updates, Sicherheit" },
+      { betrag: "Festpreis nach Erstgespräch", wofuer: "schriftlich vereinbart, bevor es losgeht; der Umfang bestimmt den Preis" },
       { betrag: "bis 50 % Zuschuss", wofuer: "über den Digitalbonus Bayern, wenn die Voraussetzungen erfüllt sind" },
     ],
     fuer: ["Umzug und Logistik", "Handwerksbetriebe", "Reinigung und Hausmeisterdienste", "Zeitarbeitsfirmen", "Reparatur- und Aufbereitungsbetriebe", "Studios und lokale Händler"],
@@ -314,7 +313,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         title: "Was eine Web-App kostet",
-        text: "Die erste Version baue ich zum Festpreis nach schriftlich festgelegtem Umfang, ab 3.000 €. Danach sichert der Betrieb ab 49 € im Monat Hosting, Updates und Sicherheitsprüfungen. Weitere Änderungen vereinbaren wir einzeln. Kleinere Bausteine mit festem Umfang, etwa eine Fahrer-App oder ein Stundenzettel, beginnen niedriger, die Preise stehen in der Übersicht aller Angebote. Bei größeren Projekten rechnen wir in Abschlägen für fertige Teile ab.",
+        text: "Den Preis bestimmt der Umfang: wie viele Abläufe, Nutzer und Schnittstellen die App braucht. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, bevor irgendetwas beginnt. Darin stehen auch die laufenden Kosten für Hosting, Updates und Sicherheitsprüfungen. Weitere Änderungen vereinbaren wir einzeln. Bei größeren Projekten rechnen wir in Abschlägen für fertige Teile ab.",
       },
       {
         title: "Digitalbonus Bayern: so klappt die Förderung",
@@ -347,7 +346,7 @@ export const loesungenDe: Loesung[] = [
     faqs: [
       {
         q: "Was kostet es, eine Web-App entwickeln zu lassen?",
-        a: "Bei mir beginnt die erste Version bei 3.000 € zum Festpreis, je nach Umfang. Betrieb, Updates und Sicherheit kosten ab 49 € im Monat. In Bayern kann der Digitalbonus 50 % der förderfähigen Kosten übernehmen, höchstens 7.500 €.",
+        a: "Das hängt vom Umfang ab, also davon, wie viele Abläufe, Nutzer und Schnittstellen die App braucht. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, bevor irgendetwas beginnt, einschließlich der laufenden Kosten für Betrieb und Sicherheit. In Bayern kann der Digitalbonus 50 % der förderfähigen Kosten übernehmen, höchstens 7.500 €.",
       },
       {
         q: "Was ist der Unterschied zwischen Web-App und App aus dem App Store?",
@@ -385,17 +384,16 @@ export const loesungenDe: Loesung[] = [
     slug: "buero-automatisierung",
     label: "Büro-Automatisierung",
     familie: "Büro",
-    metaTitle: "Büro-Automatisierung für kleine Betriebe | ab 490 €",
+    metaTitle: "Büro-Automatisierung für kleine Betriebe | Festpreis",
     metaDescription:
-      "Büro-Automatisierung: Rechnungen aus dem Postfach erkennen, an Fristen erinnern, Briefe per Foto zur Aufgabe machen. Ab 490 €, Betrieb ab 29 € im Monat.",
+      "Büro-Automatisierung: Rechnungen aus dem Postfach erkennen, an Fristen erinnern, Briefe per Foto zur Aufgabe machen. Festpreis nach kostenlosem Erstgespräch.",
     eyebrow: "Automatisierung · Büro",
     h1: "Büro-Automatisierung für Betriebe ohne Bürokraft",
     intro:
-      "Büro-Automatisierung nimmt dir wiederkehrende Arbeit ab: Rechnungen aus dem Postfach erkennen, an Fälligkeiten erinnern, Briefe und Sprachnachrichten in Aufgaben verwandeln. Rechnungseingang und Zahlungserinnerung gibt es ab 490 €, den Büro-Assistenten per Telegram ab 1.500 €, Betrieb und Überwachung ab 29 € im Monat. Bevor etwas rausgeht, gibst du es frei.",
+      "Büro-Automatisierung nimmt dir wiederkehrende Arbeit ab: Rechnungen aus dem Postfach erkennen, an Fälligkeiten erinnern, Briefe und Sprachnachrichten in Aufgaben verwandeln. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, die laufende Betreuung inklusive. Bevor etwas rausgeht, gibst du es frei.",
     preise: [
-      { betrag: "ab 490 €", wofuer: "Rechnungseingang und Zahlungserinnerung" },
-      { betrag: "ab 1.500 €", wofuer: "Büro-Assistent per Telegram" },
-      { betrag: "ab 29 € im Monat", wofuer: "Betrieb und Überwachung" },
+      { betrag: "Festpreis nach Erstgespräch", wofuer: "Rechnungseingang, Zahlungserinnerung oder Büro-Assistent, je nach Umfang" },
+      { betrag: "Betreuung im Monat", wofuer: "Überwachung und Reparatur der Abläufe, der Preis steht im Angebot" },
     ],
     fuer: ["Handwerksbetriebe", "Umzugsunternehmen", "Kfz-Werkstätten", "Kosmetikstudios", "Firmen mit vielen Eingangsrechnungen"],
     sections: [
@@ -426,7 +424,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         title: "Betrieb und Überwachung",
-        text: "Automationen brechen, wenn ein Anbieter seine Schnittstelle ändert. Deshalb überwache ich jeden Ablauf und bekomme bei einem Fehler sofort eine Meldung. Ab 29 € im Monat halte ich die Abläufe am Laufen und repariere sie, wenn sich bei einem Anbieter etwas ändert. Ich kümmere mich am selben Abend oder am nächsten Werktag darum.",
+        text: "Automationen brechen, wenn ein Anbieter seine Schnittstelle ändert. Deshalb überwache ich jeden Ablauf und bekomme bei einem Fehler sofort eine Meldung. Mit der monatlichen Betreuung halte ich die Abläufe am Laufen und repariere sie, wenn sich bei einem Anbieter etwas ändert. Ich kümmere mich am selben Abend oder am nächsten Werktag darum.",
       },
     ],
     ablauf: [
@@ -438,7 +436,7 @@ export const loesungenDe: Loesung[] = [
     faqs: [
       {
         q: "Was kostet Büro-Automatisierung?",
-        a: "Rechnungseingang und Zahlungserinnerung gibt es bei mir ab 490 €, den Büro-Assistenten per Telegram ab 1.500 € einmalig. Betrieb und Überwachung kosten ab 29 € im Monat. Lizenzen für Buchhaltungsprogramme zahlst du direkt beim Anbieter.",
+        a: "Das hängt davon ab, welche Abläufe automatisiert werden und welche Programme du schon nutzt. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, die monatliche Betreuung inklusive. Lizenzen für Buchhaltungsprogramme zahlst du direkt beim Anbieter.",
       },
       {
         q: "Bucht das System meine Belege?",
@@ -719,16 +717,16 @@ export const loesungenDe: Loesung[] = [
     slug: "it-sicherheit-kleine-firmen",
     label: "IT-Grundschutz",
     familie: "Sicherheit und Schulung",
-    metaTitle: "IT-Sicherheit für kleine Firmen | ab 490 €",
+    metaTitle: "IT-Sicherheit für kleine Firmen | Festpreis",
     metaDescription:
-      "IT-Sicherheit für kleine Firmen ohne IT-Abteilung: Zwei-Faktor-Anmeldung, Passwortmanager, getestete Backups. Grundschutz ab 490 €, Betreuung ab 49 € im Monat.",
+      "IT-Sicherheit für kleine Firmen ohne IT-Abteilung: Zwei-Faktor-Anmeldung, Passwortmanager, getestete Backups. Festpreis nach kostenlosem Erstgespräch.",
     eyebrow: "Sicherheit · IT-Grundschutz",
     h1: "IT-Sicherheit für kleine Firmen ohne eigene IT",
     intro:
-      "Viele kleine Firmen haben keine IT-Abteilung, aber Konten, Postfächer und Kundendaten, die geschützt sein müssen. Mit dem IT-Grundschutz-Paket ab 490 € sichere ich Konten, Passwörter und Backups ab und dokumentiere alles. Als digitaler Hausmeister kümmere ich mich ab 49 € im Monat um Domain, E-Mail und Konten für bis zu 5 Postfächer.",
+      "Viele kleine Firmen haben keine IT-Abteilung, aber Konten, Postfächer und Kundendaten, die geschützt sein müssen. Mit dem IT-Grundschutz-Paket sichere ich Konten, Passwörter und Backups ab und dokumentiere alles. Als digitaler Hausmeister kümmere ich mich danach jeden Monat um Domain, E-Mail und Konten. Den Festpreis bekommst du nach einem kostenlosen Erstgespräch.",
     preise: [
-      { betrag: "ab 490 €", wofuer: "IT-Grundschutz-Paket, einmalig" },
-      { betrag: "ab 49 € im Monat", wofuer: "Digitaler Hausmeister für bis zu 5 Postfächer" },
+      { betrag: "Festpreis nach Erstgespräch", wofuer: "IT-Grundschutz-Paket, je nach Zahl der Geräte und Konten" },
+      { betrag: "Pauschale im Monat", wofuer: "Digitaler Hausmeister, je nach Zahl der Postfächer" },
     ],
     fuer: ["Firmen mit 1 bis 10 Personen", "Logistik und Transport", "Zeitarbeitsfirmen", "Büros ohne IT-Abteilung", "Zulieferer großer Firmen"],
     sections: [
@@ -746,7 +744,7 @@ export const loesungenDe: Loesung[] = [
         ],
       },
       {
-        title: "Digitaler Hausmeister ab 49 € im Monat",
+        title: "Digitaler Hausmeister im Monatsabo",
         text: "Für Firmen mit bis zu 5 Postfächern übernehme ich die laufende Pflege. Lizenzen, etwa für Microsoft 365 oder Google Workspace, zahlst du zum Einkaufspreis.",
         bullets: [
           "Domain und DNS, sichere E-Mail-Zustellung mit SPF, DKIM und DMARC.",
@@ -778,7 +776,7 @@ export const loesungenDe: Loesung[] = [
     faqs: [
       {
         q: "Was kostet IT-Sicherheit für eine kleine Firma?",
-        a: "Bei mir kostet das IT-Grundschutz-Paket ab 490 € einmalig. Die laufende Betreuung als digitaler Hausmeister gibt es ab 49 € im Monat für bis zu 5 Postfächer. Lizenzen wie Microsoft 365 zahlst du zum Einkaufspreis.",
+        a: "Das hängt davon ab, wie viele Geräte, Konten und Postfächer es gibt und was schon eingerichtet ist. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis für das Grundschutz-Paket und die Monatspauschale als digitaler Hausmeister. Lizenzen wie Microsoft 365 zahlst du zum Einkaufspreis.",
       },
       {
         q: "Welche Maßnahmen gehören zum IT-Grundschutz?",
@@ -790,7 +788,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Was macht ein digitaler Hausmeister?",
-        a: "Er kümmert sich um die laufende IT einer kleinen Firma: Domain, E-Mail, Konten, Passwortmanager, Zwei-Faktor-Anmeldung und Backups. Kommt jemand neu dazu oder geht, richte ich Konten ein oder sperre sie. Bei mir kostet das ab 49 € im Monat für bis zu 5 Postfächer.",
+        a: "Er kümmert sich um die laufende IT einer kleinen Firma: Domain, E-Mail, Konten, Passwortmanager, Zwei-Faktor-Anmeldung und Backups. Kommt jemand neu dazu oder geht, richte ich Konten ein oder sperre sie. Dafür gibt es eine feste Monatspauschale, die sich nach der Zahl der Postfächer richtet.",
       },
       {
         q: "Was bedeuten SPF, DKIM und DMARC?",

@@ -21,7 +21,7 @@ export const HUB_TEXT = {
     seitenTitel: "Die wichtigsten Lösungen",
     katalogNum: "02 / Alle Angebote",
     katalogTitel: "Alle Angebote im Überblick",
-    katalogLead: "Jedes Angebot gibt es einzeln oder kombiniert. Endpreise ohne Umsatzsteuer (§ 19 UStG); Kosten für Plattformen und Lizenzen von Drittanbietern nenne ich dir vorab.",
+    katalogLead: "Jedes Angebot gibt es einzeln oder kombiniert. Feste Pakete haben ihren Preis auf der jeweiligen Seite, Projekte bekommen nach einem kostenlosen Erstgespräch einen schriftlichen Festpreis.",
     mehr: "Mehr →",
     foerderTitel: "Digitalbonus Bayern",
     foerderText:
@@ -44,7 +44,7 @@ export const HUB_TEXT = {
     seitenTitel: "Main solutions",
     katalogNum: "02 / All offers",
     katalogTitel: "All offers at a glance",
-    katalogLead: "Every offer is available on its own or combined. No German VAT is charged (small business rule, § 19 UStG); third-party platform or licence costs are shown upfront.",
+    katalogLead: "Every offer is available on its own or combined. Fixed packages show their price on their own page; projects get a written fixed price after a free call.",
     mehr: "More →",
     foerderTitel: "",
     foerderText: "",
@@ -54,7 +54,13 @@ export const HUB_TEXT = {
   },
 } as const;
 
-/** Übersicht aller Lösungen mit Katalog (DE: /de/loesungen, EN: /en/solutions). */
+/** Kurzer Preis für Karten und Links: Zahlenpreise wie „ab 490 €“, sonst nur „Festpreis“ (Projekte nach Erstgespräch). */
+export function kurzPreis(betrag: string | undefined, lang: LoesungSprache): string {
+  if (betrag && /\d/.test(betrag) && !/%/.test(betrag)) return betrag;
+  return lang === "de" ? "Festpreis" : "Fixed price";
+}
+
+/** Übersicht aller Lösungen mit Katalog (DE: /de/loesungen, EN: /en/solutions). Preise stehen nur auf den Einzelseiten. */
 export default function LoesungenHub({ lang }: { lang: LoesungSprache }) {
   const t = HUB_TEXT[lang];
   const seiten = loesungen[lang];
@@ -114,7 +120,7 @@ export default function LoesungenHub({ lang }: { lang: LoesungSprache }) {
               <Link key={s.key} href={loesungPfad(s.key, lang) ?? LOESUNGEN_BASIS[lang]}>
                 <b>{s.label}</b>
                 <small>{s.metaDescription}</small>
-                <span>{s.preise[0]?.betrag} · {t.mehr}</span>
+                <span>{kurzPreis(s.preise[0]?.betrag, lang)} · {t.mehr}</span>
               </Link>
             ))}
           </nav>
@@ -144,7 +150,6 @@ export default function LoesungenHub({ lang }: { lang: LoesungSprache }) {
                             {a.hinweis && <span className="v3-katalog-tag">{a.hinweis}</span>}
                             <small>{a.was}</small>
                           </td>
-                          <td>{a.preis}</td>
                         </tr>
                       );
                     })}

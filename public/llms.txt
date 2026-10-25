@@ -24,12 +24,12 @@
 - [KI-Telefonassistent](https://brandwerkx.de/de/loesungen/ki-telefonassistent): nimmt Anrufe an und meldet Anfragen per Telegram oder E-Mail, ab 490 € plus ab 99 € im Monat
 - [KI-Chatbot für die Website](https://brandwerkx.de/de/loesungen/ki-chatbot): beantwortet Fragen aus geprüften Website-Inhalten, ab 500 € plus ab 29 € im Monat
 - [Recruiting-Paket](https://brandwerkx.de/de/loesungen/mitarbeiter-finden): Karriereseite, Kurzbewerbung, Google for Jobs, ab 990 €
-- [Web-App für deinen Betrieb](https://brandwerkx.de/de/loesungen/web-app-entwickeln-lassen): Abläufe statt Zettel und Excel, ab 3.000 €, Digitalbonus Bayern möglich
-- [Büro-Automatisierung](https://brandwerkx.de/de/loesungen/buero-automatisierung): Rechnungseingang, Zahlungserinnerung, Büro-Assistent per Telegram, ab 490 €
+- [Web-App für deinen Betrieb](https://brandwerkx.de/de/loesungen/web-app-entwickeln-lassen): Abläufe statt Zettel und Excel, Festpreis nach Erstgespräch, Digitalbonus Bayern möglich
+- [Büro-Automatisierung](https://brandwerkx.de/de/loesungen/buero-automatisierung): Rechnungseingang, Zahlungserinnerung, Büro-Assistent per Telegram, Festpreis nach Erstgespräch
 - [E-Rechnung einrichten](https://brandwerkx.de/de/loesungen/e-rechnung-einrichten): ab 300 €
 - [Google-Profil und Bewertungen](https://brandwerkx.de/de/loesungen/google-unternehmensprofil): Einrichtung 149 €, Pflege ab 49 € im Monat
 - [Website-Wartung und Betreuung](https://brandwerkx.de/de/loesungen/website-wartung): ab 49 € im Monat
-- [IT-Grundschutz](https://brandwerkx.de/de/loesungen/it-sicherheit-kleine-firmen): ab 490 €
+- [IT-Grundschutz](https://brandwerkx.de/de/loesungen/it-sicherheit-kleine-firmen): Festpreis nach Erstgespräch
 - [KI-Workshop für Teams](https://brandwerkx.de/de/loesungen/ki-schulung): ab 490 € je Betrieb
 
 ## Solutions (English)

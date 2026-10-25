@@ -211,16 +211,15 @@ export const loesungenEn: Loesung[] = [
     slug: "custom-web-apps",
     label: "Custom web apps",
     familie: "Workflows",
-    metaTitle: "Custom web app development | fixed price from €3,000",
+    metaTitle: "Custom web app development | fixed price per project",
     metaDescription:
-      "Custom web app development at a fixed price: client portals, internal tools and PWAs that replace spreadsheets and paper. From €3,000, hosting from €49/month.",
+      "Custom web app development at a fixed price: client portals, internal tools and PWAs that replace spreadsheets and paper. Fixed quote after a free call.",
     eyebrow: "Apps · Workflows",
     h1: "Custom web apps that replace spreadsheets, paper and group chats",
     intro:
-      "I build custom web apps for small and mid-sized businesses: client portals, order and status tools, internal workflows and apps your team installs on their phones (PWA). The first version has a fixed price from €3,000, and the code belongs to you. Hosting, updates and security checks start at €49 a month.",
+      "I build custom web apps for small and mid-sized businesses: client portals, order and status tools, internal workflows and apps your team installs on their phones (PWA). You get a written fixed price after a free call, and the code belongs to you. Running costs for hosting, updates and security checks are part of the quote.",
     preise: [
-      { betrag: "from €3,000", wofuer: "first version, fixed price by scope" },
-      { betrag: "from €49/month", wofuer: "hosting, updates, security" },
+      { betrag: "Fixed price after a free call", wofuer: "agreed in writing before work starts; the scope sets the price" },
     ],
     fuer: [
       "Field service and trade businesses",
@@ -262,12 +261,12 @@ export const loesungenEn: Loesung[] = [
       "Free call: We go through the process that runs on paper, spreadsheets or group chats today and what the app must do.",
       "Written scope and fixed price: You get the scope, the price and the payment stages in writing. Work starts once you agree.",
       "Build and test: I build the first version, your team tests it with real cases, and we do the formal acceptance.",
-      "Handover and operation: Code and accounts in your name, handover documentation, then hosting, updates and security checks from €49 a month.",
+      "Handover and operation: Code and accounts in your name, handover documentation, then hosting, updates and security checks for a monthly fee agreed in the quote.",
     ],
     faqs: [
       {
         q: "How much does a custom web app cost?",
-        a: "A first version starts at €3,000 as a fixed price based on a written scope. Bigger apps cost more, and the price is always set before work starts. Hosting, updates and security checks start at €49 a month. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "It depends on the scope: how many workflows, users and integrations the app needs. After a free call you get a written fixed price before any work starts, including the running costs for hosting and security. I charge no VAT under the German small business rule (§ 19 UStG).",
       },
       {
         q: "How long does it take to build a web app?",
@@ -309,16 +308,16 @@ export const loesungenEn: Loesung[] = [
     slug: "business-automation",
     label: "Business automation",
     familie: "Automation",
-    metaTitle: "Business automation for invoices and admin | from €490",
+    metaTitle: "Business automation for invoices and admin | fixed price",
     metaDescription:
-      "Business automation for invoices: collects them from your inbox, tracks due dates and sends payment reminders. EU-hosted. From €490, then from €29/month.",
+      "Business automation for invoices: collects them from your inbox, tracks due dates and sends payment reminders. EU-hosted. Fixed price after a free call.",
     eyebrow: "Office · Automation",
     h1: "Business automation for invoices, reminders and office work",
     intro:
-      "I automate repetitive office work: collecting invoices from your inbox, keeping track of due dates and sending payment reminders. You get a monitored service on an EU server instead of another tool to learn. The invoice inbox with payment reminders starts at €490, plus from €29 a month for operation and monitoring.",
+      "I automate repetitive office work: collecting invoices from your inbox, keeping track of due dates and sending payment reminders. You get a monitored service on an EU server instead of another tool to learn. You get a written fixed price after a free call, monthly care included.",
     preise: [
-      { betrag: "from €490", wofuer: "invoice inbox and payment reminders" },
-      { betrag: "from €29/month", wofuer: "operation and monitoring" },
+      { betrag: "Fixed price after a free call", wofuer: "invoice inbox, payment reminders or bigger workflows, by scope" },
+      { betrag: "Monthly care", wofuer: "monitoring and repairs, priced in the quote" },
     ],
     fuer: [
       "Owner-run businesses without office staff",
@@ -361,12 +360,12 @@ export const loesungenEn: Loesung[] = [
       "Free call: We look at where invoices, letters and reminders pile up today and which tools you already use.",
       "Scope and fixed price: You get in writing what is automated, where the data goes and what it costs.",
       "Setup and test run: I set it up on an EU server, and it runs alongside your current process before you switch over.",
-      "Operation and monitoring: From €29 a month I monitor it and repair it when a provider changes something.",
+      "Operation and monitoring: For a monthly fee I monitor it and repair it when a provider changes something.",
     ],
     faqs: [
       {
         q: "How much does business automation cost?",
-        a: "An invoice inbox with payment reminders starts at €490 one-off, plus from €29 a month for operation and monitoring. Bigger workflows get their own fixed price after the first call. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "It depends on which tasks are automated and which tools you already use. After a free call you get a written fixed price, monthly care included. I charge no VAT under the German small business rule (§ 19 UStG).",
       },
       {
         q: "Is the automation GDPR compliant?",
@@ -496,14 +495,14 @@ export const loesungenEn: Loesung[] = [
     slug: "white-label-development",
     label: "White-label development for agencies",
     familie: "Growth",
-    metaTitle: "White-label development for agencies | from €990",
+    metaTitle: "White-label development for agencies | fixed prices",
     metaDescription:
-      "White-label development for agencies: web apps, AI automations and multilingual sites built under your name, under NDA, at fixed prices from €990 per project.",
+      "White-label development for agencies: web apps, AI automations and multilingual sites built under your name, under NDA, at a fixed price per project.",
     eyebrow: "Agencies · Growth",
     h1: "White-label development for agencies, built under your name",
     intro:
-      "I build web apps, AI automations and multilingual websites that your agency sells under its own name. You get a fixed price per project from €990, coordination in writing and no contact with your client unless you want it. I'm based in Germany, work with GDPR in mind and communicate in English, German or Russian.",
-    preise: [{ betrag: "from €990", wofuer: "fixed price per project, built under your agency's name" }],
+      "I build web apps, AI automations and multilingual websites that your agency sells under its own name. You get a fixed price per project, coordination in writing and no contact with your client unless you want it. I'm based in Germany, work with GDPR in mind and communicate in English, German or Russian.",
+    preise: [{ betrag: "Fixed price per project", wofuer: "quoted after a short call, built under your agency's name" }],
     fuer: [
       "Web design agencies",
       "Marketing agencies",
@@ -555,7 +554,7 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "How much does white-label development cost?",
-        a: "Projects start at €990 as a fixed price, based on a written brief. Larger apps or automations get a higher fixed price, always agreed before work starts. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "Every project gets a fixed price based on a written brief, quoted after a short call and agreed before work starts. I charge no VAT under the German small business rule (§ 19 UStG).",
       },
       {
         q: "Will you contact my client?",

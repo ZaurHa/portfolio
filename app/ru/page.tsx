@@ -134,7 +134,7 @@ export default function RuSeite() {
                       {r.angebote.map((a) => (
                         <tr key={a.name}>
                           <td><b>{a.name}</b><small>{a.was}</small></td>
-                          <td>{a.preis}</td>
+                          <td className="preis">{a.preis}</td>
                         </tr>
                       ))}
                     </tbody>
