@@ -147,7 +147,7 @@ export default function RuSeite() {
           <section className="v3-sec" aria-labelledby="h-ablauf">
             <div className="v3-wrap">
               <div className="v3-sec-head v3-sec-head-sm">
-                <span className="num">03 / Как мы работаем</span>
+                <span className="num">03 / Этапы работы</span>
                 <h2 id="h-ablauf">Как проходит работа</h2>
               </div>
               <Steps steps={r.ablauf.map(schritt)} />
@@ -167,8 +167,8 @@ export default function RuSeite() {
           <section className="v3-final" aria-labelledby="h-kontakt" id="kontakt">
             <div className="v3-wrap">
               <div className="lbl">
-                <span className="v3-mono v3-accent-txt">Контакт</span>
-                <span className="v3-mono v3-hide-sm">Ответ в тот же вечер или на следующий рабочий день</span>
+                <span className="v3-mono v3-accent-txt">Контакты</span>
+                <span className="v3-mono v3-hide-sm">Обычно отвечаю в тот же вечер или на следующий рабочий день</span>
               </div>
               <h2 id="h-kontakt" className="ask">{r.kontaktTitel}</h2>
               <p className="v3-ru-kontakt-text">{r.kontaktText}</p>
@@ -178,7 +178,7 @@ export default function RuSeite() {
                   WhatsApp <span className="arr" aria-hidden="true">→</span>
                 </a>
                 <a href={`mailto:${EMAIL}`} className="v3-btn v3-btn-ghost">{EMAIL}</a>
-                <Link href={`/de/kontakt?thema=${encodeURIComponent("Anfrage auf Russisch")}`} className="v3-btn v3-btn-ghost">Форма (нем.)</Link>
+                <Link href={`/de/kontakt?thema=${encodeURIComponent("Anfrage auf Russisch")}`} className="v3-btn v3-btn-ghost">Форма на немецком</Link>
                 <span className="v3-mono">Герецрид · Мюнхен · онлайн</span>
               </div>
             </div>

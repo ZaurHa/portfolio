@@ -20,7 +20,7 @@ export const loesungenEn: Loesung[] = [
     eyebrow: "AI · Reachability",
     h1: "AI phone assistant for the calls you can't take",
     intro:
-      "I set up an AI phone assistant that answers inbound calls when you can't, asks the questions your business needs and sends you a short summary by email or Telegram. It is made for service businesses that lose jobs to missed calls. Setup from €490, then from €99 a month for operation and support.",
+      "I set up an AI phone assistant that answers inbound calls when you can't, asks the questions your business needs and sends you a short summary by email (or Telegram, if you prefer). It is made for service businesses that lose jobs to missed calls. Setup from €490, then from €99 a month for operation and support.",
     preise: [
       { betrag: "from €490", wofuer: "setup, one-off" },
       { betrag: "from €99/month", wofuer: "operation and support, call minutes agreed per project" },
@@ -38,26 +38,26 @@ export const loesungenEn: Loesung[] = [
         bullets: [
           "Answers inbound calls with a greeting and questions written for your business.",
           "Asks for the details you need before you call back, for example address, type of job and preferred date, or vehicle and fault.",
-          "Sends you a short summary of every call by email or Telegram.",
-          "Books appointments, if your calendar or booking tool can be connected.",
+          "Sends you a short summary of every call by email, or by Telegram if you prefer.",
+          "Books appointments if your calendar or booking tool can be connected.",
           "Puts urgent calls through to your mobile or takes a message.",
         ],
       },
       {
         title: "The value is in the questions, not the voice",
-        text: "Plain AI answering services are easy to find and cheap. What saves you time is a conversation built for your trade: a moving enquiry that arrives with floor, volume and moving date, or a workshop call that arrives with vehicle and fault. I write that conversation for your business and adjust it as the calls come in.",
+        text: "Plain AI answering services are easy to find and cheap. What saves you time is a conversation built for your trade: a moving enquiry that arrives with the floor, volume and moving date, or a workshop call that arrives with the vehicle and fault. I write that conversation for your business and adjust it as the calls come in.",
       },
       {
         title: "EU-hosted, set up and looked after by me",
-        text: "I don't build a voice platform from scratch. I set up a partner platform hosted in the EU, write the conversation and connect it to your email, Telegram or calendar. In the first four weeks I read every call summary and adjust the script where the assistant gets things wrong. Every plan includes a fallback to your mobile, the platform's own support and a response time written into the contract.",
+        text: "I don't build a voice platform from scratch. I set up a partner platform hosted in the EU, write the conversation and connect it to your email, Telegram or calendar. In the first few weeks, I read the call summaries and adjust the script where the assistant gets things wrong. Every plan includes a fallback to your mobile, the platform's own support and a response time agreed in writing.",
       },
       {
         title: "Rules built in from the first call",
         bullets: [
-          "The assistant says it is an AI at the start of every call. In the EU, Article 50 of the AI Act has required this since 2 August 2026, and a note in your legal notice is not enough.",
+          "The assistant says it is an AI at the start of every call. In the EU, Article 50 of the AI Act has required this since 2 August 2026, and a mention in your legal notice is not enough.",
           "Calls are only recorded with the caller's prior consent.",
           "Inbound calls only: in the US, AI voice calls need the prior express consent of the person called, so I don't set up outbound calling.",
-          "Data processing agreements cover the whole chain down to the voice platform.",
+          "Data processing agreements with the voice platform and other providers that process personal data.",
           "I deliver the technology, not legal advice. You or your lawyer check the wording of notices and consent texts.",
         ],
       },
@@ -65,21 +65,21 @@ export const loesungenEn: Loesung[] = [
     ablauf: [
       "Free call: We go through your calls: who calls, what they need and what you want to know before you call back.",
       "Script and setup: I write the conversation for your business, set up the EU-hosted platform and connect email, Telegram or your calendar.",
-      "Test calls: You call the assistant yourself and try the tricky cases. Only then do calls from your number go to it.",
-      "First weeks and care: In the first four weeks I read every call summary and adjust the script. After that I look after it for the monthly fee.",
+      "Test calls: You call the assistant yourself and try the tricky cases. Only then are calls to your number forwarded to it.",
+      "First weeks and ongoing care: In the first few weeks, I read the call summaries and adjust the script. After that, I look after it for the monthly fee.",
     ],
     faqs: [
       {
         q: "How much does an AI phone assistant cost?",
-        a: "Setup starts at €490 one-off, and operation and support start at €99 a month. How many call minutes the plan covers is agreed per project, based on your call volume. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "Setup is a one-off fee starting at €490, and operation and support start at €99 a month. The number of call minutes included is agreed per project, based on your call volume. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "Is an AI receptionist GDPR compliant?",
-        a: "It can be, if it is set up and run for it. I use an EU-hosted platform, data processing agreements down to the voice platform, recordings only with consent and only the data you need. I deliver the technology, not legal advice, so your data protection adviser has the final word.",
+        a: "It can be, if it is set up and run with that in mind. I use an EU-hosted platform with data processing agreements down to the voice platform. Calls are recorded only with consent, and the assistant collects only the data you need. I deliver the technology, not legal advice, so your data protection adviser has the final say.",
       },
       {
         q: "Does the caller know they are talking to an AI?",
-        a: "Yes. The assistant says it is an AI at the start of every call. In the EU, Article 50 of the AI Act has required this since 2 August 2026, and a note in your legal notice is not enough.",
+        a: "Yes. The assistant says it is an AI at the start of every call. In the EU, Article 50 of the AI Act has required this since 2 August 2026, and a mention in your legal notice is not enough.",
       },
       {
         q: "Can the AI assistant make outbound calls?",
@@ -99,7 +99,7 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "Who helps if something goes wrong during the day?",
-        a: "During the day, calls fall back to your mobile and the platform has its own support. I'm in Germany (CET) and work on client projects in the evenings and at weekends, so I reply the same evening or the next business day. That response time is written into the contract.",
+        a: "During the day, calls fall back to your mobile and the platform has its own support. I'm based in Germany (CET) and usually reply the same evening or the next business day. The response time is agreed in writing in the quote.",
       },
     ],
     related: ["ki-chatbot", "buero-automatisierung", "mehrsprachige-websites"],
@@ -119,7 +119,7 @@ export const loesungenEn: Loesung[] = [
     eyebrow: "AI · Reachability",
     h1: "AI chatbot for your website that answers from your own content",
     intro:
-      "I set up an AI chatbot on your website that answers visitors' questions from content you have approved, takes enquiries and sends them to you by email or Telegram. It suits businesses that get the same questions every day, and it can answer in German, English or Russian. Setup from €500, then from €29 a month for operation and care of the knowledge base.",
+      "I set up an AI chatbot on your website that answers visitors' questions from content you have approved, takes enquiries and sends them to you by email (or Telegram, if you prefer). It suits businesses that get the same questions every day, and it can answer in German, English or Russian. Setup from €500, then from €29 a month for operation and care of the knowledge base.",
     preise: [
       { betrag: "from €500", wofuer: "setup, one-off" },
       { betrag: "from €29/month", wofuer: "operation and knowledge base care" },
@@ -136,14 +136,14 @@ export const loesungenEn: Loesung[] = [
         title: "What the chatbot does",
         bullets: [
           "Answers questions about your services, process, service area and opening hours from content you have approved.",
-          "Takes enquiries with name, contact details and request, and sends them to you by email or Telegram.",
+          "Takes enquiries with name, contact details and request, and sends them to you by email, or by Telegram if you prefer.",
           "Says it is an AI in its first message.",
           "Says so when it doesn't know the answer, and passes the question on to you instead of guessing.",
         ],
       },
       {
         title: "No invented prices or dates",
-        text: "A chatbot that guesses is worse than no chatbot. Mine answers only from a knowledge base built from your website and the documents you approve. Prices and dates come only from that content, so keeping it current matters. That is why updating the knowledge base is part of the monthly care, within a fixed time budget we agree.",
+        text: "A chatbot that guesses is worse than no chatbot. Mine answers only from a knowledge base built from your website and the documents you approve. Prices and dates come only from that content, so keeping it current matters. That is why updating the knowledge base is part of the monthly care plan, within a fixed time budget we agree on.",
       },
       {
         title: "Same content as your website",
@@ -153,7 +153,7 @@ export const loesungenEn: Loesung[] = [
         title: "GDPR and the EU AI Act",
         bullets: [
           "The chatbot says it is an AI in its first message, as Article 50 of the EU AI Act has required since 2 August 2026.",
-          "The chatbot and its chat logs are hosted in the EU.",
+          "I use EU-hosted providers wherever possible and tell you upfront where chats are processed.",
           "Data processing agreements with the AI model and hosting providers.",
           "It only collects the data an enquiry needs.",
           "I deliver the technology, not legal advice. Your privacy policy stays with you or your adviser.",
@@ -169,15 +169,15 @@ export const loesungenEn: Loesung[] = [
     faqs: [
       {
         q: "How much does an AI chatbot for a website cost?",
-        a: "Setup starts at €500 one-off, plus from €29 a month for operation and care of the knowledge base. The final price depends on how much content the chatbot needs and where enquiries should go. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "Setup is a one-off fee starting at €500, and operation and care of the knowledge base start at €29 a month. The final price depends on how much content the chatbot needs and where enquiries should go. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "Is an AI chatbot GDPR compliant?",
-        a: "It can be, if it is set up for it. The chatbot and its chat logs are hosted in the EU, the providers involved sign data processing agreements, and it only collects what an enquiry needs. I deliver the technology, not legal advice, so your privacy policy and final checks stay with you or your adviser.",
+        a: "It can be, if it is set up with that in mind. I use EU-hosted providers wherever possible, the providers involved sign data processing agreements, and it only collects what an enquiry needs. I deliver the technology, not legal advice, so your privacy policy and final checks stay with you or your adviser.",
       },
       {
         q: "Does a chatbot have to say it is an AI?",
-        a: "Yes, in the EU it does. Since 2 August 2026, Article 50 of the AI Act requires that people know at the start when they are talking to an AI. My chatbots say so in their first message.",
+        a: "Yes, in the EU it does. Since 2 August 2026, Article 50 of the AI Act has required that people are told at the start when they are talking to an AI. My chatbots say so in their first message.",
       },
       {
         q: "Can an AI chatbot give wrong answers?",
@@ -193,11 +193,11 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "Where do the enquiries go?",
-        a: "To you, by email or Telegram, with the visitor's question and contact details. Other tools, such as a CRM, can often be connected too, and I check yours in the first call.",
+        a: "To you by email, or by Telegram if you prefer, with the visitor's question and contact details. For customer data, email is the safer choice under data protection rules. Other tools, such as a CRM, can often be connected too, and I check yours in the first call.",
       },
       {
         q: "What does the monthly fee cover?",
-        a: "Operation of the chatbot and care of its knowledge base within a fixed time budget, for example when prices or opening hours change. If a third-party provider charges by usage, I show you those costs upfront.",
+        a: "Running the chatbot and updating its knowledge base within a fixed time budget, for example when your prices or opening hours change. If a third-party provider charges by usage, I show you those costs upfront.",
       },
     ],
     related: ["ki-telefon", "mehrsprachige-websites", "buero-automatisierung"],
@@ -213,11 +213,11 @@ export const loesungenEn: Loesung[] = [
     familie: "Workflows",
     metaTitle: "Custom web app development | fixed price per project",
     metaDescription:
-      "Custom web app development at a fixed price: client portals, internal tools and PWAs that replace spreadsheets and paper. Fixed quote after a free call.",
+      "Custom web app development at a fixed price: client portals, internal tools and PWAs that replace spreadsheets and paper. Written quote after a free call.",
     eyebrow: "Apps · Workflows",
     h1: "Custom web apps that replace spreadsheets, paper and group chats",
     intro:
-      "I build custom web apps for small and mid-sized businesses: client portals, order and status tools, internal workflows and apps your team installs on their phones (PWA). You get a written fixed price after a free call, and the code belongs to you. Running costs for hosting, updates and security checks are part of the quote.",
+      "I build custom web apps for small and mid-sized businesses: client portals, order and status tools, internal workflows and apps your team installs on their phones (PWA). You get a written fixed price after a free call, and the code belongs to you once the final invoice is paid. Running costs for hosting, updates and security checks are part of the quote.",
     preise: [
       { betrag: "Fixed price after a free call", wofuer: "agreed in writing before work starts; the scope sets the price" },
     ],
@@ -241,16 +241,16 @@ export const loesungenEn: Loesung[] = [
       },
       {
         title: "Fixed price, and the code belongs to you",
-        text: "The first version gets a fixed price based on a written scope. The contract states scope, price, payment stages and a formal acceptance. Code, hosting and accounts run in your name, and you get handover documentation, so another developer could take over. Unlike many no-code platforms, there is no fee per user. Changes outside the scope get their own quote before I start.",
+        text: "The first version gets a fixed price based on a written scope. The contract sets out the scope, price, payment stages and formal acceptance. Code, hosting and accounts run in your name, and you get handover documentation, so another developer could take over. Unlike with many no-code platforms, there is no fee per user. Changes outside the scope get their own quote before I start.",
       },
       {
         title: "Built with AI tools, checked before handover",
-        text: "I build with AI coding tools, and I check what they produce. AI-generated code is not secure by default: in a Cloud Security Alliance research note, 45% of AI-generated code samples failed security tests based on the OWASP standard. So every project includes automated scans of the code and its libraries, a test of the access rules and a careful check of login and permissions.",
+        text: "I build with AI coding tools, and I check what they produce. AI-generated code is not secure by default: a Cloud Security Alliance research note reports that 45% of AI-generated code samples failed security tests based on the OWASP standard. So every project includes automated scans of the code and its libraries, a test of the access rules and a careful check of login and permissions.",
       },
       {
         title: "What I have built",
         bullets: [
-          "My own social app with video feed, live streaming and a shop, live on the App Store and as a web app.",
+          "My own social app with a video feed, live streaming and a shop, available on the App Store and as a web app.",
           "My own live auction app with real-time bidding and payments via Stripe Connect, in closed beta.",
           "My own professional network in German, Russian and English, with its data hosted in Frankfurt.",
           "An invoice reminder system for a client with many incoming invoices, running on a monitored server in Germany.",
@@ -261,16 +261,16 @@ export const loesungenEn: Loesung[] = [
       "Free call: We go through the process that runs on paper, spreadsheets or group chats today and what the app must do.",
       "Written scope and fixed price: You get the scope, the price and the payment stages in writing. Work starts once you agree.",
       "Build and test: I build the first version, your team tests it with real cases, and we do the formal acceptance.",
-      "Handover and operation: Code and accounts in your name, handover documentation, then hosting, updates and security checks for a monthly fee agreed in the quote.",
+      "Handover and operation: Code and accounts are in your name, and you get handover documentation. Hosting, updates and security checks then continue for a monthly fee agreed in the quote.",
     ],
     faqs: [
       {
         q: "How much does a custom web app cost?",
-        a: "It depends on the scope: how many workflows, users and integrations the app needs. After a free call you get a written fixed price before any work starts, including the running costs for hosting and security. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "It depends on the scope: how many workflows, users and integrations the app needs. After a free call, you get a written fixed price before any work starts, and the quote also lists the running costs for hosting and security. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "How long does it take to build a web app?",
-        a: "That depends on the scope, so I don't put a number on this page. You get a schedule together with the written scope and the fixed price. Keeping the first version to the core workflow keeps it small, and further features follow once your team uses it.",
+        a: "That depends on the scope, so I don't put a number on this page. You get a schedule together with the written scope and the fixed price. Limiting the first version to the core workflow keeps it small, and further features follow once your team is using it.",
       },
       {
         q: "Who owns the code?",
@@ -278,23 +278,23 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "Do I need a native app or is a web app enough?",
-        a: "For most business tools a web app is enough. It runs in any browser, installs on the home screen as a PWA and needs no app store review. If you need to be in the App Store, I build with React Native and Expo; Apple's developer account for companies needs a legal entity with a D-U-N-S number and costs 99 USD a year.",
+        a: "For most business tools a web app is enough. It runs in any browser, installs on the home screen as a PWA and needs no app store review. If you need to be in the App Store, I build with React Native and Expo. Apple's developer program costs 99 USD a year. With a personal account your own name appears as the seller; an organization account requires a legal entity with a D-U-N-S number.",
       },
       {
         q: "Do you build with AI tools?",
-        a: "Yes, and I check what they produce. Automated scans of the code and its libraries, a test of the access rules and a careful check of login and permissions are part of every price.",
+        a: "Yes, and I check what they produce. Automated scans of the code and its libraries, a test of the access rules and a careful check of login and permissions are included in every quote.",
       },
       {
         q: "Can the app connect to tools we already use?",
-        a: "Usually, yes, if the tool has an interface (API) or an export. Accounting software, CRMs, email and spreadsheets are common examples. I check your tools before I name a fixed price.",
+        a: "Usually, yes, if the tool has an interface (API) or an export. Accounting software, CRMs, email and spreadsheets are common examples. I check your tools before I quote a fixed price.",
       },
       {
         q: "Where is the app hosted?",
-        a: "In the EU by default, with a data processing agreement. If your clients or your sector need a specific location, we agree it in the scope.",
+        a: "In the EU by default, with a data processing agreement. If your clients or your sector need a specific location, we specify it in the scope.",
       },
       {
         q: "Which time zone do you work in?",
-        a: "I'm in Germany (CET) and work on client projects in the evenings and at weekends. My evening hours overlap with the business day on the US East Coast, and calls with clients in Europe, Israel or the Gulf are scheduled in advance. Most coordination runs in writing, and I reply the same evening or the next business day.",
+        a: "I'm based in Germany (CET). My evening hours overlap with the business day on the US East Coast. Calls with clients in Europe, Israel or the Gulf are scheduled in advance. Most coordination is done in writing, and I usually reply the same evening or the next business day.",
       },
     ],
     related: ["buero-automatisierung", "white-label", "ki-chatbot"],
@@ -310,13 +310,13 @@ export const loesungenEn: Loesung[] = [
     familie: "Automation",
     metaTitle: "Business automation for invoices and admin | fixed price",
     metaDescription:
-      "Business automation for invoices: collects them from your inbox, tracks due dates and sends payment reminders. EU-hosted. Fixed price after a free call.",
+      "Business automation that collects invoices from your inbox, tracks due dates and sends payment reminders. EU-hosted. Fixed price after a free call.",
     eyebrow: "Office · Automation",
     h1: "Business automation for invoices, reminders and office work",
     intro:
-      "I automate repetitive office work: collecting invoices from your inbox, keeping track of due dates and sending payment reminders. You get a monitored service on an EU server instead of another tool to learn. You get a written fixed price after a free call, monthly care included.",
+      "I automate repetitive office work: collecting invoices from your inbox, keeping track of due dates and sending payment reminders. You get a monitored service on an EU server instead of another tool to learn. After a free call, I send you a written fixed price, and the quote also states the monthly care fee.",
     preise: [
-      { betrag: "Fixed price after a free call", wofuer: "invoice inbox, payment reminders or bigger workflows, by scope" },
+      { betrag: "Fixed price after a free call", wofuer: "invoice inbox, payment reminders or larger workflows, depending on scope" },
       { betrag: "Monthly care", wofuer: "monitoring and repairs, priced in the quote" },
     ],
     fuer: [
@@ -330,20 +330,20 @@ export const loesungenEn: Loesung[] = [
       {
         title: "What I automate",
         bullets: [
-          "Invoice inbox: new invoices are collected from your mailbox, due dates and early payment discounts are read out, and the documents go to your accounting software or accountant.",
+          "Invoice inbox: new invoices are collected from your mailbox, due dates and early payment discounts are extracted, and the documents go to your accounting software or accountant.",
           "Morning list: one email a day with every incoming invoice that is due soon.",
-          "Payment reminders: reminders to clients who haven't paid your invoices, sent after your approval.",
+          "Payment reminders: sent to clients who haven't paid your invoices, after your approval.",
           "Office assistant: a voice note or a photo of a letter becomes a task, a deadline or a receipt, with an overview every morning.",
           "Connections between your tools, for example from a form to a spreadsheet or from email to your CRM, built with n8n or Make where that fits.",
         ],
       },
       {
-        title: "You approve, the system does the routine",
-        text: "Automation should take work off your desk, not decisions. Someone on your side approves every reminder before it goes out, and nothing is booked or paid automatically. I don't do bookkeeping or tax advice: your accountant stays in charge and receives the documents in order.",
+        title: "You approve, the system handles the routine",
+        text: "Automation should take work off your desk, not decisions out of your hands. Someone on your side approves every reminder before it goes out, and nothing is booked or paid automatically. I don't do bookkeeping or give tax advice: your accountant stays in charge and receives the documents properly sorted.",
       },
       {
         title: "Already in use: invoice reminders on a German server",
-        text: "For a business with many incoming invoices, a system I built collects the new invoices from the mailbox every day, detects the payment deadlines and sends accounting a short list every morning with everything due soon. It runs on its own server in Germany, is monitored around the clock, and no invoice is sent to an AI. My own assistant on Telegram turns voice messages and photos of letters into tasks and deadlines and sends me a briefing every morning.",
+        text: "For a business with many incoming invoices, a system I built collects the new invoices from the mailbox every day, detects the payment deadlines and every morning sends the accounting team a short list of everything due soon. It runs on its own server in Germany with automated monitoring, and no invoice is sent to an AI. My own assistant on Telegram turns voice messages and photos of letters into tasks and deadlines and sends me a briefing every morning.",
       },
       {
         title: "EU hosting, monitoring and clear data rules",
@@ -358,14 +358,14 @@ export const loesungenEn: Loesung[] = [
     ],
     ablauf: [
       "Free call: We look at where invoices, letters and reminders pile up today and which tools you already use.",
-      "Scope and fixed price: You get in writing what is automated, where the data goes and what it costs.",
+      "Scope and fixed price: You get in writing what will be automated, where the data goes and what it costs.",
       "Setup and test run: I set it up on an EU server, and it runs alongside your current process before you switch over.",
       "Operation and monitoring: For a monthly fee I monitor it and repair it when a provider changes something.",
     ],
     faqs: [
       {
         q: "How much does business automation cost?",
-        a: "It depends on which tasks are automated and which tools you already use. After a free call you get a written fixed price, monthly care included. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "It depends on which tasks are automated and which tools you already use. After a free call, you get a written fixed price, and the quote also states the monthly care fee. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "Is the automation GDPR compliant?",
@@ -381,11 +381,11 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "What happens if an automation breaks?",
-        a: "I get an alert and start on it the same evening or the next business day. Workflows mostly break when a provider changes its interface, which is why monitoring is part of the monthly fee.",
+        a: "I get an alert and usually start on it the same evening or the next business day. Workflows mostly break when a provider changes its interface, which is why monitoring is part of the monthly fee.",
       },
       {
         q: "Can you connect the tools we already use?",
-        a: "Usually, yes. Mailboxes, spreadsheets, accounting software and CRMs can often be connected through their interfaces or with n8n or Make. I check your tools in the first call before I name a price.",
+        a: "Usually, yes. Mailboxes, spreadsheets, accounting software and CRMs can often be connected through their interfaces or with n8n or Make. I check your tools in the first call before I quote a price.",
       },
       {
         q: "Can you take over automations someone else built?",
@@ -413,9 +413,9 @@ export const loesungenEn: Loesung[] = [
     eyebrow: "Websites · Growth",
     h1: "Multilingual websites in German, English and Russian",
     intro:
-      "I build multilingual websites in German, English and Russian, and I speak all three, so every language version is read by a person, not only by a translation tool. It suits businesses in the EU and Israel with Russian-speaking customers, and international companies that need a German website. A custom website in up to three languages starts at €990, with an optional AI chatbot in all languages from €500.",
+      "I build multilingual websites in German, English and Russian, and I speak all three, so every language version is checked by a person rather than left to a translation tool. It suits businesses in the EU and Israel with Russian-speaking customers, and international companies that need a German website. A custom website starts at €990, and each additional language is part of a written fixed price. An optional AI chatbot in all three languages costs from €500.",
     preise: [
-      { betrag: "from €990", wofuer: "custom website in up to three languages (German, English, Russian)" },
+      { betrag: "from €990", wofuer: "custom website; each additional language is included in the written fixed price" },
       { betrag: "from €500", wofuer: "optional AI chatbot in all languages" },
     ],
     fuer: [
@@ -428,7 +428,7 @@ export const loesungenEn: Loesung[] = [
     sections: [
       {
         title: "Three languages, one person who speaks them",
-        text: "I speak German, English and Russian. I draft with AI tools and then read every page myself, so the wording sounds natural and prices, names and facts match in every language. You don't coordinate three translators, and a change is made in all languages in one go.",
+        text: "I speak German, English and Russian. I draft with AI tools and then read every page myself, so the wording sounds natural, and prices, names and facts match in every language. You don't have to coordinate three translators, and any change is made in all languages in one go.",
       },
       {
         title: "Why a Russian version can matter",
@@ -437,7 +437,7 @@ export const loesungenEn: Loesung[] = [
       {
         title: "Built for search in every language",
         bullets: [
-          "Each language gets its own address and the language tags search engines use (hreflang), as on this website.",
+          "Each language gets its own web address and the language tags search engines use (hreflang), as on this website.",
           "Page titles, descriptions and headings are written for each language, not translated word for word.",
           "Fast, mobile-first pages with SEO basics in every language.",
           "No ranking promises, because nobody can keep them.",
@@ -449,23 +449,23 @@ export const loesungenEn: Loesung[] = [
       },
     ],
     ablauf: [
-      "Free call: We decide which languages and pages you need and who your visitors are.",
-      "Design and texts: You send the key facts, I design the site and write the texts in all languages.",
-      "Review and launch: You approve every language version, then the site goes live with its own address per language.",
+      "Free call: We clarify who your visitors are and which languages and pages you need.",
+      "Design and texts: You send the key facts, and I design the site and write the texts in all languages.",
+      "Review and launch: You approve every language version, and then the site goes live with its own web address for each language.",
       "Chatbot, if you want it: The AI chatbot uses the same content and answers in all three languages.",
     ],
     faqs: [
       {
         q: "How much does a multilingual website cost?",
-        a: "A custom website in up to three languages (German, English, Russian) starts at €990. An AI chatbot that answers in all three languages costs from €500 on top. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "A custom website starts at €990, and each additional language (German, English or Russian) is part of a written fixed price you get before work starts. An AI chatbot that answers in all three languages costs from €500 on top. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "Do you use machine translation?",
-        a: "I draft with AI tools and then check every language myself, because I speak German, English and Russian. That way the wording sounds natural and prices, names and facts match across all versions.",
+        a: "For first drafts, yes: I use AI tools and then check every language myself, because I speak German, English and Russian. That way the wording sounds natural, and prices, names and facts match across all versions.",
       },
       {
         q: "Can you add other languages?",
-        a: "I only promise languages I can check myself: German, English and Russian. The site can be built to take more languages, but a native speaker on your side would need to review those texts.",
+        a: "Yes, the site can be built to take more languages, but I only promise the ones I can check myself: German, English and Russian. For any other language, a native speaker on your side would need to review the texts.",
       },
       {
         q: "Will each language version rank on Google?",
@@ -481,7 +481,7 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "Do you work with companies based in Russia?",
-        a: "No. EU sanctions prohibit IT and AI services to companies based in Russia, so I don't offer them. Before a project with a link to Russia or Belarus, I check the company register, the owners and the EU sanctions lists.",
+        a: "No. EU sanctions prohibit providing IT and AI services to companies based in Russia, so I don't offer them. Before a project with a link to Russia or Belarus, I check the company register, the owners and the EU sanctions lists.",
       },
     ],
     related: ["ki-chatbot", "white-label", "ki-telefon"],
@@ -527,14 +527,14 @@ export const loesungenEn: Loesung[] = [
         bullets: [
           "Everything is delivered under your agency's name.",
           "No contact with your client unless you want it.",
-          "I sign your NDA, and I review non-solicitation clauses before we start.",
+          "I sign your NDA after reading it, and I review non-solicitation clauses before we start.",
           "White-label projects stay out of my portfolio unless you allow it.",
           "Coordination in writing, so every decision is documented.",
         ],
       },
       {
         title: "Clear contracts on both sides",
-        text: "I have no contract with your client, so the terms between us need to be clear. The contract fixes scope and price, a deposit before work starts, payment on acceptance and the transfer of rights once the invoice is paid. Non-solicitation and NDA terms are reviewed before signing, so both sides know where they stand.",
+        text: "I have no contract with your client, so the terms between us need to be clear. Our contract sets out the scope and price, a deposit before work starts, payment on acceptance and the transfer of rights once the invoice is paid. Non-solicitation and NDA terms are reviewed before signing, so both sides know where they stand.",
       },
       {
         title: "EU-based and GDPR-minded",
@@ -545,7 +545,7 @@ export const loesungenEn: Loesung[] = [
       "Brief and terms: You send the brief and your contract terms, including NDA and non-solicitation.",
       "Fixed price: I reply with a written scope and a fixed price. Work starts after the deposit.",
       "Build under your name: I build, you review in writing, and your client only ever sees your agency.",
-      "Acceptance and handover: You accept the work and pay the final invoice, then rights, code and documentation pass to you.",
+      "Acceptance and handover: You accept the work and pay the final invoice. Then the rights, code and documentation pass to you.",
     ],
     faqs: [
       {
@@ -554,11 +554,11 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "How much does white-label development cost?",
-        a: "Every project gets a fixed price based on a written brief, quoted after a short call and agreed before work starts. I charge no VAT under the German small business rule (§ 19 UStG).",
+        a: "Every project gets a fixed price based on a written brief, quoted after a short call and agreed before work starts. I charge no German VAT under the small business rule (§ 19 UStG).",
       },
       {
         q: "Will you contact my client?",
-        a: "No, unless you want me to. I work through you, in writing, and your client only sees your agency's name. If a call with your client helps, we agree it beforehand and I join as part of your team.",
+        a: "Not unless you want me to. I work through you, in writing, and your client only sees your agency's name. If a call with your client would help, we agree on it beforehand and I join as part of your team.",
       },
       {
         q: "What are your payment terms?",
@@ -566,15 +566,15 @@ export const loesungenEn: Loesung[] = [
       },
       {
         q: "Which time zone do you work in?",
-        a: "I'm in Germany (CET) and work on agency projects in the evenings and at weekends. My evening hours overlap with the business day on the US East Coast. Most coordination runs in writing, and I reply the same evening or the next business day.",
+        a: "I'm based in Germany (CET). My evening hours overlap with the business day on the US East Coast. Most coordination is done in writing, and I usually reply the same evening or the next business day.",
       },
       {
-        q: "What kind of projects do you take?",
+        q: "What kinds of projects do you take on?",
         a: "Specialist work rather than standard brochure sites: AI automations and assistants, web apps and portals, apps with Stripe payments, 3D hero sections and German-language GDPR projects. Send me the brief and I'll tell you honestly whether it fits.",
       },
       {
         q: "Who owns the code after the project?",
-        a: "Your agency, or your client if you prefer, once the invoice is paid. You get the code, the access and handover documentation, so your team can maintain it.",
+        a: "Your agency, or your client if you prefer, once the invoice is paid. You get the code, the access details and handover documentation, so your team can maintain it.",
       },
       {
         q: "Can you look after the project after launch?",
@@ -601,7 +601,7 @@ export const katalogEn: KatalogFamilie[] = [
       },
       {
         name: "AI website chatbot",
-        was: "Answers visitors from content you have approved, takes enquiries and sends them to you.",
+        was: "Answers visitors' questions from content you have approved, takes enquiries and sends them to you.",
         preis: "from €500 + from €29/month",
         seite: "ki-chatbot",
       },
@@ -624,13 +624,13 @@ export const katalogEn: KatalogFamilie[] = [
       {
         name: "Custom web app or PWA",
         was: "A web app built around your process that your team can install on their phones, with the code in your name.",
-        preis: "from €3,000 + from €49/month",
+        preis: "Fixed price after a free call",
         seite: "web-apps",
       },
       {
         name: "Client and status portal",
         was: "Clients place orders with photos, follow the status online and download reports as PDF.",
-        preis: "from €3,000 + from €49/month",
+        preis: "Fixed price after a free call",
         seite: "web-apps",
       },
       {
@@ -642,18 +642,18 @@ export const katalogEn: KatalogFamilie[] = [
   },
   {
     titel: "Automation",
-    warum: "Invoices, reminders and repetitive admin eat time, so these automations do the routine while you keep the final say.",
+    warum: "Invoices, reminders and repetitive admin eat up time, so these automations do the routine while you keep the final say.",
     angebote: [
       {
         name: "Invoice inbox and payment reminders",
         was: "Collects invoices from your mailbox, tracks due dates and sends payment reminders after your approval.",
-        preis: "from €490 + from €29/month",
+        preis: "Fixed price after a free call",
         seite: "buero-automatisierung",
       },
       {
         name: "Back-office automation",
         was: "Voice notes and photos of letters become tasks, deadlines and receipts, with an overview every morning.",
-        preis: "from €1,500 + from €49/month",
+        preis: "Fixed price after a free call",
         seite: "buero-automatisierung",
       },
       {
@@ -680,13 +680,13 @@ export const katalogEn: KatalogFamilie[] = [
       },
       {
         name: "Template website",
-        was: "A ready-made design, adapted to your business, colours and logo.",
+        was: "A ready-made design adapted to your business, colours and logo.",
         preis: "from €490",
       },
       {
         name: "White-label development",
         was: "Web apps, AI automations and multilingual websites built for your agency and delivered under your name.",
-        preis: "from €990 per project",
+        preis: "Fixed price after a free call",
         seite: "white-label",
         hinweis: "For agencies",
       },

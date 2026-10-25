@@ -31,9 +31,9 @@ export const HUB_TEXT = {
     ask: "Welche Lösung passt zu deinem Betrieb?",
   },
   en: {
-    metaTitle: "AI assistants, web apps and automation for small businesses",
+    metaTitle: "AI, web apps and automation for small businesses",
     metaDescription:
-      "AI phone assistants, chatbots, custom web apps, automation and multilingual websites at fixed prices. GDPR-minded development from Germany in English, German or Russian.",
+      "AI phone assistants, chatbots, custom web apps, automation and multilingual websites at fixed prices. GDPR-minded, from Germany, in English, German or Russian.",
     meta: "Solutions · AI, apps, automation",
     metaRight: "Fixed prices · no German VAT",
     h1a: "AI assistants, web apps",

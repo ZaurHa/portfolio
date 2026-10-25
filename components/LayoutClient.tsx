@@ -234,7 +234,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
                   <li key={item.href}><Link href={item.href}>{item.text}</Link></li>
                 ))}
                 {lang === 'de' && <li><Link href="/de/webdesign">Webdesign-Themen</Link></li>}
-                <li><Link href={RU_PFAD} lang="ru" hrefLang="ru">По-русски</Link></li>
+                <li><Link href={RU_PFAD} lang="ru" hrefLang="ru" className="v3-ru-link">По-русски</Link></li>
               </ul>
             </div>
             <div>

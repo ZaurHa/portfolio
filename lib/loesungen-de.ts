@@ -21,7 +21,7 @@ export const loesungenDe: Loesung[] = [
     eyebrow: "KI · Erreichbarkeit",
     h1: "KI-Telefonassistent für Betriebe, die nicht immer rangehen können",
     intro:
-      "Ein KI-Telefonassistent nimmt Anrufe an, wenn du auf der Baustelle, unter dem Auto oder mitten im Umzug bist. Er fragt ab, was du für den Auftrag brauchst, und schickt dir eine Notiz per Telegram oder E-Mail. Die Einrichtung kostet ab 490 €, Betrieb und Betreuung ab 99 € im Monat.",
+      "Ein KI-Telefonassistent nimmt Anrufe an, wenn du auf der Baustelle, unter dem Auto oder mitten im Umzug bist. Er fragt ab, was du für den Auftrag brauchst, und schickt dir eine Notiz per E-Mail oder, wenn du willst, per Telegram. Die Einrichtung kostet ab 490 €, Betrieb und Betreuung ab 99 € im Monat.",
     preise: [
       { betrag: "ab 490 €", wofuer: "Einrichtung, einmalig" },
       { betrag: "ab 99 € im Monat", wofuer: "Betrieb und Betreuung, Minutenkontingent nach Absprache" },
@@ -33,14 +33,14 @@ export const loesungenDe: Loesung[] = [
         bullets: [
           "Er meldet sich mit deinem Firmennamen und sagt gleich zu Beginn, dass hier eine KI spricht.",
           "Er fragt ab, was in deiner Branche zählt: beim Umzug Etage, Volumen und Wunschtermin, in der Werkstatt Fahrzeug und Fehlerbild.",
-          "Nach dem Gespräch bekommst du eine kurze Zusammenfassung per Telegram oder E-Mail.",
+          "Nach dem Gespräch bekommst du eine kurze Zusammenfassung per E-Mail oder, wenn du willst, per Telegram. Für Kundendaten ist E-Mail die sicherere Wahl.",
           "Auf Wunsch trägt er Termine direkt in deinen Kalender ein.",
           "Dringende Anrufe leitet er auf dein Handy weiter. Wer lieber mit einem Menschen spricht, kann das jederzeit sagen.",
         ],
       },
       {
         title: "Wie ich das umsetze",
-        text: "Ich baue keine eigene Sprachplattform. Ich richte den Assistenten auf einer Plattform mit Servern in der EU ein, schreibe die Gesprächsführung für deinen Betrieb und betreue ihn danach. In den ersten vier Wochen lese ich jede Gesprächszusammenfassung mit und bessere nach, wo der Assistent falsch abbiegt. Für Störungen am Tag ist zusätzlich der Support der Plattform da, und die Rufumleitung auf dein Handy gehört zu jedem Paket.",
+        text: "Ich baue keine eigene Sprachplattform. Ich richte den Assistenten auf einer Plattform mit Servern in der EU ein, schreibe die Gesprächsführung für deinen Betrieb und betreue ihn danach. In den ersten Wochen lese ich die Gesprächszusammenfassungen mit und bessere nach, wo der Assistent falsch abbiegt. Für Störungen am Tag ist zusätzlich der Support der Plattform da, und die Rufumleitung auf dein Handy gehört zu jedem Paket.",
       },
       {
         title: "Was er nicht tut",
@@ -55,7 +55,7 @@ export const loesungenDe: Loesung[] = [
         bullets: [
           "Seit dem 2. August 2026 muss sich ein Telefonbot zu Beginn des Gesprächs als KI zu erkennen geben (Art. 50 KI-Verordnung). Ein Hinweis im Impressum reicht nicht.",
           "Gespräche werden nur aufgezeichnet, wenn der Anrufer vorher zustimmt. Ohne Einwilligung ist eine Aufzeichnung strafbar (§ 201 StGB).",
-          "Die Plattform läuft auf Servern in der EU. Wir schließen einen Auftragsverarbeitungsvertrag (AVV), der bis zur Plattform reicht.",
+          "Die Plattform läuft auf Servern in der EU. Wir schließen einen Auftragsverarbeitungsvertrag (AVV), der auch die Plattform einschließt.",
           "Für deine Datenschutzerklärung bekommst du die technischen Angaben von mir. Die rechtliche Prüfung im Einzelfall übernimmt dein Anwalt oder Datenschutzbeauftragter.",
         ],
       },
@@ -63,7 +63,7 @@ export const loesungenDe: Loesung[] = [
     ablauf: [
       "Erstgespräch: Wir klären, welche Anrufe reinkommen, was der Assistent fragen soll und wohin die Notizen gehen.",
       "Einrichtung: Ich richte den Assistenten ein, schreibe die Gesprächsführung und teste ihn mit dir am Telefon.",
-      "Start mit Kontrolle: In den ersten vier Wochen lese ich die Zusammenfassungen mit und bessere nach.",
+      "Start mit Kontrolle: In den ersten Wochen lese ich die Zusammenfassungen mit und bessere nach.",
       "Betreuung: Ändern sich Preise, Leistungen oder Öffnungszeiten, passe ich den Assistenten an.",
     ],
     faqs: [
@@ -73,7 +73,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Ist ein KI-Telefonassistent DSGVO-konform?",
-        a: "Er lässt sich datenschutzkonform betreiben, wenn Server, Verträge und Hinweise stimmen. Ich nutze eine Plattform mit Servern in der EU und schließe mit dir einen Auftragsverarbeitungsvertrag (AVV), der bis zur Plattform reicht. Gespräche werden nur mit vorheriger Einwilligung aufgezeichnet. Ob dein Betrieb darüber hinaus etwas beachten muss, klärt dein Datenschutzbeauftragter oder Anwalt.",
+        a: "Er lässt sich datenschutzkonform betreiben, wenn Server, Verträge und Hinweise stimmen. Ich nutze eine Plattform mit Servern in der EU und schließe mit dir einen Auftragsverarbeitungsvertrag (AVV), der auch die Plattform einschließt. Gespräche werden nur mit vorheriger Einwilligung aufgezeichnet. Ob dein Betrieb darüber hinaus etwas beachten muss, klärt dein Anwalt oder Datenschutzbeauftragter.",
       },
       {
         q: "Muss der Anrufer wissen, dass er mit einer KI spricht?",
@@ -89,7 +89,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Was macht der Assistent, wenn er eine Frage nicht beantworten kann?",
-        a: "Er sagt das offen und nimmt einen Rückrufwunsch auf. Er nennt nur Angaben, die du vorher freigegeben hast, und erfindet keine Preise. Die Frage kommt als Notiz zu dir, und du meldest dich selbst.",
+        a: "Er sagt das offen und nimmt einen Rückrufwunsch auf. Er nennt nur Angaben, die du vorher freigegeben hast, und erfindet keine Preise. Die Frage kommt als Notiz zu dir, und du rufst selbst zurück.",
       },
       {
         q: "Kann der KI-Telefonassistent auch Kunden anrufen?",
@@ -97,7 +97,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Wer hilft, wenn tagsüber etwas nicht funktioniert?",
-        a: "Für Störungen am Tag ist der Support der Plattform da, und die Rufumleitung auf dein Handy greift weiter. Änderungen am Assistenten erledige ich am selben Abend oder am nächsten Werktag. Diese Reaktionszeit steht auch im Vertrag.",
+        a: "Für Störungen am Tag ist der Support der Plattform da, und die Rufumleitung auf dein Handy greift weiter. Änderungen am Assistenten erledige ich meist am selben Abend oder am nächsten Werktag. Die Reaktionszeit halten wir im Angebot schriftlich fest.",
       },
     ],
     related: ["ki-chatbot", "buero-automatisierung", "google-profil"],
@@ -115,7 +115,7 @@ export const loesungenDe: Loesung[] = [
     eyebrow: "KI · Erreichbarkeit",
     h1: "KI-Chatbot für die Website, der aus deinen eigenen Inhalten antwortet",
     intro:
-      "Ein KI-Chatbot beantwortet auf deiner Website die Fragen, die Kunden immer wieder stellen: Leistungen, Ablauf, Einzugsgebiet, Öffnungszeiten. Er antwortet aus Inhalten, die du geprüft hast, nimmt Anfragen auf und schickt sie dir per Telegram oder E-Mail. Die Einrichtung kostet ab 500 €, Betrieb und Pflege der Wissensbasis ab 29 € im Monat.",
+      "Ein KI-Chatbot beantwortet auf deiner Website die Fragen, die Kunden immer wieder stellen: Leistungen, Ablauf, Einzugsgebiet, Öffnungszeiten. Er antwortet aus Inhalten, die du geprüft hast, nimmt Anfragen auf und schickt sie dir per E-Mail oder, wenn du willst, per Telegram. Die Einrichtung kostet ab 500 €, Betrieb und Pflege der Wissensbasis ab 29 € im Monat.",
     preise: [
       { betrag: "ab 500 €", wofuer: "Einrichtung, einmalig" },
       { betrag: "ab 29 € im Monat", wofuer: "Betrieb und Pflege der Wissensbasis" },
@@ -128,7 +128,7 @@ export const loesungenDe: Loesung[] = [
           "Eine Wissensbasis aus deiner Website und weiteren Unterlagen, die du freigibst, zum Beispiel Preisliste oder Ablauf.",
           "Der Einbau auf deiner Website, passend zum Design.",
           "Der Hinweis in der ersten Nachricht, dass hier eine KI antwortet.",
-          "Anfragen mit Name, Kontakt und Anliegen kommen per Telegram oder E-Mail zu dir.",
+          "Anfragen mit Name, Kontakt und Anliegen kommen per E-Mail zu dir, auf Wunsch auch per Telegram.",
           "Die Pflege der Wissensbasis im Monatspreis, in einem Umfang, den wir vorher festlegen.",
         ],
       },
@@ -147,7 +147,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         title: "Auch auf WhatsApp, mit klaren Regeln",
-        text: "Seit dem 15. Januar 2026 verbietet WhatsApp allgemeine KI-Assistenten. Firmeneigene Service-Bots bleiben erlaubt, etwa für Terminbestätigungen, Statusmeldungen wie „Dein Auto ist fertig“ oder die Erinnerung an den Umzugstermin. Meta berechnet für solche Nachrichten Gebühren, die ich zum Einkaufspreis weitergebe. Das lohnt sich, wenn dein Betrieb wirklich viele Nachrichten verschickt. Meta kann Preise und Regeln jederzeit ändern.",
+        text: "Seit dem 15. Januar 2026 verbietet WhatsApp allgemeine KI-Assistenten. Firmeneigene Service-Bots bleiben erlaubt, etwa für Terminbestätigungen, Statusmeldungen wie „Dein Auto ist fertig“ oder die Erinnerung an den Umzugstermin. Meta berechnet für solche Nachrichten Gebühren, die ich zum Einkaufspreis weitergebe. Ein WhatsApp-Bot lohnt sich, wenn dein Betrieb wirklich viele Nachrichten verschickt. Meta kann Preise und Regeln jederzeit ändern.",
       },
     ],
     ablauf: [
@@ -175,11 +175,11 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Was ist der Unterschied zwischen Chatbot und Kontaktformular?",
-        a: "Ein Kontaktformular wartet, bis du antwortest. Der Chatbot beantwortet Standardfragen sofort und nimmt trotzdem eine Anfrage auf, wenn der Kunde mehr will. Das Formular bleibt auf der Seite, für alle, die lieber schreiben.",
+        a: "Beim Kontaktformular wartet der Kunde, bis du antwortest. Der Chatbot beantwortet Standardfragen sofort und nimmt trotzdem eine Anfrage auf, wenn der Kunde mehr will. Das Formular bleibt auf der Seite, für alle, die lieber ohne Chat anfragen.",
       },
       {
         q: "Kann der Chatbot auch auf WhatsApp antworten?",
-        a: "Ja, als Service-Bot für deinen Betrieb. Seit dem 15. Januar 2026 verbietet WhatsApp allgemeine KI-Assistenten, firmeneigene Service-Bots für Termine, Status und Fragen zu deinem Angebot bleiben erlaubt. Dazu kommen die Nachrichtengebühren von Meta, die ich zum Einkaufspreis weitergebe.",
+        a: "Ja, als Service-Bot für deinen Betrieb. Seit dem 15. Januar 2026 verbietet WhatsApp allgemeine KI-Assistenten, firmeneigene Service-Bots für Termine, Status und Fragen zu deinem Angebot bleiben aber erlaubt. Dazu kommen die Nachrichtengebühren von Meta, die ich zum Einkaufspreis weitergebe.",
       },
       {
         q: "Wie viel Pflege braucht ein Chatbot?",
@@ -199,11 +199,11 @@ export const loesungenDe: Loesung[] = [
     familie: "Personal",
     metaTitle: "Mitarbeiter finden: Recruiting-Paket | ab 990 €",
     metaDescription:
-      "Mitarbeiter finden mit eigener Karriereseite und Kurzbewerbung in 60 Sekunden, ohne Lebenslauf. Recruiting-Paket für kleine Betriebe ab 990 € zum Festpreis.",
+      "Mitarbeiter finden mit eigener Karriereseite und Kurzbewerbung in 60 Sekunden, ohne Lebenslauf. Recruiting-Paket für kleine Betriebe zum Festpreis ab 990 €.",
     eyebrow: "Personal · Recruiting",
     h1: "Mitarbeiter finden mit Karriereseite und Kurzbewerbung",
     intro:
-      "Das Recruiting-Paket bringt deine offenen Stellen auf eine eigene Karriereseite, mit Kurzbewerbung in 60 Sekunden und ohne Lebenslauf. Jede Bewerbung kommt sofort per Telegram oder E-Mail bei dir an, der Bewerber bekommt automatisch eine Antwort. Das Paket kostet ab 990 € zum Festpreis, die Pflege der Stellen gibt es optional ab 49 € im Monat.",
+      "Das Recruiting-Paket bringt deine offenen Stellen auf eine eigene Karriereseite, mit Kurzbewerbung in 60 Sekunden und ohne Lebenslauf. Jede Bewerbung kommt sofort per E-Mail bei dir an, auf Wunsch auch per Telegram, der Bewerber bekommt automatisch eine Antwort. Das Paket gibt es zum Festpreis ab 990 €, die Pflege der Stellen optional ab 49 € im Monat.",
     preise: [
       { betrag: "ab 990 €", wofuer: "Recruiting-Paket, einmalig" },
       { betrag: "ab 49 € im Monat", wofuer: "Pflege der Stellen, optional" },
@@ -214,16 +214,16 @@ export const loesungenDe: Loesung[] = [
         title: "Was im Recruiting-Paket steckt",
         text: "Vorlage ist die Jobseite, die ich für einen Personaldienstleister in der Logistik gebaut habe, mit eigenen Seiten für Staplerfahrer und Saisonpersonal.",
         bullets: [
-          "Eine Karriereseite je Beruf, zum Beispiel für Fahrer mit Führerscheinklasse und Code 95, Pflegekräfte, Zahnmedizinische Fachangestellte oder Azubis.",
+          "Eine Karriereseite je Beruf, zum Beispiel für Fahrer mit passender Führerscheinklasse und Code 95, für Pflegekräfte, zahnmedizinische Fachangestellte oder Azubis.",
           "Kurzbewerbung in 60 Sekunden: Name, Kontakt und ein paar Fragen zum Beruf, kein Lebenslauf nötig.",
           "Stellendaten für Google for Jobs, damit deine Stelle in der Google-Jobsuche erscheinen kann.",
-          "Eine Meldung per Telegram oder E-Mail, sobald eine Bewerbung eingeht.",
+          "Eine Meldung per E-Mail, auf Wunsch auch per Telegram, sobald eine Bewerbung eingeht. Bewerberdaten schicke ich lieber per E-Mail.",
           "Eine automatische Antwort an den Bewerber, damit niemand ohne Rückmeldung bleibt.",
         ],
       },
       {
         title: "Optional: Pflege der Stellen",
-        text: "Ab 49 € im Monat halte ich deine Stellen aktuell, trage sie in die Gratisanzeigen bei Indeed und in die Jobbörse der Bundesagentur für Arbeit ein und schicke dir einmal im Monat einen kurzen Bericht zu den Bewerbungen. Werbebudget für bezahlte Anzeigen läuft immer über dein eigenes Konto.",
+        text: "Ab 49 € im Monat halte ich deine Stellen aktuell, stelle sie als Gratisanzeige bei Indeed und in der Jobbörse der Bundesagentur für Arbeit ein und schicke dir einmal im Monat einen kurzen Bericht zu den Bewerbungen. Das Werbebudget für bezahlte Anzeigen läuft immer über dein eigenes Konto.",
       },
       {
         title: "Daten und Regeln",
@@ -272,7 +272,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Brauche ich für das Recruiting eine neue Website?",
-        a: "Nein. Die Karriereseite kann Teil deiner bestehenden Website werden oder als eigene Seite laufen. Habe ich deine Website gebaut, passt sie direkt ins Design.",
+        a: "Nein. Die Karriereseite kann Teil deiner bestehenden Website werden oder als eigene Seite laufen. Habe ich deine Website gebaut, passt die Karriereseite direkt ins Design.",
       },
     ],
     related: ["web-apps", "google-profil", "ki-chatbot"],
@@ -301,7 +301,7 @@ export const loesungenDe: Loesung[] = [
     sections: [
       {
         title: "Beispiele, die ich baue",
-        text: "Eigene Web-Apps betreibe ich auch selbst, darunter ein Fachnetzwerk mit Daten in Frankfurt und eine Social-App für iOS und Web.",
+        text: "Ich betreibe auch eigene Web-Apps, darunter ein Fachnetzwerk mit Daten in Frankfurt und eine Social-App für iOS und Web.",
         bullets: [
           "Digitale Auftragsmappe: Aufträge, Fotos und Unterschrift auf dem Handy, Übergabe- oder Schadensprotokoll als PDF, Export in eine Tabelle.",
           "Fahrer-App: Abfahrtskontrolle mit Mängelfoto, Ablieferbeleg mit Unterschrift und Erinnerung an Fristen wie Hauptuntersuchung, Tacho und Führerscheinkontrolle.",
@@ -313,10 +313,10 @@ export const loesungenDe: Loesung[] = [
       },
       {
         title: "Was eine Web-App kostet",
-        text: "Den Preis bestimmt der Umfang: wie viele Abläufe, Nutzer und Schnittstellen die App braucht. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, bevor irgendetwas beginnt. Darin stehen auch die laufenden Kosten für Hosting, Updates und Sicherheitsprüfungen. Weitere Änderungen vereinbaren wir einzeln. Bei größeren Projekten rechnen wir in Abschlägen für fertige Teile ab.",
+        text: "Den Preis bestimmt der Umfang: wie viele Abläufe, Nutzer und Schnittstellen die App braucht. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, bevor irgendetwas beginnt. Darin stehen auch die laufenden Kosten für Hosting, Updates und Sicherheitsprüfungen. Spätere Änderungen vereinbaren wir einzeln. Bei größeren Projekten rechnen wir in Abschlägen für fertige Teile ab.",
       },
       {
-        title: "Digitalbonus Bayern: so klappt die Förderung",
+        title: "Digitalbonus Bayern: So klappt die Förderung",
         bullets: [
           "Der Digitalbonus übernimmt 50 % der förderfähigen Kosten, höchstens 7.500 €, bei Projekten ab 4.000 € (Stand Oktober 2026).",
           "Antragsberechtigt sind gewerbliche Firmen mit weniger als 50 Beschäftigten und Betriebsstätte in Bayern. Freie Berufe und Arztpraxen sind ausgeschlossen.",
@@ -328,19 +328,19 @@ export const loesungenDe: Loesung[] = [
       {
         title: "Was du bekommst und was nicht",
         bullets: [
-          "Der Code gehört dir, und es gibt keine Plattformgebühr pro Nutzer. Die Übergabe des Quellcodes steht im Vertrag.",
+          "Nach Bezahlung der Schlussrechnung darfst du den Code uneingeschränkt nutzen, und es gibt keine Plattformgebühr pro Nutzer. Die Übergabe des Quellcodes steht im Vertrag. Allgemeine Bausteine, die ich auch für andere Kunden einsetze, bleiben davon unberührt.",
           "Code, Hosting und Konten laufen auf deinen Namen, dazu bekommst du eine Übergabe-Doku.",
           "Verarbeitet die App personenbezogene Daten, liegen sie auf Servern in der EU, und wir schließen einen Auftragsverarbeitungsvertrag (AVV).",
           "Vor dem Start prüfe ich Login, Rechte und Zugriffsregeln und lasse automatische Prüfprogramme über Code und Bibliotheken laufen.",
           "Erinnerungen an Fristen sind ein Hinweis, keine Garantie. Die Verantwortung für Fristen bleibt bei dir.",
-          "Ich trete nicht gegen große Branchenpakete an, sondern baue Bausteine daneben, wo Branchensoftware nicht passt.",
+          "Ich trete nicht gegen große Branchenpakete an, sondern baue ergänzende Bausteine dort, wo Branchensoftware nicht passt.",
         ],
       },
     ],
     ablauf: [
-      "Ablauf aufnehmen: Wir schauen, was heute auf Zetteln, in Excel oder in Chatgruppen läuft.",
-      "Angebot zum Festpreis: Du bekommst den Umfang schriftlich. Bei Förderung stellst du zuerst den Antrag, beauftragt wird erst danach.",
-      "Bau und Abnahme: Ich baue die erste Version, du testest im Alltag, dann nehmen wir sie förmlich ab.",
+      "Ablauf aufnehmen: Wir schauen, was heute auf Zetteln, in Excel oder in Messenger-Gruppen läuft.",
+      "Angebot zum Festpreis: Du bekommst Umfang und Preis schriftlich. Bei Förderung stellst du zuerst den Antrag, beauftragt wird erst danach.",
+      "Bau und Abnahme: Ich baue die erste Version, du testest im Alltag, dann nimmst du sie förmlich ab.",
       "Betrieb: Hosting, Updates und Sicherheit laufen weiter, Änderungen vereinbaren wir einzeln.",
     ],
     faqs: [
@@ -350,15 +350,15 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Was ist der Unterschied zwischen Web-App und App aus dem App Store?",
-        a: "Eine Web-App läuft im Browser und lässt sich wie eine App auf den Startbildschirm legen (PWA). Sie braucht keine Prüfung durch einen App Store. Für eine App im App Store braucht es ein Apple-Firmenkonto: Das setzt eine juristische Person mit D-U-N-S-Nummer voraus und kostet 99 USD im Jahr.",
+        a: "Eine Web-App läuft im Browser und lässt sich wie eine App auf den Startbildschirm legen (PWA). Sie braucht keine Prüfung durch einen App Store. Für eine App im App Store braucht es ein Entwicklerkonto bei Apple für 99 USD im Jahr. Mit einem persönlichen Konto erscheint dein eigener Name als Anbieter, ein Firmenkonto setzt eine juristische Person mit D-U-N-S-Nummer voraus. Für viele Einzelunternehmer ist eine Web-App deshalb der einfachere Weg.",
       },
       {
         q: "Wird eine Web-App über den Digitalbonus Bayern gefördert?",
-        a: "Ja, wenn Betrieb und Projekt die Voraussetzungen erfüllen. Gefördert werden gewerbliche Firmen mit weniger als 50 Beschäftigten und Betriebsstätte in Bayern, mit 50 % bis höchstens 7.500 € bei Projekten ab 4.000 € (Stand Oktober 2026). Den Antrag stellst du selbst über dein ELSTER-Unternehmenskonto, bevor du etwas beauftragst.",
+        a: "Ja, wenn Betrieb und Projekt die Voraussetzungen erfüllen. Antragsberechtigt sind gewerbliche Firmen mit weniger als 50 Beschäftigten und Betriebsstätte in Bayern. Der Zuschuss beträgt 50 % der förderfähigen Kosten, höchstens 7.500 €, bei Projekten ab 4.000 € (Stand Oktober 2026). Den Antrag stellst du selbst über dein ELSTER-Unternehmenskonto, bevor du etwas beauftragst.",
       },
       {
         q: "Gehört mir der Code der Web-App?",
-        a: "Ja, das regeln wir ausdrücklich im Vertrag. Ohne so eine Regel hat der Kunde oft keinen Anspruch auf den Quellcode. Code, Hosting und Konten laufen auf deinen Namen, und du bekommst eine Übergabe-Doku.",
+        a: "Ja, nach Bezahlung der Schlussrechnung darfst du den Code uneingeschränkt nutzen. Das regeln wir ausdrücklich im Vertrag, denn ohne eine solche Regel hast du oft keinen Anspruch auf den Quellcode. Code, Hosting und Konten laufen auf deinen Namen, und du bekommst eine Übergabe-Doku.",
       },
       {
         q: "Warum keine No-Code-Lösung?",
@@ -366,7 +366,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Wie sicher ist eine Web-App für meinen Betrieb?",
-        a: "So sicher, wie sie geprüft und gepflegt wird. Vor dem Start teste ich Login, Rechte und Zugriffsregeln und lasse Prüfprogramme über Code und Bibliotheken laufen. Im Betrieb halte ich Updates aktuell, die Daten liegen in der EU.",
+        a: "So sicher, wie sie geprüft und gepflegt wird. Vor dem Start teste ich Login, Rechte und Zugriffsregeln und lasse Prüfprogramme über Code und Bibliotheken laufen. Im Betrieb spiele ich Updates ein, und die Daten liegen in der EU.",
       },
       {
         q: "Wie lange dauert die Entwicklung einer Web-App?",
@@ -390,7 +390,7 @@ export const loesungenDe: Loesung[] = [
     eyebrow: "Automatisierung · Büro",
     h1: "Büro-Automatisierung für Betriebe ohne Bürokraft",
     intro:
-      "Büro-Automatisierung nimmt dir wiederkehrende Arbeit ab: Rechnungen aus dem Postfach erkennen, an Fälligkeiten erinnern, Briefe und Sprachnachrichten in Aufgaben verwandeln. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, die laufende Betreuung inklusive. Bevor etwas rausgeht, gibst du es frei.",
+      "Büro-Automatisierung nimmt dir wiederkehrende Arbeit ab: Rechnungen aus dem Postfach erkennen, an Fälligkeiten erinnern, Briefe und Sprachnachrichten in Aufgaben verwandeln. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, auch für die laufende Betreuung. Bevor etwas rausgeht, gibst du es frei.",
     preise: [
       { betrag: "Festpreis nach Erstgespräch", wofuer: "Rechnungseingang, Zahlungserinnerung oder Büro-Assistent, je nach Umfang" },
       { betrag: "Betreuung im Monat", wofuer: "Überwachung und Reparatur der Abläufe, der Preis steht im Angebot" },
@@ -399,44 +399,44 @@ export const loesungenDe: Loesung[] = [
     sections: [
       {
         title: "Rechnungseingang und Zahlungserinnerung",
-        text: "Für einen Betrieb mit vielen Eingangsrechnungen läuft bereits ein System von mir: Es holt jeden Tag die neuen Rechnungen aus dem Postfach, erkennt die Zahlungsfristen und schickt jeden Morgen eine Liste mit allem, was bald fällig ist.",
+        text: "Für einen Betrieb mit vielen Eingangsrechnungen läuft bereits ein System von mir: Es holt täglich die neuen Rechnungen aus dem Postfach, erkennt die Zahlungsfristen und schickt jeden Morgen eine Liste mit allem, was bald fällig ist.",
         bullets: [
           "E-Rechnungen im Postfach erkennen und lesbar machen.",
-          "Fälligkeit und Skonto auslesen und rechtzeitig erinnern.",
+          "Fälligkeit und Skonto auslesen und rechtzeitig daran erinnern.",
           "Weiterleitung an deine Buchhaltungssoftware oder deinen Steuerberater.",
           "Zahlungserinnerungen an deine Kunden, die du vor dem Versand freigibst.",
         ],
       },
       {
         title: "Büro-Assistent per Telegram",
-        text: "Du schickst eine Sprachnachricht oder ein Foto von einem Brief an einen Telegram-Bot. Er macht daraus eine Aufgabe, eine Frist oder einen Beleg und schickt dir morgens eine Übersicht für den Tag. Ich nutze so einen Assistenten selbst jeden Tag. Für deinen Betrieb passe ich ihn an und übergebe Belege an die Buchhaltung oder in eine Tabelle.",
+        text: "Du schickst eine Sprachnachricht oder ein Foto von einem Brief an einen Telegram-Bot. Er macht daraus eine Aufgabe, eine Frist oder einen Beleg und schickt dir morgens eine Übersicht für den Tag. Ich nutze so einen Assistenten selbst jeden Tag. Für deinen Betrieb passe ich ihn an, und Belege gehen an die Buchhaltung oder in eine Tabelle.",
       },
       {
         title: "Grenzen, die ich einhalte",
         bullets: [
           "Ich kontiere und buche nicht. Das dürfen nur Fachleute mit der nötigen Qualifikation (§ 6 StBerG), dafür bleibt dein Steuerberater zuständig.",
           "Ich mache keine Aussagen zur Vorsteuer oder zu anderen Steuerfragen. Die klärt dein Steuerberater.",
-          "Die Originaldatei jeder Rechnung bleibt unverändert und wird in einem GoBD-tauglichen System archiviert.",
+          "Die Originaldatei jeder Rechnung bleibt unverändert und wird in einem Archiv aufbewahrt, das du mit deinem Steuerberater abstimmst, etwa in deinem Buchhaltungsprogramm.",
           "Telegram ist als interner Kanal für dich gedacht. Für Kundendaten ist Telegram rechtlich umstritten, deshalb legen wir vorab fest, was darüber läuft.",
           "Gespeichert wird auf Servern in der EU, mit Auftragsverarbeitungsvertrag (AVV) für alle beteiligten Dienste.",
-          "Ein Mensch gibt jede Ausgabe frei, bevor sie rausgeht.",
+          "Alles, was rausgeht, gibt vorher ein Mensch frei.",
         ],
       },
       {
         title: "Betrieb und Überwachung",
-        text: "Automationen brechen, wenn ein Anbieter seine Schnittstelle ändert. Deshalb überwache ich jeden Ablauf und bekomme bei einem Fehler sofort eine Meldung. Mit der monatlichen Betreuung halte ich die Abläufe am Laufen und repariere sie, wenn sich bei einem Anbieter etwas ändert. Ich kümmere mich am selben Abend oder am nächsten Werktag darum.",
+        text: "Automationen fallen meist dann aus, wenn ein Anbieter seine Schnittstelle ändert. Deshalb überwache ich jeden Ablauf und bekomme bei einem Fehler sofort eine Meldung. Mit der monatlichen Betreuung halte ich die Abläufe in Gang und repariere sie, wenn etwas nicht mehr funktioniert. Um Fehler kümmere ich mich meist am selben Abend oder am nächsten Werktag.",
       },
     ],
     ablauf: [
       "Bestandsaufnahme: Wir schauen, welche Büroarbeit jede Woche gleich abläuft.",
-      "Vorschlag zum Festpreis: Du bekommst einen klaren Ablauf und einen festen Preis.",
+      "Vorschlag zum Festpreis: Du bekommst einen klaren Ablauf und den Preis schriftlich.",
       "Einrichtung und Test: Ich richte den Ablauf ein, wir testen ihn mit echten Belegen.",
       "Betrieb: Ich überwache die Abläufe und repariere sie, wenn ein Anbieter etwas ändert.",
     ],
     faqs: [
       {
         q: "Was kostet Büro-Automatisierung?",
-        a: "Das hängt davon ab, welche Abläufe automatisiert werden und welche Programme du schon nutzt. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, die monatliche Betreuung inklusive. Lizenzen für Buchhaltungsprogramme zahlst du direkt beim Anbieter.",
+        a: "Das hängt davon ab, welche Abläufe automatisiert werden und welche Programme du schon nutzt. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis, auch für die monatliche Betreuung. Lizenzen für Buchhaltungsprogramme zahlst du direkt beim Anbieter.",
       },
       {
         q: "Bucht das System meine Belege?",
@@ -444,7 +444,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Ist Büro-Automatisierung DSGVO-konform?",
-        a: "Sie lässt sich datenschutzkonform betreiben, wenn Hosting und Verträge stimmen. Ich setze auf Server in der EU, möglichst ohne US-Dienste, und schließe Auftragsverarbeitungsverträge (AVV) für alle beteiligten Dienste. Die rechtliche Prüfung im Einzelfall übernimmt dein Datenschutzbeauftragter oder Anwalt.",
+        a: "Sie lässt sich datenschutzkonform betreiben, wenn Hosting und Verträge stimmen. Ich setze auf Server in der EU, möglichst ohne US-Dienste, und schließe Auftragsverarbeitungsverträge (AVV) für alle beteiligten Dienste. Die rechtliche Prüfung im Einzelfall übernimmt dein Anwalt oder Datenschutzbeauftragter.",
       },
       {
         q: "Liest eine KI meine Rechnungen?",
@@ -452,11 +452,11 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Welche Programme lassen sich anbinden?",
-        a: "Das klären wir im Erstgespräch. Meist sind es dein E-Mail-Postfach, deine Buchhaltungssoftware oder dein Steuerberater und eine Tabelle. Hat ein Programm keine passende Schnittstelle, sage ich dir das vorher.",
+        a: "Meist sind es dein E-Mail-Postfach, deine Buchhaltungssoftware und eine Tabelle, dazu die Weitergabe an deinen Steuerberater. Was genau passt, klären wir im Erstgespräch. Hat ein Programm keine passende Schnittstelle, sage ich dir das vorher.",
       },
       {
         q: "Was passiert, wenn eine Automation ausfällt?",
-        a: "Dann bekomme ich eine Fehlermeldung und kümmere mich am selben Abend oder am nächsten Werktag darum. Automationen brechen meist, wenn ein Anbieter seine Schnittstelle ändert. Deshalb gehört die Überwachung zum Monatspreis.",
+        a: "Dann bekomme ich eine Fehlermeldung und kümmere mich meist am selben Abend oder am nächsten Werktag darum. Automationen fallen meist dann aus, wenn ein Anbieter seine Schnittstelle ändert. Deshalb gehört die Überwachung zum Monatspreis.",
       },
       {
         q: "Brauche ich Telegram für den Büro-Assistenten?",
@@ -496,19 +496,19 @@ export const loesungenDe: Loesung[] = [
         bullets: [
           "Ein passendes Programm oder einen passenden Tarif auswählen, abgestimmt mit deinem Steuerberater.",
           "Rechnungsvorlagen und Stammdaten anlegen: Firma, Kunden, Leistungen.",
-          "Testversand an deinen Steuerberater und an einen Kunden.",
-          "Eine kurze Einweisung, damit du Rechnungen selbst erstellst.",
+          "Testversand an dich selbst und an deinen Steuerberater.",
+          "Eine kurze Einweisung, damit du Rechnungen selbst erstellen kannst.",
         ],
       },
       {
         title: "Was ich nicht mache",
-        text: "Ich beurteile nicht, ob dein Umsatz über 800.000 € liegt oder ab wann die Pflicht für dich gilt, und ich mache keine Aussage zur Vorsteuer. Das klärt dein Steuerberater. Ich kümmere mich um die Technik, damit der Versand klappt, wenn es soweit ist. Über den Digitalbonus Bayern ist die reine Umstellung nicht förderbar, weil das Programm gesetzlich vorgeschriebene Maßnahmen ausschließt.",
+        text: "Ich beurteile nicht, ob dein Umsatz über 800.000 € liegt oder ab wann die Pflicht für dich gilt, und ich mache keine Aussage zur Vorsteuer. Das klärt dein Steuerberater. Ich kümmere mich um die Technik, damit der Versand klappt, wenn es so weit ist. Über den Digitalbonus Bayern ist die reine Umstellung nicht förderbar, weil das Programm gesetzlich vorgeschriebene Maßnahmen ausschließt.",
       },
     ],
     ablauf: [
       "Kurzes Gespräch: Wir klären, wie du heute Rechnungen schreibst und was dein Steuerberater nutzt.",
       "Einrichtung: Ich richte Programm, Vorlagen und Stammdaten ein.",
-      "Testversand: Eine Probe-Rechnung geht an deinen Steuerberater und an einen Kunden.",
+      "Testversand: Eine Probe-Rechnung geht an dich selbst und an deinen Steuerberater.",
       "Einweisung: Ich zeige dir, wie du Rechnungen selbst erstellst.",
     ],
     faqs: [
@@ -518,7 +518,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Ab wann ist die E-Rechnung Pflicht?",
-        a: "Empfangen müssen alle Firmen E-Rechnungen schon seit dem 1. Januar 2025. Ausstellen müssen sie ab dem 1. Januar 2027 Firmen mit mehr als 800.000 € Vorjahresumsatz, ab dem 1. Januar 2028 alle übrigen außer Kleinunternehmern. Was genau für deinen Betrieb gilt, klärt dein Steuerberater.",
+        a: "Seit dem 1. Januar 2025 müssen alle Firmen E-Rechnungen empfangen können. Ab dem 1. Januar 2027 müssen Firmen mit mehr als 800.000 € Vorjahresumsatz sie auch ausstellen, ab dem 1. Januar 2028 alle übrigen außer Kleinunternehmern. Was genau für deinen Betrieb gilt, klärt dein Steuerberater.",
       },
       {
         q: "Reicht ein E-Mail-Postfach für den Empfang von E-Rechnungen?",
@@ -526,7 +526,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Muss ich als Kleinunternehmer E-Rechnungen schreiben?",
-        a: "Kleinunternehmer sind von der Pflicht zum Ausstellen ausgenommen. Empfangen müssen sie E-Rechnungen trotzdem können, ein E-Mail-Postfach reicht dafür. Ob du als Kleinunternehmer giltst, klärt dein Steuerberater.",
+        a: "Nein, Kleinunternehmer sind von der Pflicht zum Ausstellen ausgenommen. Empfangen müssen sie E-Rechnungen trotzdem können, ein E-Mail-Postfach reicht dafür. Ob du als Kleinunternehmer giltst, klärt dein Steuerberater.",
       },
       {
         q: "Welches Programm brauche ich für die E-Rechnung?",
@@ -564,14 +564,14 @@ export const loesungenDe: Loesung[] = [
     sections: [
       {
         title: "Einrichtung für 149 €",
-        text: "Ich lege das Profil an oder räume ein bestehendes auf, trage Leistungen, Fotos und Öffnungszeiten ein und helfe bei der Verifizierung. Google verlangt dafür einen echten Kundenkontakt, das prüfen wir vorab. Für mehrere Betriebe habe ich das schon gemacht.",
+        text: "Ich lege das Profil an oder räume ein bestehendes auf, trage Leistungen, Fotos und Öffnungszeiten ein und helfe bei der Verifizierung. Google verlangt für ein Profil einen echten Kundenkontakt, das prüfen wir vorab. Für mehrere Betriebe habe ich das schon gemacht.",
       },
       {
         title: "Pflege ab 49 € im Monat",
         bullets: [
           "2 bis 4 Beiträge im Monat zu Leistungen, Aktionen oder Einsätzen.",
-          "Antworten auf alle Bewertungen innerhalb von 1 bis 2 Werktagen, persönlich statt aus der Schablone.",
-          "Neue Fotos jedes Quartal.",
+          "Antworten auf alle Bewertungen, in der Regel innerhalb von 1 bis 2 Werktagen, persönlich statt aus der Schablone.",
+          "Neue Fotos jedes Quartal, aus deinen Bildern oder bei einem Termin vor Ort.",
           "Öffnungszeiten und Leistungen immer aktuell, auch an Feiertagen.",
         ],
       },
@@ -593,7 +593,7 @@ export const loesungenDe: Loesung[] = [
       "Check: Ich schaue mir dein Profil an oder prüfe, ob du die Voraussetzungen für ein neues erfüllst.",
       "Einrichtung: Profil anlegen oder aufräumen, Leistungen, Fotos und Öffnungszeiten eintragen.",
       "Bewertungen: Das Kit aufstellen und allen Kunden den Link geben.",
-      "Pflege, wenn du willst: Beiträge, Antworten und Fotos laufen jeden Monat weiter.",
+      "Pflege, wenn du willst: Beiträge und Antworten laufen jeden Monat weiter, neue Fotos kommen jedes Quartal.",
     ],
     faqs: [
       {
@@ -659,35 +659,35 @@ export const loesungenDe: Loesung[] = [
       {
         title: "Was nicht dazugehört",
         bullets: [
-          "Domain und Hosting sind ab dem zweiten Jahr nicht im Wartungspreis enthalten. Sie kosten je nach Anbieter etwa 10 bis 15 € im Monat.",
-          "Neue Seiten und größere Umbauten sprechen wir vorher ab und rechnen sie getrennt ab.",
-          "Kein Notdienst rund um die Uhr. Ich reagiere am selben Abend oder am nächsten Werktag.",
+          "Domain und Hosting sind nicht im Wartungspreis enthalten. Bei Websites von BrandWerkX sind sie im ersten Jahr im Website-Preis drin, danach kosten sie je nach Anbieter etwa 10 bis 15 € im Monat.",
+          "Neue Seiten und größere Umbauten sprechen wir vorher ab, sie werden getrennt berechnet.",
+          "Kein Notdienst rund um die Uhr. Ich reagiere meist am selben Abend oder am nächsten Werktag.",
           "Die Rechtstexte selbst prüfe ich nicht. Die verantwortest du, mit einem Anwalt oder einem Generator für Rechtstexte.",
         ],
       },
       {
         title: "Auch für bestehende Websites",
-        text: "Bestehende Websites schaue ich mir vorher an: Technik, Ladezeit, Hosting und Zugänge. Danach sage ich dir ehrlich, ob sich Wartung lohnt oder ein Neubau günstiger kommt. Zugänge, Domain und Hosting bleiben auf deinen Namen.",
+        text: "Bestehende Websites schaue ich mir vorher an: Technik, Ladezeit, Hosting und Zugänge. Danach sage ich dir ehrlich, ob sich Wartung lohnt oder ein Neubau günstiger kommt. Zugänge, Domain und Hosting laufen weiter auf deinen Namen.",
       },
     ],
     ablauf: [
       "Check: Ich prüfe Technik, Ladezeit, Zugänge und Hosting deiner Website.",
       "Übernahme: Ich richte Zugänge, Backups und Überwachung ein.",
-      "Laufende Pflege: Updates und Änderungen laufen jeden Monat, bei SEO und Wartung auch die Optimierung.",
+      "Laufende Pflege: Updates und Änderungen erledige ich jeden Monat, im Paket SEO und Wartung auch die Optimierung.",
       "Rückmeldung: Du siehst, was gemacht wurde, und sagst mir, was als Nächstes dran ist.",
     ],
     faqs: [
       {
         q: "Was kostet Website-Wartung im Monat?",
-        a: "Bei mir kostet Wartung und Updates ab 49 € im Monat, SEO und Wartung ab 99 € im Monat. Domain und Hosting kommen ab dem zweiten Jahr dazu, je nach Anbieter etwa 10 bis 15 € im Monat. Die Preise sind Endpreise nach § 19 UStG.",
+        a: "Bei mir kostet das Paket Wartung und Updates ab 49 € im Monat, SEO und Wartung ab 99 € im Monat. Domain und Hosting sind nicht enthalten. Bei Websites von BrandWerkX sind sie im ersten Jahr im Website-Preis drin, danach kosten sie je nach Anbieter etwa 10 bis 15 € im Monat. Die Preise sind Endpreise nach § 19 UStG.",
       },
       {
         q: "Was gehört zur Website-Wartung?",
-        a: "Technische Updates, SSL-Zertifikat, Backups und die Überwachung, ob die Seite erreichbar ist. Dazu kommen kleine Änderungen an Texten und Bildern in einem vorher vereinbarten Umfang. Bei SEO und Wartung kommt die laufende Suchmaschinen-Optimierung dazu.",
+        a: "Technische Updates, SSL-Zertifikat, Backups und die Überwachung, ob die Seite erreichbar ist. Dazu kommen kleine Änderungen an Texten und Bildern in einem vorher vereinbarten Umfang. Im Paket SEO und Wartung ist außerdem die laufende Suchmaschinen-Optimierung enthalten.",
       },
       {
         q: "Brauche ich Website-Wartung überhaupt?",
-        a: "Nicht unbedingt. Bei einer statischen Website, wie ich sie baue, fällt wenig Technik an. Das Paket lohnt sich, wenn du Änderungen, Updates und Suchmaschinen-Optimierung nicht selbst machen willst.",
+        a: "Nicht unbedingt. Bei einer statischen Website, wie ich sie baue, fällt wenig Technik an. Die Betreuung lohnt sich, wenn du Änderungen, Updates und Suchmaschinen-Optimierung nicht selbst machen willst.",
       },
       {
         q: "Wie schnell reagierst du bei Problemen mit der Website?",
@@ -695,7 +695,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Übernimmst du auch Websites, die jemand anderes gebaut hat?",
-        a: "Ja, nach einem Check. Ich schaue mir Technik, Hosting und Zugänge an und sage dir ehrlich, ob Wartung sinnvoll ist oder ein Neubau günstiger kommt. Die Zugänge bleiben auf deinen Namen.",
+        a: "Ja, nach einem Check. Ich schaue mir Technik, Hosting und Zugänge an und sage dir ehrlich, ob Wartung sinnvoll ist oder ein Neubau günstiger kommt. Die Zugänge laufen weiter auf deinen Namen.",
       },
       {
         q: "Ist SEO in der Website-Wartung enthalten?",
@@ -703,7 +703,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Prüfst du auch Impressum und Datenschutzerklärung?",
-        a: "Ich prüfe die technische Seite, etwa lokal eingebundene Schriften, Cookies und Tracker auf der Seite und ob das Impressum erreichbar ist. Die Rechtstexte selbst prüfe ich nicht. Die verantwortest du, mit einem Anwalt oder einem Generator für Rechtstexte.",
+        a: "Ich prüfe nur die Technik dahinter, etwa lokal eingebundene Schriften, Cookies und Tracker auf der Website und ob das Impressum erreichbar ist. Die Rechtstexte selbst prüfe ich nicht. Die verantwortest du, mit einem Anwalt oder einem Generator für Rechtstexte.",
       },
     ],
     related: ["google-profil", "it-grundschutz", "ki-chatbot"],
@@ -723,7 +723,7 @@ export const loesungenDe: Loesung[] = [
     eyebrow: "Sicherheit · IT-Grundschutz",
     h1: "IT-Sicherheit für kleine Firmen ohne eigene IT",
     intro:
-      "Viele kleine Firmen haben keine IT-Abteilung, aber Konten, Postfächer und Kundendaten, die geschützt sein müssen. Mit dem IT-Grundschutz-Paket sichere ich Konten, Passwörter und Backups ab und dokumentiere alles. Als digitaler Hausmeister kümmere ich mich danach jeden Monat um Domain, E-Mail und Konten. Den Festpreis bekommst du nach einem kostenlosen Erstgespräch.",
+      "Viele kleine Firmen haben keine IT-Abteilung, aber Konten, Postfächer und Kundendaten, die geschützt sein müssen. Mit dem IT-Grundschutz-Paket sichere ich Konten und Passwörter ab, richte Backups ein und dokumentiere alles. Auf Wunsch kümmere ich mich danach als digitaler Hausmeister jeden Monat um Domain, E-Mail und Konten. Den Festpreis bekommst du nach einem kostenlosen Erstgespräch.",
     preise: [
       { betrag: "Festpreis nach Erstgespräch", wofuer: "IT-Grundschutz-Paket, je nach Zahl der Geräte und Konten" },
       { betrag: "Pauschale im Monat", wofuer: "Digitaler Hausmeister, je nach Zahl der Postfächer" },
@@ -732,20 +732,20 @@ export const loesungenDe: Loesung[] = [
     sections: [
       {
         title: "Was im IT-Grundschutz-Paket steckt",
-        text: "Laut einer Cyberstudie des Versicherers HDI wurden 35 % der befragten kleinen und mittleren Firmen und Selbstständigen in fünf Jahren mindestens einmal angegriffen. Das Paket deckt die Grundlagen ab:",
+        text: "Laut einer Cyberstudie des Versicherers HDI wurden 35 % der befragten kleinen und mittleren Firmen und Selbstständigen in den vergangenen fünf Jahren mindestens einmal angegriffen. Das Paket deckt die Grundlagen ab:",
         bullets: [
           "Zwei-Faktor-Anmeldung für alle wichtigen Konten.",
           "Ein Passwortmanager für dich und dein Team.",
           "Ein Backup mit dokumentiertem Test, ob die Wiederherstellung klappt.",
           "Eine Liste aller Geräte und ihrer Updates.",
           "Absicherung deiner Website oder Web-App, wenn ich sie betreue.",
-          "Eine kurze Schulung für das Team und ein Notfallblatt: Wen rufe ich bei einem Hack an?",
+          "Eine kurze Schulung für das Team und ein Notfallblatt: Wen rufe ich bei einem Hackerangriff an?",
           "Ein Antwort-Baukasten für Sicherheitsfragebögen großer Kunden.",
         ],
       },
       {
         title: "Digitaler Hausmeister im Monatsabo",
-        text: "Für Firmen mit bis zu 5 Postfächern übernehme ich die laufende Pflege. Lizenzen, etwa für Microsoft 365 oder Google Workspace, zahlst du zum Einkaufspreis.",
+        text: "Für Firmen mit bis zu 5 Postfächern übernehme ich die laufende Pflege. Lizenzen, etwa für Microsoft 365 oder Google Workspace, schließt du direkt beim Anbieter ab.",
         bullets: [
           "Domain und DNS, sichere E-Mail-Zustellung mit SPF, DKIM und DMARC.",
           "Microsoft 365 oder Google Workspace einrichten und pflegen.",
@@ -770,13 +770,13 @@ export const loesungenDe: Loesung[] = [
     ablauf: [
       "Bestandsaufnahme: Wir gehen Konten, Geräte, Postfächer und Backups gemeinsam durch.",
       "Absicherung: Ich richte Zwei-Faktor-Anmeldung, Passwortmanager und Backups ein.",
-      "Test und Schulung: Wir testen die Wiederherstellung, dein Team bekommt eine kurze Einweisung.",
+      "Test und Schulung: Wir testen gemeinsam die Wiederherstellung, danach schule ich dein Team kurz.",
       "Laufende Pflege, wenn du willst: Als digitaler Hausmeister halte ich alles aktuell.",
     ],
     faqs: [
       {
         q: "Was kostet IT-Sicherheit für eine kleine Firma?",
-        a: "Das hängt davon ab, wie viele Geräte, Konten und Postfächer es gibt und was schon eingerichtet ist. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis für das Grundschutz-Paket und die Monatspauschale als digitaler Hausmeister. Lizenzen wie Microsoft 365 zahlst du zum Einkaufspreis.",
+        a: "Das hängt davon ab, wie viele Geräte, Konten und Postfächer es gibt und was schon eingerichtet ist. Nach einem kostenlosen Erstgespräch bekommst du einen schriftlichen Festpreis für das IT-Grundschutz-Paket und die Monatspauschale für den digitalen Hausmeister. Lizenzen wie Microsoft 365 schließt du direkt beim Anbieter ab.",
       },
       {
         q: "Welche Maßnahmen gehören zum IT-Grundschutz?",
@@ -784,15 +784,15 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Betrifft NIS2 meine kleine Firma?",
-        a: "Direkt nur, wenn dein Betrieb zu bestimmten Sektoren und Größen gehört, zum Beispiel Post- und Kurierdienste ab 50 Beschäftigten. Viele kleine Firmen merken NIS2 aber über Sicherheitsfragebögen großer Auftraggeber. Ob dein Betrieb direkt betroffen ist, klärt dein Anwalt, bei den Fragebögen helfe ich dir.",
+        a: "Direkt nur, wenn dein Betrieb zu bestimmten Sektoren gehört und eine bestimmte Größe hat, zum Beispiel bei Post- und Kurierdiensten ab 50 Beschäftigten. Viele kleine Firmen merken NIS2 aber über Sicherheitsfragebögen großer Auftraggeber. Ob dein Betrieb direkt betroffen ist, klärt dein Anwalt. Bei den Fragebögen helfe ich dir.",
       },
       {
         q: "Was macht ein digitaler Hausmeister?",
-        a: "Er kümmert sich um die laufende IT einer kleinen Firma: Domain, E-Mail, Konten, Passwortmanager, Zwei-Faktor-Anmeldung und Backups. Kommt jemand neu dazu oder geht, richte ich Konten ein oder sperre sie. Dafür gibt es eine feste Monatspauschale, die sich nach der Zahl der Postfächer richtet.",
+        a: "Als digitaler Hausmeister kümmere ich mich um die laufende IT deiner Firma: Domain, E-Mail, Konten, Passwortmanager, Zwei-Faktor-Anmeldung und Backups. Kommt jemand neu dazu oder geht, richte ich Konten ein oder sperre sie. Dafür gibt es eine feste Monatspauschale, die sich nach der Zahl der Postfächer richtet.",
       },
       {
         q: "Was bedeuten SPF, DKIM und DMARC?",
-        a: "Das sind Einträge für deine Domain, mit denen Empfänger prüfen können, ob eine E-Mail wirklich von dir kommt. Sie helfen, dass deine Mails nicht im Spam landen und dass niemand so leicht in deinem Namen schreibt. Beim digitalen Hausmeister richte ich sie mit ein.",
+        a: "Das sind Einträge für deine Domain, mit denen Empfänger prüfen können, ob eine E-Mail wirklich von dir kommt. Sie helfen dabei, dass deine Mails nicht im Spam landen und niemand so leicht in deinem Namen schreibt. Als digitaler Hausmeister richte ich sie mit ein.",
       },
       {
         q: "Kommst du auch vor Ort, wenn etwas kaputt ist?",
@@ -800,7 +800,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Wird IT-Sicherheit in Bayern gefördert?",
-        a: "Ja, ein größeres Sicherheitsprojekt kann über den Digitalbonus Bayern gefördert werden, mit einem eigenen Antrag für IT-Sicherheit. Gefördert werden 50 % bis höchstens 7.500 € bei Projekten ab 4.000 €, für gewerbliche Firmen mit weniger als 50 Beschäftigten (Stand Oktober 2026). Den Antrag stellt dein Betrieb selbst über das ELSTER-Unternehmenskonto, bevor etwas beauftragt wird.",
+        a: "Ja, ein größeres Sicherheitsprojekt kann über den Digitalbonus Bayern gefördert werden, mit einem eigenen Antrag für IT-Sicherheit. Der Zuschuss beträgt 50 % der förderfähigen Kosten, höchstens 7.500 €, bei Projekten ab 4.000 € (Stand Oktober 2026). Antragsberechtigt sind gewerbliche Firmen mit weniger als 50 Beschäftigten. Den Antrag stellt dein Betrieb selbst über das ELSTER-Unternehmenskonto, bevor etwas beauftragt wird.",
       },
     ],
     related: ["website-betreuung", "ki-workshop", "web-apps"],
@@ -842,17 +842,17 @@ export const loesungenDe: Loesung[] = [
       },
       {
         title: "Die Pflicht zur KI-Kompetenz, sachlich erklärt",
-        text: "Seit Februar 2025 verlangt die KI-Verordnung, dass Firmen, deren Leute KI nutzen, Maßnahmen zur KI-Kompetenz ergreifen (Art. 4). Seit der Änderung durch den sogenannten KI-Omnibus gibt es dafür kein eigenes Bußgeld, und ein Zertifikat ist nicht vorgeschrieben. Ein Workshop mit Nachweis ist eine Maßnahme, die du belegen kannst. Ob das für deinen Betrieb ausreicht, ist eine Rechtsfrage, die ich nicht beurteile.",
+        text: "Seit Februar 2025 verlangt die KI-Verordnung, dass Firmen, deren Leute KI nutzen, Maßnahmen zur KI-Kompetenz ergreifen (Art. 4). Für diese Pflicht gibt es kein eigenes Bußgeld, und ein Zertifikat ist nicht vorgeschrieben. Ein Workshop mit Nachweis ist eine Maßnahme, die du belegen kannst. Ob das für deinen Betrieb ausreicht, ist eine Rechtsfrage, die ich nicht beurteile.",
       },
       {
         title: "Wie der Workshop läuft",
-        text: "Online am Abend oder samstags, den Termin legen wir nach Absprache fest. Ich arbeite mit euren Beispielen statt mit Folien voller Theorie. Wer nur Grundwissen sucht, findet günstige E-Learnings, etwa bei der IHK. Mein Workshop lohnt sich, wenn ihr mit euren eigenen Aufgaben üben wollt.",
+        text: "Online oder bei euch im Betrieb, auch abends oder samstags. Den Termin legen wir nach Absprache fest. Ich arbeite mit euren Beispielen statt mit Folien voller Theorie. Wer nur Grundwissen sucht, findet günstige E-Learnings, etwa bei der IHK. Mein Workshop lohnt sich, wenn ihr mit euren eigenen Aufgaben üben wollt.",
       },
     ],
     ablauf: [
       "Vorgespräch: Wir klären, wer teilnimmt und wofür ihr KI nutzen wollt.",
       "Bedarfsliste: Dein Team nennt vorab Aufgaben, die im Workshop drankommen.",
-      "Workshop: 2 bis 4 Stunden Praxis mit euren Beispielen, online.",
+      "Workshop: 2 bis 4 Stunden Praxis mit euren Beispielen, online oder bei euch im Betrieb.",
       "Nachweis: Du bekommst Teilnahmeliste, Inhaltsnachweis und die KI-Regel.",
     ],
     faqs: [
@@ -862,7 +862,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Ist eine KI-Schulung für Mitarbeiter Pflicht?",
-        a: "Eine bestimmte Schulung ist nicht vorgeschrieben, Maßnahmen zur KI-Kompetenz aber schon. Das verlangt Art. 4 der KI-Verordnung von Firmen, deren Leute KI nutzen. Ein Zertifikat braucht es nicht, und seit dem KI-Omnibus gibt es dafür kein eigenes Bußgeld. Ein Workshop mit Nachweis ist eine Maßnahme, die du belegen kannst.",
+        a: "Eine bestimmte Schulung ist nicht vorgeschrieben, Maßnahmen zur KI-Kompetenz aber schon. Das verlangt Art. 4 der KI-Verordnung von Firmen, deren Leute KI nutzen. Ein Zertifikat braucht es nicht, und ein eigenes Bußgeld gibt es für diese Pflicht nicht. Ein Workshop mit Nachweis ist eine Maßnahme, die du belegen kannst.",
       },
       {
         q: "Brauche ich ein Zertifikat für KI-Kompetenz?",
@@ -870,11 +870,11 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Was lernt mein Team im KI-Workshop?",
-        a: "Wie ihr ChatGPT und andere Werkzeuge für eure echten Aufgaben nutzt, etwa für Angebote, E-Mails und Texte. Dazu, was nicht in eine KI gehört und wie ihr Antworten prüft. Am Ende steht eine einfache KI-Regel für euren Betrieb.",
+        a: "Wie ihr ChatGPT und andere Werkzeuge für eure echten Aufgaben nutzt, etwa für Angebote, E-Mails und Texte. Dazu kommt, was nicht in eine KI gehört und wie ihr Antworten prüft. Am Ende steht eine einfache KI-Regel für euren Betrieb.",
       },
       {
         q: "Findet der KI-Workshop online oder vor Ort statt?",
-        a: "In der Regel online, am Abend oder samstags. Den Termin legen wir nach Absprache fest. So muss niemand den Arbeitstag unterbrechen.",
+        a: "Beides geht: online oder bei euch im Betrieb. Im Oberland und in München ist die Anfahrt im Preis enthalten, weiter weg berechne ich die Fahrtkosten nach Absprache. Den Termin legen wir nach Absprache fest, auch abends oder samstags, damit niemand den Arbeitstag unterbrechen muss.",
       },
       {
         q: "Dürfen Mitarbeiter Kundendaten in ChatGPT eingeben?",
@@ -882,7 +882,7 @@ export const loesungenDe: Loesung[] = [
       },
       {
         q: "Für wen lohnt sich ein KI-Workshop?",
-        a: "Für Betriebe, in denen schon jemand mit KI arbeitet oder es bald soll, vor allem Inhaber und Büro. Wer nur Grundwissen sucht, findet günstige E-Learnings, etwa bei der IHK. Mein Workshop lohnt sich, wenn ihr mit euren eigenen Aufgaben üben wollt.",
+        a: "Für Betriebe, in denen schon jemand mit KI arbeitet oder bald damit arbeiten soll, vor allem für Inhaber und Büro. Für reines Grundwissen reichen günstige E-Learnings, etwa bei der IHK. Mein Workshop lohnt sich, wenn ihr mit euren eigenen Aufgaben üben wollt.",
       },
     ],
     related: ["it-grundschutz", "buero-automatisierung", "ki-chatbot"],
@@ -902,13 +902,13 @@ export const katalogDe: KatalogFamilie[] = [
     angebote: [
       {
         name: "Betreuter KI-Telefonassistent",
-        was: "Nimmt Anrufe an, fragt die wichtigen Angaben ab und schickt dir eine Notiz per Telegram oder E-Mail.",
+        was: "Nimmt Anrufe an, fragt die wichtigen Angaben ab und schickt dir eine Notiz per E-Mail oder, wenn du willst, per Telegram.",
         preis: "ab 490 € + ab 99 €/Monat",
         seite: "ki-telefon",
       },
       {
-        name: "Rückruf-Automat für verpasste Anrufe",
-        was: "Nach einem verpassten Anruf bekommt der Anrufer eine SMS mit Link zu deinem Anfrageformular mit Foto-Upload.",
+        name: "SMS-Antwort auf verpasste Anrufe",
+        was: "Nach einem verpassten Anruf bekommt der Anrufer eine SMS mit Link zu deinem Anfrageformular, in dem er auch Fotos hochladen kann. Den Text der SMS stimmen wir vorher ab und lassen ihn rechtlich prüfen.",
         preis: "ab 29 €/Monat + kleine Einrichtung",
       },
       {
@@ -936,13 +936,13 @@ export const katalogDe: KatalogFamilie[] = [
     angebote: [
       {
         name: "Recruiting-Paket zum Festpreis",
-        was: "Karriereseite je Beruf, Kurzbewerbung in 60 Sekunden ohne Lebenslauf und Meldung an dich per Telegram oder E-Mail.",
+        was: "Karriereseite je Beruf, Kurzbewerbung in 60 Sekunden ohne Lebenslauf und Meldung an dich per E-Mail oder Telegram.",
         preis: "ab 990 €",
         seite: "recruiting",
       },
       {
         name: "Recruiting-Pflege",
-        was: "Stellen aktuell halten, Gratisanzeigen bei Indeed und in der Jobbörse der Arbeitsagentur befüllen, Monatsbericht zu den Bewerbungen.",
+        was: "Stellen aktuell halten, als Gratisanzeige bei Indeed und in der Jobbörse der Bundesagentur für Arbeit einstellen, Monatsbericht zu den Bewerbungen.",
         preis: "ab 49 €/Monat",
         seite: "recruiting",
       },
@@ -954,7 +954,7 @@ export const katalogDe: KatalogFamilie[] = [
       {
         name: "Bewerber- und Einsatzportal",
         was: "Kurzbewerbung, Upload von Dokumenten, Checkliste für die Einarbeitung und Schichtinfos per Bot.",
-        preis: "ab 10.000 €",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
         hinweis: "Förderung möglich",
       },
@@ -967,33 +967,33 @@ export const katalogDe: KatalogFamilie[] = [
       {
         name: "Digitale Auftragsmappe als Web-App",
         was: "Auftragsliste, Fotos und Unterschrift auf dem Handy, Protokoll als PDF, Versand an den Endkunden und Export in eine Tabelle.",
-        preis: "ab 3.000 € + ab 49 €/Monat",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
         hinweis: "Förderung möglich",
       },
       {
         name: "Fahrer-App mit Fristen-Mail",
         was: "Abfahrtskontrolle mit Mängelfoto, Ablieferbeleg mit Unterschrift und eine Erinnerung am Morgen an Fristen für Fahrzeug und Fahrer.",
-        preis: "ab 490 € + ab 49 €/Monat",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
       },
       {
         name: "Stundenzettel mit Kundenfreigabe und Fristen-Ampel",
         was: "Zeiterfassung mit Freigabe durch den Einsatzkunden, Hinweis auf Equal-Pay-Fristen und Export für die Lohnabrechnung.",
-        preis: "ab 500 € + ab 99 €/Monat",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
       },
       {
         name: "Auftrags- und Statusportal für Geschäftskunden",
         was: "Geschäftskunden legen Aufträge mit Fotos an, sehen den Status und bekommen Protokolle als PDF und eine Sammelrechnung.",
-        preis: "ab 1.500 € + ab 49 €/Monat",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
         hinweis: "Förderung möglich",
       },
       {
         name: "Kunden-App oder PWA",
         was: "Bestellen, Buchen, Treuepunkte und Push-Nachrichten, als Web-App oder im App Store.",
-        preis: "ab 3.500 € + Betrieb",
+        preis: "Festpreis nach Erstgespräch",
         seite: "web-apps",
       },
     ],
@@ -1004,38 +1004,38 @@ export const katalogDe: KatalogFamilie[] = [
     angebote: [
       {
         name: "Büro-Assistent per Telegram",
-        was: "Sprachnachricht oder Foto vom Brief wird zur Aufgabe, Frist oder zum Beleg, mit einer Tagesübersicht am Morgen.",
-        preis: "ab 1.500 € + ab 29 €/Monat",
+        was: "Sprachnachricht oder Foto vom Brief wird zur Aufgabe, zur Frist oder zum Beleg, mit einer Tagesübersicht am Morgen.",
+        preis: "Festpreis nach Erstgespräch",
         seite: "buero-automatisierung",
       },
       {
-        name: "Rechnungseingang und Mahnwesen als Dienst",
-        was: "E-Rechnungen im Postfach erkennen, Fälligkeit und Skonto auslesen, weiterleiten und Zahlungserinnerungen verschicken.",
-        preis: "ab 490 € + ab 29 €/Monat",
+        name: "Rechnungseingang und Zahlungserinnerung als Dienst",
+        was: "E-Rechnungen im Postfach erkennen, Fälligkeit und Skonto auslesen, weiterleiten und Zahlungserinnerungen nach deiner Freigabe verschicken.",
+        preis: "Festpreis nach Erstgespräch",
         seite: "buero-automatisierung",
         hinweis: "neu",
       },
       {
-        name: "E-Rechnung-Startpaket",
-        was: "Passenden Tarif wählen, Vorlagen und Stammdaten anlegen, Testversand an Steuerberater und Kunden, kurze Einweisung.",
+        name: "E-Rechnungs-Startpaket",
+        was: "Passenden Tarif wählen, Vorlagen und Stammdaten anlegen, Testversand an dich und deinen Steuerberater, kurze Einweisung.",
         preis: "ab 300 €",
         seite: "e-rechnung",
         hinweis: "neu",
       },
       {
         name: "Zeiterfassung einrichten",
-        was: "App auswählen und einrichten, Stammdaten anlegen, Export ans Lohnbüro und Einweisung, die Lizenzen zahlst du direkt.",
+        was: "App auswählen und einrichten, Stammdaten anlegen, Export ans Lohnbüro und Einweisung. Die Lizenzen zahlst du direkt beim Anbieter.",
         preis: "ab 290 €",
         hinweis: "neu",
       },
       {
         name: "Automations-Betreuung",
-        was: "Bestehende Abläufe in n8n oder Make überwachen, bei Änderungen der Anbieter reparieren und jeden Monat einen kleinen neuen Ablauf bauen.",
+        was: "Bestehende Abläufe in n8n oder Make überwachen, bei Änderungen der Anbieter reparieren und kleine Anpassungen im vereinbarten Umfang übernehmen.",
         preis: "ab 49 €/Monat",
       },
       {
-        name: "KI-Assistent auf Firmenwissen",
-        was: "Interner Chat auf Handbüchern, Preislisten und Abläufen oder KI-Erfassung von Lieferscheinen, mit Schulung.",
+        name: "KI-Assistent für Firmenwissen",
+        was: "Interner Chat auf Basis von Handbüchern, Preislisten und Abläufen oder KI-Erfassung von Lieferscheinen, mit Schulung.",
         preis: "ab 12.000 €",
         hinweis: "Förderung möglich",
       },
@@ -1043,7 +1043,7 @@ export const katalogDe: KatalogFamilie[] = [
   },
   {
     titel: "Sichtbarkeit",
-    warum: "Ein gepflegtes Google-Profil, echte Bewertungen und eine aktuelle Website helfen, dass Kunden dich vor Ort finden und dir vertrauen.",
+    warum: "Ein gepflegtes Google-Profil, echte Bewertungen und eine aktuelle Website helfen dabei, dass Kunden dich vor Ort finden und dir vertrauen.",
     angebote: [
       {
         name: "Google-Profil- und Bewertungspflege",
@@ -1058,14 +1058,14 @@ export const katalogDe: KatalogFamilie[] = [
         seite: "google-profil",
       },
       {
-        name: "Website-Abo „Sorglos“",
+        name: "Website-Wartung und Updates",
         was: "Updates, Backups, Überwachung, kleine Änderungen und ein fester Ansprechpartner für deine Website.",
         preis: "ab 49 €/Monat",
         seite: "website-betreuung",
       },
       {
         name: "„Termine ohne Ausfall“",
-        was: "Buchungstool auswählen und einbinden, Anzahlung oder Ausfallgebühr per Checkbox, Erinnerung und Bewertungsanfrage nach dem Termin.",
+        was: "Buchungstool auswählen und einbinden, Anzahlung oder Ausfallgebühr per Checkbox, Erinnerung und, wenn der Kunde zugestimmt hat, eine Bewertungsanfrage nach dem Termin.",
         preis: "ab 290 € + ab 15 €/Monat",
       },
       {
@@ -1074,8 +1074,8 @@ export const katalogDe: KatalogFamilie[] = [
         preis: "ab 490 € oder ab 49 €/Monat",
       },
       {
-        name: "Anzeigenbetreuung, nur ausgewählt",
-        was: "Google-Anzeigen in der Saison oder Meta-Anzeigen fürs Recruiting, sinnvoll ab 500 € Werbebudget, das in deinem Konto läuft.",
+        name: "Anzeigenbetreuung in ausgewählten Fällen",
+        was: "Google-Anzeigen in der Saison oder Meta-Anzeigen fürs Recruiting, sinnvoll ab 500 € Werbebudget, das über dein eigenes Werbekonto läuft.",
         preis: "ab 199 € + ab 149 €/Monat",
       },
       {
@@ -1092,13 +1092,13 @@ export const katalogDe: KatalogFamilie[] = [
       {
         name: "Digitaler Hausmeister",
         was: "Domain, sichere E-Mail-Zustellung, Microsoft 365 oder Google Workspace, Konten, Passwortmanager und Backups für bis zu 5 Postfächer.",
-        preis: "ab 49 €/Monat",
+        preis: "Festpreis nach Erstgespräch",
         seite: "it-grundschutz",
       },
       {
         name: "IT-Grundschutz-Paket",
         was: "Zwei-Faktor-Anmeldung, Passwortmanager, Backup mit Wiederherstellungstest, Geräteliste, kurze Schulung und Hilfe bei Sicherheitsfragebögen.",
-        preis: "ab 490 €",
+        preis: "Festpreis nach Erstgespräch",
         seite: "it-grundschutz",
       },
       {
@@ -1122,17 +1122,17 @@ export const katalogDe: KatalogFamilie[] = [
     angebote: [
       {
         name: "Mehrsprachige Website mit KI-Assistent (Deutsch, Englisch, Russisch)",
-        was: "Website, Chatbot, Telegram-Anbindung und Pflege in drei Sprachen, für Firmen in Deutschland, der EU und Israel.",
+        was: "Website, Chatbot, Telegram-Anbindung und Pflege in drei Sprachen, für Firmen in Deutschland, in der übrigen EU und in Israel.",
         preis: "Festpreis nach Umfang",
       },
       {
         name: "White-Label für Agenturen",
-        was: "Ich baue, deine Agentur verkauft unter eigenem Namen, etwa KI-Automationen, Apps oder deutschsprachige DSGVO-Projekte.",
+        was: "Ich baue, deine Agentur verkauft unter eigenem Namen, etwa KI-Automationen, Apps oder deutschsprachige Projekte mit DSGVO-Anforderungen.",
         preis: "Festpreis je Projekt",
       },
       {
         name: "Branchen-Abo aus einer bewährten Kundenlösung",
-        was: "Eine Lösung, die sich bei einem Betrieb bewährt hat, etwa ein Anfrage-Funnel für Umzugsfirmen, als Abo für weitere Betriebe derselben Branche.",
+        was: "Eine Lösung, die sich bei einem Betrieb bewährt hat, etwa ein Anfrage-Funnel für Umzugsunternehmen, als Abo für weitere Betriebe derselben Branche.",
         preis: "ab 49 €/Monat je Betrieb",
       },
     ],

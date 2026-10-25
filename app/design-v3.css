@@ -1114,6 +1114,8 @@
 .v3-foerder { margin-top: 32px; padding: 22px 24px; border: 1px solid rgba(0, 255, 231, 0.35); border-radius: 16px; background: rgba(0, 255, 231, 0.04); display: grid; gap: 12px; justify-items: start; }
 .v3-foerder p { margin: 0; color: #d6d9d7; font-size: 15.5px; line-height: 1.55; max-width: 75ch; }
 .v3-ru-hinweis { margin: 26px 0 0; }
+/* Kyrillischer Link im Fuß der deutschen und englischen Seiten: Systemschrift, damit dort keine zusätzliche Schriftdatei lädt */
+.v3-ru-link { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
 .v3-ru-hinweis a { color: var(--v3-accent); text-decoration: none; font-weight: 600; }
 .v3-ru-hinweis a:hover { text-decoration: underline; }
 .v3-ru-vorteile { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
