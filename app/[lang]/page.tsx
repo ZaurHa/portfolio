@@ -67,7 +67,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
 
         {/* Kundenband: echte Kunden (Nennung erlaubt), läuft durch, steht bei „Bewegung reduzieren“ */}
-        <div className="v3-trust" aria-label={`${c.hero.trustLabel}: ${c.hero.trust.join(", ")}`}>
+        <div className="v3-trust">
+          <p className="v3-sr">{`${c.hero.trustLabel}: ${c.hero.trust.join(", ")}`}</p>
           <span className="v3-mono v3-trust-label" aria-hidden="true">{c.hero.trustLabel}</span>
           <div className="v3-trust-band" aria-hidden="true">
             <div className="v3-trust-track">

@@ -1,5 +1,6 @@
 // 3D-Bühne im Hero der Startseite: Laptop und Handy mit echten Kundenseiten als Video auf den Bildschirmen.
-// Reines three.js (keine Zusatzpakete), wird erst nach dem Laden der Seite nachgeladen (siehe Hero3D.tsx).
+// Reines three.js (keine Zusatzpakete), wird erst geladen, wenn sich der Besucher rührt (siehe Hero3D.tsx).
+// Der Aufbau läuft in kleinen Schritten mit Pausen dazwischen, damit Klicks und Scrollen nie warten müssen.
 import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
@@ -11,6 +12,8 @@ export type SceneOptions = {
   phoneSite: Site;
   onReady?: () => void;
   onSite?: (domain: string) => void;
+  /** true, sobald die Bühne nicht mehr gebraucht wird (Seitenwechsel): Aufbau bricht dann ab */
+  cancelled?: () => boolean;
 };
 
 export type SceneHandle = {
@@ -130,20 +133,54 @@ function roundedRect(w: number, h: number, r: number) {
 
 const smooth = (x: number) => x * x * (3 - 2 * x);
 
-export function startScene(host: HTMLElement, opts: SceneOptions): SceneHandle {
-  const mobile = window.matchMedia("(max-width: 760px)").matches;
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+/** Hauptthread kurz freigeben, damit Eingaben dazwischen drankommen. */
+const pause = () => {
+  const s = (globalThis as { scheduler?: { yield?: () => Promise<void> } }).scheduler;
+  return s?.yield ? s.yield.call(s) : new Promise<void>((r) => setTimeout(r, 0));
+};
+
+/** Nur echte Grafikhardware: Mit Software-Grafik (z. B. SwiftShader) wäre die Szene zäh, dann bleibt das Standbild. */
+function createRenderer(mobile: boolean) {
+  // Kontext selbst anlegen: So gibt es bei fehlender Hardware einfach null statt einer Fehlermeldung von three.js
+  const canvas = document.createElement("canvas");
+  const gl = canvas.getContext("webgl2", { antialias: true, alpha: true, depth: true, stencil: false, powerPreference: "high-performance", failIfMajorPerformanceCaveat: true });
+  if (!gl) return null;
+  let name = String(gl.getParameter(gl.RENDERER));
+  if (/webkit webgl/i.test(name)) {
+    const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+    if (dbg) name = String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL));
+  }
+  if (/swiftshader|llvmpipe|softpipe|software|basic render/i.test(name)) {
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return null;
+  }
+  const renderer = new THREE.WebGLRenderer({ canvas, context: gl, antialias: true, alpha: true });
+  renderer.debug.checkShaderErrors = false; // Shader sind geprüft, spart blockierende Abfragen
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.setClearColor(0x000000, 0);
-  host.appendChild(renderer.domElement);
+  return renderer;
+}
+
+/** Baut die Szene auf. Gibt null zurück, wenn das Gerät keine schnelle 3D-Grafik hat oder der Aufbau abgebrochen wurde. */
+export async function startScene(host: HTMLElement, opts: SceneOptions): Promise<SceneHandle | null> {
+  const mobile = window.matchMedia("(max-width: 760px)").matches;
+  const stop = () => opts.cancelled?.() ?? false;
+  const renderer = createRenderer(mobile);
+  if (!renderer) return null;
+  if (stop()) {
+    renderer.dispose();
+    return null;
+  }
+  await pause();
 
   const scene = new THREE.Scene();
   const pmrem = new THREE.PMREMGenerator(renderer);
   const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   scene.environment = envTex;
+  await pause();
 
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
   let baseZ = 8.3;
@@ -294,6 +331,50 @@ export function startScene(host: HTMLElement, opts: SceneOptions): SceneHandle {
   shadow.position.set(0.15, -0.002, 0.15);
   root.add(shadow);
 
+  // Alles wieder freigeben (auch wenn der Aufbau mittendrin abgebrochen wird)
+  const freeGpu = () => {
+    scene.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (m.geometry) m.geometry.dispose();
+      const list = Array.isArray(m.material) ? m.material : m.material ? [m.material] : [];
+      list.forEach((mat) => {
+        const mm = mat as THREE.MeshStandardMaterial;
+        mm.map?.dispose();
+        mm.roughnessMap?.dispose();
+        mm.dispose();
+      });
+    });
+    envTex.dispose();
+    pmrem.dispose();
+    renderer.dispose();
+    renderer.domElement.remove();
+  };
+  const freeVideos = () =>
+    [...vids, phVideo].forEach((v) => {
+      v.pause();
+      v.removeAttribute("src");
+      v.load();
+    });
+
+  // Shader im Hintergrund übersetzen lassen (blockiert sonst beim ersten Bild), dann erst ins Bild hängen
+  await pause();
+  if (stop()) {
+    freeVideos();
+    freeGpu();
+    return null;
+  }
+  try {
+    await renderer.compileAsync(scene, camera);
+  } catch {
+    // ältere Browser: dann übersetzt das erste Bild die Shader
+  }
+  if (stop()) {
+    freeVideos();
+    freeGpu();
+    return null;
+  }
+  host.appendChild(renderer.domElement);
+
   // Größe
   const resize = () => {
     const w = host.clientWidth || 1;
@@ -346,8 +427,19 @@ export function startScene(host: HTMLElement, opts: SceneOptions): SceneHandle {
   let readySent = false;
   let scrollTarget = 0;
   let scroll = 0;
+  // Gerät zu langsam für die volle Auflösung? Nach dem Anlaufen 60 Bilder messen, notfalls Auflösung senken
+  let probe = 0;
+  let probeStart = 0;
   const tick = () => {
     raf = requestAnimationFrame(tick);
+    if (readySent && probe < 80) {
+      probe++;
+      if (probe === 20) probeStart = performance.now();
+      if (probe === 80 && (performance.now() - probeStart) / 60 > 24 && renderer.getPixelRatio() > 1) {
+        renderer.setPixelRatio(1);
+        resize();
+      }
+    }
     const t = clock.getElapsedTime();
     pointer.x += (pointer.tx - pointer.x) * 0.05;
     pointer.y += (pointer.ty - pointer.y) * 0.05;
@@ -385,6 +477,7 @@ export function startScene(host: HTMLElement, opts: SceneOptions): SceneHandle {
   const setActive = (on: boolean) => {
     if (on === active) return;
     active = on;
+    if (probe < 80) probe = 0; // Messung nur über durchgehend laufende Bilder
     if (on) {
       clock.start();
       vids[cur].play().catch(() => {});
@@ -406,26 +499,8 @@ export function startScene(host: HTMLElement, opts: SceneOptions): SceneHandle {
     window.removeEventListener("pointermove", onMove);
     vids.forEach((v) => v.removeEventListener("ended", nextSite));
     ro.disconnect();
-    [...vids, phVideo].forEach((v) => {
-      v.pause();
-      v.removeAttribute("src");
-      v.load();
-    });
-    scene.traverse((o) => {
-      const m = o as THREE.Mesh;
-      if (m.geometry) m.geometry.dispose();
-      const list = Array.isArray(m.material) ? m.material : m.material ? [m.material] : [];
-      list.forEach((mat) => {
-        const mm = mat as THREE.MeshStandardMaterial;
-        mm.map?.dispose();
-        mm.roughnessMap?.dispose();
-        mm.dispose();
-      });
-    });
-    envTex.dispose();
-    pmrem.dispose();
-    renderer.dispose();
-    renderer.domElement.remove();
+    freeVideos();
+    freeGpu();
   };
 
   return { setActive, setScroll, dispose };

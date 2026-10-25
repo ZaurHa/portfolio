@@ -18,5 +18,5 @@ https://:project.pages.dev/*
 /images/*
   Cache-Control: public, max-age=2592000
 
-/og.png
+/og.jpg
   Cache-Control: public, max-age=604800

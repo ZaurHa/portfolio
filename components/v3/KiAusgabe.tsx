@@ -48,10 +48,10 @@ export default function KiAusgabe({ ausgabe: a, archiv, url }: { ausgabe: Ausgab
         )}
       >
         <ol className="v3-funnel v3-rise d3" aria-label="So viel wurde für diese Ausgabe geprüft">
-          <li><b>{a.signale}</b><span className="v3-mono">Signale geprüft</span></li>
-          <li><b>{a.kandidaten}</b><span className="v3-mono">Kandidaten</span></li>
-          <li><b>{a.strategie}</b><span className="v3-mono">Beim Strategen</span></li>
-          <li className="is-win"><b>{a.bestanden}</b><span className="v3-mono">Bestanden</span></li>
+          <li><b data-count>{a.signale}</b><span className="v3-mono">Signale geprüft</span></li>
+          <li><b data-count>{a.kandidaten}</b><span className="v3-mono">Kandidaten</span></li>
+          <li><b data-count>{a.strategie}</b><span className="v3-mono">Beim Strategen</span></li>
+          <li className="is-win"><b data-count>{a.bestanden}</b><span className="v3-mono">Bestanden</span></li>
         </ol>
       </PageHero>
 

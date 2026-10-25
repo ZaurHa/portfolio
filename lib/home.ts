@@ -224,7 +224,7 @@ export function getHomeContent(lang: Locale) {
       metaRight: de ? 'Antwort meist in 24 h' : 'Reply usually within 24 h',
       l1: de ? 'Websites, die' : 'Websites that',
       accent: de ? 'Anfragen' : 'win',
-      outline: de ? 'bringen.' : 'clients.',
+      outline: de ? 'bringen' : 'clients',
       subPrice: de ? 'Festpreis ab 490 €' : 'Fixed price from €490',
       subPlace: de ? 'aus Geretsried für München & Oberland' : 'from Geretsried for Munich & the Oberland',
       lead: de
