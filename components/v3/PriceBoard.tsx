@@ -8,14 +8,14 @@ export default function PriceBoard({ pricing }: { pricing: HomeContent["pricing"
       <div className="board-top"><b>{pricing.boardTitle}</b><span className="v3-mono">{pricing.boardMeta}</span></div>
       <div className="v3-prices">
         {pricing.plans.map((plan) => (
-          <article key={plan.name} className={`v3-plan${plan.hot ? " hot" : ""}`}>
+          <article key={plan.name} className={`v3-plan${plan.hot ? " hot" : ""}`} data-tilt="glanz">
             <div className="top"><span className="v3-mono">{plan.code}</span>{plan.hot && <span className="v3-badge">{pricing.popular}</span>}</div>
             <h3>{plan.name}</h3>
             <p className="desc">{plan.desc}</p>
             <div className="v3-price"><small>{pricing.from}</small><span className="amt">{plan.amount}</span><span className="eur">€</span></div>
             <div className="unit">{plan.unit}</div>
             <ul>{plan.items.map((it) => <li key={it}>{it}</li>)}</ul>
-            <Link href={plan.href} className={`v3-btn ${plan.hot ? "v3-btn-accent" : "v3-btn-ghost"}`}>{plan.cta} <span className="arr" aria-hidden="true">→</span></Link>
+            <Link href={plan.href} className={`v3-btn ${plan.hot ? "v3-btn-accent" : "v3-btn-ghost"}`} {...(plan.hot ? { "data-magnet": "" } : {})}>{plan.cta} <span className="arr" aria-hidden="true">→</span></Link>
           </article>
         ))}
       </div>

@@ -356,7 +356,7 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
           : "From a beauty studio and a DPF workshop in Geretsried to logistics in Hamburg and East Westphalia: every website is built around the business and its customers and runs in real day-to-day use."}
         actions={<Link href={`/${lang}/kontakt`} className="v3-btn v3-btn-accent">{de ? "Eigenes Projekt starten" : "Start your project"} <span className="arr" aria-hidden="true">→</span></Link>}
         facts={[
-          { label: de ? "Projekte" : "Projects", value: count },
+          { label: de ? "Projekte" : "Projects", value: <span data-count>{count}</span> },
           { label: de ? "Branchen" : "Industries", value: de ? "Logistik · Umzug · Werkstatt · Kosmetik · Apps · KI" : "Logistics · Moving · Workshop · Beauty · Apps · AI" },
           { label: de ? "Dabei seit" : "Since", value: "2024" },
           { label: de ? "Ansprechpartner" : "Contact", value: de ? "Einer von Anfang bis Ende" : "One from start to finish" },
@@ -370,7 +370,7 @@ export default async function Projekte({ params }: { params: Promise<{ lang: str
           </div>
           {projects.map((p, i) => {
             const frame = (
-              <div className="v3-frame v3-frame-static">
+              <div className="v3-frame v3-frame-static" data-tilt>
                 <div className="bar"><i /><i /><i /><span>{p.bar}</span></div>
                 <div className="img">
                   <Image src={p.image} alt={p.alt} fill sizes="(max-width: 960px) 100vw, 56vw" priority={i === 0} />

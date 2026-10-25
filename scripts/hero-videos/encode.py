@@ -8,7 +8,9 @@ def build_full(name):
     d = f'{REC}/{name}'
     fr = json.load(open(f'{d}/meta.json'))['frames']
     t0 = fr[0]['t']
-    fr = [f for f in fr if Image.open(f"{d}/f{f['i']:05d}.jpg").size == (1280, 800)]
+    # Startbilder mit abweichender Größe verwerfen; maßgeblich ist das letzte Bild (Desktop 1280 × 800 oder Handy)
+    soll = Image.open(f"{d}/f{fr[-1]['i']:05d}.jpg").size
+    fr = [f for f in fr if Image.open(f"{d}/f{f['i']:05d}.jpg").size == soll]
     offset = fr[0]['t'] - t0
     lines = ['ffconcat version 1.0']
     for k, f in enumerate(fr):

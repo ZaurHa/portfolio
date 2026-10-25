@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- Vorlage für das Vorschaubild (public/og.jpg). Wird über den gebauten Export geladen, damit Schriften und Farben stimmen:
+     siehe scripts/og/render.mjs -->
+<html lang="de" class="__FONTKLASSEN__">
+<head>
+<meta charset="utf-8">
+__CSS__
+<style>
+  html, body { margin: 0; background: #0a0b0a; }
+  .og { position: relative; width: 1200px; height: 630px; overflow: hidden; background: var(--v3-bg); color: var(--v3-ink); font-family: var(--v3-display); }
+  .og::before { content: ""; position: absolute; right: -120px; top: -40px; width: 900px; height: 760px; background: radial-gradient(closest-side, rgba(0, 255, 231, 0.20), rgba(0, 255, 231, 0.05) 55%, transparent 78%); }
+  .og .raster { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 104px, rgba(255, 255, 255, 0.045) 104px 105px); }
+  .og .top { position: absolute; left: 72px; right: 72px; top: 62px; display: flex; justify-content: space-between; align-items: center; }
+  .og .label { font: 500 17px/1 var(--v3-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--v3-muted); display: flex; align-items: center; gap: 14px; }
+  .og .label i { width: 10px; height: 10px; border-radius: 50%; background: var(--v3-accent); box-shadow: 0 0 12px var(--v3-accent); }
+  .og .logo { font: 800 34px/1 var(--v3-display); letter-spacing: -0.035em; }
+  .og .logo b { color: var(--v3-accent); font-weight: 800; }
+  .og h1 { position: absolute; left: 68px; top: 156px; margin: 0; font: 800 92px/0.98 var(--v3-display); letter-spacing: -0.05em; }
+  .og h1 span { display: block; }
+  .og h1 .c { color: var(--v3-accent); }
+  .og h1 .o { color: var(--v3-bg); -webkit-text-stroke: 2.4px rgba(238, 239, 238, 0.88); paint-order: stroke fill; }
+  /* Das Standbild hat einen eigenen dunklen Grund: aufhellend mischen, damit kein Kasten zu sehen ist */
+  .og .buehne { position: absolute; right: -6px; top: 92px; width: 600px; height: 480px; object-fit: contain; mix-blend-mode: lighten; }
+  .og .unten { position: absolute; left: 72px; right: 72px; bottom: 58px; display: flex; justify-content: space-between; align-items: center; }
+  .og .preis { font: 600 30px/1.2 var(--v3-display); letter-spacing: -0.02em; color: var(--v3-muted); }
+  .og .preis b { color: var(--v3-ink); font-weight: 700; }
+  .og .domain { font: 700 25px/1 var(--v3-display); letter-spacing: -0.01em; color: #0a0b0a; background: var(--v3-accent); padding: 16px 24px; border-radius: 999px; }
+</style>
+</head>
+<body>
+<div class="site-shell"><div class="og">
+  <div class="raster"></div>
+  <img class="buehne" src="/images/hero-3d-poster.webp" alt="">
+  <div class="top">
+    <span class="label"><i></i>Webdesign · Geretsried bei München</span>
+    <span class="logo">BrandWerk<b>X</b></span>
+  </div>
+  <h1><span>Websites, die</span><span class="c">Anfragen</span><span class="o">bringen</span></h1>
+  <div class="unten">
+    <span class="preis"><b>Festpreis ab 490 €</b> · für Handwerk &amp; kleine Betriebe</span>
+    <span class="domain">brandwerkx.de</span>
+  </div>
+</div></div>
+</body>
+</html>

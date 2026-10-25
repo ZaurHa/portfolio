@@ -224,7 +224,7 @@ export function getHomeContent(lang: Locale) {
       metaRight: de ? 'Antwort meist in 24 h' : 'Reply usually within 24 h',
       l1: de ? 'Websites, die' : 'Websites that',
       accent: de ? 'Anfragen' : 'win',
-      outline: de ? 'bringen.' : 'clients.',
+      outline: de ? 'bringen' : 'clients',
       subPrice: de ? 'Festpreis ab 490 €' : 'Fixed price from €490',
       subPlace: de ? 'aus Geretsried für München & Oberland' : 'from Geretsried for Munich & the Oberland',
       lead: de
@@ -233,6 +233,10 @@ export function getHomeContent(lang: Locale) {
       leadStrong: de ? 'In 3 bis 5 Werktagen online' : 'Online in 3 to 5 working days',
       leadTail: de ? ', mit einem Ansprechpartner von Anfang bis Ende.' : ', with one point of contact from start to finish.',
       ctaPrimary: de ? 'Kostenloses Erstgespräch' : 'Free initial call',
+      stageAlt: de ? 'Laptop und Handy mit Websites, die BrandWerkX für Kunden gebaut hat' : 'Laptop and phone showing websites BrandWerkX built for clients',
+      stageLive: de ? 'Live:' : 'Live:',
+      trustLabel: de ? 'Websites gebaut für' : 'Websites built for',
+      trust: ['SM Team Dienstleistungen', 'MRG Trans & Logistik', 'IP Logistik', 'MH Logistik', 'Flott Umzug & Transport', 'Zaira Beauty'],
     },
     ticket: {
       title: de ? 'Arbeitsauftrag' : 'Work order',
@@ -286,8 +290,47 @@ export function getHomeContent(lang: Locale) {
         : ['Fixed price upfront', 'No VAT (§ 19 UStG)', 'Domain & hosting year one', '30 days support'],
       details: de ? 'Alle Leistungen & Details' : 'All services & details',
     },
+    ki: {
+      num: de ? '03 / KI für Betriebe' : '03 / AI for businesses',
+      h1: de ? 'KI, die' : 'AI that',
+      hc: de ? 'Arbeit abnimmt' : 'takes work off your plate',
+      text: de
+        ? 'Neben Websites baue ich Automatisierungen, die im Alltag Zeit sparen. Klein anfangen, schnell nutzen, ohne dass du programmieren musst. Drei Beispiele, die schon laufen:'
+        : 'Alongside websites I build automations that save time every day. Start small, use it fast, no coding on your side. Three examples already running:',
+      items: [
+        {
+          tag: de ? 'Im Einsatz' : 'In use',
+          title: de ? 'Rechnungs-Erinnerungen' : 'Invoice reminders',
+          text: de
+            ? 'Liest neue Rechnungen aus dem Postfach und schickt jeden Morgen eine Liste mit allem, was bald fällig ist. Keine Rechnung geht an eine KI.'
+            : 'Reads new invoices from the mailbox and sends a list of everything due soon every morning. No invoice is sent to an AI.',
+          href: `/${lang}/projekte#vorfrist`,
+          cta: de ? 'Projekt ansehen' : 'View project',
+        },
+        {
+          tag: de ? 'Täglich im Einsatz' : 'In daily use',
+          title: de ? 'KI-Assistent auf Telegram' : 'AI assistant on Telegram',
+          text: de
+            ? 'Sprachnachricht, Foto oder Text an den Bot: Er ordnet ein, erkennt Fristen aus Briefen und schickt morgens ein Briefing.'
+            : 'Send a voice message, photo or text to the bot: it files it, spots deadlines in letters and sends a morning briefing.',
+          href: `/${lang}/projekte#ki-assistent`,
+          cta: de ? 'Projekt ansehen' : 'View project',
+        },
+        {
+          tag: de ? 'Jeden Sonntag neu' : 'New every Sunday',
+          title: de ? 'Geprüfte KI-Chancen' : 'Vetted AI opportunities',
+          text: de
+            ? 'Jede Woche geprüfte Ideen, mit denen Betriebe Geld verdienen oder sparen, auf Wunsch mit fertigem Paket zum Umsetzen.'
+            : 'Vetted ideas every week for businesses to earn or save money, with a ready-to-build package on request.',
+          href: '/de/ki-chancen',
+          cta: de ? 'Aktuelle Ausgabe' : 'Current issue (German)',
+        },
+      ],
+      cta: de ? 'KI-Erstgespräch anfragen' : 'Request an AI intro call',
+      ctaHref: `/${lang}/kontakt?thema=${encodeURIComponent(de ? 'KI-Automatisierung' : 'AI automation')}`,
+    },
     process: {
-      num: de ? '03 / Ablauf' : '03 / Process',
+      num: de ? '04 / Ablauf' : '04 / Process',
       h1: de ? 'Vier Schritte' : 'Four steps',
       h2: de ? 'bis' : 'to',
       h2o: de ? 'online' : 'online',
@@ -309,7 +352,7 @@ export function getHomeContent(lang: Locale) {
           ]) as [string, string][],
     },
     about: {
-      num: de ? '04 / Über mich' : '04 / About',
+      num: de ? '05 / Über mich' : '05 / About',
       caption: ['Zaur Hatuev', 'BrandWerkX'],
       big1: de ? 'Kein Agentur-Pingpong.' : 'No agency ping-pong.',
       bigEm: de ? 'Ein Ansprechpartner' : 'One point of contact',
@@ -323,7 +366,7 @@ export function getHomeContent(lang: Locale) {
       more: de ? 'Mehr über mich' : 'More about me',
     },
     quotes: {
-      num: de ? '05 / Kundenstimmen' : '05 / Testimonials',
+      num: de ? '06 / Kundenstimmen' : '06 / Testimonials',
       h1: de ? 'Was Kunden' : 'What clients',
       h2o: de ? 'sagen' : 'say',
       items: [
@@ -346,7 +389,7 @@ export function getHomeContent(lang: Locale) {
       ],
     },
     faq: {
-      num: '06 / FAQ',
+      num: '07 / FAQ',
       h1: de ? 'Kurz' : 'Quick',
       h2o: de ? 'gefragt' : 'answers',
       label: de ? 'Häufige Fragen' : 'Common questions',
@@ -365,7 +408,7 @@ export function getHomeContent(lang: Locale) {
           ]) as [string, string][],
     },
     final: {
-      num: de ? '07 / Kontakt' : '07 / Contact',
+      num: de ? '08 / Kontakt' : '08 / Contact',
       meta: de ? 'Antwort meist innerhalb 24 h' : 'Reply usually within 24 h',
       ask: de ? 'Lass uns über deine Website reden' : "Let's talk about your website",
       cta: de ? 'Erstgespräch anfragen' : 'Request a call',
