@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 import { landingPages } from "../lib/landing";
+import { loesungen } from "../lib/loesungen";
+import { LOESUNGEN_BASIS, RU_PFAD, loesungPfad } from "../lib/loesungen-pfade";
 import { ausgaben } from "../lib/ki-chancen";
 import { SITE_URL, SITEMAP_LAST_MODIFIED } from "../lib/seo";
 
@@ -43,6 +45,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: p.kind === "leistung" ? 0.8 : 0.7,
     });
   }
+
+  // Lösungen (KI, Apps, Automatisierung): Übersichten und Einzelseiten je Sprache, dazu die russische Seite
+  for (const lang of ["de", "en"] as const) {
+    entries.push({ url: `${SITE_URL}${LOESUNGEN_BASIS[lang]}`, lastModified, changeFrequency: "monthly", priority: 0.9 });
+    for (const l of loesungen[lang]) {
+      entries.push({ url: `${SITE_URL}${loesungPfad(l.key, lang)}`, lastModified, changeFrequency: "monthly", priority: 0.8 });
+    }
+  }
+  entries.push({ url: `${SITE_URL}${RU_PFAD}`, lastModified, changeFrequency: "monthly", priority: 0.7 });
 
   // KI-Chancen (nur Deutsch): Übersicht mit der neuesten Ausgabe, frühere Ausgaben als eigene Seiten
   // (die neueste Ausgabe hat ihre Canonical auf der Übersicht und fehlt deshalb hier)

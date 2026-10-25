@@ -180,6 +180,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </div>
           <div className="v3-cta-row">
             <Link href={c.ki.ctaHref} className="v3-btn v3-btn-accent" data-magnet>{c.ki.cta} <Arrow /></Link>
+            <Link href={locale === "en" ? "/en/solutions" : "/de/loesungen"} className="v3-btn v3-btn-ghost">{locale === "en" ? "All solutions and prices" : "Alle Lösungen und Preise"} <Arrow /></Link>
           </div>
         </div>
       </section>

@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const ZIELE = [
   ".v3-sec-head", ".v3-case", ".v3-tile", ".v3-board", ".v3-extras", ".v3-about",
   ".v3-quote", ".v3-faq", ".v3-links > *", ".v3-ki-card", ".v3-rules > *", ".v3-chance", ".v3-compare-wrap",
-  ".v3-chance-band", ".v3-final .v3-wrap > *",
+  ".v3-chance-band", ".v3-final .v3-wrap > *", ".v3-preise > *", ".v3-katalog-fam", ".v3-foerder", ".v3-ru-vorteile > *",
 ].join(", ");
 // Ablauf: Die Linie zieht sich durch, die Schritte gehen nacheinander an (Choreografie im CSS)
 const LINIEN = ".v3-steps";

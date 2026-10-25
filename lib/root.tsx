@@ -76,7 +76,7 @@ export const jsonLd = {
       "@id": `${SITE}/#website`,
       "name": "BrandWerkX",
       "url": SITE,
-      "inLanguage": ["de", "en"],
+      "inLanguage": ["de", "en", "ru"],
       "publisher": { "@id": `${SITE}/#business` },
     },
     {
@@ -84,7 +84,8 @@ export const jsonLd = {
       "@id": `${SITE}/#business`,
       "name": "BrandWerkX",
       "alternateName": "BrandWerkX Webdesign",
-      "description": "Webdesign und Webentwicklung für Handwerker, Selbstständige und kleine Unternehmen: Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
+      "description": "Webdesign, Webentwicklung, KI-Assistenten und Automatisierung für Handwerker, Selbstständige und kleine Unternehmen: Website ab 490 €, fertig in 5 Tagen, SEO inklusive.",
+      "knowsLanguage": ["de", "en", "ru"],
       "url": SITE,
       "logo": `${SITE}/images/brandwerkxweiss.webp`,
       "image": `${SITE}/og.jpg`,
@@ -111,7 +112,13 @@ export const jsonLd = {
         "Webentwicklung",
         "Landingpage-Erstellung",
         "SEO-Optimierung",
-        "Website-Wartung"
+        "Website-Wartung",
+        "KI-Telefonassistent",
+        "KI-Chatbot",
+        "Web-App-Entwicklung",
+        "Büro-Automatisierung",
+        "Recruiting-Seiten",
+        "IT-Grundschutz"
       ],
       "sameAs": [
         "https://github.com/ZaurHa",

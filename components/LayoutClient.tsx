@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from 'next/navigation';
 import type { Dictionary, Locale } from '../lib/i18n';
+import { LOESUNGEN_BASIS, RU_PFAD, loesungGegenstueck } from '../lib/loesungen-pfade';
 
 type Props = {
   children: React.ReactNode;
@@ -15,6 +16,9 @@ function getOtherLang(lang: Locale): Locale {
 }
 
 function switchLangPath(pathname: string, currentLang: Locale, targetLang: Locale): string {
+  // Lösungen: /de/loesungen/<slug> ↔ /en/solutions/<slug>, ohne Gegenstück auf die Übersicht
+  const loesung = loesungGegenstueck(pathname, targetLang);
+  if (loesung) return loesung;
   // Landingpages unter /de/webdesign und die KI-Chancen gibt es nur auf Deutsch → Startseite der Zielsprache
   if (pathname.startsWith(`/${currentLang}/webdesign`) || pathname.startsWith(`/${currentLang}/ki-chancen`)) return `/${targetLang}`;
   // /de/projekte → /en/projekte
@@ -41,6 +45,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
   const navLinks = [
     { href: `/${lang}`, text: dict.nav.home },
     { href: `/${lang}/leistungen`, text: dict.nav.services },
+    { href: LOESUNGEN_BASIS[lang], text: lang === 'de' ? 'Lösungen' : 'Solutions' },
     { href: '/muster', text: 'Designs' },
     { href: `/${lang}/projekte`, text: dict.nav.projects },
     // KI-Chancen gibt es nur auf Deutsch
@@ -229,6 +234,7 @@ export default function LayoutClient({ children, lang, dict }: Props) {
                   <li key={item.href}><Link href={item.href}>{item.text}</Link></li>
                 ))}
                 {lang === 'de' && <li><Link href="/de/webdesign">Webdesign-Themen</Link></li>}
+                <li><Link href={RU_PFAD} lang="ru" hrefLang="ru">По-русски</Link></li>
               </ul>
             </div>
             <div>

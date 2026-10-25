@@ -13,3 +13,7 @@
 /webdesign               /de/webdesign              301
 /webdesign/*             /de/webdesign/:splat       301
 /de/seite-nicht-gefunden /de                        301
+/loesungen               /de/loesungen              301
+/loesungen/*             /de/loesungen/:splat       301
+/solutions               /en/solutions              301
+/solutions/*             /en/solutions/:splat       301

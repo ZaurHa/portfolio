@@ -1089,3 +1089,44 @@
   .v3-compare-out tbody th { width: auto; }
   .v3-compare-out td.no { margin: 10px 0 6px; }
 }
+
+/* Lösungen (KI, Apps, Automatisierung): Preiskarten, Branchen, Katalog, Förderhinweis, russische Seite */
+.v3-preise { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.v3-preis { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 20px; border: 1px solid var(--v3-line-2); border-radius: 16px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)); }
+.v3-preis b { font: 800 clamp(26px, 2.6vw, 36px)/1 var(--v3-display); letter-spacing: -0.03em; color: var(--v3-ink); }
+.v3-preise .v3-preis:first-child b { color: var(--v3-accent); }
+.v3-preis span { color: var(--v3-muted); font-size: 15px; line-height: 1.45; }
+.v3-preis-note { margin: 14px 0 0; color: var(--v3-dim); font-size: 13px; line-height: 1.5; max-width: 72ch; }
+.v3-fuer { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 26px; }
+.v3-fuer ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.v3-katalog { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 32px; }
+.v3-katalog-1 { grid-template-columns: 1fr; }
+.v3-katalog-fam { border-top: 2px solid var(--v3-line-2); padding-top: 16px; }
+.site-shell .v3-katalog-fam h3 { font: 700 21px/1.2 var(--v3-display); letter-spacing: -0.02em; margin: 0 0 6px; color: var(--v3-ink); }
+.v3-katalog-fam > p { margin: 0 0 10px; color: var(--v3-muted); font-size: 14.5px; }
+.v3-katalog-fam table { width: 100%; border-collapse: collapse; }
+.v3-katalog-fam td { padding: 11px 0; border-bottom: 1px solid var(--v3-line); vertical-align: top; color: #d6d9d7; font-size: 15px; }
+.v3-katalog-fam td b { color: var(--v3-ink); font-weight: 600; }
+.v3-katalog-fam td b a { color: inherit; text-decoration: underline; text-decoration-color: var(--v3-accent); text-underline-offset: 3px; }
+.v3-katalog-fam td small { display: block; margin-top: 3px; color: var(--v3-muted); font-size: 13.5px; line-height: 1.4; }
+.v3-katalog-fam td:last-child { text-align: right; white-space: nowrap; padding-left: 14px; font: 500 13px/1.4 var(--v3-mono); color: var(--v3-ink); }
+.v3-katalog-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--v3-accent); color: var(--v3-accent); font: 500 10.5px/1.5 var(--v3-mono); letter-spacing: 0.04em; vertical-align: 2px; }
+.v3-foerder { margin-top: 32px; padding: 22px 24px; border: 1px solid rgba(0, 255, 231, 0.35); border-radius: 16px; background: rgba(0, 255, 231, 0.04); display: grid; gap: 12px; justify-items: start; }
+.v3-foerder p { margin: 0; color: #d6d9d7; font-size: 15.5px; line-height: 1.55; max-width: 75ch; }
+.v3-ru-hinweis { margin: 26px 0 0; }
+.v3-ru-hinweis a { color: var(--v3-accent); text-decoration: none; font-weight: 600; }
+.v3-ru-hinweis a:hover { text-decoration: underline; }
+.v3-ru-vorteile { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.v3-ru-vorteile .v3-preis b.v3-ru-vorteil-titel { font-size: clamp(19px, 1.7vw, 23px); line-height: 1.2; color: var(--v3-ink); }
+.v3-ru-kontakt-text { color: var(--v3-muted); max-width: 60ch; margin: 0 0 18px; font-size: 16px; line-height: 1.55; }
+/* Internationale Nummer (+49 …) ist länger als 0172/…: kleiner setzen, damit sie nicht über den Rand läuft */
+.v3-tel.v3-tel-int { font-size: clamp(40px, 10.2vw, 156px); }
+.v3-katalog-lead { margin: -8px 0 26px; color: var(--v3-muted); font-size: 15px; line-height: 1.55; max-width: 72ch; }
+@media (max-width: 860px) {
+  .v3-katalog { grid-template-columns: 1fr; }
+  .v3-katalog-fam td:last-child { white-space: normal; max-width: 44%; }
+  .v3-ru-sprachen { display: none; }
+}
+@media (max-width: 560px) {
+  .site-shell .v3-tel.v3-tel-int { font-size: clamp(44px, 16vw, 76px); }
+}
