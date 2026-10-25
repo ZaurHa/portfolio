@@ -1,76 +1,114 @@
 {
-  "telegram": "",
-  "telegramRu": "",
+  "telegram": "https://t.me/brandwerkx",
+  "telegramRu": "https://t.me/brandwerkxy",
   "ausgaben": [
     {
       "slug": "2026-kw43",
       "nr": 43,
       "jahr": 2026,
-      "datum": "21.10.2026",
-      "datumIso": "2026-10-21",
-      "signale": 162,
-      "kandidaten": 9,
-      "strategie": 5,
-      "bestanden": 2,
-      "einordnung": "Beide Chancen dieser Woche drehen sich um dasselbe Problem: Kleine Betriebe verlieren Kunden, weil niemand rechtzeitig antwortet. Termin- und Anrufannahme lässt sich jetzt ohne Programmieren automatisieren.",
+      "datum": "25.10.2026",
+      "datumIso": "2026-10-25",
+      "signale": 351,
+      "kandidaten": 35,
+      "strategie": 17,
+      "bestanden": 4,
+      "einordnung": "Drei der vier Chancen dieser Woche bauen auf fertigen n8n-Vorlagen für Dauerprobleme auf: Termine über WhatsApp, Belege als PDF und volle Postfächer. Für kleine Betriebe heißt das, dass sich solche Abläufe ohne Programmieren automatisieren lassen, sie brauchen aber laufende Pflege und sauberen Datenschutz. Daraus wird eher eine monatliche Betreuung als ein einmaliges Projekt.",
       "chancen": [
         {
-          "kategorie": "Neue Dienstleistung",
           "titel": "WhatsApp-Terminbot",
-          "titelAkzent": "für Studios und Werkstätten",
-          "neu": "Mit dem Automatisierungswerkzeug n8n und der offiziellen WhatsApp-Schnittstelle von Meta nimmt ein Bot Buchungen per WhatsApp an, bestätigt sie und verhindert Doppelbuchungen.",
-          "geld": "Kosmetikstudios, Werkstätten und Praxen verlieren Termine, weil Nachrichten liegen bleiben. Du richtest den Bot einmal ein und berechnest Einrichtung plus monatliche Betreuung.",
-          "schritt": "Richte die WhatsApp-Schnittstelle mit der Testnummer von Meta ein und bau den Buchungsablauf in n8n nach.",
+          "titelAkzent": "ohne Doppelbuchungen für Studios und Werkstätten",
+          "neu": "Ein n8n-Workflow verbindet die offizielle WhatsApp Cloud API mit der Terminvergabe. Doppelte Nachrichten und doppelte Buchungen werden dabei abgefangen.",
+          "geld": "Studios, Werkstätten, Handwerker und Praxen nehmen Buchungen rund um die Uhr an, ohne dass jemand ans Telefon muss. Bezahlt wird die Einrichtung und danach eine monatliche Wartung des Bots.",
+          "schritt": "Verbinde die WhatsApp Cloud API von Meta testweise mit einem n8n-Buchungsflow und einem Testkalender.",
+          "angebot": "Terminbot einrichten, danach monatliche Wartung",
+          "werZahlt": "Kosmetikstudios, Werkstätten, Handwerker und Praxen",
+          "werkzeuge": "WhatsApp Cloud API, n8n, Kalender",
+          "ersterEuro": "Nach einigen Wochen",
+          "aufwand": "Flow einmal sauber bauen, dann laufend warten",
+          "beachten": "Praxen: Gesundheitsdaten, Einwilligung und AVV sind Pflicht",
+          "kategorie": "Neue Dienstleistung",
           "punkte": 9,
-          "angebot": "Buchungsbot einrichten, monatlich betreuen",
-          "werZahlt": "Kosmetikstudios, Werkstätten, Praxen",
-          "werkzeuge": "n8n, WhatsApp-Schnittstelle von Meta",
-          "ersterEuro": "In Wochen",
-          "aufwand": "Mittel, ohne Programmieren",
-          "beachten": "Geschäftsprüfung bei Meta, Auftragsverarbeitung nach DSGVO, 24-Stunden-Antwortfenster",
           "quelle": {
-            "name": "Reddit r/n8n",
-            "url": "https://www.reddit.com/r/n8n/"
+            "name": "Reddit n8n",
+            "url": "https://www.reddit.com/r/n8n/comments/1xbshso/how_i_handle_the_whatsapp_cloud_api_webhook/"
           }
         },
         {
+          "titel": "Belege auslesen",
+          "titelAkzent": "statt Rechnungen von Hand abtippen",
+          "neu": "In n8n liest eine KI die Felder aus PDF-Dokumenten aus und gibt sie an die Buchhaltung weiter. Ein Mensch schaut nur bei unsicheren Belegen drüber.",
+          "geld": "Handwerker, Logistikfirmen und Steuerberater mit vielen uneinheitlichen PDFs sparen sich tägliche Tipparbeit. Wer solche Abläufe einrichtet, verkauft die Erfassung als festen Baustein für die Buchhaltung.",
+          "schritt": "Lade fünf echte Lieferscheine in einen n8n-Flow mit Abacus Docs und miss, wie viele Felder stimmen.",
+          "angebot": "PDF rein, Felder raus, Prüfung bei Unsicherheit",
+          "werZahlt": "Handwerker, Logistikfirmen und Steuerberater",
+          "werkzeuge": "n8n, Abacus Docs, Buchhaltungssoftware",
+          "ersterEuro": "Nach einigen Wochen",
+          "aufwand": "Trefferquote vorab mit echten Belegen testen",
+          "beachten": "AVV nötig, Trefferquote vor dem Verkauf belegen",
           "kategorie": "Neue Dienstleistung",
-          "titel": "Telefon-Assistent",
-          "titelAkzent": "der Anrufe und Termine annimmt",
-          "neu": "ElevenLabs hat Eleven Realtime vorgestellt: Sprachmodelle, die in unter einer Sekunde antworten. Gespräche mit einem KI-Assistenten laufen damit ohne lange Pausen.",
-          "geld": "Handwerker und Praxen verpassen Anrufe, während sie arbeiten. Ein Telefon-Assistent nimmt an, beantwortet Standardfragen und vergibt Termine. Du verkaufst Einrichtung plus laufende Betreuung.",
-          "schritt": "Bau in ElevenLabs einen Test-Assistenten für einen Betrieb aus deinem Umfeld und prüf, wie gut er Deutsch spricht.",
           "punkte": 8,
-          "angebot": "Telefon-Assistent einrichten und betreuen",
-          "werZahlt": "Handwerk, Praxen, Kanzleien",
-          "werkzeuge": "ElevenLabs",
-          "ersterEuro": "In Wochen",
-          "aufwand": "Mittel, Telefonanbindung einplanen",
-          "beachten": "Als KI kenntlich machen, deutsche Stimme vorher testen",
           "quelle": {
-            "name": "The Decoder",
-            "url": "https://the-decoder.de/elevenlabs-stellt-eleven-realtime-vor-speech-to-speech-modelle-mit-unter-einer-sekunde-latenz/"
+            "name": "Reddit n8n",
+            "url": "https://www.reddit.com/r/n8n/comments/1xcf0vb/how_are_you_handling_the_document_extraction_step/"
+          }
+        },
+        {
+          "titel": "E-Mail-Sortierung",
+          "titelAkzent": "für Betriebe mit viel Kundenpost",
+          "neu": "Eine fertige n8n-Vorlage samt Prompts erkennt bei jeder Mail Thema, Kernaussage und Dringlichkeit. Danach landet die Mail bei der richtigen Person oder bekommt eine passende Vorlage als Antwort.",
+          "geld": "Händler und Dienstleister mit vollem Postfach sparen Zeit, weil niemand mehr jede Mail lesen und verteilen muss. Für den ersten Auftrag reicht ein einziger Pilotkunde.",
+          "schritt": "Lade die n8n-Vorlage herunter und teste sie mit 20 anonymisierten Mails aus deinem Postfach.",
+          "angebot": "Eingehende Mails automatisch zuordnen und weiterleiten",
+          "werZahlt": "Kleine Betriebe mit viel Kundenpost",
+          "werkzeuge": "n8n-Vorlage, KI-Modell, E-Mail-Postfach",
+          "ersterEuro": "Nach ein bis zwei Wochen",
+          "aufwand": "Vorlage nachbauen und mit Pilotkunde testen",
+          "beachten": "Erst mit Testdaten, keine Mails ohne AVV",
+          "kategorie": "Neue Dienstleistung",
+          "punkte": 8,
+          "quelle": {
+            "name": "Reddit n8n",
+            "url": "https://www.reddit.com/r/n8n/comments/1xcjinw/how_i_route_support_emails_to_the_right_person/"
+          }
+        },
+        {
+          "titel": "Canva Craft",
+          "titelAkzent": "macht aus Stichworten bearbeitbare Designs",
+          "neu": "Canva hat sein erstes eigenes Bildmodell vorgestellt, gelernt an Millionen Canva-Vorlagen. Es liefert Bilder in 2K in über 30 Formaten, mit lesbarer Schrift in 55 Sprachen und trennbaren Ebenen.",
+          "geld": "Lokale Firmen ohne Designkenntnisse brauchen laufend Bilder für Social Media und ihre Website. Wer ihnen das als monatliches Paket liefert, kommt mit Canva Craft schneller zum fertigen Bild.",
+          "schritt": "Öffne Canva Craft und erstelle drei Post-Bilder für eine echte Branche deiner Wahl.",
+          "angebot": "Monatliches Bilderpaket für Posts und Website",
+          "werZahlt": "Lokale Firmen ohne eigene Designkenntnisse",
+          "werkzeuge": "Canva Craft in Canva oder per API",
+          "ersterEuro": "Nach Tagen bis Wochen",
+          "aufwand": "Stichworte sammeln, Bilder erzeugen, Ebenen nachbearbeiten",
+          "beachten": "Lizenz prüfen, keine fremden Marken oder Gesichter",
+          "kategorie": "Content",
+          "punkte": 7,
+          "quelle": {
+            "name": "Product Hunt",
+            "url": "https://www.producthunt.com/products/canva"
           }
         }
       ],
       "aussortiert": [
         {
-          "idee": "Woven Video",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/woven-video",
-          "grund": "Reines Schnitt-Werkzeug ohne eigene Geldidee, nur für Mac und am Starttag ungetestet."
+          "idee": "Kassenabgleich mit ChatGPT Work",
+          "quelle": "OpenAI",
+          "url": "https://openai.com/index/ted-taylor-restaurant",
+          "grund": "Die US-Fallstudie zeigt keinen nachbaubaren Ablauf und hilft Lesern ohne Programmierkenntnisse in Deutschland nicht weiter."
         },
         {
-          "idee": "Notion Auto",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/notion-99",
-          "grund": "Vage Büro-Automatisierung ohne konkreten zahlenden Anwendungsfall, Zahlen nur vom Hersteller."
+          "idee": "Videomodell LTX-2.5",
+          "quelle": "Hugging Face Trend",
+          "url": "https://huggingface.co/Lightricks/LTX-2.5",
+          "grund": "Der Betrieb braucht starke Grafikkarten und ComfyUI, dazu kommen Risiken bei Lizenz und Persönlichkeitsrechten."
         },
         {
-          "idee": "Intelli für ChatGPT und Claude",
-          "quelle": "Product Hunt",
-          "url": "https://www.producthunt.com/products/intelli",
-          "grund": "Abhängig von einem fremden Plugin, dünner Geldwert und Datenschutz-Risiko bei Kunden-Chats."
+          "idee": "Bildmodell FLUX 3 Klein",
+          "quelle": "Hugging Face Trend",
+          "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy",
+          "grund": "Ob die Bilder für Firmenwerbung genutzt werden dürfen, ist unklar oder sogar ausgeschlossen, und ComfyUI ist kein Weg ohne Programmieren."
         }
       ]
     }
