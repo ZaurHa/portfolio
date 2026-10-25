@@ -120,7 +120,7 @@ export default function Hero3D({ alt, liveLabel }: { alt: string; liveLabel: str
       <img
         src="/images/hero-3d-poster.webp"
         srcSet="/images/hero-3d-poster-720.webp 720w, /images/hero-3d-poster.webp 1144w"
-        sizes="(max-width: 960px) 100vw, 48vw"
+        sizes="(max-width: 960px) calc(100vw - 48px), 48vw"
         width={1144}
         height={916}
         alt={alt}
