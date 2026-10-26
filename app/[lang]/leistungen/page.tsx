@@ -166,6 +166,19 @@ export default async function Leistungen({ params }: { params: Promise<{ lang: s
         </div>
       </section>
 
+      <section className="v3-sec" aria-labelledby="h-loesungen">
+        <div className="v3-wrap">
+          <div className="v3-sec-head v3-sec-head-sm">
+            <span className="num">{de ? "Mehr als Websites" : "More than websites"}</span>
+            <h2 id="h-loesungen">{de ? "KI, Apps und Automatisierung" : "AI, apps and automation"}</h2>
+            <p>{de ? "KI-Telefonassistent, Chatbot, Recruiting, Web-Apps, Büro-Automatisierung und mehr, mit Preisen." : "AI phone assistant, chatbot, custom web apps, automation and multilingual websites, with prices."}</p>
+          </div>
+          <div className="v3-cta-row">
+            <Link href={de ? "/de/loesungen" : "/en/solutions"} className="v3-btn v3-btn-accent">{de ? "Alle Lösungen ansehen" : "See all solutions"} <span className="arr" aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="v3-sec" aria-labelledby="h-ablauf">
         <div className="v3-wrap">
           <div className="v3-sec-head">

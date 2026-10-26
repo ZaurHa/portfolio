@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const SITE_URL = 'https://brandwerkx.de';
 export const SITE_NAME = 'BrandWerkX';
 /** Fester Stand für die Sitemap – bei inhaltlichen Änderungen anpassen. */
-export const SITEMAP_LAST_MODIFIED = '2026-10-01';
+export const SITEMAP_LAST_MODIFIED = '2026-10-25';
 
 type Lang = 'de' | 'en';
 
@@ -20,6 +20,11 @@ interface PageMetaInput {
   noindex?: boolean;
   /** Seite existiert nur auf Deutsch: keine en-Alternative */
   onlyDe?: boolean;
+  /**
+   * Eigene hreflang-Ziele, wenn sich die Pfade je Sprache unterscheiden
+   * (z. B. /de/loesungen/ki-chatbot ↔ /en/solutions/ai-chatbot ↔ /ru). Ersetzt die Standard-Alternativen.
+   */
+  languages?: Record<string, string>;
 }
 
 /**
@@ -35,6 +40,7 @@ export function pageMetadata({
   absoluteTitle = false,
   noindex = false,
   onlyDe = false,
+  languages,
 }: PageMetaInput): Metadata {
   const locale: Lang = lang === 'en' ? 'en' : 'de';
   const url = `/${locale}${path}`;
@@ -51,9 +57,11 @@ export function pageMetadata({
     description,
     alternates: {
       canonical: url,
-      languages: onlyDe
-        ? { de: `/de${path}`, 'x-default': `/de${path}` }
-        : { de: `/de${path}`, en: `/en${path}`, 'x-default': `/de${path}` },
+      languages:
+        languages ??
+        (onlyDe
+          ? { de: `/de${path}`, 'x-default': `/de${path}` }
+          : { de: `/de${path}`, en: `/en${path}`, 'x-default': `/de${path}` }),
     },
     openGraph: {
       type: 'website',

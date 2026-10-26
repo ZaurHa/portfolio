@@ -1,10 +1,10 @@
 # BrandWerkX
 
-> BrandWerkX ist ein Freelance-Webdesign- und Webentwicklungs-Angebot von Zaur Hatuev aus Geretsried (Bayern, Oberbayern) für Handwerker, Selbstständige und kleine Unternehmen in München, im Oberland und deutschlandweit. Websites ab 490 €, fertig in 3 bis 10 Tagen, SEO inklusive. Arbeitssprachen: Deutsch, Englisch, Russisch.
+> BrandWerkX ist ein Freelance-Webdesign- und Webentwicklungs-Angebot von Zaur Hatuev aus Geretsried (Bayern, Oberbayern) für Handwerker, Selbstständige und kleine Unternehmen in München, im Oberland und deutschlandweit. Websites ab 490 €, fertig in 3 bis 10 Tagen, SEO inklusive. Dazu KI-Assistenten für Telefon und Website, Web-Apps, Recruiting-Seiten, Büro-Automatisierung und IT-Grundschutz für kleine Betriebe. Arbeitssprachen: Deutsch, Englisch, Russisch.
 
 ## Kernfakten
 - Anbieter: Zaur Hatuev, Inhaber von BrandWerkX, Steiner Ring 64, 82538 Geretsried
-- Leistungen: Webdesign, Webentwicklung (Next.js, React, TypeScript), Landingpages, SEO-Optimierung, Website-Wartung
+- Leistungen: Webdesign, Webentwicklung (Next.js, React, TypeScript), Landingpages, SEO-Optimierung, Website-Wartung, KI-Telefonassistent, KI-Chatbot, Recruiting-Paket, Web-Apps für Betriebsabläufe, Büro-Automatisierung, E-Rechnung einrichten, Google-Profil und Bewertungen, IT-Grundschutz, KI-Workshops
 - Preise (Kleinunternehmer nach § 19 UStG, keine Umsatzsteuer): Muster-Website ab 490 €, Custom-Website ab 990 €, SEO & Wartung ab 99 € pro Monat
 - Ablauf: Design wählen, Infos senden, Website live, Übergabe mit 30 Tagen Support
 - Zusammenarbeit: per Telefon, Video oder WhatsApp; auf Wunsch persönliches Treffen im Betrieb des Kunden (Oberland und München), zum Beispiel zum Erstgespräch oder zur Übergabe
@@ -18,6 +18,26 @@
 - [Case Study Zaira Beauty Face](https://brandwerkx.de/de/projekte/zaira-beauty): Rebranding und neue Website für ein Kosmetikstudio
 - [Über mich](https://brandwerkx.de/de/ueber-mich): Zaur Hatuev, Werkzeuge und Schwerpunkte
 - [Kontakt](https://brandwerkx.de/de/kontakt): Projekt anfragen
+
+## Lösungen: KI, Apps und Automatisierung (Deutsch)
+- [Übersicht mit allen Angeboten und Preisen](https://brandwerkx.de/de/loesungen)
+- [KI-Telefonassistent](https://brandwerkx.de/de/loesungen/ki-telefonassistent): nimmt Anrufe an und meldet Anfragen per Telegram oder E-Mail, ab 490 € plus ab 99 € im Monat
+- [KI-Chatbot für die Website](https://brandwerkx.de/de/loesungen/ki-chatbot): beantwortet Fragen aus geprüften Website-Inhalten, ab 500 € plus ab 29 € im Monat
+- [Recruiting-Paket](https://brandwerkx.de/de/loesungen/mitarbeiter-finden): Karriereseite, Kurzbewerbung, Google for Jobs, ab 990 €
+- [Web-App für deinen Betrieb](https://brandwerkx.de/de/loesungen/web-app-entwickeln-lassen): Abläufe statt Zettel und Excel, Festpreis nach Erstgespräch, Digitalbonus Bayern möglich
+- [Büro-Automatisierung](https://brandwerkx.de/de/loesungen/buero-automatisierung): Rechnungseingang, Zahlungserinnerung, Büro-Assistent per Telegram, Festpreis nach Erstgespräch
+- [E-Rechnung einrichten](https://brandwerkx.de/de/loesungen/e-rechnung-einrichten): ab 300 €
+- [Google-Profil und Bewertungen](https://brandwerkx.de/de/loesungen/google-unternehmensprofil): Einrichtung 149 €, Pflege ab 49 € im Monat
+- [Website-Wartung und Betreuung](https://brandwerkx.de/de/loesungen/website-wartung): ab 49 € im Monat
+- [IT-Grundschutz](https://brandwerkx.de/de/loesungen/it-sicherheit-kleine-firmen): Festpreis nach Erstgespräch
+- [KI-Workshop für Teams](https://brandwerkx.de/de/loesungen/ki-schulung): ab 490 € je Betrieb
+
+## Solutions (English)
+- [Overview of all offers and prices](https://brandwerkx.de/en/solutions)
+- [AI phone assistant](https://brandwerkx.de/en/solutions/ai-phone-assistant), [AI website chatbot](https://brandwerkx.de/en/solutions/ai-chatbot), [Custom web apps](https://brandwerkx.de/en/solutions/custom-web-apps), [Business automation](https://brandwerkx.de/en/solutions/business-automation), [Multilingual websites](https://brandwerkx.de/en/solutions/multilingual-websites), [White-label development for agencies](https://brandwerkx.de/en/solutions/white-label-development)
+
+## Русский
+- [Сайты, ИИ-ассистенты и автоматизация для бизнеса на русском](https://brandwerkx.de/ru): для русскоязычных предпринимателей в Германии, ЕС и Израиле
 
 ## Webdesign-Themen (Deutsch)
 - [Übersicht](https://brandwerkx.de/de/webdesign)
