@@ -91,7 +91,7 @@ export default async function FlottUmzugCaseStudy({ params }: { params: Promise<
       <PageHero
         meta={de ? "Case Study · Umzug · Bielefeld" : "Case study · Moving · Bielefeld"}
         metaRight={<b>2026</b>}
-        title={<><span className="l">Flott</span><span className="l"><span className="c">Umzug</span> <span className="o">&amp; Transport</span></span></>}
+        title={<><span className="l">Flott</span>{" "}<span className="l"><span className="c">Umzug</span> <span className="o">&amp; Transport</span></span></>}
         lead={de
           ? "Neues Logo, neue Website auf eigener Domain und ein repariertes Google-Profil für ein Umzugs- und Entrümpelungsunternehmen aus Bielefeld."
           : "A new logo, a new website on its own domain and a repaired Google profile for a moving and house-clearance company in Bielefeld."}
