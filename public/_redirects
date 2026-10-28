@@ -17,3 +17,4 @@
 /loesungen/*             /de/loesungen/:splat       301
 /solutions               /en/solutions              301
 /solutions/*             /en/solutions/:splat       301
+/bewerten                https://g.page/r/CbSvFJFLXZ8-EBM/review  302
