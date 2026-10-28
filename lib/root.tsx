@@ -120,7 +120,9 @@ export const jsonLd = {
         "Recruiting-Seiten",
         "IT-Grundschutz"
       ],
+      "hasMap": "https://maps.google.com/?cid=4512427930786508724",
       "sameAs": [
+        "https://maps.google.com/?cid=4512427930786508724",
         "https://github.com/ZaurHa",
         "https://www.linkedin.com/in/zaur-hatuev-8559b91a1/"
       ],
