@@ -13,6 +13,8 @@ export interface LandingSection {
   title: string;
   text?: string;
   bullets?: string[];
+  /** Interne Links unter dem Abschnitt, z. B. auf eine Case Study */
+  links?: { href: string; label: string }[];
 }
 
 export interface LandingPage {
@@ -294,7 +296,7 @@ export const landingPages: LandingPage[] = [
     eyebrow: 'Für Logistik & Transport',
     h1: 'Website für Logistik, Transport und Umzug',
     intro:
-      'Logistik- und Transportunternehmen gewinnen Kunden, wenn Leistungen, Fuhrpark und Einsatzgebiet schnell klar sind und eine Anfrage in zwei Minuten möglich ist. BrandWerkX baut solche Websites ab 990 €. Referenzen sind die Websites von MRG Trans & Logistik (Hamburg), IP Logistik (Gütersloh) und MH Logistik (Herford), dazu die Umzugsbetriebe SM Team (Geretsried) und Mobilwerk.',
+      'Logistik- und Transportunternehmen gewinnen Kunden, wenn Leistungen, Fuhrpark und Einsatzgebiet schnell klar sind und eine Anfrage in zwei Minuten möglich ist. BrandWerkX baut solche Websites ab 990 €. Referenzen sind die Websites von MRG Trans & Logistik (Hamburg), IP Logistik (Gütersloh) und MH Logistik (Herford), dazu die Umzugsbetriebe SM Team (Geretsried), Flott Umzug & Transport (Bielefeld) und Mobilwerk.',
     sections: [
       {
         title: 'Was die Website zeigen sollte',
@@ -307,7 +309,8 @@ export const landingPages: LandingPage[] = [
       },
       {
         title: 'Referenzen',
-        text: 'Für die Logistik habe ich die Websites von MRG Trans & Logistik (Hamburg, Lager und Werkvertrag), IP Logistik (Gütersloh, Inhouse-Logistik im Werkvertrag) und MH Logistik (Herford, Personal für Lager und Logistik) gebaut. Für Umzug und Transport stehen SM Team aus Geretsried und mein eigener Betrieb Mobilwerk; die Website eines Umzugsunternehmens in Bielefeld ist in Arbeit. Alle Projekte findest du unter „Projekte“.',
+        text: 'Für die Logistik habe ich die Websites von MRG Trans & Logistik (Hamburg, Lager und Werkvertrag), IP Logistik (Gütersloh, Inhouse-Logistik im Werkvertrag) und MH Logistik (Herford, Personal für Lager und Logistik) gebaut. Für Umzug und Transport stehen SM Team aus Geretsried, Flott Umzug & Transport aus Bielefeld und mein eigener Betrieb Mobilwerk. Alle Projekte findest du unter „Projekte“.',
+        links: [{ href: '/de/projekte/flott-umzug', label: 'Case Study Flott Umzug & Transport' }],
       },
       {
         title: 'Für Firmenkunden und Privatkunden',

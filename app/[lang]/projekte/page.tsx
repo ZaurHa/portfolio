@@ -173,17 +173,16 @@ function getProjects(de: boolean, lang: string): Project[] {
       year: "2026",
       place: "Bielefeld",
       desc: de
-        ? "Neue Website für ein Umzugs- und Entrümpelungsunternehmen in Bielefeld: neues Logo, Anfrage in fünf Schritten und eine eigene Seite für jede Leistung, vom Fernumzug bis zur Halteverbotszone."
-        : "New website for a moving and house-clearance company in Bielefeld: a new logo, a five-step enquiry and a dedicated page for every service, from long-distance moves to parking-ban zones.",
-      done: de ? ["Neues Logo", "Anfrageformular in fünf Schritten", "Eigene Seite pro Leistung"] : ["New logo", "Five-step enquiry form", "A page for every service"],
+        ? "Neue Website für ein Umzugs- und Entrümpelungsunternehmen in Bielefeld: neues Logo, Anfrage in vier Schritten mit Foto-Upload und eine eigene Seite für jede Leistung, vom Fernumzug bis zur Halteverbotszone. Dazu ein repariertes Google-Profil."
+        : "New website for a moving and house-clearance company in Bielefeld: a new logo, a four-step enquiry with photo upload and a dedicated page for every service, from long-distance moves to parking-ban zones. Plus a repaired Google profile.",
+      done: de ? ["Neues Logo", "Anfrage in vier Schritten mit Fotos", "Eigene Seite pro Leistung"] : ["New logo", "Four-step enquiry with photos", "A page for every service"],
       stack: ["Astro", "TailwindCSS", "Cloudflare"],
       image: "/images/flott-umzug-preview.webp",
       video: "/videos/flott-umzug-hero.mp4",
       alt: de ? "Website Flott Umzug & Transport" : "Flott Umzug & Transport website",
       bar: "umzug-flott.de",
-      href: "https://umzug-flott.de",
-      cta: de ? "Website ansehen" : "View website",
-      external: true,
+      href: `/${lang}/projekte/flott-umzug`,
+      cta: de ? "Case Study lesen" : "Read case study",
       live: true,
     },
     {

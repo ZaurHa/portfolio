@@ -13,6 +13,7 @@ const routes = [
   { path: "/leistungen", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/projekte", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/projekte/zaira-beauty", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/projekte/flott-umzug", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/ueber-mich", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/kontakt", priority: 0.7, changeFrequency: "yearly" as const },
 ];

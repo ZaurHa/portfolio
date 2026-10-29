@@ -109,6 +109,11 @@ export default async function LandingPageRoute({
             <div className="v3-landing-body">
               {s.text && <p className="v3-landing-text">{s.text}</p>}
               {s.bullets && <ul className="v3-plus v3-plus-lg">{s.bullets.map((b) => <li key={b}>{b}</li>)}</ul>}
+              {s.links && (
+                <p className="v3-landing-links">
+                  {s.links.map((l) => <Link key={l.href} href={l.href} className="v3-link">{l.label} <span className="arr" aria-hidden="true">→</span></Link>)}
+                </p>
+              )}
             </div>
           </div>
         </section>
