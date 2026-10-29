@@ -357,6 +357,7 @@ export const landingPages: LandingPage[] = [
       },
     ],
     faqs: [
+      { q: 'Ist BrandWerkX eine Webdesign-Agentur aus Geretsried?', a: 'BrandWerkX ist ein Ein-Personen-Studio. Ich, Zaur Hatuev, arbeite als Webdesigner in Geretsried und plane, gestalte und baue deine Website selbst. Du sprichst also immer direkt mit mir, ohne Projektmanager dazwischen. Das spart Abstimmung und hält den Preis niedrig.' },
       { q: 'Arbeitest du auch mit Kunden außerhalb von Geretsried?', a: 'Ja, mit Kunden im Oberland, in München und deutschlandweit. Besprechungen laufen per Telefon, Video oder WhatsApp. Im Oberland und in München komme ich auf Wunsch auch persönlich vorbei.' },
       { q: 'Wie komme ich in Kontakt?', a: 'Per Telefon unter 0172 8471641, per E-Mail an brandwerkx@gmail.com, über WhatsApp oder das Kontaktformular auf dieser Website.' },
       { q: 'Was kostet eine Website in Geretsried?', a: 'Ab 490 € für die Muster-Website, ab 990 € für eine individuelle Website. Die Preise sind überall gleich.' },
